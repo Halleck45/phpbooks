@@ -1,0 +1,9 @@
+# Working with Variables and References
+
+You've been assigning variables since the guessing game in [Chapter 2](ch02-00-guessing-game-tutorial.md), and by now `$x = $y` looks like the most unremarkable line of code imaginable. It mostly is, but "mostly" is doing some quiet work in that sentence, and this chapter is about the part it's hiding.
+
+What happens when you assign an array to a new variable, and then modify the copy? What happens when you do the same thing with an object? These two questions have different answers in PHP, and the difference is not a minor implementation detail: it's one of the most common sources of confusion for people arriving from other languages, and one of the most common sources of genuinely strange bugs for people who never had it explained. Arrays behave as if each assignment made a brand-new, independent copy. Objects behave as if every variable holding one is just another name for the same underlying thing. Get this backwards in your head, and you will eventually write a function that "doesn't work" for reasons that look like nothing, right up until you understand this chapter.
+
+We'll also look at PHP's explicit reference syntax: the `&` that lets you opt into shared-variable behavior on purpose, whether that's two variables sharing one array or a function that modifies its caller's variable directly. References are a sharp tool: genuinely useful in specific situations, and a reliable source of confusing code when reached for out of habit. You'll learn where they earn their keep and where they don't.
+
+Finally, we'll close out with two smaller but related ideas: variable scope (what a function can and can't see of the code around it) and a brief, honest look at how PHP reclaims memory it's no longer using. Neither needs deep study to use PHP well, but both come up often enough that you should recognize the vocabulary when you meet it again later in the book.

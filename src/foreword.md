@@ -1,0 +1,11 @@
+# Foreword
+
+I've spent a long time in and around PHP: writing it, breaking it, running static analysis over other people's, and watching the language change underneath all three of those activities. This book exists because most PHP tutorials teach you to copy a snippet, not to understand why it works. You can get quite far that way. You can also spend years writing PHP without ever quite knowing what a reference is, why an array behaves differently from an object, or what `strict_types` actually buys you. I'd rather you didn't.
+
+This book is for people who want the second thing: to actually understand PHP, not just operate it by muscle memory. Maybe you're new to programming entirely, and PHP is where you're starting: that's fine, it's a perfectly reasonable place to start, and always has been, however much the loudest opinions on the internet suggest otherwise. Maybe you've written some PHP already, glued together from search results and half-remembered examples, and you want the ground underneath it to stop feeling slippery. Either way, I've tried to explain each idea once, properly, rather than leaving you to reconstruct it from context clues scattered across forum posts.
+
+PHP has a reputation, and I won't pretend otherwise: it earned a lot of it fairly, in an earlier era, with warnings you had to squint to read and comparisons that surprised even people who'd written the interpreter. That PHP mostly doesn't exist anymore. The language you're about to learn has real types, a serious error model, enums, first-class functions, and a community that ships static analysis tools most other ecosystems still envy. None of that erases the old reputation, and I'm not here to relitigate it. I'd just rather you judge the language in front of you than the one people are still telling stories about.
+
+So: get a terminal open, get PHP installed, and let's get started properly.
+
+Damien
