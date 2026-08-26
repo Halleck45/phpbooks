@@ -1,23 +1,14 @@
-# Read the Docs configuration file
-# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
-
-# Required
 version: 2
-
-# Set the OS, Python version, and other tools you might need
 build:
-  os: ubuntu-24.04
+  os: ubuntu-lts-latest
   tools:
-    python: "3.13"
-
-# Build documentation with Mkdocs
-mkdocs:
-   configuration: mkdocs.yml
-
-# Optionally, but recommended,
-# declare the Python requirements required to build your documentation
-# See https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html
-# python:
-#    install:
-#    - requirements: docs/requirements.txt
-        
+    rust: latest
+  jobs:
+    install:
+      - cargo install mdbook
+    build:
+      html:
+        - /home/docs/.asdf/installs/rust/1.96.0/bin/mdbook build --dest-dir $READTHEDOCS_OUTPUT/html
+#        - python3 scripts/canonical.py $READTHEDOCS_OUTPUT/html
+#        - python3 scripts/description.py $READTHEDOCS_OUTPUT/html
+#        - python3 scripts/og_url.py $READTHEDOCS_OUTPUT/html
