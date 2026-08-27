@@ -112,4 +112,4 @@ All three are covered properly in [Chapter 6](ch06-00-enums.md).
 | `::` | Access a static property, static method, class constant, or parent from within a class |
 | `#[...]` | Attribute: structured metadata attached to a class, method, or property |
 
-Attributes are the newest of the four, and get a full treatment in [Chapter 18](ch18-04-attributes.md).
+Attributes are the newest of the four, and get a full treatment in [Chapter 19](ch19-04-attributes.md).

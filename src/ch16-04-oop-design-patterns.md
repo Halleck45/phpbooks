@@ -4,11 +4,11 @@ A design pattern is just a name for a shape of code that shows up often enough, 
 
 ## The idea
 
-Strategy's whole premise: take a piece of behavior that can vary (*how* a payment gets charged, *how* a list gets sorted, *how* a price gets discounted), pull it out behind a shared interface, and hand it to a class that uses that behavior without needing to know which specific version it received. That last part should sound familiar; it's exactly the polymorphism from [ch15-01](ch15-01-inheritance-and-polymorphism.md). Strategy just adds one more piece: a dedicated class, usually called the *context*, whose entire job is holding onto a strategy and delegating to it, and letting that strategy be swapped out, even after the context already exists.
+Strategy's whole premise: take a piece of behavior that can vary (*how* a payment gets charged, *how* a list gets sorted, *how* a price gets discounted), pull it out behind a shared interface, and hand it to a class that uses that behavior without needing to know which specific version it received. That last part should sound familiar; it's exactly the polymorphism from [ch16-01](ch16-01-inheritance-and-polymorphism.md). Strategy just adds one more piece: a dedicated class, usually called the *context*, whose entire job is holding onto a strategy and delegating to it, and letting that strategy be swapped out, even after the context already exists.
 
 ## Building it
 
-Back to an interface, not an abstract class this time: there's no shared implementation code worth forcing on every payment method, only a contract, which is exactly the case [ch15-02](ch15-02-abstract-classes.md) said an interface fits best:
+Back to an interface, not an abstract class this time: there's no shared implementation code worth forcing on every payment method, only a contract, which is exactly the case [ch16-02](ch16-02-abstract-classes.md) said an interface fits best:
 
 ```php
 <?php
@@ -87,6 +87,6 @@ Charged $42.00 to card ending 4242.
 Charged $19.99 via PayPal account damien@example.com.
 ```
 
-Same `$checkout` object, same `complete()` call, two completely different outcomes, because `setPaymentMethod()` swapped out the strategy in between. That's the part a plain `if ($type === 'credit_card')` branch scattered through `Checkout` could never give you as cleanly: adding a third payment method next quarter means writing one new class that implements `PaymentMethod`, and changing nothing whatsoever in `Checkout` itself. It already works, for the same reason `processPayment()` already worked back in ch15-01: it was never written against a specific strategy in the first place, only against the interface every strategy is guaranteed to satisfy.
+Same `$checkout` object, same `complete()` call, two completely different outcomes, because `setPaymentMethod()` swapped out the strategy in between. That's the part a plain `if ($type === 'credit_card')` branch scattered through `Checkout` could never give you as cleanly: adding a third payment method next quarter means writing one new class that implements `PaymentMethod`, and changing nothing whatsoever in `Checkout` itself. It already works, for the same reason `processPayment()` already worked back in ch16-01: it was never written against a specific strategy in the first place, only against the interface every strategy is guaranteed to satisfy.
 
 That's the entire pattern: an interface describing a swappable behavior, one or more classes implementing it, and a context class that delegates to whichever one it's holding. No new syntax, no library, nothing PHP-specific about it at all: just the interfaces and polymorphism you already had, arranged on purpose to solve a recognizable problem. Once you've built one pattern this way, you'll start noticing the same shape everywhere, under other names, in code you didn't write.

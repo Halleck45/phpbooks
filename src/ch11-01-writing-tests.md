@@ -81,7 +81,7 @@ One dot per passing test. That's it: that's the whole feedback loop you'll live 
 
 ## `#[Test]` as an alternative to the `test` prefix
 
-PHP 8 attributes (covered properly in [Chapter 18](ch18-00-advanced-features.md)) give PHPUnit a second way to mark a method as a test, without the naming constraint:
+PHP 8 attributes (covered properly in [Chapter 19](ch19-00-advanced-features.md)) give PHPUnit a second way to mark a method as a test, without the naming constraint:
 
 ```php
 <?php

@@ -1,0 +1,176 @@
+# The PHP Book
+
+> A beginner's guide to PHP: written for people who already know how to program, taking them from installation through building and testing real command-line and web projects with modern PHP (8.x).
+
+## Front matter
+
+[The PHP Book](https://thephpbook.readthedocs.io/en/latest/): title page and table of contents.
+[Foreword](https://thephpbook.readthedocs.io/en/latest/foreword.html): why this book exists and who it's for.
+[Introduction](https://thephpbook.readthedocs.io/en/latest/ch00-00-introduction.html): how the book is organized and how to read it.
+
+## Getting started
+
+[Getting Started](https://thephpbook.readthedocs.io/en/latest/ch01-00-getting-started.html): overview of the setup chapter.
+[Installation](https://thephpbook.readthedocs.io/en/latest/ch01-01-installation.html): installing PHP and Composer.
+[Hello, World!](https://thephpbook.readthedocs.io/en/latest/ch01-02-hello-world.html): the first PHP script, `echo`, and running scripts from the command line.
+[Hello, Composer!](https://thephpbook.readthedocs.io/en/latest/ch01-03-hello-composer.html): starting a project with Composer and its autoloader.
+
+## Guessing game tutorial
+
+[Programming a Guessing Game](https://thephpbook.readthedocs.io/en/latest/ch02-00-guessing-game-tutorial.html): a first complete program, tying together input, loops, and comparisons.
+
+## Common programming concepts
+
+[Common Programming Concepts](https://thephpbook.readthedocs.io/en/latest/ch03-00-common-programming-concepts.html): overview of variables, types, functions, comments, and control flow.
+[Variables, Constants, and Mutability](https://thephpbook.readthedocs.io/en/latest/ch03-01-variables-and-mutability.html): declaring variables and constants, and PHP's default mutability.
+[Data Types](https://thephpbook.readthedocs.io/en/latest/ch03-02-data-types.html): scalar and compound types, type juggling, and casting.
+[Functions](https://thephpbook.readthedocs.io/en/latest/ch03-03-how-functions-work.html): declaring functions, parameters, return types, and default values.
+[Comments](https://thephpbook.readthedocs.io/en/latest/ch03-04-comments.html): comment syntax and docblocks.
+[Control Flow](https://thephpbook.readthedocs.io/en/latest/ch03-05-control-flow.html): `if`, loops, `break`, and `continue`.
+
+## Variables and references
+
+[Working with Variables and References](https://thephpbook.readthedocs.io/en/latest/ch04-00-variables-and-references.html): how PHP actually stores and shares values.
+[How PHP Manages Values: Copy-on-Write](https://thephpbook.readthedocs.io/en/latest/ch04-01-copy-on-write.html): why copying an array or string is cheap until it's modified.
+[Passing by Value vs. by Reference](https://thephpbook.readthedocs.io/en/latest/ch04-02-references.html): the `&` reference operator and when a function can mutate the caller's variable.
+[Variable Scope and Garbage Collection](https://thephpbook.readthedocs.io/en/latest/ch04-03-scope-and-gc.html): local versus global scope, and how PHP reclaims memory.
+
+## Classes
+
+[Using Classes to Structure Related Data](https://thephpbook.readthedocs.io/en/latest/ch05-00-classes.html): introduction to object-oriented PHP.
+[Defining and Instantiating Classes](https://thephpbook.readthedocs.io/en/latest/ch05-01-defining-classes.html): properties, visibility, constructor promotion, and `readonly`.
+[An Example Program Using Classes](https://thephpbook.readthedocs.io/en/latest/ch05-02-example-classes.html): a worked example that puts classes to use.
+[Methods and Constructor Promotion](https://thephpbook.readthedocs.io/en/latest/ch05-03-methods.html): defining methods and `$this`.
+
+## Enums and pattern matching
+
+[Enums and Pattern Matching](https://thephpbook.readthedocs.io/en/latest/ch06-00-enums.html): overview of enums and the `match` expression.
+[Defining an Enum](https://thephpbook.readthedocs.io/en/latest/ch06-01-defining-an-enum.html): pure and backed enum cases.
+[The `match` Expression](https://thephpbook.readthedocs.io/en/latest/ch06-02-match.html): strict-comparison branching that returns a value.
+[Concise Control Flow with `match` and `?->`](https://thephpbook.readthedocs.io/en/latest/ch06-03-match-and-nullsafe.html): pairing `match` with the nullsafe operator.
+
+## Namespaces, packages, and Composer
+
+[Namespaces, Packages, and Composer](https://thephpbook.readthedocs.io/en/latest/ch07-00-namespaces-and-composer.html): organizing code across files and packages.
+[Packages and Autoloading](https://thephpbook.readthedocs.io/en/latest/ch07-01-packages-and-autoloading.html): how Composer's autoloader finds and loads classes.
+[Controlling Scope and Visibility with Namespaces](https://thephpbook.readthedocs.io/en/latest/ch07-02-namespaces.html): the `namespace` keyword and name resolution.
+[Referring to Code with the `use` Keyword](https://thephpbook.readthedocs.io/en/latest/ch07-03-use-keyword.html): importing names from other namespaces.
+[Organizing a Multi-File Project](https://thephpbook.readthedocs.io/en/latest/ch07-04-organizing-a-project.html): splitting a growing project across multiple files.
+[Separating Classes into Different Files (PSR-4)](https://thephpbook.readthedocs.io/en/latest/ch07-05-psr4.html): the PSR-4 autoloading convention.
+
+## Common collections
+
+[Common Collections](https://thephpbook.readthedocs.io/en/latest/ch08-00-common-collections.html): overview of arrays and strings.
+[Storing Lists of Values with Indexed Arrays](https://thephpbook.readthedocs.io/en/latest/ch08-01-indexed-arrays.html): PHP's array type used as an ordered list.
+[Storing UTF-8 Encoded Text with Strings](https://thephpbook.readthedocs.io/en/latest/ch08-02-strings.html): strings, encoding, and common string functions.
+[Storing Keys with Associated Values in Associative Arrays](https://thephpbook.readthedocs.io/en/latest/ch08-03-associative-arrays.html): PHP's array type used as a map, `isset()` versus `array_key_exists()`.
+
+## Error handling
+
+[Error Handling](https://thephpbook.readthedocs.io/en/latest/ch09-00-error-handling.html): overview of `Error`, `Exception`, and `Throwable`.
+[Unrecoverable Errors: Fatal Errors and `Error`](https://thephpbook.readthedocs.io/en/latest/ch09-01-fatal-errors.html): PHP's `Error` hierarchy for programmer mistakes.
+[Recoverable Errors with Exceptions](https://thephpbook.readthedocs.io/en/latest/ch09-02-exceptions.html): `try`/`catch`/`finally`, `throw`, and custom exceptions.
+[To Throw or Not to Throw](https://thephpbook.readthedocs.io/en/latest/ch09-03-to-throw-or-not-to-throw.html): deciding between exceptions and other error-signaling strategies.
+
+## Interfaces, traits, and generic-style code
+
+[Interfaces, Traits, and Generic-Style Code](https://thephpbook.readthedocs.io/en/latest/ch10-00-interfaces-and-traits.html): sharing behavior across unrelated classes.
+[Defining Shared Behavior with Interfaces](https://thephpbook.readthedocs.io/en/latest/ch10-01-interfaces.html): programming against a contract instead of a concrete class.
+[Reusing Code with PHP Traits](https://thephpbook.readthedocs.io/en/latest/ch10-02-php-traits.html): sharing method implementations across classes.
+[Generic-Style Code with Docblocks and Static Analysis](https://thephpbook.readthedocs.io/en/latest/ch10-03-generic-style-code.html): approximating generics with docblocks, PHPStan, and Psalm.
+
+## Writing automated tests
+
+[Writing Automated Tests](https://thephpbook.readthedocs.io/en/latest/ch11-00-testing.html): why and how to test PHP code.
+[How to Write Tests with PHPUnit](https://thephpbook.readthedocs.io/en/latest/ch11-01-writing-tests.html): assertions and test structure with PHPUnit.
+[Controlling How Tests Are Run](https://thephpbook.readthedocs.io/en/latest/ch11-02-running-tests.html): filtering, grouping, and configuring test runs.
+[Test Organization](https://thephpbook.readthedocs.io/en/latest/ch11-03-test-organization.html): structuring unit and integration tests in a project.
+
+## Debugging
+
+[Debugging PHP](https://thephpbook.readthedocs.io/en/latest/ch12-00-debugging.html): overview of print debugging and step debugging.
+[Print Debugging with `var_dump()` and `print_r()`](https://thephpbook.readthedocs.io/en/latest/ch12-01-print-debugging.html): inspecting values and their types with `var_dump()`, `print_r()`, and `var_export()`.
+[Step Debugging with Xdebug](https://thephpbook.readthedocs.io/en/latest/ch12-02-xdebug.html): installing Xdebug, breakpoints, stepping through code, and profiling.
+
+## A CLI project
+
+[A CLI Project: Building a Command Line Program](https://thephpbook.readthedocs.io/en/latest/ch13-00-a-cli-project.html): introduces a `grep`-like command-line tool, built up over several chapters.
+[Accepting Command Line Arguments](https://thephpbook.readthedocs.io/en/latest/ch13-01-accepting-command-line-arguments.html): reading `$argv` and parsing CLI options.
+[Reading a File](https://thephpbook.readthedocs.io/en/latest/ch13-02-reading-a-file.html): opening files and reading from `STDIN`.
+[Refactoring to Improve Modularity and Error Handling](https://thephpbook.readthedocs.io/en/latest/ch13-03-improving-error-handling-and-modularity.html): splitting the CLI project into smaller pieces and handling failures properly.
+[Adding Functionality with Test-Driven Development](https://thephpbook.readthedocs.io/en/latest/ch13-04-testing-the-librarys-functionality.html): extending the project test-first.
+[Working with Environment Variables](https://thephpbook.readthedocs.io/en/latest/ch13-05-working-with-environment-variables.html): reading configuration with `getenv()` and `$_ENV`.
+[Writing to Standard Error](https://thephpbook.readthedocs.io/en/latest/ch13-06-writing-to-stderr.html): separating error output from normal output with `STDERR`.
+
+## Functional features: closures and generators
+
+[Functional Features: Closures and Generators](https://thephpbook.readthedocs.io/en/latest/ch14-00-functional-features.html): treating functions as values and producing values lazily.
+[Closures and Arrow Functions](https://thephpbook.readthedocs.io/en/latest/ch14-01-closures.html): anonymous functions, `use`, and `fn`.
+[Processing a Series of Items with Generators](https://thephpbook.readthedocs.io/en/latest/ch14-02-generators.html): `yield` and lazy iteration.
+[Improving Our CLI Project](https://thephpbook.readthedocs.io/en/latest/ch14-03-improving-our-cli-project.html): applying closures and generators to the CLI project.
+[Performance: Loops vs. Generators vs. Array Functions](https://thephpbook.readthedocs.io/en/latest/ch14-04-performance.html): memory and speed trade-offs between the three approaches.
+
+## More about Composer and Packagist
+
+[More About Composer and Packagist](https://thephpbook.readthedocs.io/en/latest/ch15-00-more-about-composer.html): going beyond basic dependency installation.
+[Customizing Autoload and Scripts](https://thephpbook.readthedocs.io/en/latest/ch15-01-customizing-composer.html): custom autoload rules and Composer scripts.
+[Publishing a Package to Packagist](https://thephpbook.readthedocs.io/en/latest/ch15-02-publishing-to-packagist.html): sharing a package with the PHP community.
+[Composer Path Repositories and Monorepos](https://thephpbook.readthedocs.io/en/latest/ch15-03-composer-monorepos.html): working with local path repositories and monorepos.
+[Installing Global Tools with Composer](https://thephpbook.readthedocs.io/en/latest/ch15-04-installing-global-tools.html): installing CLI tools globally versus per-project.
+[Extending Composer with Scripts and Plugins](https://thephpbook.readthedocs.io/en/latest/ch15-05-extending-composer.html): hooking into Composer's lifecycle.
+
+## Object-oriented PHP
+
+[Object-Oriented PHP](https://thephpbook.readthedocs.io/en/latest/ch16-00-object-oriented-php.html): a deeper pass through PHP's object model.
+[Classes, Inheritance, and Polymorphism](https://thephpbook.readthedocs.io/en/latest/ch16-01-inheritance-and-polymorphism.html): `extends`, `parent::`, and overriding behavior.
+[Abstract Classes and Interfaces Revisited](https://thephpbook.readthedocs.io/en/latest/ch16-02-abstract-classes.html): abstract classes and abstract methods.
+[Magic Methods](https://thephpbook.readthedocs.io/en/latest/ch16-03-magic-methods.html): `__construct`, `__destruct`, `__toString`, `__get`/`__set`, `__call`, and friends.
+[Implementing a Classic OOP Design Pattern](https://thephpbook.readthedocs.io/en/latest/ch16-04-oop-design-patterns.html): a worked design pattern example.
+
+## Concurrency in PHP
+
+[Concurrency in PHP: A Brief Tour](https://thephpbook.readthedocs.io/en/latest/ch17-00-concurrency.html): overview of how PHP handles concurrent work.
+[The PHP Request Model: Why PHP Is (Usually) Single-Threaded](https://thephpbook.readthedocs.io/en/latest/ch17-01-request-model.html): the shared-nothing, one-request-per-process model.
+[Background Work with Queues and Processes](https://thephpbook.readthedocs.io/en/latest/ch17-02-queues-and-processes.html): offloading work with queues and separate processes, including `pcntl`.
+[A Look at Fibers and Async Libraries](https://thephpbook.readthedocs.io/en/latest/ch17-03-fibers-and-async.html): Fibers and cooperative concurrency.
+
+## Patterns and matching
+
+[Patterns and Matching](https://thephpbook.readthedocs.io/en/latest/ch18-00-patterns.html): overview of `match` and destructuring as pattern tools.
+[Where `match` and Destructuring Can Be Used](https://thephpbook.readthedocs.io/en/latest/ch18-01-all-the-places-for-patterns.html): a survey of pattern-shaped code across the language.
+[List and Array Destructuring](https://thephpbook.readthedocs.io/en/latest/ch18-02-destructuring.html): unpacking arrays with `list()` and `[...]` syntax.
+[`match` Pattern Syntax](https://thephpbook.readthedocs.io/en/latest/ch18-03-match-syntax.html): multi-value arms and matching idioms.
+
+## Advanced features
+
+[Advanced Features](https://thephpbook.readthedocs.io/en/latest/ch19-00-advanced-features.html): overview of reflection, built-in interfaces, and attributes.
+[Magic Constants and Reflection](https://thephpbook.readthedocs.io/en/latest/ch19-01-reflection.html): `__CLASS__`, `__FUNCTION__`, and inspecting code at runtime with Reflection.
+[Built-in Interfaces: Countable, ArrayAccess, IteratorAggregate](https://thephpbook.readthedocs.io/en/latest/ch19-02-built-in-interfaces.html): making custom objects work with `count()`, `[]`, and `foreach`.
+[First-Class Callable Syntax and Advanced Closures](https://thephpbook.readthedocs.io/en/latest/ch19-03-advanced-closures.html): `foo(...)` syntax and closure binding.
+[Attributes](https://thephpbook.readthedocs.io/en/latest/ch19-04-attributes.html): `#[...]` metadata and reading it with Reflection.
+
+## Web development basics
+
+[Web Development Basics](https://thephpbook.readthedocs.io/en/latest/ch20-00-web-development-basics.html): overview of forms, superglobals, security, and databases.
+[Accepting Input with HTML Forms and Superglobals](https://thephpbook.readthedocs.io/en/latest/ch20-01-forms-and-superglobals.html): reading `$_GET`, `$_POST`, and `$_SERVER` from an HTML form.
+[Validating Input and Preventing Cross-Site Scripting](https://thephpbook.readthedocs.io/en/latest/ch20-02-validation-and-xss.html): `htmlspecialchars()`, input validation, and XSS/CSRF awareness.
+[Talking to a Database with PDO](https://thephpbook.readthedocs.io/en/latest/ch20-03-talking-to-a-database.html): PDO, SQLite, and prepared statements against SQL injection.
+
+## Final project: a web application
+
+[Final Project: Building a Simple Web Application](https://thephpbook.readthedocs.io/en/latest/ch21-00-final-project-web-app.html): a small MVC-style web app that ties the book's concepts together.
+[A Single-File Router with PHP's Built-in Server](https://thephpbook.readthedocs.io/en/latest/ch21-01-single-file-router.html): routing requests with PHP's built-in development server.
+[Structuring a Small MVC-Style App](https://thephpbook.readthedocs.io/en/latest/ch21-02-mvc-structure.html): separating models, views, and controllers.
+[Handling Shutdown and Cleanup](https://thephpbook.readthedocs.io/en/latest/ch21-03-shutdown-and-cleanup.html): `register_shutdown_function()` and cleanup logic.
+
+## Appendix
+
+[Appendix](https://thephpbook.readthedocs.io/en/latest/appendix-00.html): reference material, meant for looking things up rather than reading straight through.
+[A - Keywords](https://thephpbook.readthedocs.io/en/latest/appendix-01-keywords.html): every reserved word in PHP, grouped by purpose.
+[B - Operators and Symbols](https://thephpbook.readthedocs.io/en/latest/appendix-02-operators.html): a reference table of PHP's operators and symbols.
+[C - Built-in Interfaces and Magic Methods](https://thephpbook.readthedocs.io/en/latest/appendix-03-built-in-interfaces.html): SPL interfaces and magic methods gathered in one place.
+[D - Useful Development Tools](https://thephpbook.readthedocs.io/en/latest/appendix-04-useful-development-tools.html): Composer, PHPUnit, PHPStan/Psalm, code style tools, Xdebug, and editors.
+[E - PHP Versions and Backward Compatibility](https://thephpbook.readthedocs.io/en/latest/appendix-05-php-versions.html): version support and compatibility notes.
+[F - Translations of the Book](https://thephpbook.readthedocs.io/en/latest/appendix-06-translation.html): translation status of the book.
+[G - How PHP Is Made (the RFC Process)](https://thephpbook.readthedocs.io/en/latest/appendix-07-rfc-process.html): how language changes are proposed and voted on via PHP's RFC process.
+[H - Covered PHP Features](https://thephpbook.readthedocs.io/en/latest/appendix-08-php-features.html): every PHP feature covered in the book, linked to its entry in the [PHP Dictionary](https://php-dictionary.readthedocs.io/en/latest/).

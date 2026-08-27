@@ -76,7 +76,7 @@ echo isset($config['missing']) ? "yes\n" : "no\n"; // no
 
 ## `IteratorAggregate`
 
-The third makes your object work directly in a `foreach`. Rather than implementing iteration logic yourself, `IteratorAggregate` asks for a single method, `getIterator()`, that hands back something already iterable, usually a `Generator` (from [Chapter 13](ch13-02-generators.md)):
+The third makes your object work directly in a `foreach`. Rather than implementing iteration logic yourself, `IteratorAggregate` asks for a single method, `getIterator()`, that hands back something already iterable, usually a `Generator` (from [Chapter 14](ch14-02-generators.md)):
 
 ```php
 <?php

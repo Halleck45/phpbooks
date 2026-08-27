@@ -4,7 +4,7 @@ This book has already covered two of these properly. The rest are what to go ins
 
 ## Composer
 
-Covered from [Chapter 1](ch01-03-hello-composer.md) onward, and again in depth in [Chapter 14](ch14-00-more-about-composer.md). Dependency management and autoloading. You will not write PHP professionally without it, and by this point in the book you already haven't.
+Covered from [Chapter 1](ch01-03-hello-composer.md) onward, and again in depth in [Chapter 15](ch15-00-more-about-composer.md). Dependency management and autoloading. You will not write PHP professionally without it, and by this point in the book you already haven't.
 
 ## PHPUnit
 
@@ -33,9 +33,7 @@ Pick one, wire it into your editor or a pre-commit hook, and stop having style d
 
 ## Xdebug
 
-A step debugger and profiler for PHP. Instead of scattering `var_dump()` calls through your code and rerunning it, Xdebug lets you pause execution at a breakpoint, inspect every variable in scope, and step through line by line, from your editor, in real time. It also profiles: showing you exactly where a slow request spent its time.
-
-Xdebug is a bigger topic than fits in an appendix entry: setup varies by OS and editor, and it's genuinely worth a dedicated afternoon once you're past scattering `var_dump()` everywhere and want something more surgical.
+A step debugger and profiler for PHP. Instead of scattering `var_dump()` calls through your code and rerunning it, Xdebug lets you pause execution at a breakpoint, inspect every variable in scope, and step through line by line, from your editor, in real time. It also profiles: showing you exactly where a slow request spent its time. Covered properly, installation and all, in [Chapter 12](ch12-02-xdebug.md).
 
 ## Editors and IDEs
 

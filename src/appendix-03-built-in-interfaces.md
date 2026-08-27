@@ -14,7 +14,7 @@ Two reference tables: the SPL interfaces that let your objects plug into PHP's b
 
 `Stringable` is the odd one out: added in PHP 8, and you rarely need to implement it explicitly; any class that defines `__toString()` is automatically treated as implementing it. It exists mostly so type declarations can say "anything printable," rather than listing every class that happens to have a `__toString()` method.
 
-Full examples of all five, including what `Iterator` demands of you that `IteratorAggregate` doesn't, are in [Chapter 18](ch18-02-built-in-interfaces.md).
+Full examples of all five, including what `Iterator` demands of you that `IteratorAggregate` doesn't, are in [Chapter 19](ch19-02-built-in-interfaces.md).
 
 ## Magic methods
 
@@ -30,4 +30,4 @@ Full examples of all five, including what `Iterator` demands of you that `Iterat
 | `__invoke` | The object is called as if it were a function |
 | `__clone` | The object is duplicated with `clone` |
 
-"Magic" is PHP's word for methods the language calls for you, by naming convention, rather than you calling directly. Useful for building things like lazy-loaded properties or fluent proxies, easy to overuse into code nobody can trace by reading it. Full treatment, with the tradeoffs, in [Chapter 15](ch15-03-magic-methods.md).
+"Magic" is PHP's word for methods the language calls for you, by naming convention, rather than you calling directly. Useful for building things like lazy-loaded properties or fluent proxies, easy to overuse into code nobody can trace by reading it. Full treatment, with the tradeoffs, in [Chapter 16](ch16-03-magic-methods.md).

@@ -70,4 +70,4 @@ The error message still shows up on your terminal immediately: `STDERR` is not h
 
 That's phpgrep, for now: it accepts arguments properly, reads a file and searches it, fails loudly and specifically when it can't, is backed by tests that exercise its actual logic, respects an environment variable, and keeps its results and its errors on separate streams the way a command-line tool should. It's a small program, but there's very little about it left to apologize for.
 
-One more improvement is coming. [Chapter 13](ch13-00-functional-features.md) introduces generators, and once it does, it comes back to this exact project for one last pass.
+One more improvement is coming. [Chapter 14](ch14-00-functional-features.md) introduces generators, and once it does, it comes back to this exact project for one last pass.
