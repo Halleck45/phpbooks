@@ -7,5 +7,3 @@ This book is for people who want the second thing: to actually understand PHP, n
 PHP has a reputation, and I won't pretend otherwise: it earned a lot of it fairly, in an earlier era, with warnings you had to squint to read and comparisons that surprised even people who'd written the interpreter. That PHP mostly doesn't exist anymore. The language you're about to learn has real types, a serious error model, enums, first-class functions, and a community that ships static analysis tools most other ecosystems still envy. None of that erases the old reputation, and I'm not here to relitigate it. I'd just rather you judge the language in front of you than the one people are still telling stories about.
 
 So: get a terminal open, get PHP installed, and let's get started properly.
-
-Damien

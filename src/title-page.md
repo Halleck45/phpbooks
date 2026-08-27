@@ -1,3 +1,6 @@
 # The PHP Book
 
-by Damien Seguy
+![The entrance to the PHP universe](./entrance.jpg)
+
+This is my world, and welcome to it.
+
