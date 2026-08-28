@@ -35,7 +35,7 @@ Two things changed. `PaymentMethod` is now `abstract class PaymentMethod`, which
 
 ## Compare this to `Formattable`
 
-Go back to the `Formattable` interface from [Chapter 10](ch10-01-interfaces.md):
+Go back to the `Formattable` interface from [Chapter 11](ch11-01-interfaces.md):
 
 ```php
 <?php

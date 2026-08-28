@@ -1,6 +1,6 @@
 # Improving Our CLI Project
 
-Chapter 13 left `phpgrep` in working order, with `search()` doing the real work:
+Chapter 14 left `phpgrep` in working order, with `search()` doing the real work:
 
 ```php
 <?php

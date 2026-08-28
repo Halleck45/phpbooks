@@ -30,7 +30,7 @@ Start with the form itself. Create `guestbook.php`:
 
 Nothing here is PHP yet: it's a `<form>` with `method="post"` and no `action` attribute, which means submitting it sends a `POST` request back to this same URL. `method="get"` is the other common choice, and the difference matters: a `GET` request encodes its data right in the URL (`?name=Alice`), visible in the address bar and in server logs, fine for a search box, wrong for anything sensitive or anything that changes data. A guestbook entry is exactly the kind of thing that belongs in a `POST` body instead.
 
-Serve it with the same built-in development server from [Chapter 17](ch17-01-request-model.md):
+Serve it with PHP's built-in development server:
 
 ```console
 $ php -S localhost:8000 guestbook.php

@@ -37,7 +37,7 @@ array(4) {
 }
 ```
 
-Notice `"age"` came back as `string(2) "32"`, not `int(32)`. If this array came from a form submission (the kind of data [Chapter 20](ch20-01-forms-and-superglobals.md) reads out of `$_POST`), that's expected: everything in `$_POST` arrives as a string, and code further down that assumes `$user['age']` is already an integer is a bug waiting to happen. That's the kind of thing `var_dump()` catches in seconds that a quiet wrong answer three functions later would take much longer to trace back.
+Notice `"age"` came back as `string(2) "32"`, not `int(32)`. If this array came from a form submission (the kind of data [Chapter 10](ch10-01-forms-and-superglobals.md) reads out of `$_POST`), that's expected: everything in `$_POST` arrives as a string, and code further down that assumes `$user['age']` is already an integer is a bug waiting to happen. That's the kind of thing `var_dump()` catches in seconds that a quiet wrong answer three functions later would take much longer to trace back.
 
 You can hand `var_dump()` more than one argument at once, which dumps each in turn: `var_dump($name, $age, $roles)` is shorter than three separate calls.
 

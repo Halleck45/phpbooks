@@ -1,6 +1,6 @@
 # Classes, Inheritance, and Polymorphism
 
-You've defined classes since Chapter 5 and implemented interfaces since Chapter 10, but so far every class you've written has stood alone. Real designs usually involve classes that are variations on a theme: several kinds of the same basic idea, sharing some behavior and differing in the rest. That's what inheritance is for.
+You've defined classes since Chapter 5 and implemented interfaces since Chapter 11, but so far every class you've written has stood alone. Real designs usually involve classes that are variations on a theme: several kinds of the same basic idea, sharing some behavior and differing in the rest. That's what inheritance is for.
 
 ## `extends` and method overriding
 
@@ -88,4 +88,4 @@ Charged $42.00 via PayPal account damien@example.com.
 
 `processPayment()` is typed against `PaymentMethod`, never against `CreditCard` or `PayPal` specifically, and the `foreach` loop above treats every element identically even though each one runs completely different code when `charge()` is called. That's polymorphism: the same call, `$method->charge($amount)`, does the right thing for whatever concrete object is actually behind `$method` at runtime. Add a third payment method next month (`BankTransfer`, `Cryptocurrency`, whatever the product needs), and as long as it extends `PaymentMethod` and implements `charge()`, `processPayment()` and the `foreach` loop above need no changes at all. They were never written against a specific class in the first place, only against the shape every `PaymentMethod` is guaranteed to have.
 
-This should feel familiar: it's the same idea as programming against an interface, from [Chapter 10](ch10-01-interfaces.md), and for good reason: interfaces and inheritance are two different roads to the same destination, polymorphic code that doesn't need to know which concrete class it's holding. The next section puts them side by side and asks, directly, when to reach for which one.
+This should feel familiar: it's the same idea as programming against an interface, from [Chapter 11](ch11-01-interfaces.md), and for good reason: interfaces and inheritance are two different roads to the same destination, polymorphic code that doesn't need to know which concrete class it's holding. The next section puts them side by side and asks, directly, when to reach for which one.

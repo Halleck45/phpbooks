@@ -49,7 +49,7 @@ From there you step **over** a line (run it, stop again at the next one), step *
 
 ## Trying it on the guestbook
 
-The validation code from [Chapter 20](ch20-02-validation-and-xss.md) is a good place to practice on, since it's small enough to hold in your head but has a real branch worth watching:
+The validation code from [Chapter 10](ch10-02-validation-and-xss.md) is a good place to practice on, since it's small enough to hold in your head but has a real branch worth watching:
 
 ```php
 if ($name === '') {
@@ -63,7 +63,7 @@ Set a breakpoint on the `if ($name === '')` line, start the built-in server with
 
 ## Profiling, briefly
 
-`xdebug.mode=profile` turns on a third capability: instead of pausing execution, it records how long each function call took, writing the result to a "cachegrind" file (`xdebug.output_dir` controls where). Tools like QCachegrind or the profiler built into PhpStorm read that file and show you, visually, exactly where a slow request spent its time: which function, called how many times, accounting for what fraction of the total. It's a different job from debugging a wrong answer, closer to what [Chapter 14](ch14-04-performance.md) discusses for loops versus generators, but it's the same extension and worth knowing it's there.
+`xdebug.mode=profile` turns on a third capability: instead of pausing execution, it records how long each function call took, writing the result to a "cachegrind" file (`xdebug.output_dir` controls where). Tools like QCachegrind or the profiler built into PhpStorm read that file and show you, visually, exactly where a slow request spent its time: which function, called how many times, accounting for what fraction of the total. It's a different job from debugging a wrong answer, closer to what [Chapter 15](ch15-04-performance.md) discusses for loops versus generators, but it's the same extension and worth knowing it's there.
 
 ## Choosing between the two tools
 

@@ -90,4 +90,4 @@ if (isset($routes[$uri])) {
 }
 ```
 
-The `$routes` array now maps each path to a `[class, method]` pair instead of a closure, destructured right there with `[$class, $method] = $routes[$uri]`, the syntax from [Chapter 18](ch18-02-destructuring.md). `new $class()` instantiates the controller, and `->{$method}()` calls the matching method on it. It's a small amount of machinery, but it's genuinely the same idea every framework's router is built on: look at the request, find a class and method responsible for it, call it, return what it gives you.
+The `$routes` array now maps each path to a `[class, method]` pair instead of a closure, destructured right there with `[$class, $method] = $routes[$uri]`, the syntax from [Chapter 19](ch19-02-destructuring.md). `new $class()` instantiates the controller, and `->{$method}()` calls the matching method on it. It's a small amount of machinery, but it's genuinely the same idea every framework's router is built on: look at the request, find a class and method responsible for it, call it, return what it gives you.

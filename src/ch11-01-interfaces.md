@@ -64,7 +64,7 @@ printSummary(new InvoiceLine(new Product('Keyboard', 49.90), 2));
 
 `printSummary()` doesn't know or care that it received an `InvoiceLine`. It only knows it received *something* that can `format()`. Add a second class tomorrow (`Refund`, `Discount`, `ShippingFee`, whatever), implement `Formattable` on it, and `printSummary()` needs no changes at all. It already works, because it was never written against a specific class in the first place.
 
-This matters even more once tests enter the picture. If `printSummary()` had type-hinted `InvoiceLine` directly, testing it in isolation would mean constructing a real `InvoiceLine` with a real `Product` behind it. Type-hint `Formattable` instead, and a test can hand it any object that satisfies the contract, including a deliberately fake one built just for the test, with no `Product` in sight. We'll put that to direct use once we reach [Chapter 11](ch11-00-testing.md).
+This matters even more once tests enter the picture. If `printSummary()` had type-hinted `InvoiceLine` directly, testing it in isolation would mean constructing a real `InvoiceLine` with a real `Product` behind it. Type-hint `Formattable` instead, and a test can hand it any object that satisfies the contract, including a deliberately fake one built just for the test, with no `Product` in sight. We'll put that to direct use once we reach [Chapter 12](ch12-00-testing.md).
 
 ## `instanceof`
 
@@ -82,4 +82,4 @@ Reach for this rarely. If you find yourself writing a lot of `instanceof` checks
 
 ## A note on naming
 
-PHP has no special syntax to mark an interface as "just" a contract versus something more structural: `Formattable`, `Countable`, `Stringable`, `ArrayAccess` are all ordinary interfaces, some built into the language itself, some yours. Convention favors an adjective ending in *-able* for a single-capability contract (`Formattable`, `Comparable`, `Sortable`), which signals intent to the next reader even though PHP itself doesn't require it. We'll meet several of PHP's own built-in interfaces later, in [Chapter 19](ch19-00-advanced-features.md).
+PHP has no special syntax to mark an interface as "just" a contract versus something more structural: `Formattable`, `Countable`, `Stringable`, `ArrayAccess` are all ordinary interfaces, some built into the language itself, some yours. Convention favors an adjective ending in *-able* for a single-capability contract (`Formattable`, `Comparable`, `Sortable`), which signals intent to the next reader even though PHP itself doesn't require it. We'll meet several of PHP's own built-in interfaces later, in [Chapter 20](ch20-00-advanced-features.md).

@@ -34,7 +34,7 @@ function compoundInterest(float $principal, float $rate, int $years): float {
 }
 ```
 
-That `/**` opener (two asterisks, not one) marks it as a docblock (a convention, not a language feature) and tools like your editor, PHPStan, and documentation generators all know to read `@param` and `@return` tags out of it. We'll lean on docblocks properly once we hit generics-adjacent territory in [Chapter 10](ch10-00-interfaces-and-traits.md), where PHP's type system needs a little help from comments to say things the language itself can't express yet.
+That `/**` opener (two asterisks, not one) marks it as a docblock (a convention, not a language feature) and tools like your editor, PHPStan, and documentation generators all know to read `@param` and `@return` tags out of it. We'll lean on docblocks properly once we hit generics-adjacent territory in [Chapter 11](ch11-00-interfaces-and-traits.md), where PHP's type system needs a little help from comments to say things the language itself can't express yet.
 
 ## What's worth commenting
 

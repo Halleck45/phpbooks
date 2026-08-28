@@ -1,6 +1,6 @@
 # Built-in Interfaces: Countable, ArrayAccess, IteratorAggregate
 
-Back in [Chapter 10](ch10-00-interfaces-and-traits.md) you learned that an interface is a contract: implement its methods, and your class can be used anywhere that contract is expected. PHP takes that idea one step further with a small set of built-in interfaces, part of the SPL (Standard PHP Library), that don't just describe a contract for your own code: they plug your objects directly into PHP's own syntax. Implement one, and ordinary language constructs like `count()`, `$object['key']`, or `foreach` start working on your object as if it were a native array.
+Back in [Chapter 11](ch11-00-interfaces-and-traits.md) you learned that an interface is a contract: implement its methods, and your class can be used anywhere that contract is expected. PHP takes that idea one step further with a small set of built-in interfaces, part of the SPL (Standard PHP Library), that don't just describe a contract for your own code: they plug your objects directly into PHP's own syntax. Implement one, and ordinary language constructs like `count()`, `$object['key']`, or `foreach` start working on your object as if it were a native array.
 
 ## `Countable`
 
@@ -76,7 +76,7 @@ echo isset($config['missing']) ? "yes\n" : "no\n"; // no
 
 ## `IteratorAggregate`
 
-The third makes your object work directly in a `foreach`. Rather than implementing iteration logic yourself, `IteratorAggregate` asks for a single method, `getIterator()`, that hands back something already iterable, usually a `Generator` (from [Chapter 14](ch14-02-generators.md)):
+The third makes your object work directly in a `foreach`. Rather than implementing iteration logic yourself, `IteratorAggregate` asks for a single method, `getIterator()`, that hands back something already iterable, usually a `Generator` (from [Chapter 15](ch15-02-generators.md)):
 
 ```php
 <?php

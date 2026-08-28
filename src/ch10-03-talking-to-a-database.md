@@ -1,6 +1,6 @@
 # Talking to a Database with PDO
 
-Every request to `guestbook.php` starts from nothing: that's the shared-nothing request model from [Chapter 17](ch17-01-request-model.md), each request its own clean slate, with nothing carried over from the last one except what was deliberately saved somewhere. So far, nothing has been. To make messages outlive the request that submitted them, they need to live somewhere PHP can read them back later: a database.
+Every request to `guestbook.php` starts from nothing: PHP, in its classic and still most common form, gives each incoming request a fresh start, running the script from the top and throwing everything away once the response is sent, variables included. Nothing carries over from the last request except what was deliberately saved somewhere. So far, nothing has been. To make messages outlive the request that submitted them, they need to live somewhere PHP can read them back later: a database. ([Chapter 18](ch18-01-request-model.md) covers this shared-nothing request model properly, including why it means PHP rarely needs threads.)
 
 ## PDO and SQLite
 

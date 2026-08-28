@@ -94,7 +94,7 @@ There's no implicit "last expression is the return value" the way some languages
 
 ## Functions as values
 
-One more thing worth knowing early, even though we won't use it in earnest until [Chapter 14](ch14-00-functional-features.md): functions in PHP are values too. You can hold one in a variable and call it:
+One more thing worth knowing early, even though we won't use it in earnest until [Chapter 15](ch15-00-functional-features.md): functions in PHP are values too. You can hold one in a variable and call it:
 
 ```php
 <?php

@@ -145,4 +145,4 @@ while (true) {
 
 ## Where we've landed
 
-Around thirty lines, and it already has input, output, a loop, a conditional, a bit of type conversion, and some input validation, which is a fair chunk of what real programs are made of, guessing games included. Keep this file around; we'll revisit small CLI programs like this one throughout the book, and by [Chapter 13](ch13-00-a-cli-project.md) you'll be structuring something a good deal more serious than a guessing game.
+Around thirty lines, and it already has input, output, a loop, a conditional, a bit of type conversion, and some input validation, which is a fair chunk of what real programs are made of, guessing games included. Keep this file around; we'll revisit small CLI programs like this one throughout the book, and by [Chapter 14](ch14-00-a-cli-project.md) you'll be structuring something a good deal more serious than a guessing game.
