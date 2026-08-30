@@ -116,6 +116,13 @@
   - [Structuring a Small MVC-Style App](ch21-02-mvc-structure.md)
   - [Handling Shutdown and Cleanup](ch21-03-shutdown-and-cleanup.md)
 
+- [Where to Go from There](ch22-00-where-to-go-from-there.md)
+  - [Frameworks and the Tooling Around Them](ch22-01-frameworks-and-tooling.md)
+  - [Architecture and the Development Process](ch22-02-architecture-and-process.md)
+  - [Security and Performance](ch22-03-security-and-performance.md)
+  - [Beyond PHP: Other Languages, Other Technologies, and the Engine Itself](ch22-04-beyond-php.md)
+  - [The PHP Community](ch22-05-community.md)
+
 - [Appendix](appendix-00.md)
   - [A - Keywords](appendix-01-keywords.md)
   - [B - Operators and Symbols](appendix-02-operators.md)

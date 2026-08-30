@@ -162,6 +162,15 @@
 [Structuring a Small MVC-Style App](https://thephpbook.readthedocs.io/en/latest/ch21-02-mvc-structure.html): separating models, views, and controllers.
 [Handling Shutdown and Cleanup](https://thephpbook.readthedocs.io/en/latest/ch21-03-shutdown-and-cleanup.html): `register_shutdown_function()` and cleanup logic.
 
+## Where to go from there
+
+[Where to Go from There](https://thephpbook.readthedocs.io/en/latest/ch22-00-where-to-go-from-there.html): a map of what comes after language fluency, not a tutorial.
+[Frameworks and the Tooling Around Them](https://thephpbook.readthedocs.io/en/latest/ch22-01-frameworks-and-tooling.html): Laravel, Symfony, CI, containers, and the tools around shipping PHP.
+[Architecture and the Development Process](https://thephpbook.readthedocs.io/en/latest/ch22-02-architecture-and-process.html): organizing larger codebases and the practices that keep teams changing them safely.
+[Security and Performance](https://thephpbook.readthedocs.io/en/latest/ch22-03-security-and-performance.html): authentication, dependency auditing, caching, and observability.
+[Beyond PHP: Other Languages, Other Technologies, and the Engine Itself](https://thephpbook.readthedocs.io/en/latest/ch22-04-beyond-php.html): FFI, APIs, other databases, message queues, and PHP extensions.
+[The PHP Community](https://thephpbook.readthedocs.io/en/latest/ch22-05-community.html): user groups, conferences, PHP-FIG, the RFC process, and contributing.
+
 ## Appendix
 
 [Appendix](https://thephpbook.readthedocs.io/en/latest/appendix-00.html): reference material, meant for looking things up rather than reading straight through.

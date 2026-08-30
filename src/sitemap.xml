@@ -471,6 +471,36 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://thephpbook.readthedocs.io/en/latest/ch22-00-where-to-go-from-there.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://thephpbook.readthedocs.io/en/latest/ch22-01-frameworks-and-tooling.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://thephpbook.readthedocs.io/en/latest/ch22-02-architecture-and-process.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://thephpbook.readthedocs.io/en/latest/ch22-03-security-and-performance.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://thephpbook.readthedocs.io/en/latest/ch22-04-beyond-php.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://thephpbook.readthedocs.io/en/latest/ch22-05-community.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://thephpbook.readthedocs.io/en/latest/appendix-00.html</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
