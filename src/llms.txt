@@ -139,7 +139,6 @@
 [Concurrency in PHP: A Brief Tour](https://thephpbook.readthedocs.io/en/latest/ch18-00-concurrency.html): overview of how PHP handles concurrent work.
 [The PHP Request Model: Why PHP Is (Usually) Single-Threaded](https://thephpbook.readthedocs.io/en/latest/ch18-01-request-model.html): the shared-nothing, one-request-per-process model.
 [Background Work with Queues and Processes](https://thephpbook.readthedocs.io/en/latest/ch18-02-queues-and-processes.html): offloading work with queues and separate processes, including `pcntl`.
-[A Look at Fibers and Async Libraries](https://thephpbook.readthedocs.io/en/latest/ch18-03-fibers-and-async.html): Fibers and cooperative concurrency.
 
 ## Patterns and matching
 

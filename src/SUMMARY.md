@@ -99,7 +99,6 @@
 - [Concurrency in PHP: A Brief Tour](ch18-00-concurrency.md)
   - [The PHP Request Model: Why PHP Is (Usually) Single-Threaded](ch18-01-request-model.md)
   - [Background Work with Queues and Processes](ch18-02-queues-and-processes.md)
-  - [A Look at Fibers and Async Libraries](ch18-03-fibers-and-async.md)
 
 - [Patterns and Matching](ch19-00-patterns.md)
   - [Where `match` and Destructuring Can Be Used](ch19-01-all-the-places-for-patterns.md)

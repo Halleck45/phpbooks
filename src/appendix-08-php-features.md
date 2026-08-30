@@ -90,7 +90,6 @@ A handful of items below have no dictionary entry yet. They're listed anyway, pl
 
 ## Concurrency
 
-- [Fibers](https://php-dictionary.readthedocs.io/en/latest/index/fibers.html): pausing and resuming a block of code cooperatively, covered in [Chapter 18](ch18-03-fibers-and-async.md).
 - [`pcntl`](https://php-dictionary.readthedocs.io/en/latest/index/pcntl.html): the extension behind forking and controlling separate OS processes.
 
 ## Reflection and attributes
