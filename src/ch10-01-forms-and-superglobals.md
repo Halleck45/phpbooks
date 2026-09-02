@@ -33,7 +33,7 @@ Nothing here is PHP yet: it's a `<form>` with `method="post"` and no `action` at
 Serve it with PHP's built-in development server:
 
 ```console
-$ php -S localhost:8000 guestbook.php
+$ php -S localhost:8000
 ```
 
 Visit `http://localhost:8000` and the form renders, but submitting it does nothing yet: the same page reloads, and whatever you typed is gone. Reading what was submitted is PHP's job, and it hasn't been asked to do it yet.
