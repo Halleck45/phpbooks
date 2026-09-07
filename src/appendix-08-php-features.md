@@ -63,9 +63,9 @@ A handful of items below have no dictionary entry yet. They're listed anyway, pl
 
 ## Namespaces and autoloading
 
-- [Namespaces](https://php-dictionary.readthedocs.io/en/latest/index/namespace.html) and `use` imports: organizing and importing names, from [Chapter 7](ch07-03-use-keyword.md).
+- [Namespaces](https://php-dictionary.readthedocs.io/en/latest/index/namespace.html) and `use` imports: organizing and importing names, from [Chapter 7](ch07-04-use-keyword.md).
 - [Autoloading](https://php-dictionary.readthedocs.io/en/latest/index/autoload.html): loading class files on demand instead of with a pile of `require` statements.
-- **PSR-4**: the autoloading standard Composer implements, covered in [Chapter 7](ch07-05-psr4.md). Not yet in the dictionary; only mentioned there in passing.
+- **PSR-4**: the autoloading standard Composer implements, covered in [Chapter 7](ch07-06-psr4.md). Not yet in the dictionary; only mentioned there in passing.
 
 ## Error handling
 

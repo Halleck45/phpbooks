@@ -6,10 +6,10 @@ You've already used a handful of PHP's built-in functions: `trim()`, `echo` (whi
 <?php
 
 function greet($name) {
-    echo "Hello, {$name}!\n";
+    return "Hello, {$name}!\n";
 }
 
-greet("Damien");
+echo greet("Damien");
 ```
 
 `function`, a name, parentheses for parameters, and a body in braces: that's the whole shape. PHP function names are, like variables, case-insensitive at the call site (please don't rely on that) and conventionally `camelCase`.
@@ -47,12 +47,12 @@ Parameters can have defaults, which makes them optional at the call site:
 ```php
 <?php
 
-function greet(string $name, string $greeting = "Hello"): void {
-    echo "{$greeting}, {$name}!\n";
+function greet(string $name, string $greeting = "Hello"): string {
+    return "{$greeting}, {$name}!\n";
 }
 
-greet("Damien");             // Hello, Damien!
-greet("Damien", "Bonjour");  // Bonjour, Damien!
+echo greet("Damien");             // Hello, Damien!
+echo greet("Damien", "Bonjour");  // Bonjour, Damien!
 ```
 
 Parameters with defaults must come after parameters without them: PHP reads arguments left to right, so it needs the required ones settled first.
@@ -64,8 +64,8 @@ Speaking of argument order: PHP lets you pass arguments by name instead of posit
 ```php
 <?php
 
-greet(name: "Damien", greeting: "Bonjour");
-greet(greeting: "Bonjour", name: "Damien"); // order no longer matters
+echo greet(name: "Damien", greeting: "Bonjour");
+echo greet(greeting: "Bonjour", name: "Damien"); // order no longer matters
 ```
 
 This is especially welcome with functions that have several optional parameters: you can skip straight to the one you actually want to override, instead of passing every default in between just to reach it positionally.
@@ -103,7 +103,7 @@ $operation = 'add';
 echo $operation(2, 3); // calls add(2, 3), if add() is defined above
 ```
 
-And PHP has genuine anonymous functions, closures, for when you need to pass behavior around without giving it a name at all:
+And PHP has genuine anonymous functions, [closures](ch15-01-closures.md), for when you need to pass behavior around without giving it a name at all:
 
 ```php
 <?php

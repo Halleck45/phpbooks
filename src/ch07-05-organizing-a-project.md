@@ -107,4 +107,4 @@ $cart->add(new Product('Mouse', 25.00));
 echo $cart->total() . "\n";
 ```
 
-No `require` for `Product.php` or `Cart.php` anywhere in sight: just `vendor/autoload.php`, the same line from [Chapter 1](ch01-03-hello-composer.md). That's not a coincidence, and it isn't automatic magic either: it works because of one small block of configuration connecting the `App\` namespace prefix to the `src/` folder, which is exactly what PSR-4 is, and exactly what's next.
+No `require` for `Product.php` or `Cart.php` anywhere in sight: just `vendor/autoload.php`, the same line from [Hello, Composer!](ch07-01-hello-composer.md), earlier in this chapter. That's not a coincidence, and it isn't automatic magic either: it works because of one small block of configuration connecting the `App\` namespace prefix to the `src/` folder, which is exactly what PSR-4 is, and exactly what's next.

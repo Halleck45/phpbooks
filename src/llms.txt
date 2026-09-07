@@ -11,9 +11,8 @@
 ## Getting started
 
 [Getting Started](https://thephpbook.readthedocs.io/en/latest/ch01-00-getting-started.html): overview of the setup chapter.
-[Installation](https://thephpbook.readthedocs.io/en/latest/ch01-01-installation.html): installing PHP and Composer.
+[Installation](https://thephpbook.readthedocs.io/en/latest/ch01-01-installation.html): installing PHP.
 [Hello, World!](https://thephpbook.readthedocs.io/en/latest/ch01-02-hello-world.html): the first PHP script, `echo`, and running scripts from the command line.
-[Hello, Composer!](https://thephpbook.readthedocs.io/en/latest/ch01-03-hello-composer.html): starting a project with Composer and its autoloader.
 
 ## Guessing game tutorial
 
@@ -52,11 +51,12 @@
 ## Namespaces, packages, and Composer
 
 [Namespaces, Packages, and Composer](https://thephpbook.readthedocs.io/en/latest/ch07-00-namespaces-and-composer.html): organizing code across files and packages.
-[Packages and Autoloading](https://thephpbook.readthedocs.io/en/latest/ch07-01-packages-and-autoloading.html): how Composer's autoloader finds and loads classes.
-[Controlling Scope and Visibility with Namespaces](https://thephpbook.readthedocs.io/en/latest/ch07-02-namespaces.html): the `namespace` keyword and name resolution.
-[Referring to Code with the `use` Keyword](https://thephpbook.readthedocs.io/en/latest/ch07-03-use-keyword.html): importing names from other namespaces.
-[Organizing a Multi-File Project](https://thephpbook.readthedocs.io/en/latest/ch07-04-organizing-a-project.html): splitting a growing project across multiple files.
-[Separating Classes into Different Files (PSR-4)](https://thephpbook.readthedocs.io/en/latest/ch07-05-psr4.html): the PSR-4 autoloading convention.
+[Hello, Composer!](https://thephpbook.readthedocs.io/en/latest/ch07-01-hello-composer.html): starting a project with Composer and its autoloader.
+[Packages and Autoloading](https://thephpbook.readthedocs.io/en/latest/ch07-02-packages-and-autoloading.html): how Composer's autoloader finds and loads classes.
+[Controlling Scope and Visibility with Namespaces](https://thephpbook.readthedocs.io/en/latest/ch07-03-namespaces.html): the `namespace` keyword and name resolution.
+[Referring to Code with the `use` Keyword](https://thephpbook.readthedocs.io/en/latest/ch07-04-use-keyword.html): importing names from other namespaces.
+[Organizing a Multi-File Project](https://thephpbook.readthedocs.io/en/latest/ch07-05-organizing-a-project.html): splitting a growing project across multiple files.
+[Separating Classes into Different Files (PSR-4)](https://thephpbook.readthedocs.io/en/latest/ch07-06-psr4.html): the PSR-4 autoloading convention.
 
 ## Common collections
 

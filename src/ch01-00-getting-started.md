@@ -2,7 +2,7 @@
 
 Let's get you writing PHP.
 
-We'll start by installing PHP itself (no framework, no build tool, nothing fancy, just the interpreter) and then write the smallest program that could possibly prove it works. From there we'll say hello to Composer, PHP's package manager, because sooner or later every PHP project needs one, and it's better to meet it now, calmly, than in a panic three chapters from now when you need your first library.
+We'll start by installing PHP itself (no framework, no build tool, nothing fancy, just the interpreter) and then write the smallest program that could possibly prove it works.
 
 None of this requires a web server. PHP started life on the web, and most PHP code still ends up serving HTTP requests eventually, but you don't need Apache, nginx, or a browser to learn the language. Everything in this chapter runs from your terminal. That's on purpose: a terminal gives you instant feedback, and instant feedback is what makes a language click.
 

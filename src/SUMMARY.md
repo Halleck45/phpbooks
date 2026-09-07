@@ -7,7 +7,6 @@
 - [Getting Started](ch01-00-getting-started.md)
   - [Installation](ch01-01-installation.md)
   - [Hello, World!](ch01-02-hello-world.md)
-  - [Hello, Composer!](ch01-03-hello-composer.md)
 
 - [Programming a Guessing Game](ch02-00-guessing-game-tutorial.md)
 
@@ -34,11 +33,12 @@
   - [Concise Control Flow with `match` and `?->`](ch06-03-match-and-nullsafe.md)
 
 - [Namespaces, Packages, and Composer](ch07-00-namespaces-and-composer.md)
-  - [Packages and Autoloading](ch07-01-packages-and-autoloading.md)
-  - [Controlling Scope and Visibility with Namespaces](ch07-02-namespaces.md)
-  - [Referring to Code with the `use` Keyword](ch07-03-use-keyword.md)
-  - [Organizing a Multi-File Project](ch07-04-organizing-a-project.md)
-  - [Separating Classes into Different Files (PSR-4)](ch07-05-psr4.md)
+  - [Hello, Composer!](ch07-01-hello-composer.md)
+  - [Packages and Autoloading](ch07-02-packages-and-autoloading.md)
+  - [Controlling Scope and Visibility with Namespaces](ch07-03-namespaces.md)
+  - [Referring to Code with the `use` Keyword](ch07-04-use-keyword.md)
+  - [Organizing a Multi-File Project](ch07-05-organizing-a-project.md)
+  - [Separating Classes into Different Files (PSR-4)](ch07-06-psr4.md)
 
 - [Common Collections](ch08-00-common-collections.md)
   - [Storing Lists of Values with Indexed Arrays](ch08-01-indexed-arrays.md)

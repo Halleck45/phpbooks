@@ -42,7 +42,7 @@ This isn't just a shorter way to type `phpunit`. The real value shows up on a te
 
 ## `"files"` autoloading: for code that isn't a class
 
-PSR-4 autoloading, from [Chapter 7](ch07-05-psr4.md), maps a namespace to a directory and loads classes from it on demand: one class, one file, found by name. That works perfectly for classes. It has nothing to say about a file full of plain functions, because there's no class name for Composer to map to a file path. For that, `composer.json` has a second autoloading mechanism, `"files"`, which just lists files to load unconditionally, every time the autoloader runs:
+PSR-4 autoloading, from [Chapter 7](ch07-06-psr4.md), maps a namespace to a directory and loads classes from it on demand: one class, one file, found by name. That works perfectly for classes. It has nothing to say about a file full of plain functions, because there's no class name for Composer to map to a file path. For that, `composer.json` has a second autoloading mechanism, `"files"`, which just lists files to load unconditionally, every time the autoloader runs:
 
 ```json
 {

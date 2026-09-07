@@ -64,4 +64,4 @@ That `require 'vendor/autoload.php';` line is the one that matters most. Compose
 
 ## What we'll do with this
 
-We won't reach for Composer again for a few chapters; there's plenty of PHP to learn with nothing installed at all. But once we get to namespaces and to structuring a real project, Composer's autoloader is also how *your own* classes get found, not just third-party ones. It's worth having met it early, even briefly, so it's not a surprise later.
+Everything so far has lived in a single file, so Composer's autoloader hasn't had much to do beyond loading Termwind. That changes immediately: the rest of this chapter is about splitting code across files and packages, and that same autoloader is also how *your own* classes get found, not just third-party ones.

@@ -1,6 +1,6 @@
 # How to Write Tests with PHPUnit
 
-Start a small project the way you did in [Chapter 1](ch01-03-hello-composer.md):
+Start a small project the way you did in [Chapter 7](ch07-01-hello-composer.md):
 
 ```console
 $ composer init --no-interaction

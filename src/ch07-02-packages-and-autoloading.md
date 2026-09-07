@@ -1,6 +1,6 @@
 # Packages and Autoloading
 
-You already know the mechanics of installing a package: `composer require` pulls it into `vendor/`, and `require 'vendor/autoload.php'` makes every class inside it available. What we skipped over in Chapter 1, on purpose, was *how* that second part actually works, because the answer explains why the rest of this chapter exists.
+You already know the mechanics of installing a package: `composer require` pulls it into `vendor/`, and `require 'vendor/autoload.php'` makes every class inside it available. What we skipped over a moment ago, on purpose, was *how* that second part actually works, because the answer explains why the rest of this chapter exists.
 
 ## The problem autoloading solves
 
@@ -43,7 +43,7 @@ You could write your own version of this, and a lot of PHP projects did, before 
 
 Every time you run `composer install` or `composer require`, Composer regenerates the files inside `vendor/composer/`, including `autoload_psr4.php`, a plain PHP array mapping namespace prefixes to directories. `vendor/autoload.php` registers one autoloader, built from that map, via `spl_autoload_register()`, and from then on any class from any installed package resolves automatically, no matter which package declared it.
 
-This works because packages don't just dump files into a shared folder: each one declares, in its own `composer.json`, which namespace prefix maps to which directory. A small preview of what that declaration looks like (we'll build one properly in [PSR-4](ch07-05-psr4.md)):
+This works because packages don't just dump files into a shared folder: each one declares, in its own `composer.json`, which namespace prefix maps to which directory. A small preview of what that declaration looks like (we'll build one properly in [PSR-4](ch07-06-psr4.md)):
 
 ```json
 {

@@ -4,7 +4,7 @@ This book has already covered two of these properly. The rest are what to go ins
 
 ## Composer
 
-Covered from [Chapter 1](ch01-03-hello-composer.md) onward, and again in depth in [Chapter 16](ch16-00-more-about-composer.md). Dependency management and autoloading. You will not write PHP professionally without it, and by this point in the book you already haven't.
+Covered from [Chapter 7](ch07-01-hello-composer.md) onward, and again in depth in [Chapter 16](ch16-00-more-about-composer.md). Dependency management and autoloading. You will not write PHP professionally without it, and by this point in the book you already haven't.
 
 ## PHPUnit
 

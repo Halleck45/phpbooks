@@ -20,6 +20,8 @@ if ($temperature > 30) {
 
 Note it's `elseif`, one word (`else if`, two words, also works), but only `elseif` reads as a single token to PHP, so it's the convention worth adopting. The condition doesn't need to be a boolean; PHP will convert whatever you hand it: `0`, `""`, `null`, and `[]` are all "falsy," everything else is "truthy," but relying on that too heavily is exactly the kind of type-juggling ambiguity [Chapter 3.2](ch03-02-data-types.md) warned you about. Prefer an explicit comparison when it isn't already obviously a boolean.
 
+An `if`/`elseif` chain like this one is at its best when each branch tests something genuinely different, the way `$temperature > 30` and `$temperature > 15` do above. Once you catch yourself writing several branches that all compare the *same* value against a list of possibilities, that repetition is a sign to reach for the next tool instead.
+
 ## `match`
 
 PHP 8 added `match`, and once you've used it, `switch` starts to feel like a relic:

@@ -77,7 +77,7 @@ use const App\Helpers\DEFAULT_LOCALE;
 $slug = slugify('Hello, Composer!');
 ```
 
-You already saw this exact form back in [Chapter 1](ch01-03-hello-composer.md), with `use function Termwind\render;`; at the time it probably looked like a small piece of magic. It's the same mechanism as everything else in this section: an import, scoped to one file, that lets you write a short name instead of a long, fully qualified one.
+You already saw this exact form earlier in this chapter, in [Hello, Composer!](ch07-01-hello-composer.md), with `use function Termwind\render;`; at the time it probably looked like a small piece of magic. It's the same mechanism as everything else in this section: an import, scoped to one file, that lets you write a short name instead of a long, fully qualified one.
 
 ## What you're actually buying
 

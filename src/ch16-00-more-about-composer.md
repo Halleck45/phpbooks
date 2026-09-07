@@ -1,6 +1,6 @@
 # More About Composer and Packagist
 
-You've used Composer since [Chapter 1](ch01-03-hello-composer.md): `composer install`, a `composer.json` with an `autoload` block, PSR-4 mapping a namespace to a folder. That's enough to build and structure a real project, and it's most of what you'll do with Composer day to day. It is not, however, everything Composer does, and this chapter fills in the rest of the picture: the parts you'll reach for once your project grows past "one package, one repository."
+You've used Composer since [Chapter 7](ch07-01-hello-composer.md): `composer install`, a `composer.json` with an `autoload` block, PSR-4 mapping a namespace to a folder. That's enough to build and structure a real project, and it's most of what you'll do with Composer day to day. It is not, however, everything Composer does, and this chapter fills in the rest of the picture: the parts you'll reach for once your project grows past "one package, one repository."
 
 We'll start close to home, with two features of `composer.json` you've been living next to without using: the `"scripts"` section, which turns shell commands into short, memorable Composer subcommands, and a second kind of autoloading, `"files"`, for the plain function files that don't fit PSR-4's one-class-per-file assumption.
 
