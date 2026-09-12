@@ -1,5 +1,7 @@
 # To Throw or Not to Throw
 
+<img src="images/ch09-icon.svg" alt="To Throw or Not to Throw illustration" width="72">
+
 Knowing the syntax of `try`/`catch` is the easy part. The harder question, and the one that actually separates readable PHP code from a maze of defensive checks, is deciding *when* a function should throw, when it should just return `null` or `false` or an empty array, and when it's fine to let the whole thing come crashing down. There's no compiler rule for this: it's judgment, the kind you build from having been burned both ways. Here's how I've come to think about it.
 
 ## Not found is not exceptional

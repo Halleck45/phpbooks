@@ -1,5 +1,7 @@
 # Abstract Classes and Interfaces Revisited
 
+<img src="images/ch17-icon.svg" alt="Abstract Classes and Interfaces Revisited illustration" width="72">
+
 The `PaymentMethod` base class from the previous section had a working `charge()` implementation of its own: generic, but real. That's a design smell worth noticing: nothing stops anyone from writing `new PaymentMethod()` directly and calling `charge()` on a payment method that isn't actually connected to a card, an account, or anything else capable of processing money. The base class was only ever meant as a foundation for subclasses, never as something to instantiate on its own, but PHP had no way of knowing that. `abstract` is how you tell it.
 
 ## Making the contract explicit

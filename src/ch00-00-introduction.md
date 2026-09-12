@@ -1,5 +1,7 @@
 # Introduction
 
+<img src="images/ch00-icon.svg" alt="Introduction illustration" width="72">
+
 PHP is a programming language built for the web, and it shows: every request to a PHP-powered page starts the program fresh, runs it, and throws the whole thing away, which turns out to be a remarkably robust way to build software that serves millions of people a day. That's still its home turf: a huge share of the web runs on it, often without anyone thinking about it twice. But PHP has quietly grown well past that niche. It's a capable command-line scripting language, a fine choice for small automation tools, and increasingly something people reach for outside a browser context entirely, with async runtimes and long-running processes now part of the conversation. This book covers PHP the language first, and treats "runs inside a web server" as one deployment option among several, not the only story worth telling.
 
 This book assumes you're comfortable opening a terminal and typing commands: `cd` into a directory, run a file, read an error message without panicking. It does not assume you've programmed before. If you have, you'll recognize the shapes (variables, loops, functions) and can move a little faster through the early chapters, watching for where PHP's version of a familiar idea has its own personality. If you haven't, the early chapters build every idea from the ground up, and nothing later in the book assumes you skipped ahead.

@@ -1,5 +1,7 @@
 # Getting Started
 
+<img src="images/ch01-icon.svg" alt="Getting Started illustration" width="72">
+
 Let's get you writing PHP.
 
 We'll start by installing PHP itself (no framework, no build tool, nothing fancy, just the interpreter) and then write the smallest program that could possibly prove it works.

@@ -1,5 +1,7 @@
 # Defining and Instantiating Classes
 
+<img src="images/ch05-icon.svg" alt="Defining and Instantiating Classes illustration" width="72">
+
 A class is a blueprint. It describes what data an object of that type holds and, eventually, what it can do. On its own, though, a class produces nothing. You have to ask PHP to build one, with `new`.
 
 ## Defining a class

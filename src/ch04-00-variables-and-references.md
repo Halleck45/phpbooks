@@ -1,5 +1,7 @@
 # Working with Variables and References
 
+<img src="images/ch04-icon.svg" alt="Working with Variables and References illustration" width="72">
+
 You've been assigning variables since the guessing game in [Chapter 2](ch02-00-guessing-game-tutorial.md), and by now `$x = $y` looks like the most unremarkable line of code imaginable. It mostly is, but "mostly" is doing some quiet work in that sentence, and this chapter is about the part it's hiding.
 
 What happens when you assign an array to a new variable, and then modify the copy? What happens when you do the same thing with an object? These two questions have different answers in PHP, and the difference is not a minor implementation detail: it's one of the most common sources of confusion for people arriving from other languages, and one of the most common sources of genuinely strange bugs for people who never had it explained. Arrays behave as if each assignment made a brand-new, independent copy. Objects behave as if every variable holding one is just another name for the same underlying thing. Get this backwards in your head, and you will eventually write a function that "doesn't work" for reasons that look like nothing, right up until you understand this chapter.

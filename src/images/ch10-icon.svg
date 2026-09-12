@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="Web Development Basics: a browser window">
+  <rect x="2" y="2" width="96" height="96" rx="18" fill="#dff6ed" stroke="#aee0cc" stroke-width="2"/>
+  <g fill="none" stroke="#257e5b" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+
+    <rect x="16" y="24" width="68" height="52" rx="6"/>
+    <path d="M16,36 L84,36"/>
+    <circle cx="24" cy="30" r="1.8" fill="#257e5b" stroke="none"/>
+    <circle cx="31" cy="30" r="1.8" fill="#257e5b" stroke="none"/>
+    <circle cx="38" cy="30" r="1.8" fill="#257e5b" stroke="none"/>
+    <path d="M28,52 L72,52"/>
+    <path d="M28,62 L58,62"/>
+    
+  </g>
+</svg>

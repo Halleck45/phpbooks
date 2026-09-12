@@ -1,5 +1,7 @@
 # Functions
 
+<img src="images/ch03-icon.svg" alt="Functions illustration" width="72">
+
 You've already used a handful of PHP's built-in functions: `trim()`, `echo` (which, as noted earlier, technically isn't one), `random_int()`. Let's write your own.
 
 ```php

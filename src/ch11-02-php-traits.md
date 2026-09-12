@@ -1,5 +1,7 @@
 # Reusing Code with PHP Traits
 
+<img src="images/ch11-icon.svg" alt="Reusing Code with PHP Traits illustration" width="72">
+
 An interface, as you just saw, promises nothing about implementation: it's pure shape. A trait is the opposite kind of tool, and it's worth being blunt about the difference because the two get confused constantly: a trait is a chunk of actual method bodies that PHP pastes into a class for you, as if you'd typed the code directly inside it. There's no contract, no polymorphism, no "any of these classes can be used interchangeably." It's copy-paste, formalized and made safe by the language.
 
 Say two completely unrelated classes (a `PaymentProcessor` and a `ReportGenerator`) both want to write timestamped messages somewhere. They share no parent class, and shouldn't; they're not the same kind of thing. But they want the same three lines of logging code.

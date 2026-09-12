@@ -1,5 +1,7 @@
 # Beyond PHP: Other Languages, Other Technologies, and the Engine Itself
 
+<img src="images/ch22-icon.svg" alt="Beyond PHP: Other Languages, Other Technologies, and the Engine Itself illustration" width="72">
+
 ## Talking to other languages
 
 - **FFI** (Foreign Function Interface, since PHP 7.4): calling directly into a compiled C library from PHP, without writing a full extension. Narrow, useful when it applies, worth knowing exists.

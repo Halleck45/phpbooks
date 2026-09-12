@@ -1,5 +1,7 @@
 # Programming a Guessing Game
 
+<img src="images/ch02-icon.svg" alt="Programming a Guessing Game illustration" width="72">
+
 Let's build something: not a "hello world," but an actual small program, with input, output, a loop, and a decision to make on every pass through it. We'll write a number-guessing game: the computer picks a secret number, you guess, and it tells you whether to go higher or lower until you get it.
 
 You won't understand every keyword we use here yet, and that's fine: that's the point. Chapter 3 will go back and explain each piece properly. For now, just type along, run it, and get a feel for what PHP code looks like in motion.

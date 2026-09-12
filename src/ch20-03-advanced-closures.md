@@ -1,5 +1,7 @@
 # First-Class Callable Syntax and Advanced Closures
 
+<img src="images/ch20-icon.svg" alt="First-Class Callable Syntax and Advanced Closures illustration" width="72">
+
 You met closures and arrow functions in [Chapter 15](ch15-01-closures.md). This section covers two more recent additions worth having in your toolkit: a cleaner syntax for turning existing functions and methods into callables, and a couple of `Closure` tricks that come up once you're writing more deliberate, defensive code.
 
 ## The old way of passing a function around

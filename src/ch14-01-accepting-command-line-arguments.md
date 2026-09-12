@@ -1,5 +1,7 @@
 # Accepting Command Line Arguments
 
+<img src="images/ch14-icon.svg" alt="Accepting Command Line Arguments illustration" width="72">
+
 Create a new directory for the project and, inside it, a file called `phpgrep.php`. Every PHP script run from the command line has access to a superglobal array called `$argv`, holding everything typed after `php` on the command line:
 
 ```php

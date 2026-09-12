@@ -1,5 +1,7 @@
 # Common Collections
 
+<img src="images/ch08-icon.svg" alt="Common Collections illustration" width="72">
+
 You've been using arrays since [Chapter 3](ch03-02-data-types.md), mostly by glimpse: a `$fruits = ["apple", "banana"]` here, a `foreach` there, enough to keep an example moving without stopping to explain itself. That stops now. Arrays are PHP's single most important data structure, used constantly for things other languages hand off to half a dozen specialized types, and they deserve a chapter that actually does them justice rather than one that assumes you'll pick up the rest by osmosis.
 
 The reason PHP gets away with one data structure doing so much work is that a PHP array isn't really a list or a dictionary underneath: it's an ordered map, always, and "list" versus "dictionary" is just a matter of which keys you happen to be using. Understand that one fact early and a lot of otherwise-surprising behavior (why order is preserved, why `array_filter()` leaves gaps in the keys, why `count()` is instant) stops being surprising and starts being obvious.

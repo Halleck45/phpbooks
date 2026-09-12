@@ -1,5 +1,7 @@
 # Writing to Standard Error
 
+<img src="images/ch14-icon.svg" alt="Writing to Standard Error illustration" width="72">
+
 phpgrep has been printing everything the same way since the very first section: matches, usage messages, and error text all go through `echo`, all landing on the same output stream. That's been a quiet, low-grade problem the whole time, and this section is where it finally bites.
 
 Every process has two separate output streams, not one: **standard output** (`STDOUT`), where a program's actual results belong, and **standard error** (`STDERR`), where diagnostics, warnings, and error messages belong. `echo` always writes to the first one. phpgrep's error messages have been going there too, right alongside legitimate matches, which is fine, as long as you only ever look at the terminal directly. It stops being fine the moment someone pipes phpgrep's output somewhere else, which is the entire reason command-line tools exist.

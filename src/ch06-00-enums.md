@@ -1,5 +1,7 @@
 # Enums and Pattern Matching
 
+<img src="images/ch06-icon.svg" alt="Enums and Pattern Matching illustration" width="72">
+
 You met `match` briefly back in [Control Flow](ch03-05-control-flow.md), sizing up an HTTP status code, and you've been using classes since [Chapter 5](ch05-00-classes.md) to give shape to data that used to live loosely in arrays. This chapter brings those two ideas together to solve a problem that shows up in almost every real program: a value that can only ever be one of a fixed, known set of options.
 
 Think about it: an order's status is pending, shipped, or cancelled; never anything else. A card suit is one of four values, full stop. Before PHP 8.1, you handled this with a string or an integer constant and a lot of hope: nothing stopped you from typing `'shiped'` instead of `'shipped'`, and nothing told you, anywhere, what the full set of valid values even was. Enums fix this properly: a real type, checked by the engine, that can only ever hold one of the cases you defined.

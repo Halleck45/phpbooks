@@ -1,5 +1,7 @@
 # Defining an Enum
 
+<img src="images/ch06-icon.svg" alt="Defining an Enum illustration" width="72">
+
 ## Pure enums
 
 An enum defines a type with a fixed, closed set of possible values, called **cases**:

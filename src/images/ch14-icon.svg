@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="A CLI Project: a script file">
+  <rect x="2" y="2" width="96" height="96" rx="18" fill="#dfe7f6" stroke="#aebfe0" stroke-width="2"/>
+  <g fill="none" stroke="#25447e" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+
+    <path d="M32,18 h26 l12,12 v52 h-38 z"/>
+    <path d="M58,18 v12 h12"/>
+    <path d="M40,50 L60,50"/>
+    <path d="M40,60 L60,60"/>
+    <path d="M40,70 L52,70"/>
+    
+  </g>
+</svg>

@@ -1,5 +1,7 @@
 # Writing Automated Tests
 
+<img src="images/ch12-icon.svg" alt="Writing Automated Tests illustration" width="72">
+
 Every piece of code in this book so far has been verified the same way: you ran it and looked at the output. That works fine for a guessing game. It stops working the moment your project has more than a handful of functions, because you can no longer hold "everything that might have broken" in your head every time you change a line. Automated tests are how you outsource that job to the computer, which never gets tired of running the same check for the thousandth time and never forgets to run it at all.
 
 PHP's testing ecosystem has one clear default: [PHPUnit](https://phpunit.de/). It's been the de facto standard for close to two decades, it's what nearly every library and framework in the PHP world uses internally, and it's the tool this chapter will teach. You already know how to pull it into a project: it's a Composer package, installed the same way you met in [Chapter 7](ch07-01-hello-composer.md).

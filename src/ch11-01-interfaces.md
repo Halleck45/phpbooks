@@ -1,5 +1,7 @@
 # Defining Shared Behavior with Interfaces
 
+<img src="images/ch11-icon.svg" alt="Defining Shared Behavior with Interfaces illustration" width="72">
+
 Suppose you're writing something that needs to print a human-readable summary of an object: an invoice line, a product, a log entry, whatever it happens to be that week. You could give every class you write a `describe()` method and hope everyone remembers the naming convention. Or you could make it a rule the language itself checks. That's what an interface is for.
 
 ```php

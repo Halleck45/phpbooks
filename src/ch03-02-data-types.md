@@ -1,5 +1,7 @@
 # Data Types
 
+<img src="images/ch03-icon.svg" alt="Data Types illustration" width="72">
+
 PHP will let you write an entire program without ever mentioning a single type. It will also, if you ask it to, hold you to your types as strictly as any statically-typed language would refuse a mismatch. Both of these are true at once, and understanding why is most of what this section is about.
 
 ## Scalar types

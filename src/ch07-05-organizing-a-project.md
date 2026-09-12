@@ -1,5 +1,7 @@
 # Organizing a Multi-File Project
 
+<img src="images/ch07-icon.svg" alt="Organizing a Multi-File Project illustration" width="72">
+
 You now know how to declare a namespace and how to import from one. What's still missing is the connection between namespaces and the filesystem, because so far, PHP has no idea that `App\Models\Product` is supposed to live in any particular file at all. You could technically put it anywhere. You shouldn't, and in this section we'll set up the layout that makes "anywhere" stop being an option worth considering.
 
 ## One class, one file

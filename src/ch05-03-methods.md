@@ -1,5 +1,7 @@
 # Methods and Constructor Promotion
 
+<img src="images/ch05-icon.svg" alt="Methods and Constructor Promotion illustration" width="72">
+
 A **method** is just a function that lives inside a class. You've already written one, `totalPrice()` on `Product`, in the previous section, but it's worth looking at what makes it different from an ordinary function, and then at PHP's shortest, most modern way of writing the constructor that so often accompanies one.
 
 ## `$this`

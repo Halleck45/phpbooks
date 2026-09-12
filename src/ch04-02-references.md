@@ -1,5 +1,7 @@
 # Passing by Value vs. by Reference
 
+<img src="images/ch04-icon.svg" alt="Passing by Value vs. by Reference illustration" width="72">
+
 The previous section showed you PHP's default: assign an array to a new variable, modify the new one, and the original is untouched. That default is called **passing (or assigning) by value**, and it's what happens everywhere in PHP unless you explicitly ask for something else. This section covers how to ask for something else. More importantly, it covers the one place where PHP quietly gives you "something else" whether you asked for it or not: objects.
 
 ## Explicit references with `&`

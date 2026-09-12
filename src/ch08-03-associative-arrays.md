@@ -1,5 +1,7 @@
 # Storing Keys with Associated Values in Associative Arrays
 
+<img src="images/ch08-icon.svg" alt="Storing Keys with Associated Values in Associative Arrays illustration" width="72">
+
 You already know, from the previous section, that there's no real difference between an indexed array and an associative array: they're the same underlying structure, PHP's ordered map, and the only thing that changes is what you use as the key. An associative array is just an array where you chose the keys yourself, usually strings, instead of letting PHP assign sequential integers:
 
 ```php

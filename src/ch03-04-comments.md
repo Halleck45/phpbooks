@@ -1,5 +1,7 @@
 # Comments
 
+<img src="images/ch03-icon.svg" alt="Comments illustration" width="72">
+
 PHP gives you three ways to write a comment, which is one more than most languages bother with, for reasons rooted in its templating-language ancestry.
 
 ```php

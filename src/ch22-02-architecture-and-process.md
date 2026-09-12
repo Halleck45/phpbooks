@@ -1,5 +1,7 @@
 # Architecture and the Development Process
 
+<img src="images/ch22-icon.svg" alt="Architecture and the Development Process illustration" width="72">
+
 ## Architecture
 
 Once a program grows past a handful of files, "where does this piece of code live, and why there" stops being obvious and becomes its own discipline. You've already practiced the smallest version of this instinct: the Strategy pattern in [Chapter 17](ch17-04-oop-design-patterns.md) pulled varying behavior out behind an interface so a class using it didn't need to know which version it received. Architecture is that same instinct, applied to an entire codebase instead of one class.

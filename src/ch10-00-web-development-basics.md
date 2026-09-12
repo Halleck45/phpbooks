@@ -1,5 +1,7 @@
 # Web Development Basics
 
+<img src="images/ch10-icon.svg" alt="Web Development Basics illustration" width="72">
+
 Every program this book has built so far has run on the command line: you typed something, it printed something back, and that was the whole interaction. PHP started life as a web language, though, and most PHP running today still is: pages served to a browser in response to a request that arrives over HTTP instead of as arguments on a command line. This chapter is where that side of PHP finally gets its due.
 
 You'll build a small guestbook: a page with a form for a name and a message, a script that reads what was submitted, checks it for problems, stores it, and lists everything anyone's written so far. Three sections, each adding one layer. First, getting data out of a submitted form and into your script at all, using the superglobal arrays PHP fills in for you. Then, making sure what your script sends back to the browser doesn't hand a visitor a way to attack other visitors. Last, keeping the guestbook's messages around between requests instead of losing them the moment the response finishes, by talking to an actual database.

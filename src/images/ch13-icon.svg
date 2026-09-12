@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="Debugging PHP: a magnifying glass">
+  <rect x="2" y="2" width="96" height="96" rx="18" fill="#dfedf6" stroke="#aecce0" stroke-width="2"/>
+  <g fill="none" stroke="#255b7e" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+
+    <circle cx="44" cy="44" r="20"/>
+    <path d="M59,59 L78,78"/>
+    
+  </g>
+</svg>

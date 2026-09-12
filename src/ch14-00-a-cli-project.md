@@ -1,5 +1,7 @@
 # A CLI Project: Building a Command Line Program
 
+<img src="images/ch14-icon.svg" alt="A CLI Project: Building a Command Line Program illustration" width="72">
+
 Time to build something with a bit more shape than the exercises so far. Over the next six sections you'll write **phpgrep**, a small command-line tool that searches a text file for lines containing a word: a scaled-down version of the `grep` you've probably already used from a terminal, if you've spent any time near Unix.
 
 This isn't six unrelated examples. It's one program, and each section picks up exactly where the last one left off, the same way [Chapter 2](ch02-00-guessing-game-tutorial.md) built its guessing game one capability at a time. You'll start with the crudest possible version (read two arguments, print them) and end with something that reads its input properly, reports errors the way a real command-line tool should, is covered by tests you wrote before the code that makes them pass, and respects an environment variable to change its behavior. Along the way you'll lean on nearly everything the book has covered so far: classes and constructor promotion from [Chapter 5](ch05-00-classes.md), exceptions from [Chapter 9](ch09-00-error-handling.md), and PHPUnit from [Chapter 12](ch12-00-testing.md).

@@ -1,5 +1,7 @@
 # Magic Methods
 
+<img src="images/ch17-icon.svg" alt="Magic Methods illustration" width="72">
+
 PHP calls a small set of specially named methods automatically, in response to specific situations, rather than waiting for you to call them by name: using an object in a string, reading a property that doesn't exist, calling a method that isn't there. These are magic methods, always prefixed with a double underscore, and you've already met the first two.
 
 ## `__construct` and `__destruct`, briefly

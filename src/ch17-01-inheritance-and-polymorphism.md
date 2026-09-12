@@ -1,5 +1,7 @@
 # Classes, Inheritance, and Polymorphism
 
+<img src="images/ch17-icon.svg" alt="Classes, Inheritance, and Polymorphism illustration" width="72">
+
 You've defined classes since Chapter 5 and implemented interfaces since Chapter 11, but so far every class you've written has stood alone. Real designs usually involve classes that are variations on a theme: several kinds of the same basic idea, sharing some behavior and differing in the rest. That's what inheritance is for.
 
 ## `extends` and method overriding

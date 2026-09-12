@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="Advanced Features: a gear">
+  <rect x="2" y="2" width="96" height="96" rx="18" fill="#f6dff1" stroke="#e0aed5" stroke-width="2"/>
+  <g fill="none" stroke="#7e256b" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+
+    <circle cx="50" cy="50" r="14"/>
+    <path d="M50,26 L50,34"/>
+    <path d="M50,66 L50,74"/>
+    <path d="M26,50 L34,50"/>
+    <path d="M66,50 L74,50"/>
+    <path d="M33,33 L39,39"/>
+    <path d="M61,61 L67,67"/>
+    <path d="M67,33 L61,39"/>
+    <path d="M39,61 L33,67"/>
+    
+  </g>
+</svg>

@@ -1,5 +1,7 @@
 # Where `match` and Destructuring Can Be Used
 
+<img src="images/ch19-icon.svg" alt="Where match and Destructuring Can Be Used illustration" width="72">
+
 Destructuring is assignment that unpacks. Instead of assigning one value to one variable, you assign several values from an array to several variables, in a single statement, by describing the shape you expect on the left-hand side. It shows up in more places than you'd guess once you start looking for it.
 
 ## The two spellings

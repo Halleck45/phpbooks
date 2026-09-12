@@ -1,5 +1,7 @@
 # Handling Shutdown and Cleanup
 
+<img src="images/ch21-icon.svg" alt="Handling Shutdown and Cleanup illustration" width="72">
+
 Every PHP script, including the little application you've just built, ends somehow: normally, by running its last line, or abnormally, by a fatal error nobody planned for. Either way, there's often cleanup you want to guarantee happens: closing a file handle, logging that the request finished, flushing something to a database. `try`/`finally` (from [Chapter 9](ch09-00-error-handling.md)) handles the ordinary cases, but it can't save you from a genuine fatal error: the kind that stops execution dead, with no exception to catch. For that, PHP gives you a hook into the very end of the script's life.
 
 ## `register_shutdown_function()`

@@ -1,5 +1,7 @@
 # Hello, Composer!
 
+<img src="images/ch07-icon.svg" alt="Hello, Composer! illustration" width="72">
+
 A single-file script like `hello.php` doesn't need help managing dependencies, because it has none. Real projects do, almost immediately: a testing library here, an HTTP client there. And PHP's answer to "how do I pull in someone else's code without copy-pasting it into my repo" is [Composer](https://getcomposer.org/).
 
 If you've used `npm`, `pip`, or `cargo` before, you already understand Composer's job. If you haven't, don't worry: we'll build the intuition from scratch.

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="Using Classes: a class blueprint">
+  <rect x="2" y="2" width="96" height="96" rx="18" fill="#eff6df" stroke="#d1e0ae" stroke-width="2"/>
+  <g fill="none" stroke="#637e25" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+
+    <rect x="26" y="20" width="48" height="60" rx="4"/>
+    <path d="M26,38 L74,38"/>
+    <path d="M26,56 L74,56"/>
+    
+  </g>
+</svg>

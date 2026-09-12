@@ -1,5 +1,7 @@
 # Customizing Autoload and Scripts
 
+<img src="images/ch16-icon.svg" alt="Customizing Autoload and Scripts illustration" width="72">
+
 The `composer.json` you've written so far has had two jobs: list dependencies, and map a namespace to a folder via PSR-4. It can do more than that with barely any extra effort, and two features are worth adding to your everyday habits right away: scripts, and a second flavor of autoloading for code that isn't a class.
 
 ## Scripts: shortcuts for commands you run constantly

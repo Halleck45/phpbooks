@@ -1,5 +1,7 @@
 # Structuring a Small MVC-Style App
 
+<img src="images/ch21-icon.svg" alt="Structuring a Small MVC-Style App illustration" width="72">
+
 The previous section's router works, but it doesn't scale past a handful of routes: every route's logic lives inline, as a closure, tangled up with the routing itself. Real applications separate those concerns: the classic split is **Model, View, Controller**, usually shortened to MVC. We won't build a full framework's worth of it, but the shape is worth having: a **controller** decides what should happen for a given request, and a **view** decides how the result gets turned into HTML. Two or three routes are enough to see the pattern clearly.
 
 ## Controllers

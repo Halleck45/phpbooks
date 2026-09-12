@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="Concurrency in PHP: parallel tracks">
+  <rect x="2" y="2" width="96" height="96" rx="18" fill="#efdff6" stroke="#d1aee0" stroke-width="2"/>
+  <g fill="none" stroke="#63257e" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+
+    <path d="M18,32 L82,32"/>
+    <path d="M18,50 L82,50"/>
+    <path d="M18,68 L82,68"/>
+    <circle cx="34" cy="32" r="4" fill="#63257e" stroke="none"/>
+    <circle cx="58" cy="50" r="4" fill="#63257e" stroke="none"/>
+    <circle cx="42" cy="68" r="4" fill="#63257e" stroke="none"/>
+    
+  </g>
+</svg>

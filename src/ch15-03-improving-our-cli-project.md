@@ -1,5 +1,7 @@
 # Improving Our CLI Project
 
+<img src="images/ch15-icon.svg" alt="Improving Our CLI Project illustration" width="72">
+
 Chapter 14 left `phpgrep` in working order, with `search()` doing the real work:
 
 ```php

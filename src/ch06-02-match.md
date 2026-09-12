@@ -1,5 +1,7 @@
 # The `match` Expression
 
+<img src="images/ch06-icon.svg" alt="The match Expression illustration" width="72">
+
 Back in [Control Flow](ch03-05-control-flow.md), you saw `match(true)` used to test a series of conditions against an HTTP status code, a neat trick, but not actually `match` doing what it's best at. `match`'s real strength shows up when you're comparing one value directly against a small, known set of possibilities, which is precisely what an enum gives you.
 
 ## Matching directly on an enum case

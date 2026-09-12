@@ -1,5 +1,7 @@
 # Variable Scope and Garbage Collection
 
+<img src="images/ch04-icon.svg" alt="Variable Scope and Garbage Collection illustration" width="72">
+
 ## Functions have their own scope
 
 Every function in PHP gets its own private set of variables, completely separate from whatever's happening outside it. A variable defined in one function simply doesn't exist as far as another function, or the top-level script, is concerned:

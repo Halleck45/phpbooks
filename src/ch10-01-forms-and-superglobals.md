@@ -1,5 +1,7 @@
 # Accepting Input with HTML Forms and Superglobals
 
+<img src="images/ch10-icon.svg" alt="Accepting Input with HTML Forms and Superglobals illustration" width="72">
+
 PHP has no special syntax for "this script is a web page." What it has instead is a handful of arrays that PHP fills in for you before a single line of your code runs, populated from whatever the browser sent along with the request. Those arrays are called **superglobals**, and they're available in every scope without needing `global` or a parameter: no importing, no passing them around, just there.
 
 ## A plain HTML form

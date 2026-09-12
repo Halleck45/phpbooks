@@ -1,5 +1,7 @@
 # Composer Path Repositories and Monorepos
 
+<img src="images/ch16-icon.svg" alt="Composer Path Repositories and Monorepos illustration" width="72">
+
 Publishing to Packagist, from the previous section, assumes your package is finished enough to hand to strangers. Plenty of real work happens before that point: specifically, the stretch where you're developing two or more related packages *together*, and changes to one need to be visible in the other immediately, without a publish-and-reinstall cycle in between. Composer has a repository type built for exactly this: the path repository.
 
 ## The problem it solves

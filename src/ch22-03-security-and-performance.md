@@ -1,5 +1,7 @@
 # Security and Performance
 
+<img src="images/ch22-icon.svg" alt="Security and Performance illustration" width="72">
+
 ## Security
 
 [Chapter 10](ch10-02-validation-and-xss.md) covered XSS and SQL injection properly, and named CSRF without defending against it. That's the beginning of web application security, not the whole of it. A few directions worth knowing exist:

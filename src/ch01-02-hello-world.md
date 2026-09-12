@@ -1,5 +1,7 @@
 # Hello, World!
 
+<img src="images/ch01-icon.svg" alt="Hello, World! illustration" width="72">
+
 Create a file called `hello.php`, anywhere you like:
 
 ```php

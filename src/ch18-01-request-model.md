@@ -1,5 +1,7 @@
 # The PHP Request Model: Why PHP Is (Usually) Single-Threaded
 
+<img src="images/ch18-icon.svg" alt="The PHP Request Model: Why PHP Is (Usually) Single-Threaded illustration" width="72">
+
 If you've used Node.js or a Java application server before, you're used to a program that starts once, stays running, and handles every request that arrives while it's alive. State lives in memory between requests. A variable set while handling one user's request can, if you're not careful, still be sitting there when the next user's request comes in.
 
 PHP, in its classic and still most common form, doesn't work that way. Every HTTP request gets a fresh start: the PHP process (or thread, depending on how your web server is configured) loads your script, runs it from the top, sends a response, and then throws everything away. Every variable, every object, every static property: gone. The next request, even the very next one, starts from absolute zero. Nothing is shared between requests except what you've deliberately put somewhere external: a database, a file, a cache like Redis or Memcached.

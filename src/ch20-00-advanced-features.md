@@ -1,5 +1,7 @@
 # Advanced Features
 
+<img src="images/ch20-icon.svg" alt="Advanced Features illustration" width="72">
+
 This chapter is a toolbox, not a narrative. The four sections that follow don't build on each other the way most of this book has: each one covers a self-contained corner of PHP that you'll reach for occasionally, not daily. None of it is exotic or rare in the ecosystem; you'll see all of it in frameworks, in libraries you install with Composer, and in code written by developers who've been doing this for a while. But it's also not code you'll write every day, which is exactly why it's grouped here near the end rather than woven earlier through the book.
 
 We'll look at magic constants and Reflection: PHP's ability to inspect its own classes and methods at runtime, which you'll use directly less often than you'd think, because frameworks and testing tools mostly use it on your behalf. Then the built-in SPL interfaces that let your own objects plug into PHP's syntax, making `count()`, array-bracket access, and `foreach` work on objects you designed yourself. Then a modern look at closures and callables, including the clean first-class callable syntax PHP 8.1 introduced. And finally, attributes: structured metadata attached directly to your code, the language-native replacement for what used to live only in comments.

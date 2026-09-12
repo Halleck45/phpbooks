@@ -1,5 +1,7 @@
 # `match` Pattern Syntax
 
+<img src="images/ch19-icon.svg" alt="match Pattern Syntax illustration" width="72">
+
 Chapter 6 introduced `match` alongside enums, where it earns its keep the most. Before we leave `match` behind for good, three syntax details are worth pinning down: they don't come up in the simplest examples, but you'll want all three the first time you write a `match` expression with more than two or three arms.
 
 ## Multiple conditions per arm

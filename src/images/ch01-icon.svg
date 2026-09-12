@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="Getting Started: a terminal prompt">
+  <rect x="2" y="2" width="96" height="96" rx="18" fill="#f6e5df" stroke="#e0bbae" stroke-width="2"/>
+  <g fill="none" stroke="#7e3c25" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+
+    <rect x="18" y="24" width="64" height="52" rx="6"/>
+    <path d="M30,42 L42,50 L30,58"/>
+    <path d="M46,60 L62,60"/>
+    
+  </g>
+</svg>

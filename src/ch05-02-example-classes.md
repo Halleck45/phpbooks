@@ -1,5 +1,7 @@
 # An Example Program Using Classes
 
+<img src="images/ch05-icon.svg" alt="An Example Program Using Classes illustration" width="72">
+
 Let's see why you'd actually reach for a class, by writing the same small problem two ways.
 
 ## The problem, with loose arrays

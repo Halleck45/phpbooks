@@ -1,5 +1,7 @@
 # Final Project: Building a Simple Web Application
 
+<img src="images/ch21-icon.svg" alt="Final Project: Building a Simple Web Application illustration" width="72">
+
 Time to put it all together. Over the last eighteen chapters you've picked up classes and constructor promotion, namespaces and Composer, arrays and collections, exceptions, interfaces: a real working vocabulary of modern PHP. This chapter's project is where those pieces stop being separate lessons and become one small, coherent thing: a tiny web application, built from nothing but PHP itself.
 
 There's no framework here, deliberately. Not because frameworks are bad (you'll likely use Laravel or Symfony professionally, and you should) but because using one before you've built something without it means taking its conveniences on faith. A router, a controller, a view: these are just words for patterns that fall naturally out of solving the same small problems every web application faces. Build them yourself once, at this small scale, and everything a framework does later will read as "oh, that's the thing I already understand," rather than as magic.

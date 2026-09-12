@@ -1,5 +1,17 @@
 # Installation
 
+<img src="images/ch01-icon.svg" alt="Installation illustration" width="72">
+
+## Opening a terminal
+
+Everything in this book happens in a terminal, so find one before anything else.
+
+**macOS.** Open Spotlight with `Cmd+Space`, type "Terminal", and press Enter. That's Terminal.app, and it's all you need; iTerm2 is a popular replacement once you want more, but nothing here requires it.
+
+**Linux.** Every desktop environment ships one, usually named Terminal, Konsole, or GNOME Terminal, reachable from the applications menu or a shortcut like `Ctrl+Alt+T`. If you can't find it by name, your desktop's search bar will.
+
+**Windows.** Press `Win`, type "Terminal", and open Windows Terminal, the modern default on Windows 11 (installable from the Microsoft Store on Windows 10). It hosts both Command Prompt and PowerShell; either works for this book, but PowerShell is the more capable of the two if you're choosing.
+
 ## Checking whether you already have PHP
 
 Open a terminal and try this:
