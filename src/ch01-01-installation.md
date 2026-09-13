@@ -1,60 +1,76 @@
 # Installation
 
-<img src="images/ch01-icon.svg" alt="Installation illustration" width="72">
-
 ## Opening a terminal
 
-Everything in this book happens in a terminal, so find one before anything else.
+**A terminal is a conversation with your computer.** You type a sentence, press Enter, and the computer answers on the next line. No buttons, no menus, just words going back and forth. Every example in this book happens there, so the first job is to find yours.
 
-**macOS.** Open Spotlight with `Cmd+Space`, type "Terminal", and press Enter. That's Terminal.app, and it's all you need; iTerm2 is a popular replacement once you want more, but nothing here requires it.
+<img src="images/ch01-terminal-chat.png" alt="A terminal drawn as a conversation: the person types a command, the computer answers" width="520">
 
-**Linux.** Every desktop environment ships one, usually named Terminal, Konsole, or GNOME Terminal, reachable from the applications menu or a shortcut like `Ctrl+Alt+T`. If you can't find it by name, your desktop's search bar will.
+**macOS.** Press `Cmd+Space`, type "Terminal", press Enter. That opens Terminal.app, and it is all you need.
 
-**Windows.** Press `Win`, type "Terminal", and open Windows Terminal, the modern default on Windows 11 (installable from the Microsoft Store on Windows 10). It hosts both Command Prompt and PowerShell; either works for this book, but PowerShell is the more capable of the two if you're choosing.
+**Linux.** Every desktop ships one, usually called Terminal, Konsole, or GNOME Terminal. Look in the applications menu, or try `Ctrl+Alt+T`.
 
-## Checking whether you already have PHP
+**Windows.** Press `Win`, type "Terminal", and open Windows Terminal. It is the default on Windows 11 and available from the Microsoft Store on Windows 10. Inside it you can use Command Prompt or PowerShell; both work for this book.
 
-Open a terminal and try this:
+## Do you already have PHP?
+
+Ask your computer. Type this and press Enter:
 
 ```console
 $ php -v
 PHP 8.3.6 (cli) (built: ...) (NTS)
 ```
 
-If you get a version number, and it starts with an 8, you're basically done. Skip ahead to the next section. If it starts with a 7 or lower, or the command isn't found at all, read on.
+> [!TIP]
+> In the terminal examples of this book, the `$` at the start of a line stands for the prompt your terminal shows while it waits for you. **Do not type it.** Type what follows.
+
+Now read the answer. There are three possibilities:
+
+- **It starts with `PHP 8`.** PHP is installed and recent enough. Skip ahead to [Hello, World!](ch01-02-hello-world.md).
+- **It starts with `PHP 7` or lower.** You have an old version. Install a new one below.
+- **It says something like `command not found`.** The computer simply does not know the word `php` yet. That is not a mistake on your part, it just means nothing is installed. Read on.
 
 ## Installing PHP
 
-**macOS.** The system used to ship an ancient PHP for internal use; recent macOS versions ship none at all. Either way, install a current one with Homebrew:
+**macOS.** Recent versions of macOS do not ship PHP at all. Install it with [Homebrew](https://brew.sh/):
 
 ```console
 $ brew install php
 ```
 
-**Linux.** Your distribution's package manager has it, though the version lagging behind can be a year or two out of date depending on the release. On Ubuntu or Debian, the [Ondřej Surý PPA](https://launchpad.net/~ondrej/+archive/ubuntu/php) keeps up with new releases faster than the default repositories:
+**Linux.** Your distribution's package manager has it. On Ubuntu or Debian:
 
 ```console
 $ sudo apt install php-cli
 ```
 
-**Windows.** Grab the "Non Thread Safe" zip from [windows.php.net](https://windows.php.net/download/), unzip it somewhere sane like `C:\php`, and add that folder to your `PATH`. If you'd rather not manage this by hand, [Laragon](https://laragon.org/) or [WampServer](https://www.wampserver.com/) bundle PHP with a friendlier installer.
+Distribution packages can lag a year or two behind. If the version you get is too old, the [Ondřej Surý repository](https://launchpad.net/~ondrej/+archive/ubuntu/php) tracks new releases closely.
 
-**Anywhere, with Docker.** If you don't want to install anything system-wide:
+**Windows.** Download the "Non Thread Safe" zip from [windows.php.net](https://windows.php.net/download/), unzip it somewhere simple like `C:\php`, and add that folder to your `PATH` so the terminal can find it. If you would rather have an installer do this for you, [Laragon](https://laragon.org/) or [WampServer](https://www.wampserver.com/) bundle PHP with a friendly setup.
+
+**Anywhere, with Docker.** If you do not want to install anything on your machine, and Docker is already there:
 
 ```console
 $ docker run --rm -it php:8.3-cli bash
 ```
 
-This drops you into a shell with PHP ready to go. It's a fine way to follow along with this book without touching your machine's configuration at all.
+This gives you a temporary shell, with PHP ready to go, inside a small isolated environment. Everything you type happens in that box, and closing it leaves your computer untouched.
 
-## Verifying the install
+## Checking it worked
 
-Run `php -v` again. You should see a version number this time. While you're there, run this too: it lists which optional pieces (called *extensions*) are compiled into your PHP:
+**Close your terminal, open a new one**, and run `php -v` again. You should see a version number this time.
 
-```console
-$ php -m
-```
+> [!TIP]
+> A terminal learns the list of programs it knows when it starts. If you installed PHP and the terminal still says `command not found`, nine times out of ten the fix is simply to open a new one.
 
-Don't worry about the list. We'll come back to extensions when we actually need one.
+## Good to know: PHP wears two hats
 
-One last thing worth knowing: PHP has both a command-line version (`php-cli`, what you just installed) and versions meant to run inside a web server (`php-fpm`, mod_php). They're the same language underneath, but this book only needs the CLI one: the version that runs scripts directly from your terminal, the way Python or Ruby would.
+While reading about PHP online, you will run into names like `php-cli`, `php-fpm`, and `mod_php`. **They are the same language wearing different hats.**
+
+<img src="images/ch01-two-hats.png" alt="PHP with two hats: one for the terminal, where it runs scripts directly, one for the web server, where it answers page requests" width="520">
+
+The first hat, **`php-cli`**, is the one you just installed. It runs a script from your terminal and prints the result, the way Python or Ruby would.
+
+The second hat is **the web server version**. It sits behind a server like nginx or Apache and answers page requests.
+
+This book only needs the first hat for a long while. When the web arrives, you will already know the language, and only the hat will change.
