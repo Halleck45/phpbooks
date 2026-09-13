@@ -1,7 +1,5 @@
 # Variables, Constants, and Mutability
 
-<img src="images/ch03-icon.svg" alt="Variables, Constants, and Mutability illustration" width="72">
-
 ## Variables
 
 Every PHP variable starts with a dollar sign, and that's genuinely most of the syntax you need to know:

@@ -1,7 +1,5 @@
 # Storing UTF-8 Encoded Text with Strings
 
-<img src="images/ch08-icon.svg" alt="Storing UTF-8 Encoded Text with Strings illustration" width="72">
-
 You met strings back in [Hello, World!](ch01-02-hello-world.md), and used interpolation without much ceremony in the [guessing game](ch02-00-guessing-game-tutorial.md). What we skipped, reasonably, was the part that eventually bites everyone who works with PHP strings: they're not really made of characters. They're made of bytes. Most of the time that distinction is invisible, right up until it isn't.
 
 ## Quotes, briefly revisited

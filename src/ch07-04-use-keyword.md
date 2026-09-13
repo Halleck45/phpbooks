@@ -1,7 +1,5 @@
 # Referring to Code with the `use` Keyword
 
-<img src="images/ch07-icon.svg" alt="Referring to Code with the use Keyword illustration" width="72">
-
 Writing `\App\Models\Product` every single time you need a `Product` gets old fast, and it clutters up code that should be about your business logic, not about where files live. The `use` keyword lets you import a name once, at the top of a file, and then refer to it by its short name for the rest of that file.
 
 ## Basic imports

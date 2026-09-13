@@ -1,7 +1,5 @@
 # Reading a File
 
-<img src="images/ch14-icon.svg" alt="Reading a File illustration" width="72">
-
 phpgrep can parse its arguments now, but it doesn't actually search anything yet. Time to fix that. Create a small file to search in, right next to `phpgrep.php`:
 
 ```console

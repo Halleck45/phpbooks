@@ -1,7 +1,5 @@
 # Working with Environment Variables
 
-<img src="images/ch14-icon.svg" alt="Working with Environment Variables illustration" width="72">
-
 `GrepOptions` can carry an `ignoreCase` flag, and `search()` honors it, but `fromArgv()` still hardcodes it to `false`. There's no way for anyone running phpgrep from a terminal to actually turn it on. Let's fix that using an environment variable rather than a third command-line argument.
 
 Why an environment variable and not just `$argv[3]`? Because case-insensitivity here is closer to a standing preference than a per-search decision: something you might want on for every search you run in a given shell session, without retyping a flag every time. Environment variables are exactly the tool for that: set once, inherited by every command you run afterward, until you close the terminal or unset it.

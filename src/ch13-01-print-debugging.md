@@ -1,7 +1,5 @@
 # Print Debugging with `var_dump()` and `print_r()`
 
-<img src="images/ch13-icon.svg" alt="Print Debugging with vardump() and printr() illustration" width="72">
-
 You've already met `var_dump()`, briefly, back in [Chapter 3](ch03-02-data-types.md): it's the function that shows you a value's type along with the value itself. That combination is exactly what makes it a debugging tool and not just an inspection one: the bug is very often that a value has the wrong *type*, not the wrong contents, and `echo` alone can't tell you that. `echo $count` prints `5` whether `$count` is the integer `5` or the string `"5"`. `var_dump($count)` prints `int(5)` or `string(1) "5"`, and the difference between those two is frequently the entire bug.
 
 ## `var_dump()` on structured data

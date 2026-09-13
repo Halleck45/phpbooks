@@ -1,7 +1,5 @@
 # List and Array Destructuring
 
-<img src="images/ch19-icon.svg" alt="List and Array Destructuring illustration" width="72">
-
 The previous section showed destructuring in its simplest, flat form. Arrays are rarely that tidy in real code: they nest, and they're often associative rather than positional. Destructuring handles both.
 
 ## Nested destructuring

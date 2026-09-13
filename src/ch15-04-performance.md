@@ -1,7 +1,5 @@
 # Performance: Loops vs. Generators vs. Array Functions
 
-<img src="images/ch15-icon.svg" alt="Performance: Loops vs. Generators vs. Array Functions illustration" width="72">
-
 You now have three ways to process a series of values in PHP: a plain `for` or `foreach` loop, a generator, or one of the built-in array functions like `array_map()` and `array_filter()`. They can often solve the same problem. They don't cost the same, and "cost" here means two different things (time and memory) that don't always move together. Let's actually measure it instead of guessing.
 
 ## A small benchmark

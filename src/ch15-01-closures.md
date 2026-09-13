@@ -1,7 +1,5 @@
 # Closures and Arrow Functions
 
-<img src="images/ch15-icon.svg" alt="Closures and Arrow Functions illustration" width="72">
-
 You met the shape of a closure at the very end of Chapter 3: an anonymous function, assigned to a variable, callable just like any other. What we skipped over is the interesting part: how a closure gets at variables from the code around it, and the two very different ways PHP lets you control that.
 
 ## Capturing by value with `use`

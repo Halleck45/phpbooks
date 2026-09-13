@@ -1,7 +1,5 @@
 # Installing Global Tools with Composer
 
-<img src="images/ch16-icon.svg" alt="Installing Global Tools with Composer illustration" width="72">
-
 Not everything you install with Composer is a dependency of a specific project. Static analysis tools like PHPStan, code formatters like PHP-CS-Fixer, and similar command-line utilities are things you want available everywhere, run against whatever project you happen to be sitting in, not bundled into that project's own `composer.json`. Composer has a separate command for exactly that case.
 
 ## `require --dev` vs. `global require`

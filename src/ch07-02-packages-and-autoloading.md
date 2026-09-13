@@ -1,7 +1,5 @@
 # Packages and Autoloading
 
-<img src="images/ch07-icon.svg" alt="Packages and Autoloading illustration" width="72">
-
 You already know the mechanics of installing a package: `composer require` pulls it into `vendor/`, and `require 'vendor/autoload.php'` makes every class inside it available. What we skipped over a moment ago, on purpose, was *how* that second part actually works, because the answer explains why the rest of this chapter exists.
 
 ## The problem autoloading solves

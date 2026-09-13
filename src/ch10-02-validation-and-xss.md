@@ -1,7 +1,5 @@
 # Validating Input and Preventing Cross-Site Scripting
 
-<img src="images/ch10-icon.svg" alt="Validating Input and Preventing Cross-Site Scripting illustration" width="72">
-
 The previous section left off with a script that prints `$_POST` values straight into HTML, and a demonstration that this lets a visitor's browser render arbitrary markup. Pushed a little further, that's not just an oddity: submit `<script>alert('hello from your own guestbook')</script>` as a message, and the browser executes it. That's **cross-site scripting**, XSS for short: an attacker gets their own JavaScript to run in your page, in your visitors' browsers, under your site's own trust. A guestbook that stores and redisplays messages is a textbook place for it to happen, which makes it a good place to learn to stop it.
 
 ## Escaping output

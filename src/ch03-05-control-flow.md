@@ -1,7 +1,5 @@
 # Control Flow
 
-<img src="images/ch03-icon.svg" alt="Control Flow illustration" width="72">
-
 You've already seen `if`, `while`, `break`, and `continue` in the guessing game. This section makes them official and fills in the rest.
 
 ## `if` / `elseif` / `else`

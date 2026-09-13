@@ -1,7 +1,5 @@
 # Implementing a Classic OOP Design Pattern
 
-<img src="images/ch17-icon.svg" alt="Implementing a Classic OOP Design Pattern illustration" width="72">
-
 A design pattern is just a name for a shape of code that shows up often enough, across enough different problems, that it's worth recognizing on sight. You've actually been building most of one already, across the last three sections: the `PaymentMethod` family. This section finishes the job and names what you've built: the **Strategy pattern**, one of the most common in all of object-oriented programming, and one you'll recognize instantly in other people's code once you've written it yourself.
 
 ## The idea

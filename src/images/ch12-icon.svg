@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="96" height="96" role="img" aria-label="Writing Automated Tests: a checked shield">
-  <rect x="2" y="2" width="96" height="96" rx="18" fill="#dff3f6" stroke="#aedae0" stroke-width="2"/>
-  <g fill="none" stroke="#25737e" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
-
-    <path d="M50,20 L78,30 L78,52 C78,68 66,78 50,82 C34,78 22,68 22,52 L22,30 Z"/>
-    <path d="M38,50 L47,60 L64,42"/>
-    
-  </g>
-</svg>

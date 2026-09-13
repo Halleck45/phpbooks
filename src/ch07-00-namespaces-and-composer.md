@@ -1,7 +1,5 @@
 # Namespaces, Packages, and Composer
 
-<img src="images/ch07-icon.svg" alt="Namespaces, Packages, and Composer illustration" width="72">
-
 Every example so far has lived in one file. That's about to stop being true. Once you have more than a class or two (and after [Chapter 5](ch05-00-classes.md) and [Chapter 6](ch06-00-enums.md), you do) cramming everything into a single script stops being convenient and starts being a liability. You need a way to split code across files, and a way to make sure that when two files both define something called `Product`, PHP doesn't get confused about which one you meant.
 
 That second problem is what namespaces are for. A namespace is nothing more exotic than a prefix on a name, but it solves a real problem: the moment you install a third-party package with Composer, PHP's package manager, you're sharing a project with code you didn't write and can't rename. Without namespaces, the first library that also happens to define a `Collection` or a `Response` class would collide with yours, or with each other. With them, `App\Models\Product` and `Vendor\Package\Product` are simply two different names, and PHP never has to guess.

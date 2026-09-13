@@ -1,7 +1,5 @@
 # How PHP Manages Values: Copy-on-Write
 
-<img src="images/ch04-icon.svg" alt="How PHP Manages Values: Copy-on-Write illustration" width="72">
-
 Assign one array to another variable, and PHP behaves as though it made you a completely independent copy:
 
 ```php

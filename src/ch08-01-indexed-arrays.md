@@ -1,7 +1,5 @@
 # Storing Lists of Values with Indexed Arrays
 
-<img src="images/ch08-icon.svg" alt="Storing Lists of Values with Indexed Arrays illustration" width="72">
-
 An indexed array is what most languages just call an array or a list: an ordered sequence of values, each reachable by a numeric position starting at 0. In PHP, you build one with square brackets:
 
 ```php

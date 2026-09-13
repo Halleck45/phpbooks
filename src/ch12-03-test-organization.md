@@ -1,7 +1,5 @@
 # Test Organization
 
-<img src="images/ch12-icon.svg" alt="Test Organization illustration" width="72">
-
 Where tests live matters less for correctness than it does for whether anyone (including future you) can find them. PHP's convention here is simple enough to state in one sentence: a `tests/` directory that mirrors the shape of `src/`, with one test class per class, named after the thing it tests plus `Test`.
 
 ```text

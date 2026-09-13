@@ -1,7 +1,5 @@
 # A Single-File Router with PHP's Built-in Server
 
-<img src="images/ch21-icon.svg" alt="A Single-File Router with PHP's Built-in Server illustration" width="72">
-
 Every web framework, no matter how large, is built on the same basic question: a request comes in for some URL: how does that turn into which piece of code runs? The mechanism that answers that question is called a **router**. Before reaching for a framework's version, it's worth building the smallest one that could possibly work, so you can see exactly what it's doing.
 
 ## PHP's built-in development server

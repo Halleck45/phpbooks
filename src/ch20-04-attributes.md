@@ -1,7 +1,5 @@
 # Attributes
 
-<img src="images/ch20-icon.svg" alt="Attributes illustration" width="72">
-
 For years, PHP developers who wanted to attach metadata to a class or method ("this method is a test," "this property maps to a database column," "this route handles `GET /users`") had exactly one tool: a specially formatted comment, a docblock, that some framework would parse at runtime with a regular expression. It worked, but it was always a little uneasy: the metadata lived in a comment, which the language itself didn't understand or check, and a typo in it failed silently.
 
 PHP 8 replaced that convention with a real language feature: **attributes**, written as `#[SomethingLikeThis]` directly above the thing they describe.

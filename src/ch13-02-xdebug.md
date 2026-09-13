@@ -1,7 +1,5 @@
 # Step Debugging with Xdebug
 
-<img src="images/ch13-icon.svg" alt="Step Debugging with Xdebug illustration" width="72">
-
 Xdebug is a PHP extension, not a separate program: once it's installed, it changes how PHP itself behaves, rather than being something you call from your code the way you call `var_dump()`. That's a bit more setup than the previous section needed, but it buys you something print debugging can't: the ability to pause a running script at an exact line and look at everything in scope, without having guessed in advance what to print.
 
 ## Installing it

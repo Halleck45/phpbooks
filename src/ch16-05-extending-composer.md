@@ -1,7 +1,5 @@
 # Extending Composer with Scripts and Plugins
 
-<img src="images/ch16-icon.svg" alt="Extending Composer with Scripts and Plugins illustration" width="72">
-
 You've seen `"scripts"` used for commands you run yourself: `composer test`, `composer check`. Composer scripts have a second, quieter use: hooking into Composer's *own* lifecycle, so something runs automatically at the right moment, without you having to remember to run it.
 
 ## Lifecycle events

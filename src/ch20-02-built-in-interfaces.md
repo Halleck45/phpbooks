@@ -1,7 +1,5 @@
 # Built-in Interfaces: Countable, ArrayAccess, IteratorAggregate
 
-<img src="images/ch20-icon.svg" alt="Built-in Interfaces: Countable, ArrayAccess, IteratorAggregate illustration" width="72">
-
 Back in [Chapter 11](ch11-00-interfaces-and-traits.md) you learned that an interface is a contract: implement its methods, and your class can be used anywhere that contract is expected. PHP takes that idea one step further with a small set of built-in interfaces, part of the SPL (Standard PHP Library), that don't just describe a contract for your own code: they plug your objects directly into PHP's own syntax. Implement one, and ordinary language constructs like `count()`, `$object['key']`, or `foreach` start working on your object as if it were a native array.
 
 ## `Countable`
