@@ -1,14 +1,16 @@
 # Implementing a Classic OOP Design Pattern
 
-A design pattern is just a name for a shape of code that shows up often enough, across enough different problems, that it's worth recognizing on sight. You've actually been building most of one already, across the last three sections: the `PaymentMethod` family. This section finishes the job and names what you've built: the **Strategy pattern**, one of the most common in all of object-oriented programming, and one you'll recognize instantly in other people's code once you've written it yourself.
+A design pattern is a name for a shape of code that shows up so often, across so many different problems, that it is worth recognizing on sight. **You have been building one for three sections without naming it.** The `PaymentMethod` family is most of the Strategy pattern, one of the most common in all of object-oriented programming. This section finishes it.
 
 ## The idea
 
-Strategy's whole premise: take a piece of behavior that can vary (*how* a payment gets charged, *how* a list gets sorted, *how* a price gets discounted), pull it out behind a shared interface, and hand it to a class that uses that behavior without needing to know which specific version it received. That last part should sound familiar; it's exactly the polymorphism from [ch17-01](ch17-01-inheritance-and-polymorphism.md). Strategy just adds one more piece: a dedicated class, usually called the *context*, whose entire job is holding onto a strategy and delegating to it, and letting that strategy be swapped out, even after the context already exists.
+Take a behavior that can vary: *how* a payment is charged, *how* a list is sorted, *how* a price is discounted. Pull it out behind an interface. Hand it to a class that uses the behavior without knowing which version it received. That last step is the polymorphism from [earlier in this chapter](ch17-01-inheritance-and-polymorphism.md). **Strategy adds one piece, the context: a class whose whole job is to hold a strategy, delegate to it, and let it be swapped, even after the context exists.**
+
+<img src="images/ch17-strategy-socket.png" alt="A Checkout device with a single socket shaped for a PaymentMethod, and two plugs of that shape, CreditCard and PayPal, being swapped in and out" width="560">
 
 ## Building it
 
-Back to an interface, not an abstract class this time: there's no shared implementation code worth forcing on every payment method, only a contract, which is exactly the case [ch17-02](ch17-02-abstract-classes.md) said an interface fits best:
+An interface this time, not an abstract class. There is no shared code worth forcing on every payment method, only a contract, and that is exactly the case [the previous section](ch17-02-abstract-classes.md) said an interface fits best:
 
 ```php
 <?php
@@ -44,7 +46,7 @@ final class PayPal implements PaymentMethod
 }
 ```
 
-Nothing new here: this is the same pair of classes from earlier in the chapter, just implementing an interface instead of extending an abstract base. Now the context:
+Nothing new here: the same two classes as earlier in the chapter, implementing an interface instead of extending a base. Now the context:
 
 ```php
 <?php
@@ -68,7 +70,7 @@ final class Checkout
 }
 ```
 
-`Checkout` is the context. It holds a `PaymentMethod` (any `PaymentMethod`), and its `complete()` method delegates entirely to whatever strategy it's currently holding, without a single `if` statement checking which one it is. That absence of branching is the tell that you're looking at Strategy done properly: `Checkout` never asks "are you a `CreditCard` or a `PayPal`?" It just calls `charge()` and trusts the interface.
+`Checkout` holds a `PaymentMethod`, any `PaymentMethod`, and `complete()` hands the work to whichever one it is holding. Notice what is missing. **There is no `if` asking "are you a card or a PayPal account?"** That absence is the tell of Strategy done right: the context calls `charge()` and trusts the interface.
 
 ## Using it and swapping strategies at runtime
 
@@ -87,6 +89,10 @@ Charged $42.00 to card ending 4242.
 Charged $19.99 via PayPal account damien@example.com.
 ```
 
-Same `$checkout` object, same `complete()` call, two completely different outcomes, because `setPaymentMethod()` swapped out the strategy in between. That's the part a plain `if ($type === 'credit_card')` branch scattered through `Checkout` could never give you as cleanly: adding a third payment method next quarter means writing one new class that implements `PaymentMethod`, and changing nothing whatsoever in `Checkout` itself. It already works, for the same reason `processPayment()` already worked back in ch17-01: it was never written against a specific strategy in the first place, only against the interface every strategy is guaranteed to satisfy.
+Same `$checkout` object, same `complete()` call, two different outcomes, because `setPaymentMethod()` swapped the strategy in between. Picture the alternative: an `if ($type === 'credit_card')` inside `Checkout`, growing a new branch with every payment method the product adds. With Strategy, next quarter's bank transfer is one new class that implements `PaymentMethod`, and `Checkout` does not change. It already works, for the same reason `processPayment()` worked earlier in the chapter: it was written against the interface, never against a particular class.
 
-That's the entire pattern: an interface describing a swappable behavior, one or more classes implementing it, and a context class that delegates to whichever one it's holding. No new syntax, no library, nothing PHP-specific about it at all: just the interfaces and polymorphism you already had, arranged on purpose to solve a recognizable problem. Once you've built one pattern this way, you'll start noticing the same shape everywhere, under other names, in code you didn't write.
+Try it: write `BankTransfer`, pass it to `setPaymentMethod()`, and complete a third payment. Count the lines you changed in `Checkout`.
+
+That is the entire pattern. An interface describing a swappable behavior, classes implementing it, and a context that delegates to whichever one it holds. No new syntax, no library, nothing specific to PHP: the interfaces and polymorphism you already had, arranged on purpose to solve a recognizable problem. Once you have built one this way, you will start seeing the same shape everywhere, under other names, in code you did not write.
+
+> A strategy is a behavior you can unplug and replace. The context is the socket.

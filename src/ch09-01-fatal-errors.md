@@ -1,8 +1,8 @@
 # Unrecoverable Errors: Fatal Errors and `Error`
 
-Some problems aren't a matter of unlucky input or a missing file: they're a matter of your code being wrong. You called a method that doesn't exist. You passed a string where a function demanded an integer, with strict types on. You divided by zero. None of these are things a well-behaved program should be designed to "handle" gracefully, because there's nothing sensible to do in response except fix the bug.
+Some problems have nothing to do with bad luck. No file went missing, no user typed nonsense: your code is wrong. You called a method that does not exist. You passed a string to a function that demanded an integer, with strict types on. You divided by zero. **There is nothing sensible a program can do about a bug except stop and let you fix it.**
 
-PHP represents this category with the `Error` class and its subclasses. A few you'll meet constantly:
+PHP represents this family with the `Error` class and its subclasses. Three you will meet constantly:
 
 ```php
 <?php
@@ -25,17 +25,17 @@ $user = null;
 $user->getName(); // Error: Call to a member function getName() on null
 ```
 
-`DivisionByZeroError`, `TypeError`, and the generic `Error` you get from calling a method on `null` are all doing the same job: telling you, as precisely as possible, that the program reached a state it has no business being in. This is exactly the kind of situation `declare(strict_types=1)` was designed to surface loudly rather than let slide; you met the mechanism in [Data Types](ch03-02-data-types.md), and this is where it pays off.
+`DivisionByZeroError`, `TypeError` and the plain `Error` you get from calling a method on `null` all do the same job: they tell you, as precisely as they can, that the program reached a state it had no business being in. Run the file. It stops at `double("four")`, the first wrong thing it actually executes. Comment that line out, run again, and the call on `null` takes its turn; call `half(3)` and the division does. This is exactly what `declare(strict_types=1)`, which you met in [Data Types](ch03-02-data-types.md), is for: making a wrong call fail loudly, on the spot, instead of letting it slide.
 
 ## Why this used to be worse
 
-If you look at PHP code written before version 7, you'll find a lot of manual `null` checks and `is_int()` guards scattered defensively through function bodies, because back then, many of these situations didn't throw anything catchable at all. Calling a method on `null` was a fatal error that simply halted the script, full stop, no `try`/`catch` in the world could intervene. A type mismatch might silently coerce, or emit a warning to a log nobody was watching, and keep going with garbage data.
+Code written before PHP 7 is full of `null` checks and `is_int()` guards scattered through function bodies, and there was a reason for them. Back then, most of these situations threw nothing you could catch. Calling a method on `null` was a fatal error that halted the script, full stop; no `try` in the world could step in. A type mismatch might silently convert the value, or print a warning to a log nobody watched, and carry on with garbage.
 
-PHP 7 introduced `Error` (and PHP 8 sharpened it further) specifically to fix this: nearly everything in this category is now a real object implementing `Throwable`, the same interface `Exception` implements. That means you technically *can* write `catch (Error $e)` and keep your program running. It also means you very often shouldn't.
+PHP 7 introduced `Error` to fix this, and PHP 8 sharpened it further. **Nearly everything in this family is now a real object implementing `Throwable`, the same interface `Exception` implements.** So you *can* write `catch (Error $e)` and keep the program running. You very often should not.
 
 ## Catchable doesn't mean "should catch"
 
-The distinction that matters here isn't "can PHP represent this as an object" (as of PHP 8, it almost always can); it's "does catching this actually fix anything." Compare:
+The question is not whether PHP can hand you the problem as an object. Since PHP 8, it almost always can. The question is whether catching it fixes anything. Compare:
 
 ```php
 <?php
@@ -57,6 +57,11 @@ try {
 }
 ```
 
-The first case catches a genuinely recoverable situation: malformed JSON from an external source is a normal thing to happen, and falling back to an empty config is a defensible choice. The second case catches a symptom of a bug and hides it behind a plausible-looking number. Six months later, someone is debugging why totals are occasionally zero, with no exception, no log entry, no clue, because the `catch` block ate the only evidence that something went wrong.
+The first `try` handles a situation that really can happen: JSON from the outside world is sometimes malformed, and falling back to an empty config is a defensible choice. The second `try` catches the symptom of a bug and hides it behind a plausible number. Six months later, someone is wondering why totals are occasionally zero, with no exception, no log line, no clue, because the `catch` block ate the only evidence.
 
-The rule worth keeping: catch `Error` and its subclasses only when you have a genuinely good reason and a narrow, specific type; never a broad `catch (\Error $e)` used as a safety net. If your own code is producing a `TypeError`, the fix is almost always to correct the code that's calling the function wrong, not to wrap the call in a `try` block. We'll draw this line more precisely in [To Throw or Not to Throw](ch09-03-to-throw-or-not-to-throw.md); for now, treat `Error` as PHP telling you something is broken, and exceptions, covered next, as PHP telling you something needs a decision.
+<img src="images/ch09-catch-eats-evidence.png" alt="A catch block drawn as a creature swallowing an error message whole, while a developer later searches the empty floor with a magnifying glass and finds nothing" width="560">
+
+> [!WARNING]
+> A broad `catch (\Error $e)` is not a safety net. It is a shredder for the stack trace you will need later.
+
+**Catch `Error` and its subclasses only with a good reason and a narrow, specific type.** If your own code produces a `TypeError`, the fix is to correct the call, not to wrap it in `try`. [To Throw or Not to Throw](ch09-03-to-throw-or-not-to-throw.md) draws this line more precisely. For now, read `Error` as PHP telling you something is broken, and exceptions, next, as PHP telling you something needs a decision.

@@ -1,17 +1,17 @@
 # How to Write Tests with PHPUnit
 
-Start a small project the way you did in [Chapter 7](ch07-01-hello-composer.md):
+Start a fresh project, as in [Chapter 7](ch07-01-hello-composer.md):
 
 ```console
 $ composer init --no-interaction
 $ composer require --dev phpunit/phpunit
 ```
 
-That `--dev` matters: PHPUnit is a tool you use while building the project, not something the project needs to run in production. Composer keeps development-only dependencies separate for exactly this reason: they never ship.
+The `--dev` flag matters. **PHPUnit is a tool you use while building the project, not something the project needs to run.** Composer keeps development-only dependencies apart for that reason: they never ship.
 
 ## The code under test
 
-Here's a small class worth testing, the kind of thing you've been writing since [Chapter 5](ch05-00-classes.md):
+Here is a small class worth testing, the kind you have been writing since [Chapter 5](ch05-00-classes.md):
 
 ```php
 <?php
@@ -39,11 +39,11 @@ final class Rectangle
 }
 ```
 
-Nothing new here: a readonly class with two properties and two methods. The question a test answers is simple: does it actually do what it claims to?
+Nothing new: a readonly class, two properties, two methods. The question a test answers is simple. Does it actually do what it claims?
 
 ## Your first test
 
-A test is a class extending PHPUnit's `TestCase`, with methods whose names start with `test`:
+**A test is a class that extends PHPUnit's `TestCase`, with methods whose names start with `test`.** Each method sets up a situation, then makes a claim about the result:
 
 ```php
 <?php
@@ -64,7 +64,7 @@ final class RectangleTest extends TestCase
 }
 ```
 
-`assertEquals(expected, actual)` is the workhorse assertion: it fails the test, with a readable diff, if the two values aren't equal. Run the suite:
+Read the method as a sentence: build a rectangle 8 by 7, then claim its area is 56. **`assertEquals(expected, actual)` is the claim.** If the two values differ, the test fails and PHPUnit shows you both sides. Run it:
 
 ```console
 $ vendor/bin/phpunit tests
@@ -77,11 +77,17 @@ Time: 00:00.012, Memory: 6.00 MB
 OK (1 test, 1 assertion)
 ```
 
-One dot per passing test. That's it: that's the whole feedback loop you'll live in for the rest of this chapter.
+One dot per passing test. That is the whole feedback loop for the rest of this chapter: change the code, run the tests, count the dots.
+
+Try it: change `56.0` to `57.0` and run again. The dot becomes an `F`, and PHPUnit tells you which claim broke, with the value it expected and the value it got.
+
+<img src="images/ch12-test-scale.png" alt="A balance scale with the expected value 56 on one pan and the rectangle's computed area on the other, level, with the PHP elephant giving a thumbs up" width="520">
+
+> A test is a claim about your code. PHPUnit checks whether the claim still holds.
 
 ## `#[Test]` as an alternative to the `test` prefix
 
-PHP 8 attributes (covered properly in [Chapter 20](ch20-00-advanced-features.md)) give PHPUnit a second way to mark a method as a test, without the naming constraint:
+PHP 8 attributes ([Chapter 20](ch20-00-advanced-features.md) covers them properly) give PHPUnit a second way to mark a method as a test, with no naming constraint:
 
 ```php
 <?php
@@ -101,7 +107,7 @@ final class RectangleTest extends TestCase
 }
 ```
 
-Either style is fine, and most projects settle on one and stay consistent. This book will keep using the `test` prefix, since it needs no `use` statement and reads clearly enough on its own.
+Either style is fine; pick one per project and stick to it. This book keeps the `test` prefix: no `use` statement, and the intent is clear from the name alone.
 
 ## More assertions: `assertTrue`, and `assertEquals` vs. `assertSame`
 
@@ -125,7 +131,13 @@ final class RectangleTest extends TestCase
 }
 ```
 
-This distinction is not a PHPUnit quirk: it's the exact same `==` versus `===` distinction from [Chapter 3](ch03-02-data-types.md), wearing an assertion-shaped hat. `assertEquals()` allows type juggling: `1` and `"1"` are "equal enough." `assertSame()` refuses it, checking type and value together, the same way `===` does. Default to `assertSame()` when you can: it catches a category of bug (a function accidentally returning a string where you expected an int) that `assertEquals()` will let straight through without complaint. Reach for `assertEquals()` only when the loose comparison is genuinely what you mean to test.
+`assertTrue()` does what it says. The second method is the interesting one, because one of its two lines fails.
+
+**`assertEquals()` compares like `==`, and `assertSame()` compares like `===`.** This is the exact distinction from [Chapter 3](ch03-02-data-types.md), wearing an assertion-shaped hat. For `assertEquals()`, `1` and `"1"` are equal enough. `assertSame()` refuses: it checks the type and the value together.
+
+<img src="images/ch12-equals-vs-same.png" alt="Two gates side by side: the assertEquals gate lets both the number 1 and the text 1 through, the assertSame gate lets the number through and stops the text" width="600">
+
+Default to `assertSame()`. It catches a whole family of bugs, a function returning a string where you expected an integer, that `assertEquals()` lets through without a word. Reach for `assertEquals()` only when the loose comparison is really what you mean to test.
 
 A failing assertion tells you exactly what went wrong:
 
@@ -135,4 +147,4 @@ $ vendor/bin/phpunit tests
 Failed asserting that 1 is identical to '1'.
 ```
 
-That message is doing real work: it's telling you the types didn't match, not just that "something" was unequal. Read failure messages closely; PHPUnit is usually more specific than it looks at first glance.
+That message does real work: "not identical" rather than "unequal" points straight at the type mismatch. Read failure messages closely; PHPUnit is more specific than it looks.

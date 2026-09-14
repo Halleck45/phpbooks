@@ -1,6 +1,6 @@
 # Comments
 
-PHP gives you three ways to write a comment, which is one more than most languages bother with, for reasons rooted in its templating-language ancestry.
+The guessing game has no comments, and at thirty lines it needs none. Programs grow, though, and sooner or later a line needs a note next to it: why this check is here, what that number means, which bug this works around. **A comment is text PHP skips entirely and a human reads.** PHP gives you three ways to write one, a leftover of its early days as a templating language.
 
 ```php
 <?php
@@ -16,7 +16,7 @@ PHP gives you three ways to write a comment, which is one more than most languag
  */
 ```
 
-In practice, `//` dominates for everyday comments, and `/* ... */` shows up for the longer, more structured kind: most commonly as a *docblock* sitting right above a function or class:
+In practice `//` dominates for everyday notes, and `/* ... */` shows up for the longer, more structured kind, most often as a *docblock* sitting right above a function or a class:
 
 ```php
 <?php
@@ -34,11 +34,11 @@ function compoundInterest(float $principal, float $rate, int $years): float {
 }
 ```
 
-That `/**` opener (two asterisks, not one) marks it as a docblock (a convention, not a language feature) and tools like your editor, PHPStan, and documentation generators all know to read `@param` and `@return` tags out of it. We'll lean on docblocks properly once we hit generics-adjacent territory in [Chapter 11](ch11-00-interfaces-and-traits.md), where PHP's type system needs a little help from comments to say things the language itself can't express yet.
+**The `/**` opener, two asterisks rather than one, marks a docblock.** It is a convention, not a language feature, but your editor, PHPStan and documentation generators all read the `@param` and `@return` tags out of it. Docblocks earn their keep in [Chapter 11](ch11-00-interfaces-and-traits.md), where PHP's type system needs a little help from comments to say things the language cannot express yet.
 
-## What's worth commenting
+## What is worth commenting
 
-The honest answer is: less than you'd think. A well-named function and well-typed parameters explain themselves; a comment repeating what the code already says just gives you two places to keep in sync, and only one of them the compiler checks.
+Less than you would think. A well-named function with well-typed parameters explains itself. A comment repeating what the code already says gives you two places to keep in sync, and PHP only checks one of them.
 
 ```php
 <?php
@@ -52,4 +52,6 @@ $counter++;
 $retries++;
 ```
 
-Comment the *why*, not the *what*. A comment explaining a workaround, a non-obvious constraint, or a decision that would look wrong without context is worth its weight. A comment translating code into English, line by line, usually isn't, and it's one more thing to go stale the next time someone edits the code without updating the comment above it.
+<img src="images/ch03-comment-why.png" alt="Two sticky notes on the same line of code: one repeats what the line does and is crossed out, the other explains why the line exists and is kept" width="360">
+
+**Comment the why, not the what.** A comment explaining a workaround, a non-obvious constraint, or a decision that would look wrong without context is worth its weight. A comment translating the code into English, line by line, is one more thing to go stale the next time someone edits the line without touching the note above it.

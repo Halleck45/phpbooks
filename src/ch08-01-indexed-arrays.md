@@ -1,6 +1,6 @@
 # Storing Lists of Values with Indexed Arrays
 
-An indexed array is what most languages just call an array or a list: an ordered sequence of values, each reachable by a numeric position starting at 0. In PHP, you build one with square brackets:
+Three fruits, in a fixed order, each one reachable by its position. That is an indexed array, what most languages simply call an array or a list, and you build one with square brackets:
 
 ```php
 <?php
@@ -14,11 +14,13 @@ echo $fruits[2] . "\n"; // cherry
 echo count($fruits) . "\n"; // 3
 ```
 
-`count()` is the function you'll reach for constantly: it's O(1), an instant lookup, not a walk through the array, so never hesitate to call it inside a loop condition.
+**Positions start at 0, not 1.** `$fruits[0]` is the first element and `$fruits[2]` the third and last.
+
+`count()` gives you the number of elements, and you will call it constantly. It is an instant lookup, not a walk through the array, so never hesitate to put it in a loop condition.
 
 ## Appending
 
-You rarely build an array fully formed. More often you start empty and grow it, and PHP's syntax for "add this to the end" is `[]` with nothing inside the brackets:
+You rarely build an array fully formed. More often you start empty and grow it, and PHP's way of saying "add this to the end" is a pair of empty square brackets:
 
 ```php
 <?php
@@ -40,13 +42,17 @@ print_r($shoppingList);
 // )
 ```
 
-`$shoppingList[]` looks like indexing into nothing, but read it as its own idiom: "give this the next available index and put it there." PHP tracks that next index for you; you never have to.
+`$shoppingList[] = 'milk'` looks like indexing into nothing. Read it as its own idiom: **"give this the next free position and put it there."** PHP keeps track of that next position; you never have to.
+
+<img src="images/ch08-append.png" alt="A row of three boxes numbered 0, 1 and 2, and the PHP elephant sliding a fourth box into the empty slot at the end, which already carries the tag 3" width="520">
+
+Try it: print `count($shoppingList)` after each line. 1, 2, 3.
 
 ## The mental model: arrays are ordered maps
 
-Here's the fact that makes the rest of this chapter, and the next section on associative arrays, click into place: there's no separate "list" type in PHP. `['apple', 'banana', 'cherry']` is shorthand for `[0 => 'apple', 1 => 'banana', 2 => 'cherry']`: an indexed array *is* an associative array whose keys happen to be sequential integers starting at zero. Every PHP array, underneath, is the same ordered structure: a hash map that also remembers insertion order.
+Here is the fact that makes the rest of this chapter click into place. **There is no separate list type in PHP.** `['apple', 'banana', 'cherry']` is shorthand for `[0 => 'apple', 1 => 'banana', 2 => 'cherry']`: an indexed array is an array whose keys happen to be 0, 1, 2. Underneath, every PHP array is the same structure, a map from keys to values that remembers insertion order.
 
-This explains behavior that otherwise looks like a quirk. Filter an indexed array and the surviving elements keep their *original* keys, not fresh ones:
+This explains behavior that otherwise looks like a quirk. Filter an indexed array, and the survivors keep their original keys:
 
 ```php
 <?php
@@ -66,7 +72,9 @@ print_r($even);
 // )
 ```
 
-Keys `1` and `3` are simply gone, not renumbered, because under the hood, `array_filter()` removed two entries from a map, and a map has no obligation to stay contiguous. If you need a clean `0, 1, 2, ...` sequence afterward, `array_values()` re-indexes:
+<img src="images/ch08-filter-gaps.png" alt="Three rows of boxes: the original array with keys 0 to 4, the result of array_filter with keys 1 and 3 removed and the others left in place, and the result of array_values renumbered 0, 1, 2" width="560">
+
+Keys `1` and `3` are gone, not renumbered. `array_filter()` removed two entries from a map, and a map has no reason to stay contiguous. **If you need a clean `0, 1, 2` sequence afterwards, `array_values()` renumbers it:**
 
 ```php
 <?php
@@ -74,9 +82,11 @@ Keys `1` and `3` are simply gone, not renumbered, because under the hood, `array
 $reindexed = array_values($even); // [10, 20, 30]
 ```
 
+> An indexed array is a map whose keys happen to be 0, 1, 2. Remove an entry, and the others do not move.
+
 ## Functions you'll reach for constantly
 
-A handful of functions cover most of what you do with indexed arrays day to day:
+A handful of functions cover most of what you do with lists day to day:
 
 ```php
 <?php
@@ -98,6 +108,8 @@ $hasTopScore = in_array(95, $scores, strict: true);
 echo implode(', ', $grades) . "\n";
 ```
 
-`array_map()` transforms every element and returns a same-length array; `array_filter()` keeps elements that pass a test and, as you just saw, does not reindex; `sort()` mutates the array in place *and* renumbers it, which is worth remembering if you were relying on the original keys for anything. `in_array()` with `strict: true` uses `===` under the hood rather than PHP's looser default comparison, worth making a habit, for the same reason `===` earned its own callout back in [Data Types](ch03-02-data-types.md).
+`array_map()` transforms every element and returns an array of the same length. `array_filter()` keeps the elements that pass a test and, as you just saw, keeps their keys too. `sort()` is different: it changes the array in place and renumbers it from 0, which matters if you were relying on the old keys.
 
-`array_push()` and `$scores[] = ...` do the same thing for a single value; `array_push()` exists mainly because it can take several values at once and because "push" reads clearly when you're thinking of the array as a stack. Either is fine: pick whichever reads better at the call site.
+`in_array()` searches for a value. **Pass `strict: true`** so it compares with `===` instead of PHP's loose default, for the same reason `===` earned its own callout in [Data Types](ch03-02-data-types.md). Make it a habit.
+
+`array_push()` and `$scores[] = ...` do the same job for a single value. `array_push()` can take several values at once, and "push" reads well when you think of the array as a stack. Pick whichever reads better at the call site.

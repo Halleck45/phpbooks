@@ -1,6 +1,6 @@
 # Defining Shared Behavior with Interfaces
 
-Suppose you're writing something that needs to print a human-readable summary of an object: an invoice line, a product, a log entry, whatever it happens to be that week. You could give every class you write a `describe()` method and hope everyone remembers the naming convention. Or you could make it a rule the language itself checks. That's what an interface is for.
+Suppose you need to print a human-readable summary of an object: an invoice line, a product, a log entry, whatever it happens to be that week. You could give every class a `describe()` method and hope everyone remembers the name. Or you could make it a rule that PHP itself checks. **That is what an interface is for.**
 
 ```php
 <?php
@@ -11,7 +11,7 @@ interface Formattable
 }
 ```
 
-An interface looks like a class with all the bodies removed. `format(): string` here is a *signature*, not an implementation: no braces, no logic, just a promise. Any class that says it implements `Formattable` must have a public `format()` method that returns a string. PHP enforces this at the language level. Leave the method out, or return the wrong type, and your code won't run.
+An interface looks like a class with all the bodies removed. `format(): string` is a *signature*, not an implementation: no braces, no logic, just a promise. **Any class that says it implements `Formattable` must have a public `format()` method returning a string**, and PHP holds it to that promise. Leave the method out, or return the wrong type, and the code will not run.
 
 ## Implementing it
 
@@ -45,11 +45,13 @@ readonly class InvoiceLine implements Formattable
 }
 ```
 
-`InvoiceLine implements Formattable` is a claim PHP will verify for you: if `format()` were missing, or typed to return an `int`, you'd get a fatal error the moment PHP tried to load the class, not buried three calls deep in production. A class can implement more than one interface, separated by commas, which is one of the ways PHP works around not having multiple inheritance for classes.
+`InvoiceLine implements Formattable` is a claim PHP verifies for you. If `format()` were missing, or declared to return an `int`, you would get a fatal error the moment PHP loaded the class, not three calls deep in production. Try it: rename `format()` to `describe()` and run the file.
+
+A class can implement more than one interface, separated by commas. That is one of the ways PHP makes up for classes having a single parent.
 
 ## Why bother: programming against the interface
 
-Here's the part that actually pays for itself. Write a function that type-hints the interface, not the concrete class:
+Here is the part that pays for itself. Write a function that type-hints the interface, not the concrete class:
 
 ```php
 <?php
@@ -62,9 +64,15 @@ function printSummary(Formattable $item): void
 printSummary(new InvoiceLine(new Product('Keyboard', 49.90), 2));
 ```
 
-`printSummary()` doesn't know or care that it received an `InvoiceLine`. It only knows it received *something* that can `format()`. Add a second class tomorrow (`Refund`, `Discount`, `ShippingFee`, whatever), implement `Formattable` on it, and `printSummary()` needs no changes at all. It already works, because it was never written against a specific class in the first place.
+`printSummary()` does not know it received an `InvoiceLine`, and does not care. It knows it received *something* that can `format()`. Add a `Refund` class tomorrow, or a `Discount`, or a `ShippingFee`, implement `Formattable` on it, and `printSummary()` needs no change at all. **It already works, because it was never written against a specific class in the first place.**
 
-This matters even more once tests enter the picture. If `printSummary()` had type-hinted `InvoiceLine` directly, testing it in isolation would mean constructing a real `InvoiceLine` with a real `Product` behind it. Type-hint `Formattable` instead, and a test can hand it any object that satisfies the contract, including a deliberately fake one built just for the test, with no `Product` in sight. We'll put that to direct use once we reach [Chapter 12](ch12-00-testing.md).
+<img src="images/ch11-interface-socket.png" alt="A wall socket labeled Formattable, with three differently shaped devices, InvoiceLine, Refund and ShippingFee, each ending in the same plug that fits it" width="560">
+
+A wall socket does not care whether you plug in a lamp or a laptop, only that the plug has the right shape. `Formattable` is the shape, and `printSummary()` is the socket.
+
+Tests raise the stakes. Had `printSummary()` type-hinted `InvoiceLine` directly, testing it on its own would mean building a real `InvoiceLine` with a real `Product` behind it. With `Formattable`, a test can hand it any object that honors the contract, including a deliberately fake one built for the occasion, with no `Product` in sight. [Chapter 12](ch12-00-testing.md) puts that to direct use.
+
+> Type-hint the contract, not the class. The function then works with every class that signs it, including the ones you have not written yet.
 
 ## `instanceof`
 
@@ -78,8 +86,8 @@ if ($item instanceof Formattable) {
 }
 ```
 
-Reach for this rarely. If you find yourself writing a lot of `instanceof` checks before calling a method, that's usually a sign the method belongs on an interface you should be type-hinting against instead, not a sign you need more `instanceof`.
+Reach for this rarely. A pile of `instanceof` checks before a method call usually means the method belongs on an interface you should be type-hinting against, not that you need more `instanceof`.
 
 ## A note on naming
 
-PHP has no special syntax to mark an interface as "just" a contract versus something more structural: `Formattable`, `Countable`, `Stringable`, `ArrayAccess` are all ordinary interfaces, some built into the language itself, some yours. Convention favors an adjective ending in *-able* for a single-capability contract (`Formattable`, `Comparable`, `Sortable`), which signals intent to the next reader even though PHP itself doesn't require it. We'll meet several of PHP's own built-in interfaces later, in [Chapter 20](ch20-00-advanced-features.md).
+PHP has no special syntax to mark an interface as "just" a contract rather than something more structural. `Formattable`, `Countable`, `Stringable`, `ArrayAccess` are all ordinary interfaces, some built into the language, some yours. Convention favors an adjective ending in *-able* for a single-capability contract (`Formattable`, `Comparable`, `Sortable`). PHP does not require it, but the next reader will thank you. Several of PHP's own built-in interfaces show up in [Chapter 20](ch20-00-advanced-features.md).

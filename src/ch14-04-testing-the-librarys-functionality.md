@@ -1,8 +1,8 @@
 # Adding Functionality with Test-Driven Development
 
-`search()` and `GrepOptions` now live outside the entry script, in files that don't parse `$argv`, don't `echo`, and don't `exit`. That was the whole point of the last section's refactor, and it means, for the first time in this project, we can write a PHPUnit test against them directly, the way [Chapter 12](ch12-00-testing.md) taught. Let's use that to add a real feature: case-insensitive search.
+`search()` and `GrepOptions` now live in files that do not read `$argv`, do not `echo`, and do not `exit`. That was the point of the last section, and it pays off now: for the first time in this project, a PHPUnit test can call them directly, the way [Chapter 12](ch12-00-testing.md) taught. Let's use that to add a real feature, case-insensitive search, and add it test first.
 
-Set up the project the same way you did there:
+Set up PHPUnit the same way you did there:
 
 ```console
 $ composer require --dev phpunit/phpunit
@@ -10,7 +10,7 @@ $ composer require --dev phpunit/phpunit
 
 ## Red: write the test you wish already passed
 
-Go back to `fruits.txt` from a couple of sections ago:
+Back to `fruits.txt`:
 
 ```text
 Apple pie recipe
@@ -19,7 +19,7 @@ Banana bread is better
 cherry clafoutis
 ```
 
-Searching for `apple` right now only finds the lowercase line: `str_contains()` doesn't fold case. Let's write down, as a test, the behavior we actually want: a `GrepOptions` with case-insensitivity turned on should match both `"Apple pie recipe"` and `"apple sauce for the win"`.
+Searching for `apple` finds only the lowercase line, because `str_contains()` does not fold case. Write down, as a test, the behavior you want instead: **a `GrepOptions` with case-insensitivity turned on should match both `"Apple pie recipe"` and `"apple sauce for the win"`.**
 
 ```php
 <?php
@@ -66,7 +66,7 @@ final class SearchTest extends TestCase
 }
 ```
 
-`setUp()` and `tearDown()` are PHPUnit hooks that run before and after *every* test method in the class: perfect for building a fresh temporary fixture file per test and cleaning it up afterward, so tests never depend on leftover state from a previous run.
+`setUp()` and `tearDown()` are PHPUnit hooks that run before and after *every* test method in the class. Here they build a fresh temporary file per test and delete it afterward, so no test ever depends on what a previous run left behind.
 
 Run it:
 
@@ -82,11 +82,13 @@ Time: 00:00.014, Memory: 6.00 MB
 Error: Unknown named parameter $ignoreCase
 ```
 
-That's red. Good, for entirely the right reason. `GrepOptions` doesn't have an `ignoreCase` property at all yet, so PHP can't even construct the object the test asks for. This is the whole rhythm of test-driven development in one step: write the test for the behavior you want *before* the code that provides it exists, watch it fail, and let that failure tell you exactly what to build next.
+Red, and for exactly the right reason. `GrepOptions` has no `ignoreCase` property yet, so PHP cannot even build the object the test asks for. This is the whole rhythm of test-driven development in one step: **write the test for the behavior you want before the code exists, watch it fail, and let the failure tell you what to build next.**
+
+<img src="images/ch14-red-green.png" alt="The test-driven development loop: write a failing test (red light), write just enough code to make it pass (green light), tidy the code, and around again" width="480">
 
 ## Green: make it pass
 
-First, give `GrepOptions` the property the test is asking for:
+First, give `GrepOptions` the property the test asks for:
 
 ```php
 <?php
@@ -113,7 +115,7 @@ final class GrepOptions
 }
 ```
 
-`fromArgv()` passes a hardcoded `false` for now: wiring it up to something the user can actually control is next section's job. Then teach `search()` to honor the flag:
+`fromArgv()` passes a hardcoded `false` for now. Letting the user control it is the next section's job. Then teach `search()` to honor the flag:
 
 ```php
 <?php
@@ -143,7 +145,7 @@ function search(GrepOptions $options): array
 }
 ```
 
-Both `$line` and `$query` get lowercased for the *comparison* when `ignoreCase` is on, but notice it's the original, unmodified `$line` that gets pushed into `$matches`. We want case-insensitive matching, not case-mangled output.
+When `ignoreCase` is on, both the query and the line are lowercased for the *comparison*. Notice what gets pushed into `$matches`, though: the original `$line`, untouched. **We want case-insensitive matching, not case-mangled output.**
 
 ```console
 $ vendor/bin/phpunit tests
@@ -156,7 +158,7 @@ Time: 00:00.013, Memory: 6.00 MB
 OK (1 test, 1 assertion)
 ```
 
-Green. That's the rhythm: red, then green, then (traditionally) refactor, though there's not much worth reshaping here yet. Worth adding one more test while you're in the file, just to pin down the behavior you're *not* changing:
+Green. Red, then green, then, traditionally, refactor, though there is not much worth reshaping here yet. While you are in the file, add one more test, to pin down the behavior you are *not* changing:
 
 ```php
 <?php
@@ -173,4 +175,4 @@ public function testSearchIsCaseSensitiveByDefault(): void
 }
 ```
 
-That one passes immediately: it's not testing new behavior, it's guarding old behavior against a future regression. Both are worth having: the first proves the feature works, the second proves adding it didn't quietly break what was already there.
+It passes at once. It tests nothing new; it guards the old behavior against a future regression. Both tests earn their place: the first proves the feature works, the second proves that adding it did not quietly break what was already there.

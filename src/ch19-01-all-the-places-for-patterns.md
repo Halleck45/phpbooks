@@ -1,10 +1,10 @@
 # Where `match` and Destructuring Can Be Used
 
-Destructuring is assignment that unpacks. Instead of assigning one value to one variable, you assign several values from an array to several variables, in a single statement, by describing the shape you expect on the left-hand side. It shows up in more places than you'd guess once you start looking for it.
+An assignment normally moves one value into one variable. **Destructuring is an assignment that unpacks: several values out of an array, into several variables, in a single statement.** You describe the shape you expect on the left-hand side, and PHP fills in the names.
 
 ## The two spellings
 
-The original syntax uses `list()`:
+PHP has had this for a long time, under the name `list()`:
 
 ```php
 <?php
@@ -16,7 +16,7 @@ list($x, $y) = $coordinates;
 echo "x={$x}, y={$y}\n";
 ```
 
-PHP later added a shorter form using square brackets, which does exactly the same thing and is the one you'll see in modern code:
+The square-bracket form came later and does exactly the same thing:
 
 ```php
 <?php
@@ -28,11 +28,15 @@ $coordinates = [4, 7];
 echo "x={$x}, y={$y}\n";
 ```
 
-Both forms match values positionally: the first element of the array goes to the first variable named, the second to the second, and so on. `list()` still appears in older codebases and a handful of PHP's own documentation examples, so it's worth recognizing, but there's no reason to reach for it in new code: the bracket form is shorter and reads the same.
+<img src="images/ch19-shape-stencil.png" alt="The pattern [$x, $y] drawn as a stencil laid over the array [4, 7], with each value dropping through its hole into the variable with the matching name" width="560">
+
+Both forms match by position: the first element goes to the first name, the second to the second, and so on. `list()` still lives in older codebases and in a few examples of PHP's own documentation, so recognize it when you meet it, but write the bracket form. It is shorter, and it looks like the array it takes apart.
+
+Try it: change the array to `[4, 7, 9]` and run again. Nothing breaks. The third value simply has no name to land in, so it is left where it is.
 
 ## Inside a foreach
 
-Destructuring becomes genuinely useful when you combine it with `foreach`, unpacking each element of a collection as you iterate:
+The first place destructuring really pays off is `foreach`, where you unpack each element as the loop hands it to you:
 
 ```php
 <?php
@@ -55,11 +59,11 @@ Bob is 25 years old.
 Carol is 35 years old.
 ```
 
-Without destructuring, you'd write `$pair[0]` and `$pair[1]` inside the loop body: it works, but it tells the reader nothing about what those positions *mean*. `foreach ($pairs as [$name, $age])` documents the shape of the data right there in the loop header.
+Without it, the loop body would read `$pair[0]` and `$pair[1]`, and whoever reads the code would have to guess what position 0 means. **`foreach ($pairs as [$name, $age])` states the shape of the data in the loop header**, the first line anyone looks at.
 
 ## Skipping elements
 
-Sometimes you only want some of the values an array offers. Leaving a slot empty skips it, without shifting the positions of the ones you do want:
+Sometimes an array offers more than you want. Leave a slot empty and PHP skips it, without shifting the ones that follow:
 
 ```php
 <?php
@@ -71,6 +75,6 @@ $row = [1, 'Second', 'Third'];
 echo "{$second}, {$third}\n"; // Second, Third
 ```
 
-The leading comma with nothing before it says "skip the first element": the variable list has a gap where a name would normally go. This is a small thing, but it reads better than assigning a value to `$unused` you'll never touch.
+The comma with nothing before it says "skip the first one": the list of names has a gap where a name would normally go. A small thing, but it reads better than filling an `$unused` variable you will never touch.
 
-That covers where destructuring shows up. The next section goes deeper into the array-unpacking syntax itself: nesting, matching by key instead of position, and a genuinely useful one-liner for swapping two variables.
+Flat arrays are the easy case. Real ones nest, most carry keys rather than positions, and destructuring follows them there, swap trick included.

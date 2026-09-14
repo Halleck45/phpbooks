@@ -1,6 +1,6 @@
 # The `match` Expression
 
-Back in [Control Flow](ch03-05-control-flow.md), you saw `match(true)` used to test a series of conditions against an HTTP status code, a neat trick, but not actually `match` doing what it's best at. `match`'s real strength shows up when you're comparing one value directly against a small, known set of possibilities, which is precisely what an enum gives you.
+`match` made a brief appearance in [Control Flow](ch03-05-control-flow.md) as `match(true)`, testing one condition after another against an HTTP status code. That was a useful trick, not `match` at its best. **`match` shines when one value is compared against a small, known set of possibilities**, and an enum is exactly that set.
 
 ## Matching directly on an enum case
 
@@ -27,11 +27,15 @@ function nextAction(Status $status): string
 echo nextAction(Status::Pending); // Pack the order
 ```
 
-No `true`, no comparison operators, no range checks: `match ($status)` compares `$status` directly against each arm using strict (`===`) comparison, and returns the value beside whichever arm matched. This is `match` at its cleanest: read top to bottom, it's a direct, literal table mapping each possible case to what should happen for it, and there's no ambiguity about what's being compared against what.
+No `true`, no comparison operator, no range check. `match ($status)` compares the value in the parentheses with each arm using strict `===` comparison, and returns whatever stands right of the arrow on the first arm that fits. Read from top to bottom, the function is a table: one row per case, one answer per row.
+
+<img src="images/ch06-match-table.png" alt="The value Status::Pending arriving at a two-column lookup table, where the row for Pending is highlighted and its answer, Pack the order, comes out on the right" width="560">
+
+Notice the `return` in front of `match`. **`match` is an expression: it produces a value** you can return or assign, where `switch` and `if` only run code. That is why the whole function body fits in a single statement.
 
 ## Multiple conditions per arm
 
-You're not limited to one value per arm: separate several with commas, and any one of them matching is enough:
+An arm can list several values, separated by commas, and any one of them is enough:
 
 ```php
 <?php
@@ -50,11 +54,11 @@ var_dump(isFinal(Status::Cancelled)); // true
 var_dump(isFinal(Status::Pending));   // false
 ```
 
-`Status::Shipped, Status::Cancelled => true` reads naturally as "either of these, same outcome": considerably clearer than writing the same arm twice, or reaching for an `||` inside a `match(true)` construction.
+`Status::Shipped, Status::Cancelled => true` reads as "either of these, same answer". It beats writing the arm twice, and it beats an `||` tucked inside a `match(true)`.
 
 ## Exhaustiveness is enforced
 
-Here's the detail that makes `match` more than a tidier `switch`: every possible case has to be accounted for, either by name or with a `default` arm. Leave one out, and PHP doesn't silently skip it: it throws:
+Here is what makes `match` more than a tidier `switch`. **Every possible value has to be handled, by name or through a `default` arm. If none fits, `match` throws.** Suppose the shop starts accepting returns:
 
 ```php
 <?php
@@ -81,4 +85,14 @@ function nextAction(Status $status): string
 nextAction(Status::Returned); // UnhandledMatchError: Unhandled match case Status::Returned
 ```
 
-This is a real safety feature, not just strictness for its own sake. Add a new case to an enum months from now, forget to update one of the several `match` expressions scattered around your codebase that switch on it, and PHP tells you immediately, loudly, at the exact call site that needed updating, instead of a `switch` statement silently falling through to nothing, or an `if` chain quietly doing the wrong thing for a value nobody anticipated. If a `match` genuinely doesn't need to handle every case explicitly, because most of them share the same fallback behavior, add a `default` arm, exactly like `switch` has always had, and it soaks up anything not named above it.
+The enum grew, the `match` did not, and the first time a returned order reaches `nextAction()` PHP raises an `UnhandledMatchError` on that exact line.
+
+<img src="images/ch06-unhandled-case.png" alt="A new case named Returned arriving at a match table that only has rows for Pending, Shipped and Cancelled, finding no row for itself, with an UnhandledMatchError raised" width="560">
+
+That looks harsh, and it is the feature. Add a case to an enum months from now, forget one of the `match` expressions that read it, and PHP names the place that needs updating. A `switch` with no matching branch does nothing and moves on. An `if` chain quietly runs its `else` for a value nobody planned. A `match` refuses.
+
+Try it: add a `Status::Returned => 'Restock the item'` arm and run the file again.
+
+When most cases really do share one fallback, add a `default` arm, as `switch` has always had. It catches everything not named above it, and tells the reader you chose to treat the rest alike rather than forgot.
+
+> A `match` without `default` is a promise to handle every case. PHP holds you to it.

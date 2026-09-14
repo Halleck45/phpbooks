@@ -1,10 +1,12 @@
 # Talking to a Database with PDO
 
-Every request to `guestbook.php` starts from nothing: PHP, in its classic and still most common form, gives each incoming request a fresh start, running the script from the top and throwing everything away once the response is sent, variables included. Nothing carries over from the last request except what was deliberately saved somewhere. So far, nothing has been. To make messages outlive the request that submitted them, they need to live somewhere PHP can read them back later: a database. ([Chapter 18](ch18-01-request-model.md) covers this shared-nothing request model properly, including why it means PHP rarely needs threads.)
+Sign the guestbook, reload the page, and your message is gone. That is not a bug. PHP, in its classic and still most common form, gives every request a fresh start: it runs the script from the top and throws everything away once the response is sent, variables included. Nothing survives from one request to the next unless it was deliberately saved somewhere, and so far, nothing was. **For a message to outlive the request that submitted it, it has to live somewhere PHP can read it back later: a database.** ([Chapter 18](ch18-01-request-model.md) covers this shared-nothing request model properly, including why it means PHP rarely needs threads.)
+
+<img src="images/ch00-request-cycle.png" alt="The life of a PHP request: a visitor asks for a page, PHP wakes up, does the work, sends the answer, and forgets everything" width="560">
 
 ## PDO and SQLite
 
-PHP talks to databases through several extensions, but **PDO**, the PHP Data Objects extension, is worth reaching for first: it gives you one consistent interface across different database engines, so the same code style works whether the data underneath is MySQL, PostgreSQL, or, as here, **SQLite**. SQLite stores an entire database as a single ordinary file, with no separate server process to install or configure, which makes it the right choice for keeping this chapter's "connected technologies" as simple as the PHP itself.
+PHP talks to databases through several extensions. **PDO, the PHP Data Objects extension, is the one to reach for first**: it gives you one interface for many database engines, so the same code works whether the data sits in MySQL, PostgreSQL, or, as here, SQLite. SQLite stores a whole database in one ordinary file. No server process to install, nothing to configure, which keeps the technology around this chapter as plain as the PHP inside it.
 
 Open a connection near the top of `guestbook.php`:
 
@@ -24,7 +26,9 @@ $pdo->exec('
 ');
 ```
 
-`'sqlite:' . __DIR__ . '/guestbook.db'` is a DSN, a data source name, telling PDO which driver to use and where the database lives; the file is created automatically the first time this runs if it doesn't exist yet. `PDO::ATTR_ERRMODE` set to `PDO::ERRMODE_EXCEPTION` is worth setting every time: without it, PDO fails some operations silently, returning `false` instead of raising anything, which is exactly the kind of quiet failure [Chapter 9](ch09-00-error-handling.md) warned against. With it, a bad query throws a `PDOException`, catchable like any other. `CREATE TABLE IF NOT EXISTS` means this line is safe to leave in the script and run on every single request: it does nothing once the table already exists.
+The string `'sqlite:' . __DIR__ . '/guestbook.db'` is a DSN, a data source name: which driver to use, and where the database lives. The file is created the first time this runs, if it does not exist yet. `CREATE TABLE IF NOT EXISTS` is safe to leave in the script and run on every single request, since it does nothing once the table is there.
+
+The second line deserves a habit. **Set `PDO::ATTR_ERRMODE` to `PDO::ERRMODE_EXCEPTION` every time you open a connection.** Without it, PDO can fail an operation silently and hand you back `false`, exactly the kind of quiet failure [Chapter 9](ch09-00-error-handling.md) warned against. With it, a bad query throws a `PDOException`, catchable like any other.
 
 ## The wrong way to build a query
 
@@ -35,11 +39,13 @@ Before writing the insert, look at the version to avoid:
 $pdo->exec("INSERT INTO entries (name, message, created_at) VALUES ('$name', '$message', '" . date('c') . "')");
 ```
 
-If `$message` contains a single quote followed by SQL of an attacker's choosing, that SQL becomes part of the query PHP actually runs: a classic **SQL injection**, in the same family of bug as the XSS from the previous section, just aimed at your database instead of a visitor's browser. String-building a query out of untrusted values is never safe, no matter how carefully the string looks assembled.
+Read the query the way the database will. If `$message` contains a single quote followed by SQL of the attacker's choosing, that quote closes the string early and the rest becomes part of what actually runs. **That is SQL injection**, the same family of bug as the XSS from the previous section, aimed at your database instead of a visitor's browser. Building a query by gluing untrusted text into a string is never safe, however carefully the string looks assembled.
 
 ## Prepared statements
 
-PDO's real answer is a **prepared statement**: the query's structure is sent to the database first, with placeholders standing in for values, and the actual values are sent separately afterward. The database never treats a value as part of the query's syntax, which closes off injection entirely:
+PDO's answer is the **prepared statement**. The query goes to the database first, with placeholders where the values will go, and the values travel separately afterwards. **The database never reads a value as part of the query's syntax**, so there is no string to break out of, and injection is closed off entirely:
+
+<img src="images/ch10-prepared-statement.png" alt="A prepared statement in two steps: first the query skeleton with empty :name and :message slots is handed to the database, then the values arrive separately in sealed envelopes and are dropped into the slots without ever being read as SQL" width="600">
 
 ```php
 if ($submitted && !$errors) {
@@ -54,18 +60,20 @@ if ($submitted && !$errors) {
 }
 ```
 
-`:name`, `:message`, and `:created_at` are named placeholders; `execute()` takes an associative array matching each placeholder to its value. `prepare()` builds the statement once, `execute()` runs it with a specific set of values, and PDO handles quoting and escaping correctly for whatever database is underneath, which is exactly the part that's easy to get wrong by hand.
+`:name`, `:message`, and `:created_at` are named placeholders. `prepare()` sends the shape of the query once; `execute()` runs it with one set of values, given as an associative array with one key per placeholder. PDO handles the quoting for whatever database sits underneath, which is exactly the part that is easy to get wrong by hand.
+
+> The query is the sentence. The values are filled in afterwards, and can never change the sentence.
 
 ## Listing what's been said so far
 
-Reading the entries back uses the same `prepare()`-and-`execute()` shape, or, for a query with no values to insert, the simpler `query()`:
+Reading the entries back uses the same `prepare()` and `execute()` shape, or, for a query with no values to insert, the simpler `query()`:
 
 ```php
 $entries = $pdo->query('SELECT name, message, created_at FROM entries ORDER BY id DESC')
     ->fetchAll(PDO::FETCH_ASSOC);
 ```
 
-`fetchAll(PDO::FETCH_ASSOC)` returns every row as an array of associative arrays, one per row, each key matching a column name: the same shape of data [Chapter 8](ch08-03-associative-arrays.md) already showed you how to work with. Loop over it in the HTML, escaping each value exactly as before:
+`fetchAll(PDO::FETCH_ASSOC)` returns every row as an associative array keyed by column name, all of them in one plain array: the same shape of data [Chapter 8](ch08-03-associative-arrays.md) showed you how to work with. Loop over it in the HTML, escaping each value exactly as before:
 
 ```php
 <h2>Previous entries</h2>
@@ -80,8 +88,8 @@ $entries = $pdo->query('SELECT name, message, created_at FROM entries ORDER BY i
 </ul>
 ```
 
-Escaping still applies here, and for the same reason as before: these values came from a visitor, by way of the database, and the database doesn't know or care whether they're safe to print as HTML. Storing a value safely and displaying it safely are two separate jobs, and skipping either one reopens exactly the hole the last section closed.
+Escaping still applies, for the same reason as before. These values came from a visitor, by way of the database, and the database neither knows nor cares whether they are safe to print as HTML. **Storing a value safely and displaying it safely are two separate jobs**, and skipping either one reopens the hole the previous section closed.
 
 ## What you've built
 
-Reload the guestbook, sign it a few times, and restart `php -S` entirely: the entries are still there, because they never lived in memory in the first place, just in `guestbook.db`, on disk, independent of any one request. That's the whole shape of a real, if tiny, web application: accept input through superglobals, validate it, escape it on the way back out, and persist it safely through prepared statements. The final project, next, builds something structurally larger on the same foundation: more routes, real controller classes, a proper view layer, but nothing about the underlying ideas changes. You've already done the part that actually matters.
+Reload the guestbook, sign it a few times, then stop `php -S` and start it again. The entries are still there. They never lived in memory; they live in `guestbook.db`, on disk, independent of any one request. That is the whole shape of a real, if tiny, web application: accept input through superglobals, validate it, escape it on the way out, store it through prepared statements. The book's final project builds something larger on the same foundation, with more routes, controller classes and a proper view layer, and nothing about the underlying ideas changes. You have already done the part that matters.

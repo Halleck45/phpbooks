@@ -1,8 +1,8 @@
 # Writing to Standard Error
 
-phpgrep has been printing everything the same way since the very first section: matches, usage messages, and error text all go through `echo`, all landing on the same output stream. That's been a quiet, low-grade problem the whole time, and this section is where it finally bites.
+Since the first section, phpgrep has printed everything the same way. Matches, usage message, error text: all through `echo`, all onto the same stream. That has been a quiet problem the whole time, and this is where it bites.
 
-Every process has two separate output streams, not one: **standard output** (`STDOUT`), where a program's actual results belong, and **standard error** (`STDERR`), where diagnostics, warnings, and error messages belong. `echo` always writes to the first one. phpgrep's error messages have been going there too, right alongside legitimate matches, which is fine, as long as you only ever look at the terminal directly. It stops being fine the moment someone pipes phpgrep's output somewhere else, which is the entire reason command-line tools exist.
+**Every process has two output streams, not one.** Standard output (`STDOUT`) is for the program's results. Standard error (`STDERR`) is for diagnostics, warnings and error messages. `echo` always writes to the first. So phpgrep's errors have been landing right next to its matches, which is fine as long as you only ever read the terminal directly. It stops being fine the moment someone sends phpgrep's output somewhere else, which is the entire reason command-line tools exist.
 
 ## Watch it go wrong
 
@@ -12,11 +12,13 @@ $ cat results.txt
 Error: Cannot read file: missing.txt
 ```
 
-That error message just landed *inside* `results.txt`. Whatever consumed that file next (another script, a report, a colleague trusting it contained only search results) now has to contend with a stray error line mixed into what should have been clean data, with nothing marking it as different from a real result. This is exactly the failure mode `STDOUT`/`STDERR` separation exists to prevent, and it's why every well-behaved command-line tool keeps the two apart.
+The error message landed *inside* `results.txt`. Whatever reads that file next (another script, a report, a colleague trusting it holds only matches) now has a stray error line mixed into its data, with nothing marking it as different from a real result. This is exactly the mix-up the two streams exist to prevent.
+
+<img src="images/ch14-two-streams.png" alt="A program with two pipes coming out of it: STDOUT flows into a file named results.txt, STDERR flows to the screen. The two never meet" width="600">
 
 ## Fixing it with `fwrite(STDERR, ...)`
 
-PHP exposes standard error as the constant `STDERR`, and `fwrite()` writes to it directly, bypassing `echo` entirely:
+PHP exposes standard error as the constant `STDERR`, and `fwrite()` writes to it directly, bypassing `echo`:
 
 ```php
 <?php
@@ -53,7 +55,7 @@ function main(array $argv): int
 exit(main($argv));
 ```
 
-Only two lines changed: `echo` became `fwrite(STDERR, ...)` in both error paths, but the behavior at the boundary is completely different now:
+Two lines changed, `echo` became `fwrite(STDERR, ...)` on both error paths, and the behavior at the boundary is completely different:
 
 ```console
 $ php phpgrep.php apple missing.txt > results.txt
@@ -62,12 +64,14 @@ $ cat results.txt
 $
 ```
 
-The error message still shows up on your terminal immediately: `STDERR` is not hidden, it's just a *different* stream, one that redirecting `STDOUT` with `>` doesn't touch. And `results.txt` is now empty, exactly as it should be: no matches were found because the search never ran, and no error text is masquerading as a result. Try it again against a file that actually has matches, and the split holds up the same way: real results go to `results.txt`, any error text stays on your terminal, and the two never mix regardless of what you redirect.
+The error still shows up on your terminal immediately. **`STDERR` is not hidden, it is a different stream**, one that redirecting `STDOUT` with `>` does not touch. And `results.txt` is now empty, exactly as it should be: no match was found because the search never ran, and no error text is posing as a result. Try it against a file that does have matches, and the split holds: results go to `results.txt`, errors stay on your screen, and the two never mix.
+
+> Results go to `STDOUT`. Everything else goes to `STDERR`.
 
 ## Exit codes, one more time
 
-`main()` still returns an `int` rather than calling `exit()` from inside itself, and the single `exit(main($argv))` at the bottom of the file is still the only place the process actually terminates. That discipline from a couple of sections ago is doing double duty now. It's what let `SearchTest` call `search()` directly without launching a process, and it's the same reason `main()`'s return value cleanly becomes the process's real exit code here: `1` on either failure path, `0` when it reaches the end having printed whatever it found, including printing nothing at all, which is a legitimate, successful outcome for a search tool, not a failure. A shell script or CI pipeline chaining phpgrep together with other commands can rely on that exit code exactly the way it relies on every other well-behaved Unix tool, without ever needing to parse phpgrep's output to figure out whether it worked.
+`main()` still returns an `int`, and `exit(main($argv))` at the bottom of the file is still the only place the process ends. That discipline from two sections ago is doing double duty now. It is what let `SearchTest` call `search()` without launching a process, and it is why `main()`'s return value becomes the real exit code: `1` on either failure path, `0` when it reaches the end having printed whatever it found. Printing nothing at all is a successful outcome for a search tool, not a failure. A shell script or a CI pipeline can chain phpgrep with other commands and trust that code, the way it trusts every other well-behaved Unix tool, without parsing phpgrep's output to know whether it worked.
 
-That's phpgrep, for now: it accepts arguments properly, reads a file and searches it, fails loudly and specifically when it can't, is backed by tests that exercise its actual logic, respects an environment variable, and keeps its results and its errors on separate streams the way a command-line tool should. It's a small program, but there's very little about it left to apologize for.
+That is phpgrep, for now. It accepts its arguments properly, reads a file and searches it, fails loudly and specifically when it cannot, is backed by tests of its real logic, respects an environment variable, and keeps results and errors on separate streams. A small program, with very little left to apologize for.
 
-One more improvement is coming. [Chapter 15](ch15-00-functional-features.md) introduces generators, and once it does, it comes back to this exact project for one last pass.
+One improvement remains. [Chapter 15](ch15-00-functional-features.md) introduces generators, and comes back to this exact project for one last pass.

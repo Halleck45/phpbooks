@@ -1,9 +1,13 @@
 # Concurrency in PHP: A Brief Tour
 
-Here's an unusual thing to say in a programming book: you can skip this chapter, come back to it in a year, and lose nothing. Most PHP developers write years of production code, real code, serving real traffic, without ever touching a thread, a fiber, or a process fork. That's not a gap in their skills. It's how the language was designed to be used, and for the overwhelming majority of PHP work, from small business sites to large e-commerce platforms, it's still the right way to work.
+You can skip this chapter, come back to it in a year, and lose nothing.
 
-That makes this chapter different from almost every other one in this book. Elsewhere, I've been telling you "this is something you'll use constantly, learn it well." Here, I'm telling you the opposite: this is an advanced, optional tour. Read it to understand why PHP behaves the way it does and what your options are when you eventually hit a case that needs more, not because you need any of it to write ordinary PHP applications.
+That is an unusual thing to read in a programming book, so here is why it is true. Most PHP developers write years of production code, real code serving real traffic, without ever touching a thread, a fiber, or a process fork. That is not a gap in their skills. **PHP was designed so that ordinary applications never have to deal with concurrency themselves**, and for the vast majority of PHP work, from a small business site to a large online shop, that is still the right way to work.
 
-So why include it at all? Because sooner or later you'll wonder why PHP doesn't have threads the way Java or C# does, or you'll need to send a welcome email without making the user wait for it. This chapter answers those questions at a level that lets you hold an intelligent conversation about them, and know what to search for when the day comes that you actually need more.
+So this chapter is different from the others. Elsewhere, the book says "you will use this constantly, learn it well". Here it says the opposite: this is a short, optional tour. Nothing in it is needed to write everyday PHP.
 
-We'll look at two things: the request model that made explicit concurrency largely unnecessary in traditional PHP, and the everyday tools (queues, background processes) that PHP developers actually reach for when work needs to happen outside the request/response cycle.
+Why include it at all? Because sooner or later, two questions come up. Why doesn't PHP have threads the way Java or C# do? And how do you send a welcome email without making the user wait for it? The two questions share an answer, and it takes two short sections to give it: first [the request model](ch18-01-request-model.md), which made explicit concurrency largely unnecessary in PHP, then [queues and background processes](ch18-02-queues-and-processes.md), the everyday tools PHP developers reach for when work has to happen outside the request.
+
+> Nothing here is required. Read it out of curiosity, or keep it for the day you need it.
+
+Either way, you will come out knowing why PHP behaves the way it does, what your options are when the request model is not enough, and what to search for when you need more.

@@ -1,6 +1,6 @@
 # Improving Our CLI Project
 
-Chapter 14 left `phpgrep` in working order, with `search()` doing the real work:
+Point `phpgrep` at a two-gigabyte log file and watch. Nothing happens for a long while. Then every matching line pours out at once. The `search()` you wrote in [Chapter 14](ch14-00-a-cli-project.md) is the reason:
 
 ```php
 <?php
@@ -29,11 +29,11 @@ function search(GrepOptions $options): array
 }
 ```
 
-It works, and for the log files you tested it against, it's fast enough that you never noticed anything wrong. Try it against a two-gigabyte log file, though, and you'll notice two things at once: `file_get_contents()` reads the *entire* file into a single string before `search()` does anything else, and `$matches` keeps growing for as long as the loop runs. If that file has half a million matching lines, `search()` doesn't hand back a single one of them until it has built an array holding all half million, and every line of the file, plus every matched line, is sitting in memory at the same time along the way.
+Two things are happening at once. `file_get_contents()` reads the *entire* file into one string before `search()` does anything else, and `$matches` keeps growing for as long as the loop runs. With half a million matching lines, `search()` hands back nothing until it has built an array holding all of them. **The whole file and every match are sitting in memory at the same time**, and the user sees nothing until the last line has been checked.
 
 ## Rewriting `search()` as a generator
 
-Now that you know `yield`, the fix is direct: stop building `$matches`, and `yield` each match as you find it. But there's a second change worth making at the same time: swap `file_get_contents()` (which reads the whole file up front) for `fopen()` and `fgets()`, which read it one line at a time. Otherwise you'd still be loading the entire file into memory before the generator even started producing anything, which defeats half the point:
+Now that you know `yield`, the first fix is direct: stop collecting into `$matches`, and `yield` each match the moment you find it. A second change goes with it. `file_get_contents()` would still load the whole file up front, so swap it for `fopen()` and `fgets()`, which read one line at a time. Otherwise the generator would be lazy about a file that was already entirely in memory, which defeats half the point:
 
 ```php
 <?php
@@ -61,11 +61,15 @@ function searchLines(GrepOptions $options): Generator
 }
 ```
 
-Two things changed shape, not just syntax. The file itself is now read a line at a time via `fgets()`, instead of all at once via `file_get_contents()`. And instead of appending to an array and returning it once the whole file has been scanned, `searchLines()` yields each match the moment it's found, then goes right back to reading. Notice the exception check moved too: `fopen()` failing is now the thing that throws, since there's no `file_get_contents()` call left to fail. The `RuntimeException` (the same class you saw introduced back in [Chapter 9](ch09-02-exceptions.md)) still gets thrown before any `yield` happens, so a caller who never starts iterating never even attempts to open a file that doesn't exist... except that's not quite true, and it's worth being honest about why: because `searchLines()`'s body contains `yield`, calling it doesn't run any of this code yet, `fopen()` included. The exception won't actually fire until the caller starts iterating. We'll deal with that directly in the main script.
+<img src="images/ch15-grep-stream.png" alt="Before: the whole file is lifted into memory and matches pile up while the screen stays blank. After: lines flow one at a time through the function to the screen, and memory holds a single line" width="600">
+
+The file is now read a line at a time, and each match leaves through `yield` as soon as it is found, before the next line is even read. **At any moment, the function holds one line and nothing else.** The error check moved as well: with no `file_get_contents()` left to fail, it is `fopen()` that reports a missing file, with the same `RuntimeException` you met in [Chapter 9](ch09-02-exceptions.md).
+
+That exception hides a subtlety, and it deserves a straight explanation. Because the body of `searchLines()` contains `yield`, calling `searchLines($options)` runs none of it, `fopen()` included. **The exception does not fire when you call the function. It fires when someone starts iterating.** That changes where you have to catch it.
 
 ## Updating `phpgrep.php`
 
-The main script's job barely changes: it still loops over whatever `search` gives it and prints each line, but the `try`/`catch` now has to wrap the loop itself, not just the call:
+The main script barely changes: it still loops over what the search gives it and prints each line. But the `try`/`catch` must now wrap the loop, not just the call:
 
 ```php
 <?php
@@ -85,8 +89,12 @@ try {
 }
 ```
 
-That last point matters in practice, not just in theory: calling `searchLines($options)` on its own line, outside the `try`, would silently swallow the "file not found" case, because nothing would have actually tried to open the file yet. Wrapping the `foreach` instead of the call makes sure the exception, deferred as it is, still gets caught where you expect it.
+Try it the wrong way: keep the `try` around the call alone, put the `foreach` after the `catch`, and run `phpgrep` on a file that does not exist. The `try` block finishes without a complaint, since nothing has opened the file yet, and the exception bursts out of the `foreach` a few lines later, uncaught, with a stack trace instead of your tidy error message.
+
+> With a generator, the error happens where the values are pulled, not where the function is called. Catch it there.
 
 ## Why this is worth doing
 
-Point `phpgrep` at that same two-gigabyte log file again. With the array-returning `search()`, you wait, however long it takes to scan the entire file, and then, all at once, half a million lines print in a burst, after the program has held every one of them in memory simultaneously. With `searchLines()`, the very first match appears on screen almost immediately, before the rest of the file has even been read, because `foreach` only needed the *first* yielded value to start printing. And the program's memory footprint stays flat throughout the whole run, regardless of file size or match count, because at any given moment it's holding exactly one line: never "all matches so far," never the whole file. That's the entire trade generators offer: earlier results, and a memory ceiling that doesn't move no matter how big the input gets.
+Point `phpgrep` at that two-gigabyte log again. With the array-returning `search()`, you wait for the entire file to be scanned, and then half a million lines print in one burst, after the program has held every one of them in memory. With `searchLines()`, **the first match appears almost immediately**, before the rest of the file has been read, because `foreach` only needed one value to start printing. And memory stays flat for the whole run, whatever the file size and the number of matches, because the program holds exactly one line at a time. Never "all matches so far", never the whole file.
+
+That is the trade a generator offers: earlier results, and a memory ceiling that does not move no matter how big the input gets.

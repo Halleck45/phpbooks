@@ -1,10 +1,10 @@
 # Structuring a Small MVC-Style App
 
-The previous section's router works, but it doesn't scale past a handful of routes: every route's logic lives inline, as a closure, tangled up with the routing itself. Real applications separate those concerns: the classic split is **Model, View, Controller**, usually shortened to MVC. We won't build a full framework's worth of it, but the shape is worth having: a **controller** decides what should happen for a given request, and a **view** decides how the result gets turned into HTML. Two or three routes are enough to see the pattern clearly.
+Two routes, two closures, one file: the router from the previous section works. Add ten more routes and it stops being readable, because what each route *does* is tangled up with how it was *found*. Real applications pull those two apart. The classic split is **Model, View, Controller**, MVC for short, and even at our scale the shape is worth having: **a controller decides what should happen for a request, and a view decides how the result turns into HTML.** There is no model yet, because there is no data to hold. Two or three routes are enough to see the pattern.
 
 ## Controllers
 
-A controller, at this scale, is nothing more exotic than a class whose methods each handle one route and return a response body as a string:
+A controller, at this size, is a class whose methods each handle one route and return the response body as a string:
 
 ```php
 <?php
@@ -29,13 +29,13 @@ class AboutController
 }
 ```
 
-Nothing here talks to `$_SERVER` or knows what URI it was reached by: that's the router's job, not the controller's. Each method's only responsibility is producing a response, which keeps it easy to reason about, and easy to test in isolation.
+Notice what is missing. Nothing here reads `$_SERVER`, nothing knows which URI led to it. That is the router's business. **A controller method has one job: produce a response.** That keeps it easy to read, and easy to test: call `(new HomeController())->index()` and look at the string that comes back.
 
 ## Views: PHP's original superpower
 
-`render()` is where the view layer lives, and it's worth pointing out something PHP has been good at from the very start: PHP *is* a templating language underneath the programming language; that was literally its original purpose, before it grew everything else. A "view" here is just an ordinary PHP file with HTML in it and small islands of PHP for the dynamic parts, the same `<?php ... ?>`-in-HTML style you'd have used to build the very first pages this book showed you.
+`render()` is where the view layer lives, and it leans on something PHP has been good at from day one. **PHP is a templating language underneath the programming language.** That was its original purpose, before it grew everything else. A view is an ordinary file with HTML in it and small islands of PHP for the moving parts, the same `<?php ... ?>`-in-HTML style as the very first pages this book showed you.
 
-Create `views/home.php`. Unlike the other code samples in this book, this one is an HTML file with small islands of PHP in it, not a PHP file in its own right, so it doesn't open with `<?php`:
+Create `views/home.php`. Unlike the other code samples in this book, this one is an HTML file with islands of PHP in it, not a PHP file in its own right, so it does not open with `<?php`:
 
 ```html
 <!DOCTYPE html>
@@ -62,7 +62,11 @@ function render(string $view, array $data = []): string
 }
 ```
 
-`extract()` turns each key of `$data` into a local variable: `'title' => 'Welcome'` becomes a variable `$title`, visible inside the included file. `ob_start()` and `ob_get_clean()` are output buffering: instead of letting the included file's HTML print straight to the browser, we capture it as a string and hand it back, so the controller can return it like any other value. Notice `<?= $title ?>` inside the view: the `<?= ?>` tag is shorthand for `<?php echo ?>`, and it's routed through `htmlspecialchars()` here specifically to avoid rendering user-influenced data as raw HTML.
+Four lines, each with a job. **`extract()` turns each key of `$data` into a local variable**: `'title' => 'Welcome'` becomes `$title`, visible inside the included file. **`ob_start()` and `ob_get_clean()` are output buffering.** Without them, the included file's HTML would print straight to the browser. With them, it is caught in a buffer and handed back as a string, so the controller can return it like any other value.
+
+<img src="images/ch21-output-buffer.png" alt="Without output buffering, a view's HTML flows straight to the browser; with ob_start(), a bucket catches it and hands it back to the controller as a string" width="600">
+
+Back in the view, `<?= ... ?>` is shorthand for `<?php echo ... ?>`, and `$title` goes through `htmlspecialchars()` before it is printed. That one call is what stops text that came from a user from being rendered as raw HTML. Make it a reflex.
 
 ## Wiring the router to controllers
 
@@ -90,4 +94,14 @@ if (isset($routes[$uri])) {
 }
 ```
 
-The `$routes` array now maps each path to a `[class, method]` pair instead of a closure, destructured right there with `[$class, $method] = $routes[$uri]`, the syntax from [Chapter 19](ch19-02-destructuring.md). `new $class()` instantiates the controller, and `->{$method}()` calls the matching method on it. It's a small amount of machinery, but it's genuinely the same idea every framework's router is built on: look at the request, find a class and method responsible for it, call it, return what it gives you.
+`$routes` now maps each path to a `[class, method]` pair instead of a closure. The pair is destructured on the spot with `[$class, $method] = $routes[$uri]`, the syntax from [Chapter 19](ch19-02-destructuring.md); `new $class()` builds the controller, and `->{$method}()` calls the method on it.
+
+Follow one request all the way through.
+
+<img src="images/ch21-request-path.png" alt="The round trip of one request: the browser asks for a path, the router finds the controller and method in its table, the controller calls render(), which fills the view and captures its HTML, and the HTML travels back to the browser" width="620">
+
+The browser asks for `/`. The router finds `HomeController` and `index` in its table, builds the controller, calls the method. The method calls `render('home', ...)`, which includes `views/home.php` with its output captured and returns the HTML as a string. The string travels back to the router, which echoes it. Response sent.
+
+**That round trip is what every framework's router is built on**: look at the request, find the class and method responsible for it, call them, return what they give you. The machinery is small, and it is the whole idea.
+
+Try it: `/about` has a controller but no view. Write `views/about.php` on the model of `home.php`, with `$description` in it, and ask `curl` for `/about`.

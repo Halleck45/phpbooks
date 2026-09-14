@@ -1,6 +1,6 @@
 # Accepting Input with HTML Forms and Superglobals
 
-PHP has no special syntax for "this script is a web page." What it has instead is a handful of arrays that PHP fills in for you before a single line of your code runs, populated from whatever the browser sent along with the request. Those arrays are called **superglobals**, and they're available in every scope without needing `global` or a parameter: no importing, no passing them around, just there.
+PHP has no special syntax for "this script is a web page". A web script is an ordinary script. What changes is where its input comes from: **before your first line runs, PHP has already unpacked the request into a handful of arrays**, and your code reads them like any other array. They are called superglobals because they are available in every scope, inside functions included, with no `global` keyword and no parameter. They are just there.
 
 ## A plain HTML form
 
@@ -28,7 +28,9 @@ Start with the form itself. Create `guestbook.php`:
 </html>
 ```
 
-Nothing here is PHP yet: it's a `<form>` with `method="post"` and no `action` attribute, which means submitting it sends a `POST` request back to this same URL. `method="get"` is the other common choice, and the difference matters: a `GET` request encodes its data right in the URL (`?name=Alice`), visible in the address bar and in server logs, fine for a search box, wrong for anything sensitive or anything that changes data. A guestbook entry is exactly the kind of thing that belongs in a `POST` body instead.
+Nothing here is PHP yet. It is a `<form>` with `method="post"` and no `action` attribute, so submitting it sends a `POST` request back to this same URL. The other common choice is `method="get"`, and the difference matters. **A `GET` request writes its data in the URL** (`?name=Alice`), visible in the address bar and in server logs: fine for a search box, wrong for anything private, and wrong for anything that changes data. A `POST` request carries its data in the body of the request, out of sight. A guestbook entry belongs there.
+
+<img src="images/ch10-get-vs-post.png" alt="Two envelopes side by side: the GET envelope has the data written on the outside, in the address, while the POST envelope has the data folded inside and only the address visible" width="520">
 
 Serve it with PHP's built-in development server:
 
@@ -36,21 +38,19 @@ Serve it with PHP's built-in development server:
 $ php -S localhost:8000
 ```
 
-Visit `http://localhost:8000` and the form renders, but submitting it does nothing yet: the same page reloads, and whatever you typed is gone. Reading what was submitted is PHP's job, and it hasn't been asked to do it yet.
+Visit `http://localhost:8000` and the form shows up. Fill it in, submit it, and nothing happens: the same page reloads, and what you typed is gone. Reading the submission is PHP's job, and nobody has asked yet.
 
 ## Superglobals: `$_GET`, `$_POST`, `$_SERVER`
 
-Three superglobals matter most for a script like this one:
+Three of them matter for a script like this one. **`$_POST` holds the form fields sent in the body of a `POST` request**, as an associative array, one key per field name. `$_GET` holds the parameters of the query string, the part of the URL after the `?`; it is filled for any request, but by convention you read it on `GET` requests. `$_SERVER` describes the request and the server itself, and one entry does most of the work here: `$_SERVER['REQUEST_METHOD']`, which is `'GET'` or `'POST'`, is how a single script can both show a blank form and process a submitted one.
 
-- `$_GET`: an associative array of query-string parameters, populated for any request, but conventionally read on `GET` requests.
-- `$_POST`: an associative array of the form fields submitted in a `POST` request's body.
-- `$_SERVER`: information about the request and the server itself. `$_SERVER['REQUEST_METHOD']` (`'GET'` or `'POST'`) is what lets one script handle both showing a blank form and processing a submitted one.
+<img src="images/ch10-form-submission.png" alt="A submitted form travels as a POST request whose body contains name=Alice and message=Hello, and PHP unpacks it into the $_POST array with a name key and a message key before the script starts" width="600">
 
-There's also `$_REQUEST`, which merges `$_GET`, `$_POST`, and cookie data together. It's convenient and best avoided: your script ends up unable to tell whether a value arrived in the URL or the request body, which matters more than it sounds like it should once security is on the table, in the next section.
+There is also `$_REQUEST`, which merges `$_GET`, `$_POST` and cookie data into one array. It is convenient, and best left alone: with it, your script can no longer tell whether a value came from the URL or from the request body, and that distinction matters more than it seems once security enters the picture, in the next section.
 
 ## Reading the submission
 
-Add PHP to the top of `guestbook.php`, before the `<!DOCTYPE html>` line:
+Add PHP at the top of `guestbook.php`, before the `<!DOCTYPE html>` line:
 
 ```php
 <?php
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 ```
 
-The null coalescing operator `??` (from [Chapter 3](ch03-02-data-types.md)) covers the case where a field is missing entirely: a request forged by hand, or a browser quirk, shouldn't produce an "undefined array key" warning. Then, further down the file, show the submission when there is one:
+The `if` is the script asking "was a form submitted, or is someone just looking?". The null coalescing operator `??` (from [Chapter 3](ch03-02-data-types.md)) covers a field that is missing entirely: a request forged by hand should not produce an "undefined array key" warning. Further down the file, show the submission when there is one:
 
 ```php
 <body>
@@ -80,14 +80,16 @@ The null coalescing operator `??` (from [Chapter 3](ch03-02-data-types.md)) cove
     <form method="post">
 ```
 
-Reload, fill in the form, and submit it: the page now greets you back with exactly what you typed. Try `curl` instead of a browser, to see the request itself:
+`<?= $name ?>` is a short form of `<?php echo $name ?>`, made for exactly this: dropping one value into the middle of HTML. Reload, fill in the form, submit. The page greets you with exactly what you typed. To see the request itself, without a browser, try `curl`:
 
 ```console
 $ curl -X POST -d "name=Alice&message=Hello there" http://localhost:8000/
 ```
 
-The response includes `Thanks, Alice. You wrote: Hello there`, the same greeting, built entirely from `$_POST`.
+The response contains `Thanks, Alice. You wrote: Hello there`. Same greeting, built entirely from `$_POST`, and the browser turned out to be optional. **Anything that can send an HTTP request can fill in your form.**
+
+> A form is a request with data in it. PHP unpacks it into `$_POST` before your code starts.
 
 ## The problem you can already see coming
 
-That last `echo`, by way of `<?= ?>`, prints `$name` and `$message` straight into the page, completely unfiltered. Try submitting `<b>bold</b>` as your name. It renders as bold text, not literal angle brackets, which means the guestbook is currently willing to run *any* HTML a visitor types, not just yours. The next section deals with exactly that, before anything gets stored anywhere permanent.
+That `<?= ?>` prints `$name` and `$message` straight into the page, unfiltered. Try it: submit `<b>bold</b>` as your name. The page shows your name in bold, not with literal angle brackets. **The guestbook currently runs any HTML a visitor types, not just yours.** The next section closes that hole, before anything gets stored anywhere permanent.

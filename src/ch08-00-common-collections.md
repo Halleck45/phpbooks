@@ -1,9 +1,15 @@
 # Common Collections
 
-You've been using arrays since [Chapter 3](ch03-02-data-types.md), mostly by glimpse: a `$fruits = ["apple", "banana"]` here, a `foreach` there, enough to keep an example moving without stopping to explain itself. That stops now. Arrays are PHP's single most important data structure, used constantly for things other languages hand off to half a dozen specialized types, and they deserve a chapter that actually does them justice rather than one that assumes you'll pick up the rest by osmosis.
+A shopping list, a phone book, a stack of index cards, a row from a database. In most languages those are four different types. In PHP they are all one thing: an array.
 
-The reason PHP gets away with one data structure doing so much work is that a PHP array isn't really a list or a dictionary underneath: it's an ordered map, always, and "list" versus "dictionary" is just a matter of which keys you happen to be using. Understand that one fact early and a lot of otherwise-surprising behavior (why order is preserved, why `array_filter()` leaves gaps in the keys, why `count()` is instant) stops being surprising and starts being obvious.
+You have been using arrays since [Chapter 3](ch03-02-data-types.md), a `$fruits = ["apple", "banana"]` here, a `foreach` there, enough to keep an example moving. That was on credit. **Arrays are the structure PHP programs are built out of**, and they deserve to be understood properly, once, rather than picked up by osmosis.
 
-This chapter also detours into strings, and that's deliberate rather than a change of subject. Strings and arrays are joined at the hip in everyday PHP: you split one into the other, you glue arrays of strings back together, and the moment your strings contain anything beyond plain ASCII (an accented name, a currency symbol, an emoji) you run straight into UTF-8, which PHP handles, but only if you ask it to correctly.
+<img src="images/ch08-one-array-many-hats.png" alt="A single PHP array drawn as a Swiss army knife whose blades are labeled list, dictionary, stack and record: one structure doing the work of many" width="520">
 
-We'll cover three things in turn: indexed arrays, the list-style arrays you already have some intuition for; strings, with an honest look at the byte-versus-character distinction that trips up nearly everyone at some point; and associative arrays, where string keys turn the same underlying structure into something closer to a small, flexible record. By the end, you'll have real command of the tools you'll reach for in nearly every PHP program you write from here on.
+The reason one structure can do so much is the key to the whole chapter. **A PHP array is always an ordered map**: keys, each pointing at a value, kept in the order you added them. Use 0, 1, 2 as keys and it looks like a list. Use words and it looks like a dictionary. Underneath, nothing changed. Hold on to that fact and a lot of otherwise surprising behavior (why order is preserved, why `array_filter()` leaves gaps in the keys, why `count()` is instant) turns obvious.
+
+> A list and a dictionary are the same PHP array wearing different keys.
+
+The chapter also stops on strings, and that is not a change of subject. Strings and arrays live side by side in everyday PHP: you split one into the other and glue arrays of strings back together all day long. And the moment a string holds anything beyond plain English (an accented name, a currency symbol, an emoji), you meet UTF-8, which PHP handles well, but only when asked correctly.
+
+[Indexed arrays](ch08-01-indexed-arrays.md) come first, since you already have a feel for lists. Then [strings](ch08-02-strings.md), with an honest look at bytes versus characters, the distinction that trips up nearly everyone once. Then [associative arrays](ch08-03-associative-arrays.md), where keys you choose yourself turn the same structure into a small, flexible record.

@@ -1,10 +1,10 @@
 # An Example Program Using Classes
 
-Let's see why you'd actually reach for a class, by writing the same small problem two ways.
+The best way to see why a class earns its place is to write the same small problem twice, once with a loose array and once with a class, and watch where the first version breaks.
 
 ## The problem, with loose arrays
 
-Say you're building the start of a shop. Each product has a name, a price, and a quantity in the cart, and you need to compute a line total. The array-based version looks perfectly reasonable at first:
+You are building the start of a shop. Each product has a name, a price, and a quantity in the cart, and you need a line total. The array version looks perfectly reasonable:
 
 ```php
 <?php
@@ -38,7 +38,7 @@ $item = [
 echo lineTotal($item); // Warning: Undefined array key "price"
 ```
 
-That warning fires deep inside `lineTotal()`, far from where the actual mistake was made. Nothing in `$item`'s definition told you what keys it was supposed to have, and nothing checked that `price` was even a number until the moment it was multiplied. As the shop grows (discounts, tax rates, stock levels), every function touching a product array has to independently agree on the same set of magic string keys, and every one of them is a typo away from failing quietly or loudly, at runtime, nowhere near the actual bug.
+**The warning fires deep inside `lineTotal()`, far from where the mistake was made.** Nothing in `$item` said which keys it was supposed to have, and nothing checked that `price` was a number until the moment it was multiplied. Let the shop grow (discounts, tax rates, stock levels) and every function that touches a product array must independently agree on the same magic string keys. Each one is a typo away from failing at runtime, nowhere near the actual bug.
 
 ## The same problem, with a class
 
@@ -66,7 +66,7 @@ class Product
 }
 ```
 
-`Product` now names its shape once, in one place. Try to build one with a typo'd property name, and there's nothing to typo: `new Product(...)` demands exactly `name`, `price`, and `quantity`, in that order, each with a declared type. Get the types wrong and, with `strict_types` on, PHP stops you immediately rather than letting a string quietly stand in for a price:
+**`Product` names its shape once, in one place.** There is nothing left to misspell: `new Product(...)` demands exactly a name, a price, and a quantity, in that order, each with a declared type. Get a type wrong and, with `strict_types` on, PHP stops you on the spot rather than letting a string quietly stand in for a price:
 
 ```php
 <?php
@@ -76,7 +76,11 @@ $mug = new Product('Coffee mug', 8.50, 3);
 echo $mug->totalPrice(); // 25.5
 ```
 
-`totalPrice()` lives on `Product` itself now, not as a free-floating function somewhere else that has to be told the shape of its argument. Anyone holding a `Product`, anywhere in the codebase, written by anyone, can call `$product->totalPrice()` and get the right answer, because the logic for computing it travels with the data it operates on.
+Try it: pass `'3'`, in quotes, as the quantity, in a file with `strict_types` on. PHP refuses with a `TypeError` before the object even exists.
+
+<img src="images/ch05-logic-with-data.png" alt="Before and after: on the left, an $item box of loose tags and a distant lineTotal machine joined by a fraying string; on the right, a single Product suitcase with the tags printed on it and a totalPrice calculator built into the handle" width="600">
+
+`totalPrice()` lives on `Product` now, not in a free-floating function that has to be told the shape of its argument. **Whoever holds a `Product`, anywhere in the codebase, can call `$product->totalPrice()` and get the right answer, because the logic travels with the data it works on.**
 
 ## Using it in a small program
 
@@ -110,4 +114,6 @@ Pen: $5.5
 Total: $39.5
 ```
 
-Notice `$cart` is still an ordinary array: classes don't replace arrays, they replace what you'd otherwise be forced to stuff *into* one. Here the array is doing exactly what it's good at, holding an ordered list of things, while each individual thing is a `Product` that knows its own shape and its own arithmetic. That combination, plain arrays for collections, classes for the things they collect, is the pattern you'll use constantly for the rest of this book.
+Look at `$cart`: it is still an ordinary array. **Classes do not replace arrays. They replace what you would otherwise be forced to stuff into one.** The array here does what arrays are good at, holding an ordered list of things, while each thing is a `Product` that knows its own shape and its own arithmetic.
+
+> Plain arrays for collections, classes for the things they collect. You will use this pairing for the rest of the book.

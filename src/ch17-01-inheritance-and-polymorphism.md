@@ -1,10 +1,10 @@
 # Classes, Inheritance, and Polymorphism
 
-You've defined classes since Chapter 5 and implemented interfaces since Chapter 11, but so far every class you've written has stood alone. Real designs usually involve classes that are variations on a theme: several kinds of the same basic idea, sharing some behavior and differing in the rest. That's what inheritance is for.
+A shop takes credit cards. Then it takes PayPal. Next quarter it will take bank transfers. Each one charges money in its own way, yet from the checkout's point of view they are all the same thing: a way to pay. **Inheritance is how you tell PHP that several classes are variations on one idea**, sharing what they have in common and differing only where they must. Every class you have written since Chapter 5 has stood alone. Time to make some of them related.
 
 ## `extends` and method overriding
 
-A class can build on another with `extends`, inheriting its properties and methods and overriding whichever ones need to behave differently:
+A class builds on another with `extends`, inheriting its properties and methods and replacing whichever ones need to behave differently:
 
 ```php
 <?php
@@ -32,11 +32,17 @@ class CreditCard extends PaymentMethod
 }
 ```
 
-`CreditCard extends PaymentMethod` means every `CreditCard` *is* a `PaymentMethod`, with all of its behavior, unless `CreditCard` explicitly overrides a method, which is exactly what its `charge()` does here, replacing the parent's version with one that adds the card's last four digits. `parent::charge($amount)` calls the *original* implementation from inside the override, rather than throwing it away entirely: the base class still does the generic formatting work; `CreditCard` just adds to it. Without `parent::`, you'd need to duplicate that `sprintf()` line in every subclass that wants it, which is exactly the kind of duplication inheritance exists to avoid.
+Read `class CreditCard extends PaymentMethod` as "a credit card is a payment method". **Everything `PaymentMethod` knows how to do, `CreditCard` knows too, without writing a line.** The one method `CreditCard` defines for itself is `charge()`, and since the parent already has a `charge()`, the child's version takes its place. That is called overriding.
+
+<img src="images/ch17-family-tree.png" alt="A family tree of classes: PaymentMethod at the top with its charge() method, CreditCard and PayPal below it, each with its own charge(), and a curved arrow from CreditCard's charge() back up to the parent's, labeled parent::" width="560">
+
+Now look at the first line of the override. `parent::charge($amount)` calls the parent's original `charge()`, the very method that was just replaced, and builds on its result instead of throwing it away. **`parent::` is how an override says "do what you were going to do, then let me add something."** The base class still formats the amount; `CreditCard` only appends the last four digits. Without `parent::`, that `sprintf()` line would be copied into every subclass, which is exactly the duplication inheritance is meant to remove.
+
+> `extends` says "is a". `parent::` says "and also".
 
 ## A second subclass
 
-Add another payment method the same way, overriding `charge()` with entirely different logic:
+Add another payment method the same way, with a `charge()` that does something else entirely:
 
 ```php
 <?php
@@ -55,11 +61,11 @@ class PayPal extends PaymentMethod
 }
 ```
 
-`PayPal` doesn't call `parent::charge()` at all: nothing requires an override to reuse the parent's implementation, only that it exist. Both `CreditCard` and `PayPal` fully replace the base behavior with their own, which is a perfectly normal use of inheritance: sharing the *contract* ("every `PaymentMethod` can `charge()`") without necessarily sharing any code.
+`PayPal` never calls `parent::charge()`. Nothing forces an override to reuse the parent's version; it only has to exist. **A subclass may keep the parent's behavior, add to it, or replace it outright**, and all three are ordinary uses of inheritance. `CreditCard` and `PayPal` share the promise that every `PaymentMethod` can `charge()`, and only one of them shares any code.
 
 ## Polymorphism: the actual payoff
 
-Here's why any of this was worth setting up. Write code against the base type, `PaymentMethod`, and hand it any subclass: it works, without the calling code knowing or caring which one it actually got:
+Here is why any of this was worth setting up. Write a function against the base type and hand it any subclass:
 
 ```php
 <?php
@@ -86,6 +92,12 @@ Charged $42.00. (card ending 4242)
 Charged $42.00 via PayPal account damien@example.com.
 ```
 
-`processPayment()` is typed against `PaymentMethod`, never against `CreditCard` or `PayPal` specifically, and the `foreach` loop above treats every element identically even though each one runs completely different code when `charge()` is called. That's polymorphism: the same call, `$method->charge($amount)`, does the right thing for whatever concrete object is actually behind `$method` at runtime. Add a third payment method next month (`BankTransfer`, `Cryptocurrency`, whatever the product needs), and as long as it extends `PaymentMethod` and implements `charge()`, `processPayment()` and the `foreach` loop above need no changes at all. They were never written against a specific class in the first place, only against the shape every `PaymentMethod` is guaranteed to have.
+`processPayment()` asks for a `PaymentMethod`. It never mentions `CreditCard` or `PayPal`. Yet give it either one and the right `charge()` runs. **The same call, `$method->charge($amount)`, does the right thing for whatever object is actually behind `$method`.** That is polymorphism.
 
-This should feel familiar: it's the same idea as programming against an interface, from [Chapter 11](ch11-01-interfaces.md), and for good reason: interfaces and inheritance are two different roads to the same destination, polymorphic code that doesn't need to know which concrete class it's holding. The next section puts them side by side and asks, directly, when to reach for which one.
+<img src="images/ch17-one-slot.png" alt="A mailbox labeled processPayment() with a single slot shaped for a PaymentMethod, and three envelopes lining up for it: a credit card, a PayPal account, and a third one still unknown" width="560">
+
+Think of a letterbox. It does not care who wrote the envelope, only that the envelope fits the slot. `PaymentMethod` is the slot, and every subclass is an envelope cut to that size, including the ones nobody has written yet. Add `BankTransfer` next month: as long as it extends `PaymentMethod` and implements `charge()`, neither `processPayment()` nor the loop changes. They were never written against a specific class, only against the shape every `PaymentMethod` guarantees.
+
+Try it: write `BankTransfer`, add `new BankTransfer()` to the `$methods` array, and run again. Count the lines you changed in `processPayment()`.
+
+This should feel familiar. It is the same move as programming against an interface in [Chapter 11](ch11-01-interfaces.md): interfaces and inheritance are two roads to the same place, code that does not need to know which concrete class it holds. The next section puts the two roads side by side and asks when to take which.

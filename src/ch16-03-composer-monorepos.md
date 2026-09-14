@@ -1,14 +1,14 @@
 # Composer Path Repositories and Monorepos
 
-Publishing to Packagist, from the previous section, assumes your package is finished enough to hand to strangers. Plenty of real work happens before that point: specifically, the stretch where you're developing two or more related packages *together*, and changes to one need to be visible in the other immediately, without a publish-and-reinstall cycle in between. Composer has a repository type built for exactly this: the path repository.
+Publishing assumes your package is finished enough to hand to strangers. A lot of real work happens before that point, in the stretch where two related packages grow together and a change in one must show up in the other right away. **Composer has a repository type built for that stretch: the path repository.**
 
 ## The problem it solves
 
-Say you're splitting `phpgrep` into two packages: a core library, `phpgrep/core`, and the CLI wrapper around it, `phpgrep/cli`, which depends on the core. Without publishing `phpgrep/core` anywhere, `composer require phpgrep/core` in the CLI package has nothing to install: Packagist has never heard of it, and neither has any other registry. You could publish an early, half-finished version just to unblock local development, but that's backwards: you'd be publishing code for the sole purpose of testing it locally.
+Say you split `phpgrep` in two: a core library, `phpgrep/core`, and a CLI wrapper, `phpgrep/cli`, that depends on it. Type `composer require phpgrep/core` in the CLI package and Composer comes back empty-handed. Packagist has never heard of the core, and neither has any other registry. You could publish a half-finished version just to unblock yourself, but that is backwards: you would be publishing code for the sole purpose of testing it on your own machine.
 
 ## Pointing Composer at a local folder instead
 
-A path repository tells Composer, for one project, "when you see this package name, don't look on Packagist, look in this folder on disk instead":
+A path repository tells Composer, for one project: **when you meet this package name, do not look on Packagist, look in this folder on disk.**
 
 ```json
 {
@@ -24,7 +24,7 @@ A path repository tells Composer, for one project, "when you see this package na
 }
 ```
 
-Given a directory layout like:
+With a layout like this:
 
 ```console
 projects/
@@ -34,8 +34,16 @@ projects/
     └── composer.json     (the file above)
 ```
 
-running `composer install` inside `phpgrep-cli` resolves `phpgrep/core` to `../phpgrep-core` and, by default, creates a *symlink* in `vendor/phpgrep/core` pointing back at the real folder, not a copy. Edit a file in `phpgrep-core`, and `phpgrep-cli` sees the change instantly, with no reinstall, no re-publish, nothing to run in between. It behaves, for local development purposes, exactly like a single package would, while still being two genuinely separate packages with their own `composer.json`, their own version constraints, and their own eventual path to Packagist once they're ready.
+running `composer install` inside `phpgrep-cli` resolves `phpgrep/core` to `../phpgrep-core`. By default it does not copy the folder. It creates a *symlink* at `vendor/phpgrep/core` that points back at the real one.
+
+<img src="images/ch16-path-symlink.png" alt="Two project folders side by side: inside phpgrep-cli, the vendor/phpgrep/core entry is a string tied to the real phpgrep-core folder next door, so both point at the same files" width="560">
+
+Edit a file in `phpgrep-core`, and `phpgrep-cli` sees the change instantly. No reinstall, no publish, nothing to run in between. Day to day it feels like a single package. It remains two packages all the same, each with its own `composer.json`, its own version constraints, and its own road to Packagist when the time comes.
+
+Try it: inside `phpgrep-cli`, run `ls -l vendor/phpgrep` and read the arrow `ls` draws next to `core`. That arrow is the symlink.
 
 ## Where this leads: monorepos
 
-Take that same idea and put several related packages in *one* Git repository, each with its own `composer.json`, wired together with path repositories pointing at each other's subfolders: that's the shape most PHP monorepos take. There's no special "monorepo mode" in Composer; a monorepo is just an ordinary directory tree of packages that happen to share one repository and use path repositories to reference each other during development. Some projects stay that way permanently, treating the monorepo as the real, shipped structure. Others use it purely as a development convenience and split packages out to their own repositories, and publish each to Packagist independently, once they've stabilized. Both are legitimate; which one fits depends more on your team's release process than on anything Composer itself enforces.
+Put several related packages in one Git repository, each with its own `composer.json`, wired together with path repositories pointing at each other's subfolders, and you have the shape most PHP monorepos take. **There is no monorepo mode in Composer.** A monorepo is an ordinary directory tree of packages that share one repository and point at each other during development.
+
+Some teams keep it that way for good and ship the monorepo as is. Others treat it as a development convenience and, once a package settles, move it to its own repository and publish it to Packagist on its own. Both are legitimate. The choice depends on how your team releases, not on anything Composer enforces.

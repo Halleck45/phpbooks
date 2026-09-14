@@ -1,6 +1,6 @@
 # Control Flow
 
-You've already seen `if`, `while`, `break`, and `continue` in the guessing game. This section makes them official and fills in the rest.
+Strip the guessing game down to its skeleton and two words remain: `if` and `while`. One decides, the other repeats. **Everything a program does beyond running top to bottom comes from those two moves**, and PHP has a few variations on each.
 
 ## `if` / `elseif` / `else`
 
@@ -18,13 +18,15 @@ if ($temperature > 30) {
 }
 ```
 
-Note it's `elseif`, one word (`else if`, two words, also works), but only `elseif` reads as a single token to PHP, so it's the convention worth adopting. The condition doesn't need to be a boolean; PHP will convert whatever you hand it: `0`, `""`, `null`, and `[]` are all "falsy," everything else is "truthy," but relying on that too heavily is exactly the kind of type-juggling ambiguity [Chapter 3.2](ch03-02-data-types.md) warned you about. Prefer an explicit comparison when it isn't already obviously a boolean.
+Same shape as the comparison in the game: PHP runs the first block whose condition is true and skips the rest, or falls back to `else`. Note that it is `elseif`, one word. `else if`, two words, works too, but only `elseif` is a single token to PHP, so it is the convention worth adopting.
 
-An `if`/`elseif` chain like this one is at its best when each branch tests something genuinely different, the way `$temperature > 30` and `$temperature > 15` do above. Once you catch yourself writing several branches that all compare the *same* value against a list of possibilities, that repetition is a sign to reach for the next tool instead.
+**The condition does not have to be a boolean, but write it as if it did.** PHP converts whatever you hand it: `0`, `""`, `null` and `[]` all count as false, everything else as true. Leaning on that is exactly the kind of type juggling [Data Types](ch03-02-data-types.md) warned you about. Prefer an explicit comparison whenever the value is not already obviously a boolean.
+
+An `if`/`elseif` chain is at its best when each branch tests something different, the way `$temperature > 30` and `$temperature > 15` do. When you catch yourself writing several branches that all compare the same value against a list of possibilities, that repetition is a signal to reach for the next tool.
 
 ## `match`
 
-PHP 8 added `match`, and once you've used it, `switch` starts to feel like a relic:
+PHP 8 added `match`, and once you have used it, `switch` starts to feel like a relic:
 
 ```php
 <?php
@@ -41,11 +43,13 @@ $message = match (true) {
 echo $message; // Client error
 ```
 
-Two things make `match` a real upgrade over `switch`: it's an *expression* (it produces a value you can assign, as above, rather than a statement you branch inside of), and its comparisons are strict (`===`), so there's no accidental type juggling sneaking a wrong branch through. It also has no fallthrough to accidentally forget a `break` on. We'll give `match` a full chapter of its own once we pair it with enums in [Chapter 6](ch06-00-enums.md), where the two turn out to be made for each other.
+<img src="images/ch03-match-arms.png" alt="A value entering a match block drawn as a railway switch: several arms with a condition each, and only one arm lit up, leading to the single result that comes out" width="520">
+
+**`match` is an expression: it produces a value**, which you assign, as above, instead of a statement you branch inside of. Two more things make it a real upgrade over `switch`. Its comparisons are strict, `===`, so no juggling sneaks a wrong branch through. And it has no fallthrough, so there is no `break` to forget. [Chapter 6](ch06-00-enums.md) pairs `match` with enums, and the two turn out to be made for each other.
 
 ## Loops
 
-**`while`** runs as long as its condition holds, checked before each pass:
+**`while` runs as long as its condition holds, and checks it before each pass:**
 
 ```php
 <?php
@@ -58,7 +62,9 @@ while ($count > 0) {
 echo "Go!\n";
 ```
 
-**`do...while`** is the same idea, but checks *after* the first pass, guaranteeing the body runs at least once:
+The game's `while (true)` was the extreme case: a condition that never turns false, and `break` as the only way out.
+
+**`do...while` checks the condition after each pass instead**, so the body runs at least once:
 
 ```php
 <?php
@@ -68,7 +74,9 @@ do {
 } while (false);
 ```
 
-**`for`** is the classic three-part loop, most at home when you need an index:
+<img src="images/ch03-while-vs-dowhile.png" alt="Two doors: with while, the ticket is checked before entering, so you may never get in; with do while, you enter first and the ticket is checked on the way back, so you always get in once" width="560">
+
+**`for` is the classic three-part loop**, at home whenever you need a counter:
 
 ```php
 <?php
@@ -78,7 +86,9 @@ for ($i = 0; $i < 5; $i++) {
 }
 ```
 
-**`foreach`** is the one you'll reach for constantly once arrays enter the picture in [Chapter 8](ch08-00-common-collections.md): it walks a collection directly, no index bookkeeping required:
+Start value, condition, step, all on one line: `$i` starts at 0, the body runs while `$i < 5`, and `$i++` adds one after every pass.
+
+**`foreach` walks a collection directly, no counter to maintain**, and it is the loop you will reach for constantly once arrays arrive in [Chapter 8](ch08-00-common-collections.md):
 
 ```php
 <?php
@@ -96,11 +106,13 @@ foreach ($prices as $name => $price) {
 }
 ```
 
-That second form, `as $name => $price`, pulls out both the key and the value in one go, and it's used so often in real PHP code that it's worth committing to memory right now.
+The second form, `as $name => $price`, pulls out the key and the value in one go. It appears so often in real PHP code that it is worth committing to memory right now.
 
 ## `break` and `continue`, one more time
 
-You met both in the guessing game: `break` exits a loop immediately, `continue` skips to the next iteration. Both accept an optional number (`break 2` exits two levels of nested loop at once), but reach for that only when it genuinely reads clearer than restructuring the loop; nested `break` levels are exactly the kind of thing that's obvious while you're writing it and baffling a month later.
+You met both in the game: **`break` leaves the loop at once, `continue` skips to the next round.**
+
+<img src="images/ch02-loop-track.png" alt="A running track drawn as a loop, with a door marked break leading out and a shortcut marked continue leading back to the start line" width="520">
 
 ```php
 <?php
@@ -117,4 +129,8 @@ foreach ([1, 2, 3, 4, 5] as $n) {
 // prints 1, 2, 4
 ```
 
-That's the toolkit: branch with `if` or `match`, repeat with `while`, `do...while`, `for`, or `foreach`, and steer loops precisely with `break` and `continue`. Everything from here on in the book is built out of these same handful of pieces, arranged in more interesting shapes.
+Both accept an optional number: `break 2` leaves two nested loops at once. Reach for it only when it reads clearer than restructuring the loops. Nested break levels are obvious while you write them and baffling a month later.
+
+Try it: rewrite the game's three-way comparison as a `match (true)` that produces the message, then print it. The `break` has to stay outside the `match`, since a `match` produces a value and does nothing else. That small friction is the difference between an expression and a statement, felt in your own fingers.
+
+Branch, repeat, steer. The rest of the book never adds a new kind of move, only bigger shapes made of these.

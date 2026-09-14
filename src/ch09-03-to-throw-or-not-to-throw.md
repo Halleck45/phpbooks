@@ -1,10 +1,10 @@
 # To Throw or Not to Throw
 
-Knowing the syntax of `try`/`catch` is the easy part. The harder question, and the one that actually separates readable PHP code from a maze of defensive checks, is deciding *when* a function should throw, when it should just return `null` or `false` or an empty array, and when it's fine to let the whole thing come crashing down. There's no compiler rule for this: it's judgment, the kind you build from having been burned both ways. Here's how I've come to think about it.
+The syntax of `try` and `catch` is the easy part. The hard part, the one that separates readable code from a maze of defensive checks, is deciding when a function should throw, when it should return `null` or `false` or an empty array, and when it is fine to let the whole thing come crashing down. No compiler will decide for you. It is judgment, the kind you build from having been burned both ways. Here is how I have come to think about it.
 
 ## Not found is not exceptional
 
-The most common mistake I see is throwing for something that isn't actually exceptional: it's just a normal outcome the caller needs to handle. Looking up a user by an ID that doesn't exist isn't a crisis. It's a completely ordinary thing to happen, as routine as any other branch in your code:
+The most common mistake I see is throwing for something that is not exceptional at all, just a normal outcome the caller needs to handle. Looking up a user by an ID that does not exist is not a crisis. It happens all day, as routinely as any other branch in your code:
 
 ```php
 <?php
@@ -31,11 +31,13 @@ if ($user === null) {
 }
 ```
 
-Returning `null` here (and giving the function a `?array` return type so the possibility is visible right in the signature, not just implied) tells the caller exactly what to expect and lets them decide what "not found" means in their context: show a 404, create a default, ask again. Throwing `UserNotFoundException` instead would force every caller into a `try`/`catch` for something that's going to happen constantly and isn't wrong in any sense. Save exceptions for things that are actually exceptions.
+**Returning `null` tells the caller exactly what to expect, and lets them decide what "not found" means where they stand**: show a 404, create a default, ask again. The `?array` return type puts the possibility in the signature, where everyone can see it. Throwing a `UserNotFoundException` instead would force every caller into a `try` for something that happens constantly and is not wrong in any sense.
+
+> Save exceptions for things that are actually exceptions.
 
 ## Throw when the caller has a precondition to meet
 
-The flip side: throw when something the caller was supposed to guarantee didn't hold, and there's genuinely no reasonable default to fall back to. This is the `InvalidAgeException` from the previous section: a negative age isn't "a normal outcome to branch on," it's a violated contract. The function can't sensibly guess what you meant, so it says so, loudly and specifically:
+The flip side: throw when something the caller was supposed to guarantee before calling, a precondition, did not hold, and no reasonable default exists. That is the `InvalidAgeException` of the previous section. A negative age is not a normal outcome to branch on, it is a broken promise. The function cannot guess what you meant, so it says so, loudly and specifically:
 
 ```php
 <?php
@@ -54,11 +56,11 @@ function withdraw(float $balance, float $amount): float
 }
 ```
 
-Silently clamping the withdrawal to the available balance, or quietly returning `0`, would hide a bug (or worse, a real financial error) behind a plausible-looking number, exactly the failure mode from the previous section's `catch (\Error $e)` example. Throwing here forces whoever's calling `withdraw()` to actually confront the situation instead of it slipping past unnoticed.
+Silently clamping the withdrawal to the balance, or quietly returning `0`, would hide a bug (or worse, a real financial error) behind a plausible-looking number, exactly the failure of the `catch (\Error $e)` example two sections back. Throwing forces whoever calls `withdraw()` to face the situation instead of letting it slip past.
 
 ## Let it crash when it's a bug, not a case
 
-Sometimes the right answer isn't `null` and isn't a caught exception: it's letting the program stop. If your own code calls a function with the wrong argument type, or reaches a `match` arm that should be logically impossible, that's not a runtime condition to design around; it's a bug to fix, and pretending otherwise just buries the evidence:
+Sometimes the right answer is neither `null` nor a `catch`. It is letting the program stop. If your own code calls a function with the wrong type, or reaches a `match` arm that should be impossible, that is not a situation to design around. It is a bug to fix, and pretending otherwise only buries the evidence:
 
 ```php
 <?php
@@ -82,14 +84,16 @@ function statusLabel(Status $status): string
 }
 ```
 
-`match` without a `default` arm throws `UnhandledMatchError` (a subclass of `Error`, not `Exception`) if none of the cases fit. For an `enum`, every case is already covered, so this can only happen if someone adds a new `Status` case later and forgets to update this function. That's exactly the kind of failure you want loud and immediate at the point of the bug, not silently swallowed three files away. Don't wrap this in a `try`/`catch` "just in case": let it fail, let the stack trace point straight at the missing arm, and go fix `statusLabel()`.
+**A `match` with no `default` arm throws `UnhandledMatchError` when nothing fits**, and `UnhandledMatchError` is an `Error`, not an `Exception`. With an `enum`, every case is covered today, so the only way this can fire is that someone adds a fourth `Status` later and forgets this function. Try it: add `case Deleted;` to the enum and call `statusLabel(Status::Deleted)`. That is exactly the failure you want loud and immediate, at the line of the bug, not swallowed three files away. Do not wrap it in a `try` "just in case". Let it fail, let the stack trace point at the missing arm, and go fix `statusLabel()`.
 
 ## A rough decision order
 
-When you're not sure which of the three to reach for, this order has served me well:
+When you are not sure which of the three to reach for, ask the questions in this order.
 
-1. **Is "not found" or "empty" a normal, expected outcome here?** Return `null`, `false`, or an empty array, and give the function a return type that makes the possibility explicit (`?array`, not `array`).
-2. **Did the caller violate a precondition, with no sensible default to fall back to?** Throw a specific exception: built-in if one fits (`InvalidArgumentException`, `RuntimeException`), a small custom class if the caller needs structured context back, as with `InvalidAgeException`.
-3. **Is this actually impossible unless the code itself is wrong?** Don't defend against it at all. Let PHP's own `Error` machinery do its job, or use `assert()` during development. A loud, immediate failure at the site of the bug is far cheaper to fix than a quiet one three layers of `catch` away.
+<img src="images/ch09-three-roads.png" alt="A signpost with three arms at a fork in the road: a normal outcome leads to return null, a broken precondition leads to throw, and a bug leads to let it crash" width="560">
 
-None of this is a rule you can apply mechanically: plenty of real code sits in a gray area between "expected" and "precondition violated," and reasonable developers land in different places. But asking the question explicitly, function by function, beats defaulting to whichever of `throw` or `return null` you happened to type first. It's a habit worth building deliberately, because you'll be making this exact call in nearly every function you write from here on, including several in the CLI project starting at [Chapter 14](ch14-00-a-cli-project.md).
+1. **Is "not found" or "empty" a normal, expected outcome here?** Return `null`, `false` or an empty array, and give the function a return type that shows the possibility (`?array`, not `array`).
+2. **Did the caller break a precondition, with no sensible default to fall back to?** Throw a specific exception: a built-in one if it fits (`InvalidArgumentException`, `RuntimeException`), a small custom class if the caller needs structured context back, as with `InvalidAgeException`.
+3. **Is this impossible unless the code itself is wrong?** Do not defend against it at all. Let PHP's `Error` machinery do its job, or use `assert()` during development. A loud failure at the site of the bug is far cheaper than a quiet one three layers of `catch` away.
+
+None of this applies mechanically. Plenty of real code sits in the gray zone between "expected" and "precondition violated", and reasonable developers land in different places. But asking the question out loud, function by function, beats defaulting to whichever of `throw` and `return null` you happened to type first. You will make this exact call in nearly every function you write from here on, starting with several in the command line tool of [Chapter 14](ch14-00-a-cli-project.md).

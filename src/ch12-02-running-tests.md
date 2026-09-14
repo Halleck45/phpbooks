@@ -1,16 +1,18 @@
 # Controlling How Tests Are Run
 
-`vendor/bin/phpunit tests` runs everything, every time, which is fine for a handful of tests and increasingly annoying once you have hundreds. This section covers narrowing that down, plus the config file that makes the whole thing repeatable.
+`vendor/bin/phpunit tests` runs everything, every time. With five tests, fine. With five hundred, waiting for the whole suite each time you save a file gets old, and most of the output is noise about code you did not touch. **PHPUnit lets you run a slice of the suite, and a config file makes the whole thing repeatable.**
 
 ## Filtering by name
 
-`--filter` runs only tests whose method name matches a pattern:
+**`--filter` runs only the tests whose name matches a pattern:**
 
 ```console
 $ vendor/bin/phpunit --filter testAreaOfARectangle tests
 ```
 
-It matches against the method name as a regular expression, so `--filter Area` would catch `testAreaOfARectangle` along with anything else containing "Area": useful while you're heads-down on one feature and don't want the whole suite's noise on every run.
+The pattern is a regular expression matched against the method name, so `--filter Area` catches `testAreaOfARectangle` and anything else with "Area" in it. That is the mode you want while heads-down on one feature: run the two or three tests that matter, and leave the rest for later.
+
+<img src="images/ch12-filter-funnel.png" alt="A pile of test files poured into a funnel labeled filter and group, with only two tests coming out at the bottom onto a terminal" width="520">
 
 ## Grouping tests
 
@@ -40,11 +42,11 @@ Then run just that group:
 $ vendor/bin/phpunit --group geometry tests
 ```
 
-A common real-world use: mark slow tests (ones that hit a database, or the filesystem, or the network) with `#[Group('slow')]`, and exclude them from your everyday inner loop with `--exclude-group slow`, saving the full run for CI where a few extra seconds don't cost you anything.
+The everyday use is speed. **Mark slow tests (database, filesystem, network) with `#[Group('slow')]` and keep them out of your inner loop with `--exclude-group slow`.** The full run waits for CI, where a few extra seconds cost nobody anything.
 
 ## `phpunit.xml`
 
-Typing `tests` and remembering your preferred flags on every single invocation gets old fast. A `phpunit.xml` file at your project root fixes that: PHPUnit reads it automatically, no flag needed:
+Typing `tests` and remembering your favorite flags on every run gets old too. A `phpunit.xml` file at the project root fixes that, and PHPUnit reads it without being asked:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -58,10 +60,12 @@ Typing `tests` and remembering your preferred flags on every single invocation g
 </phpunit>
 ```
 
-`bootstrap` tells PHPUnit which file to load before anything else: almost always Composer's autoloader, so your test files can reference `Rectangle` without a manual `require`. `testsuites` defines what "the test suite" even means: here, everything under `tests/`. With this file in place, the invocation shrinks back down to the bare command:
+Two things live in it. **`bootstrap` names the file PHPUnit loads before anything else**, almost always Composer's autoloader, so your tests can mention `Rectangle` without a manual `require`. **`testsuites` defines what "the suite" even means**: here, everything under `tests/`. With the file in place, the command shrinks to its shortest form:
 
 ```console
 $ vendor/bin/phpunit
 ```
 
-You can still layer `--filter` or `--group` on top of it whenever you need a narrower run. Generate a starting version of this file with `vendor/bin/phpunit --generate-configuration` if you'd rather answer a few prompts than hand-write the XML: either way, commit the resulting file. It's project configuration, not a personal preference, and everyone on the team (plus your CI pipeline) should be running the same suite the same way.
+`--filter` and `--group` still layer on top whenever you want a narrower run. If you would rather answer a few questions than write XML by hand, `vendor/bin/phpunit --generate-configuration` produces a starting version. Either way, commit the file. It is project configuration, not a personal preference: everyone on the team, and the CI pipeline, should run the same suite the same way.
+
+> The suite is defined once, in `phpunit.xml`. The flags narrow it down for the moment.

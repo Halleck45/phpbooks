@@ -1,10 +1,10 @@
 # Customizing Autoload and Scripts
 
-The `composer.json` you've written so far has had two jobs: list dependencies, and map a namespace to a folder via PSR-4. It can do more than that with barely any extra effort, and two features are worth adding to your everyday habits right away: scripts, and a second flavor of autoloading for code that isn't a class.
+So far your `composer.json` has done two things: list dependencies, and map a namespace to a folder. Two more entries, a few lines each, are worth adding to your habits right away.
 
 ## Scripts: shortcuts for commands you run constantly
 
-Every PHP project accumulates a handful of commands you type over and over: running the test suite, running a linter, clearing a cache. Composer lets you name them, in the `"scripts"` section of `composer.json`:
+Think of the commands you type ten times a day in a project: the test suite, the linter, a cache clear. Each has its own name, its own flags, and a teammate who types it slightly differently. **Composer lets you give each of them a short name, in the `"scripts"` section of `composer.json`:**
 
 ```json
 {
@@ -20,14 +20,18 @@ Every PHP project accumulates a handful of commands you type over and over: runn
 }
 ```
 
-Run either one with `composer run`, or, for a `"scripts"` entry with no colliding built-in Composer command, just `composer` followed by the name directly:
+Run either one with `composer run`, or, when the name does not collide with a built-in Composer command, with `composer` followed directly by the name:
 
 ```console
 $ composer test
 $ composer check
 ```
 
-This isn't just a shorter way to type `phpunit`. The real value shows up on a team: everyone runs `composer test`, regardless of whether the underlying tool is PHPUnit, Pest, or something else entirely, and regardless of what flags it needs. Change the command, and every developer, and every CI pipeline calling `composer test`, picks up the change automatically, with nothing to update on their end. A script entry can also be an array of commands, run in sequence, if a task genuinely needs more than one step:
+Saving a few keystrokes is the small win. The big one shows up on a team. Everyone runs `composer test`, whether the tool underneath is PHPUnit, Pest, or something else, and whatever flags it needs. Swap the tool or change a flag, and every developer and every CI pipeline picks up the change on its next run, with nothing to edit on their side. **The script name is the contract; the command behind it is a detail.**
+
+<img src="images/ch16-script-signpost.png" alt="A signpost reading composer test, and behind it a curtain hiding the real command with its tool and flags: the team only sees the sign, the command behind it can change" width="520">
+
+When a task genuinely needs more than one step, an entry can be a list of commands, run in order:
 
 ```json
 {
@@ -40,9 +44,11 @@ This isn't just a shorter way to type `phpunit`. The real value shows up on a te
 }
 ```
 
+Try it: `composer run --list` prints every script a project defines. It is the fastest way to learn your way around a repository you have just cloned.
+
 ## `"files"` autoloading: for code that isn't a class
 
-PSR-4 autoloading, from [Chapter 7](ch07-06-psr4.md), maps a namespace to a directory and loads classes from it on demand: one class, one file, found by name. That works perfectly for classes. It has nothing to say about a file full of plain functions, because there's no class name for Composer to map to a file path. For that, `composer.json` has a second autoloading mechanism, `"files"`, which just lists files to load unconditionally, every time the autoloader runs:
+PSR-4, from [Chapter 7](ch07-06-psr4.md), works like a well-ordered library: ask for a class by name, and Composer knows which shelf and which file. A file full of plain functions has no class name to ask for, so PSR-4 walks straight past it. **For that, `composer.json` has a second mechanism, `"files"`: a list of files loaded every time the autoloader starts, no questions asked:**
 
 ```json
 {
@@ -57,6 +63,12 @@ PSR-4 autoloading, from [Chapter 7](ch07-06-psr4.md), maps a namespace to a dire
 }
 ```
 
-Anything defined at the top level of `src/helpers.php` (functions, constants) becomes available everywhere in your project the moment `vendor/autoload.php` is included, with no `use` statement needed to reach it, the same way a built-in function like `strtolower()` needs none. This is the right tool for a small set of standalone helper functions that don't belong to any particular class. It's also easy to overuse: a `"files"` entry loads its file's contents on *every single request*, unconditionally, unlike PSR-4 classes, which only load when something actually references them. Keep it for genuinely small, genuinely global helpers, and let PSR-4 handle everything that reasonably belongs on a class.
+Everything defined at the top level of `src/helpers.php`, functions and constants, becomes available everywhere in the project as soon as `vendor/autoload.php` is included. No `use` statement, the same way a built-in like `strtolower()` needs none.
 
-One last step, after editing either section by hand: run `composer dump-autoload` so Composer regenerates the autoloader files to match what you just wrote. `composer install` and `composer require` do this automatically; a manual edit to `composer.json` doesn't, until you tell it to.
+<img src="images/ch16-psr4-vs-files.png" alt="Two ways of loading code: on the left a librarian fetches one class file from a shelf only when it is asked for, on the right a stack of helper files sits open on the desk at all times" width="560">
+
+That convenience has a price. A PSR-4 class is loaded only when something references it. A `"files"` entry is loaded on every single request, whether the request uses it or not. Keep the list for a handful of small, truly global helpers, and let PSR-4 handle everything that reasonably belongs on a class.
+
+> PSR-4 loads a class when asked. `"files"` loads a file every time.
+
+After editing either section by hand, one step remains: `composer dump-autoload`, so Composer regenerates the autoloader to match what you wrote. `composer install` and `composer require` do it for you; a manual edit does not, until you ask.

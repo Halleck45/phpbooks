@@ -1,10 +1,10 @@
 # Passing by Value vs. by Reference
 
-The previous section showed you PHP's default: assign an array to a new variable, modify the new one, and the original is untouched. That default is called **passing (or assigning) by value**, and it's what happens everywhere in PHP unless you explicitly ask for something else. This section covers how to ask for something else. More importantly, it covers the one place where PHP quietly gives you "something else" whether you asked for it or not: objects.
+Copy a variable, change the copy, and the original stays put. That is PHP's default, and it has a name: **passing by value**. It is what happens everywhere in PHP unless you ask for something else. This section is about how to ask, and about the one place where PHP gives you something else whether you asked or not: objects.
 
 ## Explicit references with `&`
 
-PHP lets you make two variables refer to the *same* underlying value on purpose, using `&`:
+Put `&` in front of a variable when you assign it, and the two names become one:
 
 ```php
 <?php
@@ -17,9 +17,13 @@ $b = 20;
 echo $a; // 20
 ```
 
-After `$b = &$a`, there's no meaningful sense in which `$a` and `$b` are two separate variables holding equal values: they're two names for the same storage. Change either one, and you've changed both, because there was only ever one thing to change.
+After `$b = &$a`, `$a` and `$b` are not two variables holding equal values. **They are two labels stuck on the same box.** Change the value through either label and you have changed it for both, because there was only ever one box.
 
-You can pass this behavior into a function too, by declaring the parameter with `&`:
+<img src="images/ch04-two-labels.png" alt="A single box holding the value 20, with two labels stuck on it, $a and $b: a reference is a second name for the same storage" width="340">
+
+> A reference is a second label on the same box.
+
+The same `&` works on a function parameter:
 
 ```php
 <?php
@@ -38,15 +42,16 @@ addTax($cart);
 var_dump($cart); // book => 12.00, pen => 2.40, modified in place
 ```
 
-Compare this to the `addTax()` from the previous section: same body, but the `&` before `$prices` changes everything about how the caller experiences it. Without `&`, the function received a value it could freely mutate without consequence to the caller. With `&`, `$prices` inside the function *is* `$cart` outside it: there's no copy at all, not even a lazy one. This is genuinely useful when a function's whole job is to modify something in place: think `sort()`, which is a real built-in PHP function that works exactly this way, rearranging your array through a reference rather than handing you back a new one.
+Compare this with the `addTax()` of the [previous section](ch04-01-copy-on-write.md): same body, but the `&` before `$prices` changes everything for the caller. Without it, the function got a value it could mutate without consequence. With it, `$prices` inside the function *is* `$cart` outside: no copy at all, not even a lazy one. **A reference parameter lets a function modify the caller's variable in place.** That is exactly how `sort()` works, a real built-in that rearranges your array through a reference instead of handing you back a new one.
 
-It's also easy to overuse. A function signature with `&` in it is quietly changing the contract of the function from "give me data, get data back" to "let me reach into your variable and change it," and that's a bigger promise than it looks like on the page. Reach for it when in-place mutation is genuinely the point (sorting, filling a buffer, that kind of thing) and prefer an ordinary return value everywhere else. Code that returns its result is easier to read, easier to test, and easier to trust at a glance; code sprinkled with `&` parameters requires the reader to go check every call site to know what might have changed.
+> [!WARNING]
+> `&` is easy to overuse. A function whose signature carries it quietly changes its contract from "give me data, get data back" to "let me reach into your variable and change it", and that is a bigger promise than it looks. Reach for it when in-place mutation is the whole point (sorting, filling a buffer) and return a value everywhere else. Code that returns its result can be read and tested on its own. Code sprinkled with `&` parameters sends the reader to every call site to find out what might have changed.
 
 ## Arrays copy, objects don't
 
-Here's the gotcha this whole chapter has been building toward, and it's worth reading slowly, because it trips up almost everyone the first time they meet it.
+This is the surprise the whole chapter has been building towards. Read it slowly, because it catches almost everyone the first time.
 
-You already know arrays copy by value: copy-on-write, but functionally a copy. Objects don't. When you assign an object to a variable, pass it into a function, or store it in an array, PHP never duplicates the object itself. Every variable that ends up "holding" that object is really just holding a handle to the one instance living in memory. Copy the variable all you like: you're copying the handle, not the thing it points to.
+You know arrays copy. Objects do not. Assign an object to a variable, pass it into a function, store it in an array: PHP never duplicates the object itself. **Every variable that "holds" an object really holds a handle to the one instance living in memory.** Copy the variable all you like, you are copying the handle, not the thing on the other end.
 
 ```php
 <?php
@@ -67,9 +72,17 @@ var_dump($cartA->items); // ["book", "pen"], both items show up here too
 var_dump($cartB->items); // ["book", "pen"]
 ```
 
-`$cartB = $cartA` looks exactly like `$copy = $original` did with arrays. It behaves nothing like it. There is only one `Cart` object here; `$cartA` and `$cartB` are two labels stuck on the same box. Modify the box through either label, and anyone holding the other label sees the change immediately, because there's nothing else to see: it's the same object.
+If `class` and `new` are new to you, [Chapter 5](ch05-00-classes.md) explains them properly. For now, read `new Cart()` as "make one cart" and `->items` as "its list of items".
 
-This is the single most common source of "why did my function change something it wasn't supposed to touch" bugs in beginner PHP code, and it runs in exactly the opposite direction of the array confusion: people expect objects to copy like arrays do, get burned once, and then overcorrect by assuming *everything* aliases like objects do. Neither assumption is right. The rule is simple once it's explicit: **arrays copy, objects alias.** Passing an object into a function never protects the caller's data the way passing an array does: the function receives a handle to the very same instance, and anything it does through that handle is visible the moment the function returns, no `&` required.
+`$cartB = $cartA` looks exactly like `$copy = $original` did with arrays. It behaves nothing like it. There is one `Cart` here, and `$cartA` and `$cartB` are two labels on it. Add a pen through either label and the other one sees it immediately, because there is nothing else to see.
+
+<img src="images/ch04-arrays-copy-objects-alias.png" alt="Side by side: two array variables are two separate boxes with the same content, while two object variables are two name tags tied to the same shopping cart" width="600">
+
+This is the most common cause of "why did my function change something it was not supposed to touch" in beginner PHP code, and it runs in the opposite direction from the array confusion. People expect objects to copy like arrays, get burned once, then overcorrect and assume everything aliases like objects. Neither is right.
+
+> Arrays copy, objects alias.
+
+Passing an object into a function never protects the caller's data the way passing an array does. The function receives a handle to the very same instance, and anything it does through that handle is visible the moment it returns, no `&` required:
 
 ```php
 <?php
@@ -86,11 +99,11 @@ addItem($cart, "notebook");
 var_dump($cart->items); // ["notebook"], visible outside the function, no & needed
 ```
 
-No `&` appears anywhere in `addItem()`'s signature, and none is needed. Objects are always "passed by handle" (sometimes described loosely as "passed by reference," though that's not quite the precise PHP term), since you *can* reassign `$cart` inside the function to point it at a different object entirely without affecting the caller's variable. What you can't do is mutate the object it points to without that mutation being visible everywhere else that same object is referenced.
+No `&` anywhere in `addItem()`, and none needed. Objects are always "passed by handle". You will hear it called "passed by reference", which is close but not the precise PHP term: inside the function you can still reassign `$cart` to a different object without affecting the caller's variable. Try it: make `$cart = new Cart();` the first line of `addItem()`. The notebook now goes into a cart nobody else holds, and the caller's `$cart->items` stays empty. What you cannot do is change the object a handle points to without the change showing everywhere else that object is held.
 
 ## `clone`, the escape hatch
 
-Sometimes you genuinely want an independent copy of an object: a second `Cart` with the same starting items that can then diverge from the original. That's what `clone` is for:
+Sometimes you do want a second, independent `Cart`, one that starts with the same items and then goes its own way. That is what `clone` is for:
 
 ```php
 <?php
@@ -106,4 +119,4 @@ var_dump($cartA->items); // ["book"], untouched
 var_dump($cartB->items); // ["book", "pen"]
 ```
 
-`clone` creates a new object with the same property values as the original, and from that point on the two instances are fully independent, exactly the behavior you might have mistakenly expected from plain assignment. One caveat worth flagging now and revisiting later: `clone` copies properties one level deep. If one of `Cart`'s properties were itself an object rather than a plain array, the clone and the original would still share *that* nested object, handle and all, unless you do something about it. PHP gives classes a `__clone()` magic method for exactly this situation, which we'll cover once we've spent more time with classes in general, starting in [Chapter 5](ch05-00-classes.md).
+**`clone` creates a new object with the same property values, and from then on the two are fully independent**, the behavior you might have expected from plain assignment. One caveat to flag now: `clone` copies one level deep. If one of `Cart`'s properties were itself an object rather than a plain array, the clone and the original would still share that nested object, handle and all, unless you do something about it. PHP gives classes a `__clone()` method for exactly this, and the book gets to it once you have spent more time with classes, starting in [Chapter 5](ch05-00-classes.md).

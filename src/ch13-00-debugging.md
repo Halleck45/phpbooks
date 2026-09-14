@@ -1,7 +1,15 @@
 # Debugging PHP
 
-Every program in this book so far has been small enough to read start to finish and spot the bug by eye. That stops being true quickly, and the guessing game and the web basics chapter you just finished are already big enough that "just read it carefully" isn't always going to cut it. Debugging is the skill of finding out what a program is actually doing, as opposed to what you meant it to do, and it's worth treating as a skill in its own right rather than something you pick up by accident.
+Sooner or later, one of your programs will run without a single error and still give the wrong answer. No exception, no warning, just a total that is off by one or a page that greets the wrong person. Reading the code again rarely helps, because the code says exactly what you meant. **Debugging is finding out what the program actually does, as opposed to what you meant it to do.** It is a skill in its own right, worth learning on purpose.
 
-This chapter covers two approaches, and you'll want both. The first, **print debugging**, is the oldest trick in the book: put something in the middle of your code that shows you a value, rerun the program, read the output. It needs nothing but PHP itself, and `var_dump()` and `print_r()` are the tools for it. The second, **step debugging**, is more surgical: pause the program mid-execution, inspect every variable in scope exactly as it stood at that moment, and step forward one line at a time. That takes a tool, **Xdebug**, and a few minutes of setup, but it earns that setup back the first time a bug doesn't announce itself with an obvious wrong value to print.
+Every program in this book so far was small enough to read from top to bottom and spot the bug by eye. The guessing game and the guestbook are already past that point.
 
-Neither replaces the error handling from [Chapter 9](ch09-00-error-handling.md): a well-placed exception tells you *that* something went wrong. Debugging is what you reach for to find out *why*, especially when nothing threw at all and the program just quietly produced the wrong answer. The CLI project in [Chapter 14](ch14-00-a-cli-project.md) is exactly the kind of multi-file program where that distinction starts to matter, and where both of these tools earn their keep.
+There are two ways to look inside a running program, and you will want both.
+
+<img src="images/ch13-two-ways.png" alt="Two ways to debug: on the left, a flashlight lights one spot in a dark corridor of code; on the right, a pause button freezes the program mid-run so every variable can be read" width="600">
+
+The first is **print debugging**, the oldest trick in the book. You put something in the middle of your code that shows you a value, rerun the program, and read the output. It is a flashlight: you see the one spot you point it at. It needs nothing but PHP itself, and `var_dump()` and `print_r()` are the tools for it.
+
+The second is **step debugging**. You pause the program at an exact line, look at every variable as it stood at that instant, and move forward one line at a time. A pause button rather than a flashlight: no more guessing where to look. It takes a tool, **Xdebug**, and a few minutes of setup, which pay for themselves the first time a bug gives you no obvious value to print.
+
+Neither replaces the error handling from [Chapter 9](ch09-00-error-handling.md). A well-placed exception tells you *that* something went wrong. Debugging is how you find out *why*, especially when nothing threw at all and the program just quietly produced the wrong answer. The command line tool of [Chapter 14](ch14-00-a-cli-project.md) is exactly the kind of multi-file program where both tools earn their keep.

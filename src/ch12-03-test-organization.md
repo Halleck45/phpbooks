@@ -1,6 +1,6 @@
 # Test Organization
 
-Where tests live matters less for correctness than it does for whether anyone (including future you) can find them. PHP's convention here is simple enough to state in one sentence: a `tests/` directory that mirrors the shape of `src/`, with one test class per class, named after the thing it tests plus `Test`.
+Where tests live changes nothing for PHPUnit and everything for the person looking for them, including you in six months. **PHP's convention fits in one sentence: a `tests/` directory that mirrors `src/`, one test class per class, named after the class plus `Test`.**
 
 ```text
 src/
@@ -11,13 +11,17 @@ tests/
     GrepOptionsTest.php
 ```
 
-`src/Rectangle.php` gets `tests/RectangleTest.php`. `src/Http/Client.php` would get `tests/Http/ClientTest.php`, keeping the directory structure lined up on both sides. This isn't enforced by PHPUnit (you could name things however you like and point `phpunit.xml` at whatever directory you chose), but it's the convention nearly every PHP project follows, and deviating from it without a good reason just makes your codebase slightly harder for the next person to navigate. Composer's PSR-4 autoloading, from [Chapter 7](ch07-00-namespaces-and-composer.md), usually maps a `Tests\` namespace onto this `tests/` directory the same way it maps your application namespace onto `src/`.
+<img src="images/ch12-mirror-tree.png" alt="Two folder trees facing each other like a reflection: each file in src has a twin in tests with the same name and a Test suffix" width="560">
+
+`src/Rectangle.php` gets `tests/RectangleTest.php`. `src/Http/Client.php` would get `tests/Http/ClientTest.php`, with the folders lined up on both sides. Nothing enforces this: PHPUnit runs whatever `phpunit.xml` points at, named however you like. But nearly every PHP project follows the convention, and breaking it without a good reason only makes your code harder for the next person to find their way around. Composer's PSR-4 autoloading, from [Chapter 7](ch07-00-namespaces-and-composer.md), usually maps a `Tests\` namespace onto `tests/` the same way it maps your application namespace onto `src/`.
 
 ## Unit tests vs. integration tests
 
-A **unit test** exercises one class or function, in isolation, with nothing outside it involved: no database, no filesystem, no network. `RectangleTest` is a unit test: it constructs a `Rectangle` directly and checks its own methods, nothing more. Unit tests are fast (thousands of them can run in a few seconds), which is exactly what lets you run the whole suite constantly without it slowing you down.
+**A unit test exercises one class or function alone, with nothing outside it involved**: no database, no filesystem, no network. `RectangleTest` is one. It builds a `Rectangle` and checks its methods, nothing more. Unit tests are fast. Thousands of them run in a few seconds, which is exactly what lets you run the whole suite constantly without it slowing you down.
 
-An **integration test** checks that several pieces work correctly *together*: your code talking to a real database, a real file on disk, a real HTTP call to another service. They catch a category of bug unit tests structurally cannot: the assumptions two pieces make about each other turning out to be wrong, even though each piece is individually correct. They're also slower, often by orders of magnitude, and more prone to flaking for reasons that have nothing to do with your code: a slow disk, a network blip.
+**An integration test checks that several pieces work together**: your code talking to a real database, a real file on disk, a real HTTP call to another service. It catches a family of bugs a unit test structurally cannot see, when two pieces are each correct on their own and wrong about each other. The price is speed, often by orders of magnitude, and a tendency to fail for reasons that have nothing to do with your code: a slow disk, a network blip.
+
+<img src="images/ch12-unit-vs-integration.png" alt="On the left, a single gear tested alone on a workbench with a fast stopwatch; on the right, several gears meshed with a database and a file, with a slower stopwatch" width="600">
 
 ```php
 <?php
@@ -40,8 +44,8 @@ final class FindMatchingLinesIntegrationTest extends TestCase
 }
 ```
 
-Nothing here is exotic (it's still a PHPUnit `TestCase`, still full of assertions), but notice it touches the real filesystem, creating and cleaning up an actual temporary file, rather than faking one. That's the distinguishing feature, not the syntax.
+Nothing exotic here. It is still a `TestCase`, still full of assertions. What makes it an integration test is that it touches the real filesystem, creating an actual temporary file and cleaning it up, instead of faking one. The difference is in what the test touches, not in its syntax.
 
 ## A practical split
 
-Most projects keep both kinds of test in the same `tests/` tree but separate them by directory or by PHPUnit group (`tests/Unit/` and `tests/Integration/`, or the `#[Group('integration')]` attribute from the previous section), so you can run the fast unit suite constantly while you work, and save the slower integration suite for before a commit or for CI. Neither kind replaces the other: unit tests tell you a piece works on its own; integration tests tell you the pieces still work once they're talking to each other, which is, after all, the only way your program actually runs.
+Most projects keep both kinds in the same `tests/` tree and separate them by directory (`tests/Unit/` and `tests/Integration/`) or by group (the `#[Group('integration')]` attribute from the previous section). The fast unit suite then runs constantly while you work, and the slower integration suite waits for a commit or for CI. Neither replaces the other. Unit tests tell you a piece works on its own; integration tests tell you the pieces still work once they talk to each other, which is the only way your program ever runs.

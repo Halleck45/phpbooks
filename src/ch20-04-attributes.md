@@ -1,12 +1,12 @@
 # Attributes
 
-For years, PHP developers who wanted to attach metadata to a class or method ("this method is a test," "this property maps to a database column," "this route handles `GET /users`") had exactly one tool: a specially formatted comment, a docblock, that some framework would parse at runtime with a regular expression. It worked, but it was always a little uneasy: the metadata lived in a comment, which the language itself didn't understand or check, and a typo in it failed silently.
+"This method is a test." "This property maps to a database column." "This route handles `GET /users`." For years, PHP had exactly one place for that kind of note: a specially formatted comment, a docblock, that a framework parsed at runtime with a regular expression. It worked, and it was always a little uneasy. The language did not read the comment, did not check it, and a typo in it failed without a sound.
 
-PHP 8 replaced that convention with a real language feature: **attributes**, written as `#[SomethingLikeThis]` directly above the thing they describe.
+**PHP 8 made the note part of the language: an attribute, written `#[SomethingLikeThis]` right above the thing it describes.**
 
 ## Defining and attaching an attribute
 
-An attribute is just a class, marked with PHP's own `#[Attribute]` attribute so PHP knows it's meant to be used this way:
+An attribute is a plain class. What turns it into an attribute is PHP's own `#[Attribute]` marker above it:
 
 ```php
 <?php
@@ -22,7 +22,7 @@ class Route
 }
 ```
 
-Once defined, attach it to a method with the `#[...]` syntax:
+Once defined, hang it on a method with the `#[...]` syntax:
 
 ```php
 <?php
@@ -43,11 +43,13 @@ class UserController
 }
 ```
 
-At this point, nothing runs differently: `#[Route(...)]` doesn't call anything on its own. It's inert metadata, attached to the method, waiting for something to go looking for it.
+Run this file and nothing happens. **`#[Route(...)]` calls nothing on its own.** It is inert metadata, a tag hanging on the method, waiting for someone to come and read it.
+
+<img src="images/ch20-attribute-tag.png" alt="A method drawn as a box with a luggage tag reading Route hanging from it; a magnifying glass labeled Reflection reads the tag and an arrow leads to a small routing table entry, GET /users to index" width="600">
 
 ## Reading attributes back with Reflection
 
-That "something" is Reflection, from earlier in this chapter. `ReflectionMethod` (and `ReflectionClass`, `ReflectionProperty`) can list the attributes attached to whatever they're reflecting, and construct the actual attribute object on demand:
+That someone is Reflection, from earlier in this chapter. **`ReflectionMethod`, like `ReflectionClass` and `ReflectionProperty`, lists the attributes attached to whatever it reflects, and builds the attribute object on demand.**
 
 ```php
 <?php
@@ -68,8 +70,12 @@ GET /users -> index()
 POST /users -> store()
 ```
 
-`getAttributes(Route::class)` finds every `Route` attribute on a method, and `newInstance()` actually constructs it: running the constructor, with the arguments you wrote in `#[Route(...)]`, and handing you back a real `Route` object with `method` and `path` properties. This is genuinely how simple routing systems are built: scan a controller's methods, read off their `Route` attributes, and build a routing table from what you find, all without a separate configuration file to keep in sync.
+`getAttributes(Route::class)` finds every `Route` attribute on a method. `newInstance()` constructs it, running the constructor with the arguments you wrote in `#[Route(...)]`, and hands back a real `Route` object with `method` and `path` properties. This is how simple routing systems are built: scan a controller's methods, read off their `Route` attributes, fill a routing table with what you find. No separate configuration file to keep in sync.
 
-## Where you've already seen this
+> An attribute is a plain object, parked next to your code, that Reflection can pick up.
 
-If you've read [Chapter 12](ch12-00-testing.md), this pattern should look familiar: PHPUnit's `#[Test]` attribute marks a method as a test case the same way `#[Route]` marks one as a handler here: a plain class, read back through Reflection, driving real behavior. Frameworks lean on attributes constantly now: Symfony uses them for routes and dependency injection configuration, Doctrine uses them to map properties to database columns, and PHPUnit uses them for test metadata generally, not just marking a method as a test. You won't necessarily write many custom attributes of your own day to day, but you'll read `#[...]` above methods and classes constantly in modern PHP code, and now you know exactly what's happening when you do: a plain object, waiting to be read back through Reflection.
+## Where you have already seen this
+
+If you have read [Chapter 12](ch12-00-testing.md), this pattern is familiar. PHPUnit's `#[Test]` marks a method as a test case the way `#[Route]` marks one as a handler here: a plain class, read back through Reflection, driving real behavior. Frameworks lean on attributes constantly. Symfony uses them for routes and dependency injection configuration, Doctrine to map properties to database columns, PHPUnit for test metadata of every kind.
+
+You may not write many attributes of your own. You will read `#[...]` above methods and classes every day in modern PHP code, and now you know exactly what is happening when you do: a plain object, waiting to be read back through Reflection.

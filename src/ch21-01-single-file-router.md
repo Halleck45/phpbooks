@@ -1,17 +1,17 @@
 # A Single-File Router with PHP's Built-in Server
 
-Every web framework, no matter how large, is built on the same basic question: a request comes in for some URL: how does that turn into which piece of code runs? The mechanism that answers that question is called a **router**. Before reaching for a framework's version, it's worth building the smallest one that could possibly work, so you can see exactly what it's doing.
+A browser asks for `/about`. Somewhere on the server, a piece of code has to answer. Which one? **The part of a web application that turns a URL into a piece of code is called a router**, and every framework has one, however large the framework. Before you use theirs, build the smallest one that could possibly work, so you can see exactly what it does.
 
 ## PHP's built-in development server
 
-PHP ships with a small web server built into the CLI binary itself: no Apache, no nginx, nothing to install. It's not meant for production, but it's genuinely useful for development and, here, for learning:
+A request has to be received by a web server, and PHP has one hiding inside the `php` command itself. No Apache, no nginx, nothing to install. It is not made for production, but for development, and for learning, it is exactly right:
 
 ```console
 $ php -S localhost:8000 router.php
 [Thu Aug 20 10:00:00 2026] PHP 8.3.0 Development Server (http://localhost:8000) started
 ```
 
-That command starts a server on port 8000 and routes *every* incoming request through `router.php`. Nothing about matching URLs to files happens automatically: your script decides, for every single request, what to do with it. That's exactly what we want: total visibility into the mechanism.
+That command starts a server on port 8000 and sends *every* incoming request through `router.php`. Nothing gets matched to a file on disk automatically. Your script decides, for each request, what to send back. Total visibility, which is exactly what we want.
 
 ## The router itself
 
@@ -41,9 +41,13 @@ if (isset($routes[$uri])) {
 }
 ```
 
-`$_SERVER['REQUEST_URI']` is where PHP puts the path the browser actually asked for: `/about`, `/`, whatever was typed or clicked. `parse_url(..., PHP_URL_PATH)` strips off any query string (`?foo=bar`), so `/about?ref=email` and `/about` both resolve to the same route. From there, `$routes` is just an associative array mapping a path to a closure that produces the response: look up the URI, and if it's a key we recognize, call the matching closure and echo whatever it returns. If it isn't, respond with a 404, the same way a real server would.
+Read it from the top. **`$_SERVER['REQUEST_URI']` is where PHP puts the path the browser asked for**: `/`, `/about`, whatever was typed or clicked. `parse_url(..., PHP_URL_PATH)` cuts off any query string (`?foo=bar`), so `/about?ref=email` and `/about` land on the same route.
 
-Try it:
+<img src="images/ch21-router-switchboard.png" alt="A request for /about arrives at a lookup table with one row per path; the matching row leads to the code that answers, and a bin at the bottom collects everything else as a 404" width="560">
+
+Then `$routes` is an associative array, a plain lookup table: a path on the left, and on the right a closure that produces the response. **The router looks up the path; if it is a key we know, it calls the closure and echoes what comes back.** Otherwise it answers 404, the way any server does for a page that does not exist.
+
+Try it, with the server still running in another terminal:
 
 ```console
 $ curl http://localhost:8000/
@@ -56,8 +60,12 @@ $ curl http://localhost:8000/nonexistent
 404 Not Found: /nonexistent
 ```
 
+Now add a route of your own: a `/contact` key with a closure returning any text you like. Save, and ask `curl` for it. No restart needed, since the server runs `router.php` fresh on every request.
+
 ## What this is (and isn't) doing
 
-This router has no path parameters (`/users/{id}`), no HTTP-method awareness (`GET` versus `POST` at the same path), and no middleware. Real routers add all of that, but structurally, they're doing exactly what's happening here: inspecting something about the incoming request, and dispatching to a piece of code based on it. You've just seen the entire mechanism laid bare, in about fifteen lines.
+This router knows nothing about path parameters (`/users/{id}`), nothing about HTTP methods (`GET` versus `POST` at the same path), nothing about middleware. Real routers add all of that. Structurally, though, they do what these fifteen lines do: inspect something about the incoming request, and dispatch to a piece of code based on it.
 
-The next section grows this router into something shaped more like a real application, replacing these inline closures with proper controller classes and adding a view layer for the HTML they'll eventually need to produce.
+> A router is a lookup table with a 404 at the bottom.
+
+Fifteen lines are enough to see the mechanism. They are not enough to grow on: the moment each route needs real HTML, the closures in that array turn into a tangle. The next section gives each route a proper home.

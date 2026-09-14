@@ -1,10 +1,10 @@
 # `match` Pattern Syntax
 
-Chapter 6 introduced `match` alongside enums, where it earns its keep the most. Before we leave `match` behind for good, three syntax details are worth pinning down: they don't come up in the simplest examples, but you'll want all three the first time you write a `match` expression with more than two or three arms.
+Chapter 6 gave `match` its proper introduction, next to enums, where it shines the most. Three details did not fit there, and you will want all three the first time you write a `match` with more than two or three arms.
 
 ## Multiple conditions per arm
 
-An arm doesn't have to test a single value. Separate several with commas, and the arm matches if *any* of them equals the subject:
+An arm does not have to test a single value. Separate several with commas, and the arm matches if any one of them equals the subject:
 
 ```php
 <?php
@@ -20,11 +20,11 @@ $dayType = match ($dayNumber) {
 echo $dayType; // Weekend
 ```
 
-Read the comma as "or": `1, 2, 3, 4, 5 =>` means "if the subject is 1, or 2, or 3, or 4, or 5." Without this, you'd need five separate arms all returning the same value, which is exactly the kind of repetition `match` exists to eliminate.
+**Read the comma as "or".** `1, 2, 3, 4, 5 =>` means "if the subject is 1, or 2, or 3, or 4, or 5". Without it you would write five arms that all return `'Weekday'`, which is exactly the repetition `match` exists to remove.
 
 ## Order matters: first match wins
 
-`match` checks its arms from top to bottom and stops at the first one that matches. That's not usually something you have to think about, because well-designed conditions don't overlap. But combine `match (true)` (matching against boolean conditions rather than a single value, as you saw back in [Chapter 3](ch03-05-control-flow.md)) with conditions that *can* overlap, and order becomes a real decision, not a formality:
+`match` checks its arms from top to bottom and stops at the first one that fits. Most of the time you never think about it, because well-designed conditions do not overlap. Pair `match (true)` (testing boolean conditions instead of a single value, as in [Chapter 3](ch03-05-control-flow.md)) with conditions that can overlap, and order stops being a formality:
 
 ```php
 <?php
@@ -41,11 +41,16 @@ $grade = match (true) {
 echo $grade; // B
 ```
 
-Put `$score >= 70` first, and every score of 85 or above would also satisfy it, and you'd never reach the `A` or `B` arms at all; they'd be unreachable code, silently. Ordering the conditions from most specific to least specific, as above, is what makes this pattern work. It's a small trap, but a common one: when your arms can overlap, always order the most restrictive condition first.
+<img src="images/ch19-first-match-wins.png" alt="Three sieves stacked from finest to coarsest, labeled 90 or more, 80 or more, 70 or more; a ball marked 85 falls through the first and is caught by the second, which is marked B" width="520">
+
+Move `$score >= 70` to the top, and 85 satisfies it before the `B` arm gets a look. So does 95. The `A` and `B` arms become unreachable code, and PHP will not say a word about it. Try it: reorder the arms and run the file again.
+
+> [!TIP]
+> **When arms can overlap, put the most restrictive condition first**, like sieves stacked from finest to coarsest.
 
 ## Arms are expressions, not just values
 
-Every arm of a `match` is a full expression, evaluated and returned when that arm is chosen: it doesn't have to be a bare literal. You can call a function, construct an object, or run any expression PHP allows:
+An arm does not have to be a bare literal. **Every arm of a `match` is a full expression, evaluated and returned only when that arm is chosen.** Call a function, construct an object, run anything PHP accepts as an expression:
 
 ```php
 <?php
@@ -73,4 +78,4 @@ $output = match ($level) {
 echo $output; // [WARNING] Disk usage above 80%
 ```
 
-That last arm constructs an exception object and immediately calls a method on it, all inside a single `match` arm; parentheses around `new RuntimeException(...)` are needed there so PHP knows to call `getMessage()` on the constructed object rather than trying to parse it some other way. There's no rule that arms have to be short or trivial; they just have to be expressions, which in PHP covers almost everything. This is what makes `match` a genuine replacement for a lot of small helper functions, not just a tidier `switch`.
+The last arm builds an exception and calls a method on it, in one go; the parentheses around `new RuntimeException(...)` are needed so PHP knows to call `getMessage()` on the finished object rather than parsing the line some other way. Arms have no obligation to be short or trivial. They have to be expressions, and in PHP that covers almost everything, which is what makes `match` a real replacement for a lot of small helper functions, not just a tidier `switch`.

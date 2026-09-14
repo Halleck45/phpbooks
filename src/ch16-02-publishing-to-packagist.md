@@ -1,10 +1,10 @@
 # Publishing a Package to Packagist
 
-Every `composer require` you've run has quietly relied on [Packagist](https://packagist.org/), the public package registry Composer checks by default whenever you ask it to install something. It's the reason `composer require nunomaduro/termwind` in Chapter 1 didn't need you to specify a URL, a server, or anything beyond a name: Packagist already knew where that package lived. Publishing your own package there is more approachable than it sounds, and understanding the mechanism removes a fair bit of mystery around what "publishing a PHP package" actually means.
+Every `composer require` you have typed has relied on a service you never had to name: [Packagist](https://packagist.org/), the public registry Composer checks by default. It is why `composer require nunomaduro/termwind` in [Chapter 7](ch07-01-hello-composer.md) needed no URL and no server. Packagist already knew where that package lived. **Putting your own package there is easier than it sounds, and the mechanism is worth understanding, because it explains what "publishing a PHP package" really means.**
 
 ## What a publishable `composer.json` needs
 
-At minimum, four things:
+Four things, at minimum:
 
 ```json
 {
@@ -22,25 +22,31 @@ At minimum, four things:
 }
 ```
 
-`"name"` follows a fixed shape: `vendor/package`, both lowercase, hyphen-separated, where `vendor` is usually your GitHub username or organization, not a formal company name; plenty of published packages belong to individuals. `"description"` and `"license"` are what show up on your package's Packagist page, and `"license"` matters for a practical reason too: without one, you're leaving the terms under which anyone can use your code legally ambiguous, which is exactly the kind of thing that quietly scares off potential users. `"MIT"` is the common, permissive default if you have no particular reason to choose otherwise.
+`"name"` has a fixed shape, `vendor/package`, all lowercase, words separated by hyphens. The vendor part is usually your GitHub username or organization, not a formal company name; plenty of published packages belong to one person. `"description"` and `"license"` are what visitors read on your Packagist page. **The license matters for a practical reason: without one, nobody knows under which terms they may legally use your code**, and that kind of doubt quietly scares off users. `"MIT"` is the common permissive choice when you have no reason to pick another.
 
 ## You don't upload anything
 
-This is the part that surprises people coming from ecosystems with a `publish` command. Composer packages aren't uploaded to Packagist at all: Packagist doesn't host your code. It hosts *metadata about* your code, and reads the actual source straight from your Git repository, GitHub included. Publishing a package is, mechanically:
+This is the part that surprises people coming from ecosystems with a `publish` command. **Packagist does not host your code. It hosts information about your code, and reads the source straight from your Git repository**, GitHub included.
 
-1. Push a `composer.json` like the one above to a public Git repository.
-2. Go to [packagist.org](https://packagist.org/), sign in, and click "Submit," pointing it at your repository's URL.
-3. Packagist reads your `composer.json`, indexes the package under the `"name"` you gave it, and, this is the important part, sets up a webhook so it's notified automatically every time you push.
+<img src="images/ch16-packagist-directory.png" alt="Packagist drawn as a phone book: a page lists a package name and points to a Git repository elsewhere, and a developer's terminal running composer require follows that pointer to the repository" width="560">
 
-From that point on, there's no separate "release" step, no build artifact to hand over. Packagist watches your repository directly.
+Publishing is three moves. Push a `composer.json` like the one above to a public Git repository. Sign in on [packagist.org](https://packagist.org/), click "Submit", and paste your repository's URL. Packagist then reads your `composer.json`, indexes the package under the `"name"` you gave it and, this is the important part, sets up a webhook so it hears about every push you make from then on.
+
+No release step, no build artifact to hand over. Packagist watches your repository.
+
+> Packagist is a phone book, not a warehouse. It knows where your code lives and sends Composer there.
 
 ## Versions come from Git tags
 
-If Packagist reads straight from your repository, where do version numbers like `1.2.0` come from? From ordinary Git tags, using [semantic versioning](https://semver.org/): `MAJOR.MINOR.PATCH`:
+If Packagist reads your repository, where does a version like `1.2.0` come from? From an ordinary Git tag, named after [semantic versioning](https://semver.org/): `MAJOR.MINOR.PATCH`.
 
 ```console
 $ git tag v1.0.0
 $ git push origin v1.0.0
 ```
 
-Push that tag, and Packagist's webhook picks it up and lists `1.0.0` as an installable version within moments. Increment the patch number for backward-compatible fixes, the minor number for backward-compatible new features, and the major number the moment you break something a consumer might be relying on. That last rule is the one that actually matters to anyone depending on your package, since it's what lets them write a version constraint like `^1.0` in their own `composer.json` and trust that anything satisfying it won't break their code. There's no separate step to "publish" `1.0.0` beyond tagging and pushing it; the tag *is* the release.
+Push the tag, the webhook fires, and `1.0.0` appears as an installable version within moments. **The tag is the release.** There is nothing else to do.
+
+<img src="images/ch16-semver-tags.png" alt="A Git history drawn as a line of commits with three flags planted on it, v1.0.0, v1.0.1 and v1.1.0, and Packagist's version list mirroring the flags" width="560">
+
+The three numbers carry a promise. Bump the patch for a fix that breaks nothing, the minor for a new feature that breaks nothing, and the major the moment you break something a user might rely on. That last rule is the one that matters to whoever depends on you: it is what lets them write `^1.0` in their own `composer.json` and trust that anything matching it will not break their code.

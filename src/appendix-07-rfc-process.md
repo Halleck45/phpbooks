@@ -1,6 +1,6 @@
 # G - How PHP Is Made (the RFC Process)
 
-At some point, reading through enums, `match`, attributes, and readonly properties, it's worth asking: who decided PHP should work this way? The answer is public, documented, and more interesting than "a company decided."
+At some point, reading through enums, `match`, attributes, and readonly properties, a question comes up: who decided PHP should work this way? The answer is public, documented, and more interesting than "a company decided."
 
 PHP's language evolution happens through RFCs (Request for Comments), proposed and discussed on the `internals@lists.php.net` mailing list. Anyone can write one. The process, roughly:
 
