@@ -1,0 +1,11 @@
+# Un projet en ligne de commande : construire un programme CLI
+
+Quelque part sur votre disque, il y a un journal, une liste, un export de quelque chose, et vous ne voulez que les lignes qui mentionnent un mot. Sous Unix, ce travail revient à `grep`. Au fil des six prochaines sections, vous allez écrire le vôtre. **phpgrep est un petit outil en ligne de commande qui affiche toutes les lignes d'un fichier contenant un mot**, et c'est le plus gros programme du livre jusqu'ici.
+
+<img src="images/ch14-phpgrep.png" alt="Un petit éléphant tient une loupe au-dessus d'une feuille de lignes de texte ; les deux lignes qui contiennent le mot cherché sont surlignées et ressortent en dessous" width="520">
+
+C'est un seul programme, pas six exemples. Chaque section reprend exactement là où la précédente s'est arrêtée, comme le [chapitre 2](ch02-00-guessing-game-tutorial.md) a fait grandir son jeu de devinette une capacité à la fois. La première version est grossière : lire deux arguments, les afficher. La dernière lit son fichier proprement, signale ses erreurs comme un vrai outil, obéit à une variable d'environnement, et s'appuie sur des tests écrits avant le code qui les fait passer. En chemin, vous réutilisez l'essentiel de ce que le livre a enseigné : les classes et la promotion de constructeur du [chapitre 5](ch05-00-classes.md), les exceptions du [chapitre 9](ch09-00-error-handling.md), PHPUnit du [chapitre 12](ch12-00-testing.md).
+
+Un outil de recherche fait un bon projet d'apprentissage, et ce n'est pas un hasard. Il est assez petit pour tenir entièrement dans votre tête, et pourtant il a des arguments à analyser, un fichier à lire, un endroit où les choses peuvent légitimement mal tourner (le fichier manque) et une fonctionnalité qui mérite d'être ajoutée avec soin (ignorer la casse). Chacune de ses pièces, vous la referez un jour, sous une forme ou une autre, au travail.
+
+Tapez le code au fur et à mesure plutôt que de coller le fichier final. **La valeur de ce chapitre, c'est de voir le programme changer de forme** : maladroit d'abord, puis modulaire, puis testé, puis fini. Et gardez le projet une fois terminé. Le [chapitre 15](ch15-00-functional-features.md) revient sur phpgrep pour une dernière amélioration, quand vous aurez rencontré une fonctionnalité de PHP taillée pour lui.

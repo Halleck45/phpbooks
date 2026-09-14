@@ -1,0 +1,9 @@
+# Travailler avec les variables et les références
+
+Depuis le jeu de devinette du [chapitre 2](ch02-00-guessing-game-tutorial.md), vous écrivez `$x = $y` sans y penser. Cette ligne mérite qu'on s'y arrête.
+
+Écrivez-la avec un tableau, puis avec un objet, et modifiez la copie à chaque fois. **Avec un tableau, l'original ne bouge pas. Avec un objet, l'original change aussi.** Même ligne, deux comportements opposés, et la différence n'est pas un détail du moteur. C'est l'une des surprises les plus fréquentes pour qui arrive d'un autre langage, et l'une des sources les plus sûres de bugs étranges pour qui ne se l'est jamais fait expliquer. Prenez-la à l'envers, et un jour une fonction « ne marchera pas » sans raison visible, jusqu'à ce que vous ayez lu ce chapitre.
+
+Les tableaux se comportent comme si chaque affectation vous fabriquait une copie neuve et indépendante. Les objets se comportent comme si chaque variable qui en tient un n'était qu'un nom de plus pour la même chose. La [première section](ch04-01-copy-on-write.md) regarde comment PHP copie les tableaux, et l'astuce qu'il emploie pour que ça ne coûte presque rien. La [deuxième](ch04-02-references.md) présente le `&` qui permet de partager une variable exprès, et la façon dont les objets sont partagés que vous le demandiez ou non. Les références sont un outil tranchant, utile dans quelques situations précises et source de code confus quand on y recourt par habitude ; vous apprendrez donc aussi où elles méritent leur place.
+
+Le chapitre se termine sur deux idées plus petites qui habitent à côté : ce qu'une fonction voit, ou ne voit pas, des variables autour d'elle, et la façon dont PHP sort la mémoire dont il n'a plus besoin. Ni l'une ni l'autre n'est longue à apprendre, et les deux reviendront plus loin dans le livre.
