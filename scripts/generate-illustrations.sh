@@ -3,8 +3,8 @@
 # Generate the book illustrations described in illustrations.md through the
 # OpenAI Images API, and drop them into src/images/.
 #
-# Usage:
-#   OPENAI_API_KEY=sk-... scripts/generate-illustrations.sh [options] [name ...]
+# Usage (from a book folder such as beginner/ or polyglot/):
+#   OPENAI_API_KEY=sk-... ../scripts/generate-illustrations.sh [options] [name ...]
 #
 #   name        illustration file name from illustrations.md, with or without
 #               the .png extension (e.g. ch02-flowchart). Default: all of them.
@@ -18,6 +18,8 @@
 #
 # Environment:
 #   OPENAI_API_KEY        required
+#   ILLUSTRATIONS_SPEC    spec file, default: ./illustrations.md
+#   ILLUSTRATIONS_OUT     output folder, default: ./src/images
 #   OPENAI_IMAGE_MODEL    default: gpt-image-2.5-flare (gpt-image-2.5-sunburst favors editing precision)
 #   OPENAI_IMAGE_QUALITY  low | medium | high | xhigh | max | auto, default: high
 #
@@ -30,9 +32,11 @@
 
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SPEC="$ROOT/illustrations.md"
-OUT_DIR="$ROOT/src/images"
+# The script is shared by every book in the repository. Run it from a book
+# folder (beginner/, polyglot/): the spec and the image folder default to the
+# current directory, and can be overridden with the two variables below.
+SPEC="${ILLUSTRATIONS_SPEC:-$PWD/illustrations.md}"
+OUT_DIR="${ILLUSTRATIONS_OUT:-$PWD/src/images}"
 API_URL="https://api.openai.com/v1/images/generations"
 MODEL="${OPENAI_IMAGE_MODEL:-gpt-image-2.5-flare}"
 QUALITY="${OPENAI_IMAGE_QUALITY:-high}"

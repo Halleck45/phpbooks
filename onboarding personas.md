@@ -1,10 +1,14 @@
 ## The Absolute Beginner
 **Show me the code that gets me the job**
 
+Book: `beginner/` (The PHP Book).
+
 This person is a total beginner. She may have never even heard of PHP. She might be looking at bootcamps and asking, "Will this get me a job?" She is currently being failed by higher education, which is teaching decade-old code. 
 
 ## The Experienced Polyglot Developer 
 **Skip the basics; just tell me how PHP does it**
+
+Book: `polyglot/` (And Now, PHP).
 
 This person already knows how to code in other languages (Python, Node, Java, etc.), but she just been assigned to a PHP project. She doesn't need to be told what a loop or a variable is; she just needs to know how PHP does things. 
 
