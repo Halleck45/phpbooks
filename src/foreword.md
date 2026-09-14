@@ -1,9 +1,17 @@
 # Foreword
 
-I've spent a long time in and around PHP: writing it, breaking it, running static analysis over other people's, and watching the language change underneath all three of those activities. This book exists because most PHP tutorials teach you to copy a snippet, not to understand why it works. You can get quite far that way. You can also spend years writing PHP without ever quite knowing what a reference is, why an array behaves differently from an object, or what `strict_types` actually buys you. I'd rather you didn't.
+You are about to learn the language that runs the web.
 
-This book is for people who want the second thing: to actually understand PHP, not just operate it by muscle memory. Maybe you're new to programming entirely, and PHP is where you're starting: that's fine, it's a perfectly reasonable place to start, and always has been, however much the loudest opinions on the internet suggest otherwise. Maybe you've written some PHP already, glued together from search results and half-remembered examples, and you want the ground underneath it to stop feeling slippery. Either way, I've tried to explain each idea once, properly, rather than leaving you to reconstruct it from context clues scattered across forum posts.
+That is not a figure of speech. A large share of the sites you visit every day are written in PHP: Wikipedia, countless online shops, most blogs. WordPress alone powers more than four websites out of ten. You have probably never given it a thought, and that is normal. PHP has been doing its job quietly for thirty years.
 
-PHP has a reputation, and I won't pretend otherwise: it earned a lot of it fairly, in an earlier era, with warnings you had to squint to read and comparisons that surprised even people who'd written the interpreter. That PHP mostly doesn't exist anymore. The language you're about to learn has real types, a serious error model, enums, first-class functions, and a community that ships static analysis tools most other ecosystems still envy. None of that erases the old reputation, and I'm not here to relitigate it. I'd just rather you judge the language in front of you than the one people are still telling stories about.
+You may have heard bad things about it. There is a reason for that. The PHP of fifteen years ago was messy, forgiving to the point of absurdity, and many people learned to dislike it back then. What they do not always know is how much the language has changed since. Today's PHP is clean, fast, typed, and a pleasure to write. The reputation stayed where it was. The language moved on.
 
-So: get a terminal open, get PHP installed, and let's get started properly.
+> The PHP people complain about barely exists anymore. The PHP you are about to learn, few people really know.
+
+That is good news for you: you start from zero, with nothing to unlearn. And you are in good hands. I have spent a large part of my life with this language, writing it, teaching it, analyzing other people's code, and watching it grow. I know where the traps are, and above all, I know what you need to understand to walk right past them.
+
+This book will never ask you to copy code you do not understand. Every idea is explained once, properly, with a drawing whenever a drawing says it better than a paragraph. You will move forward through small programs that work, from your first "Hello, world!" to a real website built with your own hands.
+
+You need nothing more than a computer, some curiosity, and the urge to see what happens when you press Enter.
+
+So open a terminal, install PHP, and let's begin.

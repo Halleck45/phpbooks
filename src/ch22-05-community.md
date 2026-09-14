@@ -1,7 +1,5 @@
 # The PHP Community
 
-<img src="images/ch22-icon.svg" alt="The PHP Community illustration" width="72">
-
 Everything in this chapter, and most of this book, exists because of work other people did in public: extensions, frameworks, standards, RFCs. Finding that community is less a "next step" than a shortcut through all the others.
 
 - **User groups**: local, often monthly meetups, typically listed through sites like php.ug. A low-effort way to meet other PHP developers in person and hear what problems they're actually solving.

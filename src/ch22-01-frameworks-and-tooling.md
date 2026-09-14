@@ -1,7 +1,5 @@
 # Frameworks and the Tooling Around Them
 
-<img src="images/ch22-icon.svg" alt="Frameworks and the Tooling Around Them illustration" width="72">
-
 ## Frameworks
 
 [Chapter 21](ch21-00-final-project-web-app.md) built a router, controllers, and a view layer by hand, on purpose: so none of it would feel like magic. A framework gives you that same shape, already built, tested by thousands of other projects, with an ecosystem of packages assembled around it. Reaching for one isn't admitting defeat; it's skipping work that's already been done well.

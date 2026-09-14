@@ -1,7 +1,5 @@
 # Concise Control Flow with `match` and `?->`
 
-<img src="images/ch06-icon.svg" alt="Concise Control Flow with match and ?-> illustration" width="72">
-
 We'll close this chapter with a piece of syntax that has nothing to do with enums directly, but solves a closely related problem: handling a value that might be *nothing at all*, without burying the code that actually matters under a stack of defensive checks.
 
 ## The nullsafe operator

@@ -1,7 +1,5 @@
 # Processing a Series of Items with Generators
 
-<img src="images/ch15-icon.svg" alt="Processing a Series of Items with Generators illustration" width="72">
-
 Every function you've written so far that hands back a series of values has done it the same way: build an array, fill it up, `return` it. That's fine right up until the series is big enough that building the whole thing before anyone looks at a single item stops being fine. Generators are PHP's answer: a function that produces values one at a time, on demand, instead of all at once.
 
 ## The array way, and its limit

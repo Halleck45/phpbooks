@@ -1,13 +1,45 @@
 # Introduction
 
-<img src="images/ch00-icon.svg" alt="Introduction illustration" width="72">
+Right now, somewhere, someone is opening a web page. Maybe a shop, maybe a blog, maybe an online encyclopedia. Behind a good share of those pages, a small program just woke up, did its job in a few milliseconds, sent back the answer, and disappeared. That program was very likely written in PHP.
 
-PHP is a programming language built for the web, and it shows: every request to a PHP-powered page starts the program fresh, runs it, and throws the whole thing away, which turns out to be a remarkably robust way to build software that serves millions of people a day. That's still its home turf: a huge share of the web runs on it, often without anyone thinking about it twice. But PHP has quietly grown well past that niche. It's a capable command-line scripting language, a fine choice for small automation tools, and increasingly something people reach for outside a browser context entirely, with async runtimes and long-running processes now part of the conversation. This book covers PHP the language first, and treats "runs inside a web server" as one deployment option among several, not the only story worth telling.
+That rhythm, **wake up, work, disappear**, is the heart of how PHP works on the web. It is worth understanding before anything else, because it explains a lot of the language's character.
 
-This book assumes you're comfortable opening a terminal and typing commands: `cd` into a directory, run a file, read an error message without panicking. It does not assume you've programmed before. If you have, you'll recognize the shapes (variables, loops, functions) and can move a little faster through the early chapters, watching for where PHP's version of a familiar idea has its own personality. If you haven't, the early chapters build every idea from the ground up, and nothing later in the book assumes you skipped ahead.
+Picture a waiter with no memory at all. Each time a customer walks in, the waiter takes the order, prepares it, brings it, and immediately forgets the whole thing. The next customer gets exactly the same fresh start. Nothing from the previous order lingers: no crumbs, no leftover plates, no half-finished conversation.
 
-The book is front-loaded with fundamentals on purpose. The first several chapters cover the pieces every PHP program is built from (variables, types, control flow, functions) and they lean on a small worked example, a number-guessing game, to make the ideas concrete before naming them formally. From there, the projects get progressively bigger: a command-line tool with real file handling and error recovery, and eventually a small web application built from first principles, no framework standing between you and what's actually happening. By the time you reach those chapters, you'll have accumulated the vocabulary and instincts to read the code without a running translation happening in your head.
+<img src="images/ch00-request-cycle.png" alt="The life of a PHP request: a visitor asks for a page, PHP wakes up, does the work, sends the answer, and forgets everything" width="560">
 
-How you read it is up to you. If you're new to PHP or to programming generally, read it in order: each chapter assumes the ones before it, and the later projects are genuinely easier to follow if you've built the habits earlier chapters establish. If you already know your way around a codebase and just need PHP's specifics, how its types behave, how its objects differ from its arrays, what its newer syntax looks like, treat it as a reference and jump straight to the chapter you need. Either way works. The chapters try to stand on their own where they reasonably can, with links back to earlier material whenever they lean on something you'd otherwise have to take on faith.
+That is a PHP page. **Every visit starts the program from scratch, runs it top to bottom, and throws everything away.** It sounds wasteful. In practice it is one of the most robust ways ever found to serve millions of people a day: a bug affects one visit instead of poisoning the whole server, and when you need more capacity, you simply add more waiters.
 
-One last thing before you start: install PHP. [Chapter 1](ch01-00-getting-started.md) walks through it, but there's no substitute for having the interpreter open next to this book and actually running the examples as you go. Reading about a language and writing in it are different skills, and this book is much more useful if you let it teach you the second one.
+> A PHP program is born for one visitor, answers, and forgets. The next visitor gets a clean slate.
+
+The web is PHP's home, but it is not the whole story. PHP is also a perfectly good language for **small tools you run from a terminal**: renaming a thousand files, reading a spreadsheet export, sending a batch of emails, cleaning up a folder. No browser, no web server, just a script and its result.
+
+This book starts there, on purpose. In a terminal, you type a command and the answer appears on the next line. **That instant feedback is the fastest way to learn a language.** The web, with its requests, pages, and forms, comes later, once the language itself feels familiar.
+
+You need one skill to begin: **opening a terminal and typing a command**. If you can `cd` into a folder and run a program, you have everything required.
+
+You do not need to have programmed before. If you have never written a line of code, every idea in the early chapters is built from the ground up, and nothing later assumes you skipped ahead. If you already know another language, you will recognize the shapes (variables, loops, functions) and can move faster, keeping an eye out for the places where PHP does a familiar thing in its own way.
+
+Learning a language is a lot like learning to ride a bike. You do not start with the physics of balance. You get on, wobble, and ride a few meters. The explanations make much more sense once you have felt the thing move. So the book follows that order.
+
+> First you ride. Then you learn why the bike stays up.
+
+<img src="images/ch00-roadmap.png" alt="The road through the book: a first program, a small game, the fundamentals, a command line tool, then a web application" width="620">
+
+1. **A first program.** Install PHP and make it print a sentence.
+2. **A small game.** A number-guessing game in thirty lines, built before you know what most of the words mean.
+3. **The fundamentals.** Each piece of that game (variables, types, decisions, loops, functions), explained properly now that you have seen it work.
+4. **A real tool.** A command line program that reads files and handles errors the way software people actually use does.
+5. **A web application.** A small site built from first principles, with no framework hiding what happens.
+
+Each project is bigger than the last, and each one only uses what you have already seen.
+
+There are two ways to read this book.
+
+**If PHP is your first language**, read in order. Each chapter leans on the ones before it, and the later projects are much easier when the early habits are in place.
+
+**If you already program** and just need to know how PHP does things (how its types behave, how its objects differ from its arrays, what its modern syntax looks like), treat the book as a reference and jump to the chapter you need. Chapters stand on their own as much as they can, and link back to earlier material whenever they rely on it.
+
+One thing before you start: **install PHP**. [Chapter 1](ch01-00-getting-started.md) shows how, and it takes a few minutes. Then keep a terminal open next to this book and run every example as you meet it.
+
+> Reading about swimming does not teach you to swim. Reading about PHP does not teach you PHP. Typing it does.

@@ -1,7 +1,5 @@
 # Refactoring to Improve Modularity and Error Handling
 
-<img src="images/ch14-icon.svg" alt="Refactoring to Improve Modularity and Error Handling illustration" width="72">
-
 Everything phpgrep does still lives in one script, top to bottom: parse arguments, check the file, read it, loop over it, print matches. That's fine for thirty lines. It stops being fine the moment you want to test any single piece of it without running the whole program, which is exactly where this project is headed in a couple of sections. Let's split it up properly, and replace that clumsy `file_exists()` check with something PHP actually designed for this: an exception.
 
 ## A named exception

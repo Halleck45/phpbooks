@@ -1,7 +1,5 @@
 # Recoverable Errors with Exceptions
 
-<img src="images/ch09-icon.svg" alt="Recoverable Errors with Exceptions illustration" width="72">
-
 Where the previous section was about bugs, this one is about situations your code should genuinely expect: a file that might not exist, an age that might be negative, an API that might reject the request you sent it. None of these mean your program is broken; they mean it needs to make a decision, and exceptions are PHP's mechanism for saying "here's a problem, and here's what I know about it" up the call stack to whoever is equipped to decide what happens next.
 
 ## `try`, `catch`, `finally`

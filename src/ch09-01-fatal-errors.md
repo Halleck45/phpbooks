@@ -1,7 +1,5 @@
 # Unrecoverable Errors: Fatal Errors and `Error`
 
-<img src="images/ch09-icon.svg" alt="Unrecoverable Errors: Fatal Errors and Error illustration" width="72">
-
 Some problems aren't a matter of unlucky input or a missing file: they're a matter of your code being wrong. You called a method that doesn't exist. You passed a string where a function demanded an integer, with strict types on. You divided by zero. None of these are things a well-behaved program should be designed to "handle" gracefully, because there's nothing sensible to do in response except fix the bug.
 
 PHP represents this category with the `Error` class and its subclasses. A few you'll meet constantly:

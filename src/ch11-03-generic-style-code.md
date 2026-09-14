@@ -1,7 +1,5 @@
 # Generic-Style Code with Docblocks and Static Analysis
 
-<img src="images/ch11-icon.svg" alt="Generic-Style Code with Docblocks and Static Analysis illustration" width="72">
-
 Here's something to say plainly, because plenty of documentation dances around it: PHP does not have generics. In a language that does (Java's `List<String>`, TypeScript's `Array<Product>`), the compiler itself refuses to let the wrong type into a typed container. PHP's type system stops at the array boundary. You can type-hint a parameter as `array`, but "an array of what" is not something the language will check for you, ever, at runtime.
 
 ```php

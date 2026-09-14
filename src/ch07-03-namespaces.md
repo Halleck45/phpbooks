@@ -1,7 +1,5 @@
 # Controlling Scope and Visibility with Namespaces
 
-<img src="images/ch07-icon.svg" alt="Controlling Scope and Visibility with Namespaces illustration" width="72">
-
 A namespace is a prefix. That's the whole concept, and it's worth saying plainly before the syntax makes it look more complicated than it is: `App\Models\Product` is just the name `Product`, living inside the namespace `App\Models`, the same way `/home/damien/notes.txt` is just `notes.txt`, living inside `/home/damien`. Nothing about the class itself changes. What changes is how you, and PHP, refer to it unambiguously.
 
 ## Declaring a namespace

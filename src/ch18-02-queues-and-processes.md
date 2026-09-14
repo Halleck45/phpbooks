@@ -1,7 +1,5 @@
 # Background Work with Queues and Processes
 
-<img src="images/ch18-icon.svg" alt="Background Work with Queues and Processes illustration" width="72">
-
 So a request comes in, PHP handles it, and the process disappears when the response is sent. That's fine for "look up this user and render their profile." It's a problem for "resize this uploaded image, generate three thumbnails, and email a confirmation": nobody wants to stare at a spinner for eight seconds because your code is doing image processing before it can say "Upload successful." The user doesn't need to wait for that work to finish. They just need to know it's been accepted.
 
 The standard PHP answer is: don't do it now. Do it *later*, in a different process.

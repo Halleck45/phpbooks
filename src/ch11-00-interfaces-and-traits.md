@@ -1,7 +1,5 @@
 # Interfaces, Traits, and Generic-Style Code
 
-<img src="images/ch11-icon.svg" alt="Interfaces, Traits, and Generic-Style Code illustration" width="72">
-
 Classes give you a template for building objects. Interfaces and traits are the two tools PHP offers for the problem that shows up the moment you have more than one class: how do unrelated pieces of code agree to work together, and how do you avoid retyping the same method five times across five classes that have nothing else in common.
 
 They solve opposite halves of that problem, and it's worth saying so plainly up front because beginners, and more than a few experienced developers coming from other languages, routinely conflate them. An interface is a *contract*: it says "any class claiming this name promises to have these methods," and says nothing whatsoever about how those methods are implemented. A trait is the reverse: it's a literal chunk of implementation, copied wholesale into whichever classes ask for it, and it makes no promise about what those classes are or how they relate to one another. One is a shape you agree to fit. The other is a piece of code you borrow.

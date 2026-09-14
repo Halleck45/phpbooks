@@ -1,7 +1,5 @@
 # Error Handling
 
-<img src="images/ch09-icon.svg" alt="Error Handling illustration" width="72">
-
 Things go wrong. A file isn't there, a network call times out, a caller passes a string where an integer was promised, a division sneaks a zero into its denominator. No language design avoids this; the differences are in what happens the moment it does, and how much control you have over the answer. PHP's answer has changed a lot over the years, and the modern version, the one this chapter teaches, is considerably better than its reputation.
 
 Older PHP code, and there's a great deal of it still running, is full of silent failures: warnings printed to a log nobody reads, functions that return `false` on error with no further explanation, scripts that limp on with half-initialized data because nothing actually stopped them. PHP 7 and 8 walked much of this back. Most things that used to fail quietly now throw real objects you can catch, inspect, and respond to deliberately, and the language draws a sharper line than it used to between "the caller did something recoverable" and "something is actually broken."

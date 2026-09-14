@@ -1,7 +1,5 @@
 # How to Write Tests with PHPUnit
 
-<img src="images/ch12-icon.svg" alt="How to Write Tests with PHPUnit illustration" width="72">
-
 Start a small project the way you did in [Chapter 7](ch07-01-hello-composer.md):
 
 ```console

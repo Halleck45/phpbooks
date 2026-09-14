@@ -1,7 +1,5 @@
 # Publishing a Package to Packagist
 
-<img src="images/ch16-icon.svg" alt="Publishing a Package to Packagist illustration" width="72">
-
 Every `composer require` you've run has quietly relied on [Packagist](https://packagist.org/), the public package registry Composer checks by default whenever you ask it to install something. It's the reason `composer require nunomaduro/termwind` in Chapter 1 didn't need you to specify a URL, a server, or anything beyond a name: Packagist already knew where that package lived. Publishing your own package there is more approachable than it sounds, and understanding the mechanism removes a fair bit of mystery around what "publishing a PHP package" actually means.
 
 ## What a publishable `composer.json` needs

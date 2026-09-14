@@ -1,7 +1,5 @@
 # Magic Constants and Reflection
 
-<img src="images/ch20-icon.svg" alt="Magic Constants and Reflection illustration" width="72">
-
 Most of the time, your code knows exactly what it is: you wrote it, you know the class name, the method name, the file it lives in. But sometimes code needs to ask itself questions at runtime: "what class am I currently in?", "what methods does this object have?", usually for logging, debugging, or building generic tools that operate on classes they've never seen before. PHP gives you two very different tools for that: a handful of constants that answer simple questions cheaply, and Reflection, a full API for interrogating your code's structure in detail.
 
 ## Magic constants

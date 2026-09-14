@@ -1,7 +1,5 @@
 # Controlling How Tests Are Run
 
-<img src="images/ch12-icon.svg" alt="Controlling How Tests Are Run illustration" width="72">
-
 `vendor/bin/phpunit tests` runs everything, every time, which is fine for a handful of tests and increasingly annoying once you have hundreds. This section covers narrowing that down, plus the config file that makes the whole thing repeatable.
 
 ## Filtering by name

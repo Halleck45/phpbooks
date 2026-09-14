@@ -1,7 +1,5 @@
 # Using Classes to Structure Related Data
 
-<img src="images/ch05-icon.svg" alt="Using Classes to Structure Related Data illustration" width="72">
-
 You've been using arrays to group related values since [Chapter 3](ch03-00-common-programming-concepts.md): a cart's items, a set of prices keyed by name, a `$prices` array passed into a function. That works, right up until it doesn't. An associative array has no fixed shape: nothing stops you from misspelling a key, nothing tells you which keys are supposed to exist, and nothing attaches the operations you perform on that data to the data itself. You end up with a `$product` array and, somewhere else entirely, a `calculateTotal($product)` function that only works correctly if it agrees with every other function in the codebase about which keys `$product` is supposed to have.
 
 Classes fix this by letting you define a *shape* for a piece of data: named, typed properties that always exist, with the operations that make sense on that data living right alongside it as methods. You briefly met objects in passing back in [Data Types](ch03-02-data-types.md), and again in [Chapter 4](ch04-00-variables-and-references.md), where you saw the single most important thing to know about them: unlike arrays, objects aren't copied when you assign or pass them around; every variable holding one holds a handle to the same underlying instance. This chapter is where objects stop being background context and become something you build yourself.
