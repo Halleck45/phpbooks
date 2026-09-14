@@ -1,0 +1,25 @@
+# 🐘 Et maintenant, PHP
+
+[🐘 Et maintenant, PHP](title-page.md)
+[Introduction](ch00-introduction.md)
+
+- [Comment PHP s'exécute](ch01-how-php-runs.md)
+- [La syntaxe](ch02-syntax.md)
+- [Le système de types](ch03-types.md)
+- [Les tableaux](ch04-arrays.md)
+- [Fonctions et closures](ch05-functions-and-closures.md)
+- [Les classes](ch06-classes.md)
+- [Énumérations et match](ch07-enums-and-match.md)
+- [Erreurs et exceptions](ch08-errors-and-exceptions.md)
+- [Namespaces, Composer et autoloading](ch09-composer-and-namespaces.md)
+- [Chaînes, nombres, dates et JSON](ch10-standard-library.md)
+- [Une requête web, sans framework](ch11-web-request.md)
+- [Tests, analyse statique et outillage](ch12-tooling.md)
+- [Concurrence et performance](ch13-concurrency-and-performance.md)
+- [Revenir à PHP après des années](ch14-returning-developer.md)
+- [Pour aller plus loin](ch15-where-to-go.md)
+
+- [Annexes](appendix-00.md)
+  - [A - Venir de Python, JavaScript ou Java](appendix-01-cheat-sheet.md)
+  - [B - PHP 8.0 à 8.5 en un coup d'œil](appendix-02-versions.md)
+  - [C - Vocabulaire](appendix-03-vocabulary.md)

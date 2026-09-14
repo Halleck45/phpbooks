@@ -1,0 +1,9 @@
+[book]
+title = "🐘 And Now, PHP - 0.1.0"
+authors = ["Jean-Francois Lepine"]
+language = "en"
+description = "Modern PHP for developers who already program in another language. Skip the basics, learn how PHP does it."
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "ayu"
