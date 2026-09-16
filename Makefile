@@ -9,7 +9,7 @@
 #
 # Any target of a book Makefile works as <book>-<target>.
 
-BOOKS = beginner polyglot
+BOOKS = beginner polyglot pragmatic
 
 .PHONY: build lint clean $(foreach b,$(BOOKS),$(b)-%)
 

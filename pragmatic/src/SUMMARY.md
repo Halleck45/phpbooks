@@ -1,0 +1,106 @@
+# Ship It
+
+[Ship It](title-page.md)
+[Foreword: You Don't Need to Love the Engine to Drive the Car](foreword.md)
+[How This Book Works](ch00-00-how-this-book-works.md)
+
+- [Choosing Your Stack in Five Minutes](ch01-00-choosing-your-stack.md)
+  - [Framework, CMS, or Headless: What Are You Actually Building?](ch01-01-framework-cms-or-headless.md)
+  - [Scaffolding a First Project in Under a Minute](ch01-02-scaffolding-a-first-project.md)
+
+- [Shipping Without a Framework: Standalone Components](ch02-00-standalone-components.md)
+  - [Command-Line Tools: Symfony/Console](ch02-01-symfony-console-standalone.md)
+  - [Talking to Other APIs: Guzzle](ch02-02-guzzle-http-client.md)
+  - [Templating Without a Framework: League/Plates](ch02-03-league-plates-standalone.md)
+  - [Logging That Just Works: Monolog](ch02-04-monolog-standalone.md)
+  - [Validating Input: Respect/Validation](ch02-05-respect-validation.md)
+  - [File Storage Without Buying Into a Framework: League/Flysystem](ch02-06-league-flysystem-standalone.md)
+
+- [Shipping a Content Site](ch03-00-shipping-a-content-site.md)
+  - [WordPress: Block Themes and the Site Editor](ch03-01-wordpress-block-themes.md)
+  - [TYPO3: Structured Content at Enterprise Scale](ch03-02-typo3-structured-content.md)
+  - [Statamic ($ for commercial use): A Flat-File CMS Built on Laravel](ch03-03-statamic-flat-file-cms.md)
+  - [Craft CMS ($): A Licensed CMS Built for Editorial Control](ch03-04-craft-cms.md)
+
+- [Shipping User Accounts](ch04-00-shipping-user-accounts.md)
+  - [Laravel: Breeze, Fortify, and Jetstream](ch04-01-laravel-breeze-fortify.md)
+  - [Symfony: The Security Bundle](ch04-02-symfony-security-bundle.md)
+  - [WordPress: Roles, Capabilities, and Application Passwords](ch04-03-wordpress-roles-capabilities.md)
+
+- [Shipping an Admin Back Office](ch05-00-shipping-an-admin-back-office.md)
+  - [Laravel: Filament in an Afternoon](ch05-01-laravel-filament.md)
+  - [Symfony: EasyAdmin and Sonata](ch05-02-symfony-easyadmin.md)
+  - [API Platform: An Admin Generated From Your API](ch05-03-api-platform-auto-admin.md)
+  - [WordPress: Custom Post Types and ACF as a CRUD Engine](ch05-04-wordpress-cpt-as-crud.md)
+  - [Laravel Nova ($): The Official, Supported Alternative to Filament](ch05-05-laravel-nova.md)
+
+- [Shipping an API Other Teams Can Use](ch06-00-shipping-an-api.md)
+  - [API Platform: A Full API From One PHP Class](ch06-01-api-platform-from-one-class.md)
+  - [Laravel: Sanctum, Resources, and API Versioning](ch06-02-laravel-sanctum-resources.md)
+  - [WordPress: The Built-In REST API](ch06-03-wordpress-rest-api.md)
+
+- [Shipping Real-Time Features](ch07-00-shipping-real-time-features.md)
+  - [Laravel: Reverb and Livewire Without Writing JavaScript](ch07-01-laravel-reverb-livewire.md)
+  - [Symfony: UX Turbo and Mercure](ch07-02-symfony-ux-turbo-mercure.md)
+  - [Nextcloud Talk: Real-Time Built Into a Larger Platform](ch07-03-nextcloud-talk.md)
+  - [Pusher ($): Managed WebSockets Without Running Your Own Server](ch07-04-pusher-managed-websockets.md)
+
+- [Shipping File Storage and Collaboration](ch08-00-shipping-file-storage.md)
+  - [Nextcloud: A Ready-Made Drive, Not a DIY Project](ch08-01-nextcloud-ready-made-drive.md)
+  - [Laravel: Filesystem Abstraction and S3-Compatible Storage](ch08-02-laravel-filesystem-s3.md)
+  - [WordPress: The Media Library at Scale](ch08-03-wordpress-media-library.md)
+
+- [Shipping a Storefront](ch09-00-shipping-a-storefront.md)
+  - [WooCommerce: E-Commerce on Top of WordPress](ch09-01-woocommerce.md)
+  - [Sylius: A Symfony-Based E-Commerce Framework](ch09-02-sylius.md)
+  - [Laravel: Cashier and Stripe ($) for Custom Checkouts](ch09-03-laravel-cashier-stripe.md)
+
+- [Shipping Search That Feels Instant](ch10-00-shipping-search.md)
+  - [Laravel: Scout With Meilisearch or Algolia ($)](ch10-01-laravel-scout-meilisearch.md)
+  - [TYPO3: Solr and Elasticsearch Integration](ch10-02-typo3-solr-elasticsearch.md)
+  - [WordPress: Search Plugins and When to Reach for Elasticsearch](ch10-03-wordpress-search-plugins.md)
+
+- [Shipping Background Work](ch11-00-shipping-background-work.md)
+  - [Laravel: Queues and Horizon](ch11-01-laravel-queues-horizon.md)
+  - [Symfony: The Messenger Component](ch11-02-symfony-messenger.md)
+  - [WordPress: WP-Cron and the Action Scheduler](ch11-03-wordpress-wp-cron-action-scheduler.md)
+
+- [Shipping an AI Feature This Sprint](ch12-00-shipping-an-ai-feature.md)
+  - [Laravel: Prism and the OpenAI/Anthropic PHP Clients](ch12-01-laravel-prism-llm-clients.md)
+  - [Symfony: The AI Bundle](ch12-02-symfony-ai-bundle.md)
+  - [WordPress: AI Plugins and When to Call an API Instead](ch12-03-wordpress-ai-plugins.md)
+
+- [Shipping Multi-Language, Multi-Site](ch13-00-shipping-multi-language-multi-site.md)
+  - [TYPO3: Multilingual Content Trees Done Properly](ch13-01-typo3-multilingual-trees.md)
+  - [WordPress: Multisite and WPML](ch13-02-wordpress-multisite-wpml.md)
+  - [Symfony: The Translation Component](ch13-03-symfony-translation-component.md)
+
+- [Shipping Confidence](ch14-00-shipping-confidence.md)
+  - [Laravel: Pest, Larastan, and `composer audit`](ch14-01-laravel-pest-larastan.md)
+  - [Symfony: PHPUnit, PHPStan/Psalm, and Rector](ch14-02-symfony-phpunit-phpstan-rector.md)
+  - [WordPress: PHPUnit, PHPCS/WPCS, and WPScan](ch14-03-wordpress-phpunit-phpcs-wpscan.md)
+  - [Cross-Ecosystem: SAST, Dependency Scanning, and CI Gates](ch14-04-cross-ecosystem-sast-ci-gates.md)
+  - [Catching It in Production: Sentry and Flare ($)](ch14-05-sentry-flare-error-tracking.md)
+
+- [Shipping It Fast, At Scale](ch15-00-shipping-fast-at-scale.md)
+  - [FrankenPHP and Laravel Octane: Worker Mode Performance](ch15-01-frankenphp-laravel-octane.md)
+  - [TYPO3: The Built-In Caching Framework](ch15-02-typo3-caching-framework.md)
+  - [Nextcloud: Scaling a Self-Hosted Platform](ch15-03-nextcloud-scaling.md)
+  - [Blackfire ($): Finding the Actual Bottleneck](ch15-04-blackfire-profiling.md)
+
+- [Shipping to Production](ch16-00-shipping-to-production.md)
+  - [Laravel: Forge and Vapor ($)](ch16-01-laravel-forge-vapor.md)
+  - [Cloud Hosting: AWS, GCP, and Azure the Pragmatic Way](ch16-02-cloud-hosting-aws-gcp-azure.md)
+  - [Platform.sh ($): One Deploy Story for Several Frameworks](ch16-03-platform-sh.md)
+  - [WordPress: Managed Hosting Done Right (Kinsta, WP Engine $)](ch16-04-wordpress-managed-hosting.md)
+  - [Nextcloud: All-in-One Docker Deployment](ch16-05-nextcloud-aio-docker.md)
+
+- [Where to Go From There](ch17-00-where-to-go-from-there.md)
+  - [Evaluating a New Stack in a Day](ch17-01-evaluating-a-new-stack-in-a-day.md)
+  - [Communities Worth Joining](ch17-02-communities-worth-joining.md)
+  - [If You Get Curious About What's Underneath](ch17-03-if-you-get-curious.md)
+
+- [Appendix](appendix-00.md)
+  - [A - The Stack Cheat Sheet](appendix-01-stack-cheat-sheet.md)
+  - [B - Glossary of Ecosystem Terms](appendix-02-glossary.md)
+  - [C - Index of "Under the Hood" Boxes](appendix-03-under-the-hood-index.md)
