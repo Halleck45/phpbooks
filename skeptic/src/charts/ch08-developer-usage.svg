@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 371" width="640" role="img" aria-labelledby="t d" style="max-width: 100%; height: auto; font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 13px;">
+<title id="t">Languages used by professional developers, past year</title>
+<desc id="d">Horizontal bars, share of professional respondents: JavaScript 68.8 percent, Python 54.8, TypeScript 48.8, C# 29.9, Java 29.6, PHP 19.1, Go 17.4, Rust 14.5, Ruby 6.9</desc>
+<text x="0.0" y="18.0" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 15px; font-weight: bold;">Languages used by professional developers, past year</text>
+<text x="140.0" y="59.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">JavaScript</text>
+<rect x="150.0" y="44.0" width="420.0" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="578.0" y="59.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">68.8%</text>
+<text x="140.0" y="87.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Python</text>
+<rect x="150.0" y="72.0" width="334.5" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="492.5" y="87.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">54.8%</text>
+<text x="140.0" y="115.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">TypeScript</text>
+<rect x="150.0" y="100.0" width="297.9" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="455.9" y="115.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">48.8%</text>
+<text x="140.0" y="143.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">C#</text>
+<rect x="150.0" y="128.0" width="182.5" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="340.5" y="143.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">29.9%</text>
+<text x="140.0" y="171.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Java</text>
+<rect x="150.0" y="156.0" width="180.7" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="338.7" y="171.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">29.6%</text>
+<text x="140.0" y="199.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">PHP</text>
+<rect x="150.0" y="184.0" width="116.6" height="20.0" rx="3" fill="#2a78d6" fill-opacity="1"/>
+<text x="274.6" y="199.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">19.1%</text>
+<text x="140.0" y="227.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Go</text>
+<rect x="150.0" y="212.0" width="106.2" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="264.2" y="227.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">17.4%</text>
+<text x="140.0" y="255.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Rust</text>
+<rect x="150.0" y="240.0" width="88.5" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="246.5" y="255.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">14.5%</text>
+<text x="140.0" y="283.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Ruby</text>
+<rect x="150.0" y="268.0" width="42.1" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="200.1" y="283.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">6.9%</text>
+<line x1="150.0" y1="40.0" x2="150.0" y2="292.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/>
+<text x="0.0" y="330.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">Stack Overflow Developer Survey 2025, professional developers (n = 24,759), fielded May to June</text>
+<text x="0.0" y="345.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">2025.</text>
+<text x="0.0" y="360.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">Self-selected respondents recruited through Stack Overflow. Several answers per respondent.</text>
+</svg>

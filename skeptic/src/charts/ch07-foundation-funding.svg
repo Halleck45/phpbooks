@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 350" width="640" role="img" aria-labelledby="t d" style="max-width: 100%; height: auto; font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 13px;">
+<title id="t">The PHP Foundation, thousands of US dollars per year</title>
+<desc id="d">Two lines. Contributions received: 2022 712, 2023 419, 2024 684, 2025 731. Spent on engineers: 2022 133 (April to November), 2023 275, 2024 635, 2025 784 (total spending).</desc>
+<text x="0.0" y="18.0" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 15px; font-weight: bold;">The PHP Foundation, thousands of US dollars per year</text>
+<line x1="50.0" y1="250.0" x2="440.0" y2="250.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.15"/>
+<text x="42.0" y="254.0" fill="currentColor" fill-opacity="0.7" text-anchor="end" style="font-size: 11px; font-weight: normal;">0</text>
+<line x1="50.0" y1="198.5" x2="440.0" y2="198.5" stroke="currentColor" stroke-width="1" stroke-opacity="0.15"/>
+<text x="42.0" y="202.5" fill="currentColor" fill-opacity="0.7" text-anchor="end" style="font-size: 11px; font-weight: normal;">200</text>
+<line x1="50.0" y1="147.0" x2="440.0" y2="147.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.15"/>
+<text x="42.0" y="151.0" fill="currentColor" fill-opacity="0.7" text-anchor="end" style="font-size: 11px; font-weight: normal;">400</text>
+<line x1="50.0" y1="95.5" x2="440.0" y2="95.5" stroke="currentColor" stroke-width="1" stroke-opacity="0.15"/>
+<text x="42.0" y="99.5" fill="currentColor" fill-opacity="0.7" text-anchor="end" style="font-size: 11px; font-weight: normal;">600</text>
+<line x1="50.0" y1="44.0" x2="440.0" y2="44.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.15"/>
+<text x="42.0" y="48.0" fill="currentColor" fill-opacity="0.7" text-anchor="end" style="font-size: 11px; font-weight: normal;">800</text>
+<text x="50.0" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2022</text>
+<text x="180.0" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2023</text>
+<text x="310.0" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2024</text>
+<text x="440.0" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2025</text>
+<path d="M50.0,66.7 L180.0,142.1 L310.0,73.9 L440.0,61.8" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="50.0" cy="66.7" r="3.5" fill="#2a78d6"/>
+<circle cx="180.0" cy="142.1" r="3.5" fill="#2a78d6"/>
+<circle cx="310.0" cy="73.9" r="3.5" fill="#2a78d6"/>
+<circle cx="440.0" cy="61.8" r="3.5" fill="#2a78d6"/>
+<path d="M50.0,215.8 L180.0,179.2 L310.0,86.5 L440.0,48.1" fill="none" stroke="#a5a49f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="50.0" cy="215.8" r="3.5" fill="#a5a49f"/>
+<circle cx="180.0" cy="179.2" r="3.5" fill="#a5a49f"/>
+<circle cx="310.0" cy="86.5" r="3.5" fill="#a5a49f"/>
+<circle cx="440.0" cy="48.1" r="3.5" fill="#a5a49f"/>
+<text x="450.0" y="54.0" fill="currentColor" fill-opacity="0.8" text-anchor="start" style="font-size: 12px; font-weight: normal;">spent (784)</text>
+<text x="450.0" y="69.0" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 12px; font-weight: bold;">contributions received (731)</text>
+<text x="0.0" y="294.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">The PHP Foundation transparency reports for 2022, 2023, 2024 and 2025 (published November 2022,</text>
+<text x="0.0" y="309.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">February 2024, March 2025, May 2026).</text>
+<text x="0.0" y="324.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">2022 spending covers April to November only; 2025 spending is the total reported, with a deficit of</text>
+<text x="0.0" y="339.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">about 139,000 dollars stated as deliberate.</text>
+</svg>

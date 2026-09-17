@@ -1,0 +1,20 @@
+{
+  "type": "hbar",
+  "title": {"en": "Server-side languages, share of websites", "fr": "Langages côté serveur, part des sites web"},
+  "desc": {"en": "Horizontal bars: PHP 69.9 percent, JavaScript 7.5, Ruby 7.1, Java 5.4, Scala 5.0, ASP.NET 4.2, Python 1.1", "fr": "Barres horizontales : PHP 69,9 pour cent, JavaScript 7,5, Ruby 7,1, Java 5,4, Scala 5,0, ASP.NET 4,2, Python 1,1"},
+  "source": {"en": "W3Techs, 17 September 2026. Share of websites whose server-side language is detectable.", "fr": "W3Techs, 17 septembre 2026. Part des sites dont le langage serveur est détectable."},
+  "note": {"en": "A site may use several languages. Sample of over 20 million sites; wordpress.com counts as one site.", "fr": "Un site peut utiliser plusieurs langages. Plus de 20 millions de sites ; wordpress.com compte pour un seul site."},
+  "unit": "%",
+  "highlight": ["PHP"],
+  "rows": [
+    {"label": "PHP", "value": 69.9},
+    {"label": "JavaScript", "value": 7.5},
+    {"label": "Ruby", "value": 7.1},
+    {"label": "Java", "value": 5.4},
+    {"label": "Scala", "value": 5.0},
+    {"label": "ASP.NET", "value": 4.2},
+    {"label": "Python", "value": 1.1}
+  ],
+  "_source_url": "https://w3techs.com/technologies/overview/programming_language",
+  "_checked": "2026-09-17"
+}

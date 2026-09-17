@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 350" width="640" role="img" aria-labelledby="t d" style="max-width: 100%; height: auto; font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 13px;">
+<title id="t">Installations de paquets via Composer, milliards par an</title>
+<desc id="d">Courbe : 2016 2,0 milliards, 2017 3,6, 2018 5,2, 2019 7,8, 2020 12,3, 2021 18,0, 2022 23,4, 2023 24,6, 2024 31,0, 2025 36,0</desc>
+<text x="0.0" y="18.0" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 15px; font-weight: bold;">Installations de paquets via Composer, milliards par an</text>
+<line x1="50.0" y1="250.0" x2="506.0" y2="250.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.15"/>
+<text x="42.0" y="254.0" fill="currentColor" fill-opacity="0.7" text-anchor="end" style="font-size: 11px; font-weight: normal;">0</text>
+<line x1="50.0" y1="198.5" x2="506.0" y2="198.5" stroke="currentColor" stroke-width="1" stroke-opacity="0.15"/>
+<text x="42.0" y="202.5" fill="currentColor" fill-opacity="0.7" text-anchor="end" style="font-size: 11px; font-weight: normal;">10</text>
+<line x1="50.0" y1="147.0" x2="506.0" y2="147.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.15"/>
+<text x="42.0" y="151.0" fill="currentColor" fill-opacity="0.7" text-anchor="end" style="font-size: 11px; font-weight: normal;">20</text>
+<line x1="50.0" y1="95.5" x2="506.0" y2="95.5" stroke="currentColor" stroke-width="1" stroke-opacity="0.15"/>
+<text x="42.0" y="99.5" fill="currentColor" fill-opacity="0.7" text-anchor="end" style="font-size: 11px; font-weight: normal;">30</text>
+<line x1="50.0" y1="44.0" x2="506.0" y2="44.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.15"/>
+<text x="42.0" y="48.0" fill="currentColor" fill-opacity="0.7" text-anchor="end" style="font-size: 11px; font-weight: normal;">40</text>
+<text x="50.0" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2016</text>
+<text x="100.7" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2017</text>
+<text x="151.3" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2018</text>
+<text x="202.0" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2019</text>
+<text x="252.7" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2020</text>
+<text x="303.3" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2021</text>
+<text x="354.0" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2022</text>
+<text x="404.7" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2023</text>
+<text x="455.3" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2024</text>
+<text x="506.0" y="268.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2025</text>
+<path d="M50.0,239.7 L100.7,231.5 L151.3,223.2 L202.0,209.8 L252.7,186.7 L303.3,157.3 L354.0,129.5 L404.7,123.3 L455.3,90.3 L506.0,64.6" fill="none" stroke="#2a78d6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="50.0" cy="239.7" r="3.5" fill="#2a78d6"/>
+<circle cx="100.7" cy="231.5" r="3.5" fill="#2a78d6"/>
+<circle cx="151.3" cy="223.2" r="3.5" fill="#2a78d6"/>
+<circle cx="202.0" cy="209.8" r="3.5" fill="#2a78d6"/>
+<circle cx="252.7" cy="186.7" r="3.5" fill="#2a78d6"/>
+<circle cx="303.3" cy="157.3" r="3.5" fill="#2a78d6"/>
+<circle cx="354.0" cy="129.5" r="3.5" fill="#2a78d6"/>
+<circle cx="404.7" cy="123.3" r="3.5" fill="#2a78d6"/>
+<circle cx="455.3" cy="90.3" r="3.5" fill="#2a78d6"/>
+<circle cx="506.0" cy="64.6" r="3.5" fill="#2a78d6"/>
+<text x="516.0" y="68.6" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 12px; font-weight: bold;">installations (36)</text>
+<text x="0.0" y="294.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">packagist.org/statistics, installations mensuelles sommées par année civile. Relevé le 17 septembre</text>
+<text x="0.0" y="309.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">2026.</text>
+<text x="0.0" y="324.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">Une installation est un paquet installé par Composer et signalé à packagist.org ; l'intégration</text>
+<text x="0.0" y="339.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">continue et les images de conteneurs y pèsent lourd.</text>
+</svg>

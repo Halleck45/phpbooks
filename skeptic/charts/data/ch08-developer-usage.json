@@ -1,0 +1,22 @@
+{
+  "type": "hbar",
+  "title": {"en": "Languages used by professional developers, past year", "fr": "Langages utilisés par les développeurs professionnels, dernière année"},
+  "desc": {"en": "Horizontal bars, share of professional respondents: JavaScript 68.8 percent, Python 54.8, TypeScript 48.8, C# 29.9, Java 29.6, PHP 19.1, Go 17.4, Rust 14.5, Ruby 6.9", "fr": "Barres horizontales, part des répondants professionnels : JavaScript 68,8 pour cent, Python 54,8, TypeScript 48,8, C# 29,9, Java 29,6, PHP 19,1, Go 17,4, Rust 14,5, Ruby 6,9"},
+  "source": {"en": "Stack Overflow Developer Survey 2025, professional developers (n = 24,759), fielded May to June 2025.", "fr": "Stack Overflow Developer Survey 2025, développeurs professionnels (n = 24 759), enquête de mai à juin 2025."},
+  "note": {"en": "Self-selected respondents recruited through Stack Overflow. Several answers per respondent.", "fr": "Répondants auto-sélectionnés, recrutés via Stack Overflow. Plusieurs réponses par répondant."},
+  "unit": "%",
+  "highlight": ["PHP"],
+  "rows": [
+    {"label": "JavaScript", "value": 68.8},
+    {"label": "Python", "value": 54.8},
+    {"label": "TypeScript", "value": 48.8},
+    {"label": "C#", "value": 29.9},
+    {"label": "Java", "value": 29.6},
+    {"label": "PHP", "value": 19.1},
+    {"label": "Go", "value": 17.4},
+    {"label": "Rust", "value": 14.5},
+    {"label": "Ruby", "value": 6.9}
+  ],
+  "_source_url": "https://survey.stackoverflow.co/2025/technology",
+  "_checked": "2026-09-17"
+}

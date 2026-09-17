@@ -1,0 +1,97 @@
+{
+  "type": "stacked",
+  "title": {
+    "en": "PHP versions in use, three populations",
+    "fr": "Versions de PHP en usage, trois populations"
+  },
+  "desc": {
+    "en": "Three stacked bars. Composer installs on Packagist, August 2026: PHP 8 94.2 percent, PHP 7 5.6, PHP 5 0.2. WordPress sites reporting to wordpress.org, September 2026: PHP 8 77.2, PHP 7 20.8, PHP 5 2.1. Websites on W3Techs, September 2026: PHP 8 64.1, PHP 7 28.1, PHP 5 7.9.",
+    "fr": "Trois barres empilées. Installations Composer sur Packagist, août 2026 : PHP 8 94,2 pour cent, PHP 7 5,6, PHP 5 0,2. Sites WordPress remontant à wordpress.org, septembre 2026 : PHP 8 77,2, PHP 7 20,8, PHP 5 2,1. Sites web sur W3Techs, septembre 2026 : PHP 8 64,1, PHP 7 28,1, PHP 5 7,9."
+  },
+  "source": {
+    "en": "Packagist php-statistics, August 2026; api.wordpress.org/stats/php, 17 September 2026; W3Techs, 17 September 2026.",
+    "fr": "Packagist php-statistics, août 2026 ; api.wordpress.org/stats/php, 17 septembre 2026 ; W3Techs, 17 septembre 2026."
+  },
+  "note": {
+    "en": "PHP 4 (0.1% of websites) folded into PHP 5.",
+    "fr": "PHP 4 (0,1 % des sites) regroupé avec PHP 5."
+  },
+  "unit": "%",
+  "left": 210,
+  "highlight": [
+    "8"
+  ],
+  "rows": [
+    {
+      "label": {
+        "en": "Composer installs (Packagist)",
+        "fr": "Installations Composer (Packagist)"
+      },
+      "parts": [
+        {
+          "key": "8",
+          "label": "PHP 8",
+          "value": 94.2
+        },
+        {
+          "key": "7",
+          "label": "PHP 7",
+          "value": 5.6
+        },
+        {
+          "key": "5",
+          "label": "PHP 5",
+          "value": 0.2
+        }
+      ]
+    },
+    {
+      "label": {
+        "en": "WordPress sites (wordpress.org)",
+        "fr": "Sites WordPress (wordpress.org)"
+      },
+      "parts": [
+        {
+          "key": "8",
+          "label": "PHP 8",
+          "value": 77.2
+        },
+        {
+          "key": "7",
+          "label": "PHP 7",
+          "value": 20.8
+        },
+        {
+          "key": "5",
+          "label": "PHP 5",
+          "value": 2.1
+        }
+      ]
+    },
+    {
+      "label": {
+        "en": "Websites (W3Techs)",
+        "fr": "Sites web (W3Techs)"
+      },
+      "parts": [
+        {
+          "key": "8",
+          "label": "PHP 8",
+          "value": 64.1
+        },
+        {
+          "key": "7",
+          "label": "PHP 7",
+          "value": 28.1
+        },
+        {
+          "key": "5",
+          "label": "PHP 5",
+          "value": 7.9
+        }
+      ]
+    }
+  ],
+  "_source_url": "https://packagist.org/php-statistics ; https://w3techs.com/technologies/details/pl-php ; https://api.wordpress.org/stats/php/1.0/",
+  "_checked": "2026-09-17"
+}

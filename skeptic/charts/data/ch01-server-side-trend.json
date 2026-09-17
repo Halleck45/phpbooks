@@ -1,0 +1,20 @@
+{
+  "type": "line",
+  "title": {"en": "Server-side languages, 2015 to 2026", "fr": "Langages côté serveur, 2015 à 2026"},
+  "desc": {"en": "Lines: PHP falls from 80.6 percent in 2015 to 72.4 in January 2026; JavaScript rises from 0.1 to 5.4; Ruby from 0.9 to 6.5; ASP.NET falls from 16.7 to 4.6; Java rises from 2.8 to 5.4", "fr": "Courbes : PHP passe de 80,6 pour cent en 2015 à 72,4 en janvier 2026 ; JavaScript monte de 0,1 à 5,4 ; Ruby de 0,9 à 6,5 ; ASP.NET descend de 16,7 à 4,6 ; Java monte de 2,8 à 5,4"},
+  "source": {"en": "W3Techs historical yearly trends, values on 1 January of each year. Checked 17 September 2026.", "fr": "W3Techs, tendances annuelles, valeurs au 1er janvier de chaque année. Relevé le 17 septembre 2026."},
+  "note": {"en": "Share of websites whose server-side language is detectable. On 17 September 2026: PHP 69.9, JavaScript 7.5, Ruby 7.1.", "fr": "Part des sites dont le langage serveur est détectable. Au 17 septembre 2026 : PHP 69,9, JavaScript 7,5, Ruby 7,1."},
+  "unit": "%",
+  "max": 100,
+  "highlight": ["php"],
+  "x": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+  "series": [
+    {"key": "php", "label": "PHP", "values": [80.6, 80.0, 80.0, 80.2, 78.9, 78.9, 79.1, 78.1, 77.7, 76.7, 75.2, 72.4]},
+    {"key": "asp", "label": "ASP.NET", "values": [16.7, 15.6, 14.8, 13.5, 11.8, 10.6, 9.3, 8.0, 7.4, 6.6, 5.4, 4.6]},
+    {"key": "ruby", "label": "Ruby", "values": [0.9, 1.1, 1.3, 1.6, 2.4, 3.0, 4.3, 6.0, 5.3, 5.6, 6.2, 6.5]},
+    {"key": "js", "label": "JavaScript", "values": [0.1, 0.2, 0.3, 0.4, 0.7, 0.8, 1.2, 1.8, 2.3, 3.1, 4.0, 5.4]},
+    {"key": "java", "label": "Java", "values": [2.8, 3.1, 3.3, 3.4, 4.0, 3.7, 3.2, 3.7, 4.6, 4.7, 5.0, 5.4]}
+  ],
+  "_source_url": "https://w3techs.com/technologies/history_overview/programming_language/ms/y",
+  "_checked": "2026-09-17"
+}

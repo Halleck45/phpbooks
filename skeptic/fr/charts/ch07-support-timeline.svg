@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 312" width="640" role="img" aria-labelledby="t d" style="max-width: 100%; height: auto; font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 13px;">
+<title id="t">Fenêtres de support des branches PHP</title>
+<desc id="d">Barres chronologiques : PHP 8.1 de novembre 2021, support actif jusqu'en novembre 2023, sécurité jusqu'en décembre 2025 ; 8.2 de décembre 2022, actif jusqu'en décembre 2024, sécurité jusqu'en décembre 2026 ; 8.3 de novembre 2023 à décembre 2025 et décembre 2027 ; 8.4 de novembre 2024 à décembre 2026 et décembre 2028 ; 8.5 de novembre 2025 à décembre 2027 et décembre 2029 ; 8.6 prévue pour novembre 2026.</desc>
+<text x="0.0" y="18.0" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 15px; font-weight: bold;">Fenêtres de support des branches PHP</text>
+<line x1="119.3" y1="38.0" x2="119.3" y2="212.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/>
+<text x="119.3" y="226.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2022</text>
+<line x1="174.9" y1="38.0" x2="174.9" y2="212.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/>
+<text x="174.9" y="226.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2023</text>
+<line x1="230.5" y1="38.0" x2="230.5" y2="212.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/>
+<text x="230.5" y="226.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2024</text>
+<line x1="286.2" y1="38.0" x2="286.2" y2="212.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/>
+<text x="286.2" y="226.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2025</text>
+<line x1="341.8" y1="38.0" x2="341.8" y2="212.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/>
+<text x="341.8" y="226.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2026</text>
+<line x1="397.5" y1="38.0" x2="397.5" y2="212.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/>
+<text x="397.5" y="226.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2027</text>
+<line x1="453.1" y1="38.0" x2="453.1" y2="212.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/>
+<text x="453.1" y="226.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2028</text>
+<line x1="508.7" y1="38.0" x2="508.7" y2="212.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/>
+<text x="508.7" y="226.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2029</text>
+<line x1="564.4" y1="38.0" x2="564.4" y2="212.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/>
+<text x="564.4" y="226.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2030</text>
+<line x1="620.0" y1="38.0" x2="620.0" y2="212.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/>
+<text x="620.0" y="226.0" fill="currentColor" fill-opacity="0.7" text-anchor="middle" style="font-size: 11px; font-weight: normal;">2031</text>
+<line x1="378.9" y1="34.0" x2="378.9" y2="212.0" stroke="#2a78d6" stroke-width="1.5" stroke-opacity="0.9" stroke-dasharray="4 3"/>
+<text x="378.9" y="30.0" fill="currentColor" fill-opacity="0.8" text-anchor="middle" style="font-size: 11px; font-weight: normal;">septembre 2026</text>
+<text x="100.0" y="57.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal; font-family: 'Source Code Pro', Menlo, monospace;">PHP 8.1</text>
+<rect x="110.0" y="44.0" width="111.3" height="18.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<rect x="221.3" y="44.0" width="115.9" height="18.0" rx="3" fill="#a5a49f" fill-opacity="0.35"/>
+<text x="100.0" y="85.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal; font-family: 'Source Code Pro', Menlo, monospace;">PHP 8.2</text>
+<rect x="170.3" y="72.0" width="111.3" height="18.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<rect x="281.5" y="72.0" width="111.3" height="18.0" rx="3" fill="#a5a49f" fill-opacity="0.35"/>
+<text x="100.0" y="113.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal; font-family: 'Source Code Pro', Menlo, monospace;">PHP 8.3</text>
+<rect x="221.3" y="100.0" width="115.9" height="18.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<rect x="337.2" y="100.0" width="111.3" height="18.0" rx="3" fill="#a5a49f" fill-opacity="0.35"/>
+<text x="100.0" y="141.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal; font-family: 'Source Code Pro', Menlo, monospace;">PHP 8.4</text>
+<rect x="276.9" y="128.0" width="115.9" height="18.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<rect x="392.8" y="128.0" width="111.3" height="18.0" rx="3" fill="#a5a49f" fill-opacity="0.35"/>
+<text x="100.0" y="169.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal; font-family: 'Source Code Pro', Menlo, monospace;">PHP 8.5</text>
+<rect x="332.5" y="156.0" width="115.9" height="18.0" rx="3" fill="#2a78d6" fill-opacity="1"/>
+<rect x="448.5" y="156.0" width="111.3" height="18.0" rx="3" fill="#2a78d6" fill-opacity="0.35"/>
+<text x="100.0" y="197.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal; font-family: 'Source Code Pro', Menlo, monospace;">8.6 (prévue)</text>
+<rect x="388.2" y="184.0" width="115.9" height="18.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<rect x="504.1" y="184.0" width="111.3" height="18.0" rx="3" fill="#a5a49f" fill-opacity="0.35"/>
+<rect x="110.0" y="246.0" width="12.0" height="12.0" rx="2" fill="#a5a49f" fill-opacity="1"/>
+<text x="127.0" y="256.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">support actif (bugs et sécurité)</text>
+<rect x="362.0" y="246.0" width="12.0" height="12.0" rx="2" fill="#a5a49f" fill-opacity="0.35"/>
+<text x="379.0" y="256.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">correctifs de sécurité seulement</text>
+<text x="0.0" y="286.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">php.net/supported-versions et php.net/eol, relevés le 17 septembre 2026. Dates de PHP 8.6 d'après</text>
+<text x="0.0" y="301.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">wiki.php.net/todo/php86, prévues, pas publiées.</text>
+</svg>

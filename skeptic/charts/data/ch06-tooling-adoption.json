@@ -1,0 +1,19 @@
+{
+  "type": "hbar",
+  "title": {"en": "Tools PHP developers report using", "fr": "Outils que les développeurs PHP déclarent utiliser"},
+  "desc": {"en": "Horizontal bars, share of respondents: PHPUnit 50 percent, PHPStan 36, PHP-CS-Fixer 30, Pest 17; 32 percent write no tests and 42 percent use no code quality tool regularly", "fr": "Barres horizontales, part des répondants : PHPUnit 50 pour cent, PHPStan 36, PHP-CS-Fixer 30, Pest 17 ; 32 pour cent n'écrivent pas de tests et 42 pour cent n'utilisent aucun outil qualité régulièrement"},
+  "source": {"en": "JetBrains, The State of PHP 2025 (October 2025), 1,720 respondents with PHP as their main language, from the Developer Ecosystem survey.", "fr": "JetBrains, The State of PHP 2025 (octobre 2025), 1 720 répondants ayant PHP comme langage principal, issus de l'enquête Developer Ecosystem."},
+  "note": {"en": "Several answers per respondent. Sample weighted toward JetBrains users.", "fr": "Plusieurs réponses par répondant. Échantillon orienté vers les utilisateurs JetBrains."},
+  "unit": "%",
+  "highlight": [],
+  "rows": [
+    {"label": "PHPUnit", "value": 50},
+    {"label": "PHPStan", "value": 36},
+    {"label": "PHP-CS-Fixer", "value": 30},
+    {"label": "Pest", "value": 17},
+    {"label": {"en": "writes no tests", "fr": "n'écrit pas de tests"}, "value": 32},
+    {"label": {"en": "uses no code quality tool regularly", "fr": "aucun outil qualité régulier"}, "value": 42}
+  ],
+  "_source_url": "https://blog.jetbrains.com/phpstorm/2025/10/state-of-php-2025/",
+  "_checked": "2026-09-17"
+}

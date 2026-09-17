@@ -1,0 +1,20 @@
+{
+  "type": "hbar",
+  "title": {"en": "PHPBench score by PHP version, same machine (higher is better)", "fr": "Score PHPBench par version de PHP, même machine (plus haut est mieux)"},
+  "desc": {"en": "Horizontal bars, thousands of points: PHP 5.6.40 288, 7.0.33 620, 7.1.33 700, 7.2.28 772, 7.3.15 816, 7.4.3 814, 8.0-dev 876, 8.0-dev with JIT 875", "fr": "Barres horizontales, milliers de points : PHP 5.6.40 288, 7.0.33 620, 7.1.33 700, 7.2.28 772, 7.3.15 816, 7.4.3 814, 8.0-dev 876, 8.0-dev avec JIT 875"},
+  "source": {"en": "OpenBenchmarking.org, result 2002269-VE-PHPBENCHM24 by Michael Larabel, February 2020, Core i9-9900KS, Ubuntu 20.04, PHPBench 0.8.1, mean of three runs.", "fr": "OpenBenchmarking.org, résultat 2002269-VE-PHPBENCHM24 par Michael Larabel, février 2020, Core i9-9900KS, Ubuntu 20.04, PHPBench 0.8.1, moyenne de trois exécutions."},
+  "note": {"en": "PHPBench is a synthetic CPU micro-benchmark of the interpreter, not a web application. PHP 8.0 was a development snapshot of February 2020, before the tracing JIT landed.", "fr": "PHPBench est un micro-benchmark CPU synthétique de l'interpréteur, pas une application web. PHP 8.0 est un instantané de développement de février 2020, avant l'arrivée du JIT traçant."},
+  "unit": "",
+  "highlight": ["8.0"],
+  "rows": [
+    {"key": "5.6", "label": "PHP 5.6.40", "value": 288},
+    {"key": "7.0", "label": "PHP 7.0.33", "value": 620},
+    {"key": "7.1", "label": "PHP 7.1.33", "value": 700},
+    {"key": "7.2", "label": "PHP 7.2.28", "value": 772},
+    {"key": "7.3", "label": "PHP 7.3.15", "value": 816},
+    {"key": "7.4", "label": "PHP 7.4.3", "value": 814},
+    {"key": "8.0", "label": {"en": "PHP 8.0-dev (Feb. 2020)", "fr": "PHP 8.0-dev (fév. 2020)"}, "value": 876}
+  ],
+  "_source_url": "https://openbenchmarking.org/result/2002269-VE-PHPBENCHM24",
+  "_checked": "2026-09-17"
+}

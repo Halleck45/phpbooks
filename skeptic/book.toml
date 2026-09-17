@@ -1,0 +1,9 @@
+[book]
+title = "🐘 PHP in 2026, the Facts - 0.1.0"
+authors = ["Jean-Francois Lepine"]
+language = "en"
+description = "What the data says about PHP in 2026, factually: footprint, performance, governance, cost, and where it is the wrong choice. Every figure sourced and dated."
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "ayu"

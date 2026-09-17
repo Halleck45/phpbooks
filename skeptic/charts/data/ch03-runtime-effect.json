@@ -1,0 +1,23 @@
+{
+  "type": "hbar",
+  "title": {"en": "Same framework, different runtime (Fortunes, thousands of requests per second)", "fr": "Même framework, runtime différent (Fortunes, milliers de requêtes par seconde)"},
+  "desc": {"en": "Horizontal bars. Symfony: PHP-FPM 26, RoadRunner 36, FrankenPHP 74, workerman 108, Swoole 111. Laravel: RoadRunner 8, PHP-FPM 16, Octane on FrankenPHP 34, Swoole 34, workerman 50.", "fr": "Barres horizontales. Symfony : PHP-FPM 26, RoadRunner 36, FrankenPHP 74, workerman 108, Swoole 111. Laravel : RoadRunner 8, PHP-FPM 16, Octane sur FrankenPHP 34, Swoole 34, workerman 50."},
+  "source": {"en": "TechEmpower Framework Benchmarks, Round 23 (24 February 2025), Fortunes test. Blue: the PHP-FPM baseline.", "fr": "TechEmpower Framework Benchmarks, Round 23 (24 février 2025), test Fortunes. En bleu : la référence PHP-FPM."},
+  "note": {"en": "Entries are maintained by volunteers; a slow entry may reflect its configuration rather than the runtime.", "fr": "Les entrées sont maintenues par des volontaires ; une entrée lente peut refléter sa configuration plutôt que le runtime."},
+  "unit": "",
+  "highlight": ["sf-fpm", "lv-fpm"],
+  "rows": [
+    {"key": "sf-swoole", "label": {"en": "Symfony, Swoole", "fr": "Symfony, Swoole"}, "value": 111},
+    {"key": "sf-wm", "label": {"en": "Symfony, workerman", "fr": "Symfony, workerman"}, "value": 108},
+    {"key": "sf-fk", "label": {"en": "Symfony, FrankenPHP", "fr": "Symfony, FrankenPHP"}, "value": 74},
+    {"key": "sf-rr", "label": {"en": "Symfony, RoadRunner", "fr": "Symfony, RoadRunner"}, "value": 36},
+    {"key": "sf-fpm", "label": {"en": "Symfony, PHP-FPM", "fr": "Symfony, PHP-FPM"}, "value": 26},
+    {"key": "lv-wm", "label": {"en": "Laravel, workerman", "fr": "Laravel, workerman"}, "value": 50},
+    {"key": "lv-sw", "label": {"en": "Laravel, Swoole", "fr": "Laravel, Swoole"}, "value": 34},
+    {"key": "lv-fk", "label": {"en": "Laravel Octane, FrankenPHP", "fr": "Laravel Octane, FrankenPHP"}, "value": 34},
+    {"key": "lv-fpm", "label": {"en": "Laravel, PHP-FPM", "fr": "Laravel, PHP-FPM"}, "value": 16},
+    {"key": "lv-rr", "label": {"en": "Laravel, RoadRunner", "fr": "Laravel, RoadRunner"}, "value": 8}
+  ],
+  "_source_url": "charts/raw/techempower-r23-fortune.csv",
+  "_checked": "2026-09-17"
+}

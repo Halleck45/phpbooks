@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 274" width="640" role="img" aria-labelledby="t d" style="max-width: 100%; height: auto; font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 13px;">
+<title id="t">Vulnérabilités publiées pour l'interpréteur PHP, par an</title>
+<desc id="d">Barres horizontales, fiches CVE du produit php:php par année de publication : 2022 8, 2023 7, 2024 18, 2025 13, 2026 au 17 septembre 14</desc>
+<text x="0.0" y="18.0" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 15px; font-weight: bold;">Vulnérabilités publiées pour l'interpréteur PHP, par an</text>
+<text x="140.0" y="59.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">2022</text>
+<rect x="150.0" y="44.0" width="186.7" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="344.7" y="59.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">8</text>
+<text x="140.0" y="87.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">2023</text>
+<rect x="150.0" y="72.0" width="163.3" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="321.3" y="87.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">7</text>
+<text x="140.0" y="115.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">2024</text>
+<rect x="150.0" y="100.0" width="420.0" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="578.0" y="115.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">18</text>
+<text x="140.0" y="143.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">2025</text>
+<rect x="150.0" y="128.0" width="303.3" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="461.3" y="143.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">13</text>
+<text x="140.0" y="171.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">2026 (au 17 sept.)</text>
+<rect x="150.0" y="156.0" width="326.7" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="484.7" y="171.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">14</text>
+<line x1="150.0" y1="40.0" x2="150.0" y2="180.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/>
+<text x="0.0" y="218.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">NVD, fiches pour cpe:2.3:a:php:php par année de publication, interrogé le 17 septembre 2026. La</text>
+<text x="0.0" y="233.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">liste d'avis php-src sur GitHub donne 5, 18, 14 et 15 pour 2023 à 2026.</text>
+<text x="0.0" y="248.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">PHP n'attribue pas de CVE à la plupart des problèmes de faible gravité ; la hausse de 2024 coïncide</text>
+<text x="0.0" y="263.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">avec un audit externe financé. Les comptes ne se comparent pas entre langages.</text>
+</svg>
