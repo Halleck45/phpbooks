@@ -1,0 +1,22 @@
+{
+  "type": "hbar",
+  "title": {"en": "Developers who used a language and want to keep using it", "fr": "Développeurs ayant utilisé un langage et souhaitant continuer"},
+  "desc": {"en": "Horizontal bars, admired share: Rust 72.4 percent, TypeScript 58.0, Go 56.5, Python 56.4, C# 55.8, JavaScript 46.8, Ruby 44.3, Java 41.8, PHP 38.9", "fr": "Barres horizontales, part « admired » : Rust 72,4 pour cent, TypeScript 58,0, Go 56,5, Python 56,4, C# 55,8, JavaScript 46,8, Ruby 44,3, Java 41,8, PHP 38,9"},
+  "source": {"en": "Stack Overflow Developer Survey 2025, \"admired\" measure (n = 31,771).", "fr": "Stack Overflow Developer Survey 2025, mesure « admired » (n = 31 771)."},
+  "note": {"en": "Share of respondents who used the language in the past year and want to continue.", "fr": "Part des répondants ayant utilisé le langage dans l'année et souhaitant continuer."},
+  "unit": "%",
+  "highlight": ["PHP"],
+  "rows": [
+    {"label": "Rust", "value": 72.4},
+    {"label": "TypeScript", "value": 58.0},
+    {"label": "Go", "value": 56.5},
+    {"label": "Python", "value": 56.4},
+    {"label": "C#", "value": 55.8},
+    {"label": "JavaScript", "value": 46.8},
+    {"label": "Ruby", "value": 44.3},
+    {"label": "Java", "value": 41.8},
+    {"label": "PHP", "value": 38.9}
+  ],
+  "_source_url": "https://survey.stackoverflow.co/2025/technology",
+  "_checked": "2026-09-17"
+}

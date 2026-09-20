@@ -1,0 +1,59 @@
+{
+  "type": "hbar",
+  "title": {
+    "en": "CPU-bound work: n-body, elapsed seconds (lower is better)",
+    "fr": "Calcul pur : n-body, secondes écoulées (plus bas est mieux)"
+  },
+  "desc": {
+    "en": "Horizontal bars, fastest single-threaded program per language: Rust 2.2 seconds, C# 3.1, Java 6.0, Go 6.4, Node.js 8.6, Ruby 166.7, PHP 204.1, Python 360.0",
+    "fr": "Barres horizontales, programme mono-thread le plus rapide par langage : Rust 2,2 secondes, C# 3,1, Java 6,0, Go 6,4, Node.js 8,6, Ruby 166,7, PHP 204,1, Python 360,0"
+  },
+  "source": {
+    "en": "The Computer Language Benchmarks Game, n-body, fastest entry per language, measured on an Intel i5-3330; PHP 8.4.1, Python 3.13, Ruby 3.4 with YJIT, Node.js 23.8. Checked 17 September 2026.",
+    "fr": "The Computer Language Benchmarks Game, n-body, entrée la plus rapide par langage, mesurée sur un Intel i5-3330 ; PHP 8.4.1, Python 3.13, Ruby 3.4 avec YJIT, Node.js 23.8. Relevé le 17 septembre 2026."
+  },
+  "note": {
+    "en": "Contributed programs, one core each; the C# and Java entries are ahead-of-time compiled builds. The PHP command line sets a JIT buffer but not opcache.jit, which PHP 8.4 disables by default.",
+    "fr": "Programmes contribués, un cœur chacun ; les entrées C# et Java sont compilées à l'avance. La ligne de commande PHP fixe un tampon JIT mais pas opcache.jit, que PHP 8.4 désactive par défaut."
+  },
+  "unit": " s",
+  "highlight": [
+    "PHP"
+  ],
+  "rows": [
+    {
+      "label": "Rust",
+      "value": 2.2
+    },
+    {
+      "label": "C#",
+      "value": 3.1
+    },
+    {
+      "label": "Java",
+      "value": 6.0
+    },
+    {
+      "label": "Go",
+      "value": 6.4
+    },
+    {
+      "label": "Node.js",
+      "value": 8.6
+    },
+    {
+      "label": "Ruby",
+      "value": 166.7
+    },
+    {
+      "label": "PHP",
+      "value": 204.1
+    },
+    {
+      "label": "Python",
+      "value": 360.0
+    }
+  ],
+  "_source_url": "https://benchmarksgame-team.pages.debian.net/benchmarksgame/performance/nbody.html",
+  "_checked": "2026-09-17"
+}

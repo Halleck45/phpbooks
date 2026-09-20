@@ -1,0 +1,21 @@
+{
+  "type": "hbar",
+  "title": {"en": "Content management systems, share of all websites", "fr": "Systèmes de gestion de contenu, part de tous les sites web"},
+  "desc": {"en": "Horizontal bars: WordPress 40.2 percent of all websites, Shopify 5.4, Wix 4.2, Squarespace 2.4, Joomla 1.1, Drupal 0.6, PrestaShop 0.5, TYPO3 0.3. Blue bars are written in PHP.", "fr": "Barres horizontales : WordPress 40,2 pour cent de tous les sites, Shopify 5,4, Wix 4,2, Squarespace 2,4, Joomla 1,1, Drupal 0,6, PrestaShop 0,5, TYPO3 0,3. Les barres bleues sont écrites en PHP."},
+  "source": {"en": "W3Techs, 17 September 2026. Blue: written in PHP. 31.5% of sites use no detected CMS.", "fr": "W3Techs, 17 septembre 2026. En bleu : écrit en PHP. 31,5 % des sites n'utilisent aucun CMS détecté."},
+  "note": {"en": "Shopify, Wix and Squarespace are hosted platforms, not installable software.", "fr": "Shopify, Wix et Squarespace sont des plateformes hébergées, pas des logiciels installables."},
+  "unit": "%",
+  "highlight": ["WordPress", "Joomla", "Drupal", "PrestaShop", "TYPO3"],
+  "rows": [
+    {"label": "WordPress", "value": 40.2},
+    {"label": "Shopify", "value": 5.4},
+    {"label": "Wix", "value": 4.2},
+    {"label": "Squarespace", "value": 2.4},
+    {"label": "Joomla", "value": 1.1},
+    {"label": "Drupal", "value": 0.6},
+    {"label": "PrestaShop", "value": 0.5},
+    {"label": "TYPO3", "value": 0.3}
+  ],
+  "_source_url": "https://w3techs.com/technologies/overview/content_management",
+  "_checked": "2026-09-17"
+}

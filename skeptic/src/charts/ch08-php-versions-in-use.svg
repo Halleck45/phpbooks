@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 259" width="640" role="img" aria-labelledby="t d" style="max-width: 100%; height: auto; font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 13px;">
+<title id="t">PHP versions in use, three populations</title>
+<desc id="d">Three stacked bars. Composer installs on Packagist, August 2026: PHP 8 94.2 percent, PHP 7 5.6, PHP 5 0.2. WordPress sites reporting to wordpress.org, September 2026: PHP 8 77.2, PHP 7 20.8, PHP 5 2.1. Websites on W3Techs, September 2026: PHP 8 64.1, PHP 7 28.1, PHP 5 7.9.</desc>
+<text x="0.0" y="18.0" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 15px; font-weight: bold;">PHP versions in use, three populations</text>
+<text x="200.0" y="62.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Composer installs (Packagist)</text>
+<rect x="210.0" y="44.0" width="384.2" height="26.0" rx="2" fill="#2a78d6" fill-opacity="1"/>
+<text x="402.1" y="62.0" fill="currentColor" fill-opacity="1" text-anchor="middle" style="font-size: 11px; font-weight: normal;">94.2%</text>
+<rect x="596.2" y="44.0" width="21.0" height="26.0" rx="2" fill="#8b8a85" fill-opacity="1"/>
+<rect x="619.2" y="44.0" width="0.0" height="26.0" rx="2" fill="#a5a49f" fill-opacity="1"/>
+<text x="200.0" y="102.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">WordPress sites (wordpress.org)</text>
+<rect x="210.0" y="84.0" width="314.2" height="26.0" rx="2" fill="#2a78d6" fill-opacity="1"/>
+<text x="367.1" y="102.0" fill="currentColor" fill-opacity="1" text-anchor="middle" style="font-size: 11px; font-weight: normal;">77.2%</text>
+<rect x="526.2" y="84.0" width="83.2" height="26.0" rx="2" fill="#8b8a85" fill-opacity="1"/>
+<text x="567.8" y="102.0" fill="currentColor" fill-opacity="1" text-anchor="middle" style="font-size: 11px; font-weight: normal;">20.8%</text>
+<rect x="611.4" y="84.0" width="6.6" height="26.0" rx="2" fill="#a5a49f" fill-opacity="1"/>
+<text x="200.0" y="142.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Websites (W3Techs)</text>
+<rect x="210.0" y="124.0" width="260.5" height="26.0" rx="2" fill="#2a78d6" fill-opacity="1"/>
+<text x="340.3" y="142.0" fill="currentColor" fill-opacity="1" text-anchor="middle" style="font-size: 11px; font-weight: normal;">64.1%</text>
+<rect x="472.5" y="124.0" width="113.1" height="26.0" rx="2" fill="#8b8a85" fill-opacity="1"/>
+<text x="529.1" y="142.0" fill="currentColor" fill-opacity="1" text-anchor="middle" style="font-size: 11px; font-weight: normal;">28.1%</text>
+<rect x="587.6" y="124.0" width="30.4" height="26.0" rx="2" fill="#a5a49f" fill-opacity="1"/>
+<rect x="210.0" y="172.0" width="12.0" height="12.0" rx="2" fill="#2a78d6" fill-opacity="1"/>
+<text x="227.0" y="182.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">PHP 8</text>
+<rect x="286.5" y="172.0" width="12.0" height="12.0" rx="2" fill="#8b8a85" fill-opacity="1"/>
+<text x="303.5" y="182.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">PHP 7</text>
+<rect x="363.0" y="172.0" width="12.0" height="12.0" rx="2" fill="#a5a49f" fill-opacity="1"/>
+<text x="380.0" y="182.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">PHP 5</text>
+<text x="0.0" y="218.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">Packagist php-statistics, August 2026; api.wordpress.org/stats/php, 17 September 2026; W3Techs, 17</text>
+<text x="0.0" y="233.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">September 2026.</text>
+<text x="0.0" y="248.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">PHP 4 (0.1% of websites) folded into PHP 5.</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 399" width="640" role="img" aria-labelledby="t d" style="max-width: 100%; height: auto; font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 13px;">
+<title id="t">Salaire annuel médian déclaré par les développeurs de chaque langage, dollars</title>
+<desc id="d">Barres horizontales : Erlang 100 636, Ruby 90 221, Go 76 433, Rust 76 292, Python 67 723, C# 66 066, TypeScript 65 907, JavaScript 63 694, Java 61 714, PHP 49 586</desc>
+<text x="0.0" y="18.0" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 15px; font-weight: bold;">Salaire annuel médian déclaré par les développeurs de chaque langage, dollars</text>
+<text x="140.0" y="59.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Erlang</text>
+<rect x="150.0" y="44.0" width="420.0" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="578.0" y="59.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">100 636</text>
+<text x="140.0" y="87.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Ruby</text>
+<rect x="150.0" y="72.0" width="376.5" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="534.5" y="87.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">90 221</text>
+<text x="140.0" y="115.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Go</text>
+<rect x="150.0" y="100.0" width="319.0" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="477.0" y="115.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">76 433</text>
+<text x="140.0" y="143.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Rust</text>
+<rect x="150.0" y="128.0" width="318.4" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="476.4" y="143.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">76 292</text>
+<text x="140.0" y="171.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Python</text>
+<rect x="150.0" y="156.0" width="282.6" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="440.6" y="171.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">67 723</text>
+<text x="140.0" y="199.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">C#</text>
+<rect x="150.0" y="184.0" width="275.7" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="433.7" y="199.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">66 066</text>
+<text x="140.0" y="227.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">TypeScript</text>
+<rect x="150.0" y="212.0" width="275.1" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="433.1" y="227.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">65 907</text>
+<text x="140.0" y="255.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">JavaScript</text>
+<rect x="150.0" y="240.0" width="265.8" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="423.8" y="255.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">63 694</text>
+<text x="140.0" y="283.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Java</text>
+<rect x="150.0" y="268.0" width="257.6" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="415.6" y="283.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">61 714</text>
+<text x="140.0" y="311.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">PHP</text>
+<rect x="150.0" y="296.0" width="206.9" height="20.0" rx="3" fill="#2a78d6" fill-opacity="1"/>
+<text x="364.9" y="311.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">49 586</text>
+<line x1="150.0" y1="40.0" x2="150.0" y2="320.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/>
+<text x="0.0" y="358.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">Stack Overflow Developer Survey 2024, « Top paying technologies », langages, médiane en dollars.</text>
+<text x="0.0" y="373.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">L'édition 2025 n'a pas publié ce tableau.</text>
+<text x="0.0" y="388.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">Auto-déclaré, mondial, non corrigé du pays. PHP était l'avant-dernier des cinquante langages listés.</text>
+</svg>

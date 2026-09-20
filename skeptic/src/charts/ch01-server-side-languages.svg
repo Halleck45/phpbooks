@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" role="img" aria-labelledby="t d" style="max-width: 100%; height: auto; font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 13px;">
+<title id="t">Server-side languages, share of websites</title>
+<desc id="d">Horizontal bars: PHP 69.9 percent, JavaScript 7.5, Ruby 7.1, Java 5.4, Scala 5.0, ASP.NET 4.2, Python 1.1</desc>
+<text x="0.0" y="18.0" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 15px; font-weight: bold;">Server-side languages, share of websites</text>
+<text x="140.0" y="59.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">PHP</text>
+<rect x="150.0" y="44.0" width="420.0" height="20.0" rx="3" fill="#2a78d6" fill-opacity="1"/>
+<text x="578.0" y="59.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">69.9%</text>
+<text x="140.0" y="87.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">JavaScript</text>
+<rect x="150.0" y="72.0" width="45.1" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="203.1" y="87.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">7.5%</text>
+<text x="140.0" y="115.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Ruby</text>
+<rect x="150.0" y="100.0" width="42.7" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="200.7" y="115.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">7.1%</text>
+<text x="140.0" y="143.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Java</text>
+<rect x="150.0" y="128.0" width="32.4" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="190.4" y="143.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">5.4%</text>
+<text x="140.0" y="171.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Scala</text>
+<rect x="150.0" y="156.0" width="30.0" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="188.0" y="171.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">5%</text>
+<text x="140.0" y="199.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">ASP.NET</text>
+<rect x="150.0" y="184.0" width="25.2" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="183.2" y="199.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">4.2%</text>
+<text x="140.0" y="227.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Python</text>
+<rect x="150.0" y="212.0" width="6.6" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="164.6" y="227.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">1.1%</text>
+<line x1="150.0" y1="40.0" x2="150.0" y2="236.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/>
+<text x="0.0" y="274.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">W3Techs, 17 September 2026. Share of websites whose server-side language is detectable.</text>
+<text x="0.0" y="289.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">A site may use several languages. Sample of over 20 million sites; wordpress.com counts as one site.</text>
+</svg>

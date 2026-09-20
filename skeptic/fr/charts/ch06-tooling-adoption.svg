@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 287" width="640" role="img" aria-labelledby="t d" style="max-width: 100%; height: auto; font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 13px;">
+<title id="t">Outils que les développeurs PHP déclarent utiliser</title>
+<desc id="d">Barres horizontales, part des répondants : PHPUnit 50 pour cent, PHPStan 36, PHP-CS-Fixer 30, Pest 17 ; 32 pour cent n'écrivent pas de tests et 42 pour cent n'utilisent aucun outil qualité régulièrement</desc>
+<text x="0.0" y="18.0" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 15px; font-weight: bold;">Outils que les développeurs PHP déclarent utiliser</text>
+<text x="194.0" y="59.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">PHPUnit</text>
+<rect x="204.0" y="44.0" width="366.0" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="578.0" y="59.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">50%</text>
+<text x="194.0" y="87.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">PHPStan</text>
+<rect x="204.0" y="72.0" width="263.5" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="475.5" y="87.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">36%</text>
+<text x="194.0" y="115.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">PHP-CS-Fixer</text>
+<rect x="204.0" y="100.0" width="219.6" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="431.6" y="115.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">30%</text>
+<text x="194.0" y="143.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Pest</text>
+<rect x="204.0" y="128.0" width="124.4" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="336.4" y="143.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">17%</text>
+<text x="194.0" y="171.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">n'écrit pas de tests</text>
+<rect x="204.0" y="156.0" width="234.2" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="446.2" y="171.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">32%</text>
+<text x="194.0" y="199.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">aucun outil qualité régulier</text>
+<rect x="204.0" y="184.0" width="307.4" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="519.4" y="199.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">42%</text>
+<line x1="204.0" y1="40.0" x2="204.0" y2="208.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/>
+<text x="0.0" y="246.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">JetBrains, The State of PHP 2025 (octobre 2025), 1 720 répondants ayant PHP comme langage principal,</text>
+<text x="0.0" y="261.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">issus de l'enquête Developer Ecosystem.</text>
+<text x="0.0" y="276.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">Plusieurs réponses par répondant. Échantillon orienté vers les utilisateurs JetBrains.</text>
+</svg>

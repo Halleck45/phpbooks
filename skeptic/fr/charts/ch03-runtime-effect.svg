@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 414" width="640" role="img" aria-labelledby="t d" style="max-width: 100%; height: auto; font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 13px;">
+<title id="t">Même framework, runtime différent (Fortunes, milliers de requêtes par seconde)</title>
+<desc id="d">Barres horizontales. Symfony : PHP-FPM 26, RoadRunner 36, FrankenPHP 74, workerman 108, Swoole 111. Laravel : RoadRunner 8, PHP-FPM 16, Octane sur FrankenPHP 34, Swoole 34, workerman 50.</desc>
+<text x="0.0" y="18.0" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 15px; font-weight: bold;">Même framework, runtime différent (Fortunes, milliers de requêtes par seconde)</text>
+<text x="180.0" y="59.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Symfony, Swoole</text>
+<rect x="190.0" y="44.0" width="380.0" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="578.0" y="59.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">111</text>
+<text x="180.0" y="87.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Symfony, workerman</text>
+<rect x="190.0" y="72.0" width="369.7" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="567.7" y="87.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">108</text>
+<text x="180.0" y="115.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Symfony, FrankenPHP</text>
+<rect x="190.0" y="100.0" width="253.3" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="451.3" y="115.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">74</text>
+<text x="180.0" y="143.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Symfony, RoadRunner</text>
+<rect x="190.0" y="128.0" width="123.2" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="321.2" y="143.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">36</text>
+<text x="180.0" y="171.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Symfony, PHP-FPM</text>
+<rect x="190.0" y="156.0" width="89.0" height="20.0" rx="3" fill="#2a78d6" fill-opacity="1"/>
+<text x="287.0" y="171.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">26</text>
+<text x="180.0" y="199.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Laravel, workerman</text>
+<rect x="190.0" y="184.0" width="171.2" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="369.2" y="199.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">50</text>
+<text x="180.0" y="227.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Laravel, Swoole</text>
+<rect x="190.0" y="212.0" width="116.4" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="314.4" y="227.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">34</text>
+<text x="180.0" y="255.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Laravel Octane, FrankenPHP</text>
+<rect x="190.0" y="240.0" width="116.4" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="314.4" y="255.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">34</text>
+<text x="180.0" y="283.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Laravel, PHP-FPM</text>
+<rect x="190.0" y="268.0" width="54.8" height="20.0" rx="3" fill="#2a78d6" fill-opacity="1"/>
+<text x="252.8" y="283.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">16</text>
+<text x="180.0" y="311.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">Laravel, RoadRunner</text>
+<rect x="190.0" y="296.0" width="27.4" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="225.4" y="311.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">8</text>
+<line x1="190.0" y1="40.0" x2="190.0" y2="320.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/>
+<text x="0.0" y="358.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">TechEmpower Framework Benchmarks, Round 23 (24 février 2025), test Fortunes. En bleu : la référence</text>
+<text x="0.0" y="373.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">PHP-FPM.</text>
+<text x="0.0" y="388.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">Les entrées sont maintenues par des volontaires ; une entrée lente peut refléter sa configuration</text>
+<text x="0.0" y="403.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">plutôt que le runtime.</text>
+</svg>

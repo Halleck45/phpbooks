@@ -1,0 +1,15 @@
+{
+  "type": "line",
+  "title": {"en": "Package installs through Composer, billions per year", "fr": "Installations de paquets via Composer, milliards par an"},
+  "desc": {"en": "Line: 2016 2.0 billion, 2017 3.6, 2018 5.2, 2019 7.8, 2020 12.3, 2021 18.0, 2022 23.4, 2023 24.6, 2024 31.0, 2025 36.0", "fr": "Courbe : 2016 2,0 milliards, 2017 3,6, 2018 5,2, 2019 7,8, 2020 12,3, 2021 18,0, 2022 23,4, 2023 24,6, 2024 31,0, 2025 36,0"},
+  "source": {"en": "packagist.org/statistics, monthly install counts summed per calendar year. Checked 17 September 2026.", "fr": "packagist.org/statistics, installations mensuelles sommées par année civile. Relevé le 17 septembre 2026."},
+  "note": {"en": "An install is one package installed by Composer and reported to packagist.org; continuous integration and container builds weigh heavily in it.", "fr": "Une installation est un paquet installé par Composer et signalé à packagist.org ; l'intégration continue et les images de conteneurs y pèsent lourd."},
+  "unit": "",
+  "highlight": ["installs"],
+  "x": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+  "series": [
+    {"key": "installs", "label": {"en": "installs", "fr": "installations"}, "values": [2.0, 3.6, 5.2, 7.8, 12.3, 18.0, 23.4, 24.6, 31.0, 36.0]}
+  ],
+  "_source_url": "https://packagist.org/statistics",
+  "_checked": "2026-09-17"
+}

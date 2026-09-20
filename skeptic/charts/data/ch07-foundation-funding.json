@@ -1,0 +1,16 @@
+{
+  "type": "line",
+  "title": {"en": "The PHP Foundation, thousands of US dollars per year", "fr": "La PHP Foundation, milliers de dollars par an"},
+  "desc": {"en": "Two lines. Contributions received: 2022 712, 2023 419, 2024 684, 2025 731. Spent on engineers: 2022 133 (April to November), 2023 275, 2024 635, 2025 784 (total spending).", "fr": "Deux courbes. Contributions reçues : 2022 712, 2023 419, 2024 684, 2025 731. Dépensé pour les ingénieurs : 2022 133 (avril à novembre), 2023 275, 2024 635, 2025 784 (dépenses totales)."},
+  "source": {"en": "The PHP Foundation transparency reports for 2022, 2023, 2024 and 2025 (published November 2022, February 2024, March 2025, May 2026).", "fr": "Rapports de transparence de la PHP Foundation pour 2022, 2023, 2024 et 2025 (publiés en novembre 2022, février 2024, mars 2025, mai 2026)."},
+  "note": {"en": "2022 spending covers April to November only; 2025 spending is the total reported, with a deficit of about 139,000 dollars stated as deliberate.", "fr": "Les dépenses 2022 couvrent avril à novembre seulement ; les dépenses 2025 sont le total publié, avec un déficit d'environ 139 000 dollars présenté comme délibéré."},
+  "unit": "",
+  "highlight": ["received"],
+  "x": [2022, 2023, 2024, 2025],
+  "series": [
+    {"key": "received", "label": {"en": "contributions received", "fr": "contributions reçues"}, "values": [712, 419, 684, 731]},
+    {"key": "spent", "label": {"en": "spent", "fr": "dépensé"}, "values": [133, 275, 635, 784]}
+  ],
+  "_source_url": "https://thephp.foundation/blog/2022/11/22/transparency-and-impact-report-2022/ ; .../2024/02/26/transparency-and-impact-report-2023/ ; .../2025/03/31/transparency-and-impact-report-2024/ ; .../2026/05/27/impact-and-transparency-report-2025/",
+  "_checked": "2026-09-17"
+}

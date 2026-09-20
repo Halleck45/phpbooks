@@ -1,0 +1,22 @@
+{
+  "type": "timeline",
+  "title": {"en": "Support windows of PHP branches", "fr": "Fenêtres de support des branches PHP"},
+  "desc": {"en": "Timeline bars: PHP 8.1 from November 2021, active until November 2023, security until December 2025; 8.2 from December 2022, active until December 2024, security until December 2026; 8.3 from November 2023 to December 2025 and December 2027; 8.4 from November 2024 to December 2026 and December 2028; 8.5 from November 2025 to December 2027 and December 2029; 8.6 planned for November 2026.", "fr": "Barres chronologiques : PHP 8.1 de novembre 2021, support actif jusqu'en novembre 2023, sécurité jusqu'en décembre 2025 ; 8.2 de décembre 2022, actif jusqu'en décembre 2024, sécurité jusqu'en décembre 2026 ; 8.3 de novembre 2023 à décembre 2025 et décembre 2027 ; 8.4 de novembre 2024 à décembre 2026 et décembre 2028 ; 8.5 de novembre 2025 à décembre 2027 et décembre 2029 ; 8.6 prévue pour novembre 2026."},
+  "source": {"en": "php.net/supported-versions and php.net/eol, checked 17 September 2026. PHP 8.6 dates from wiki.php.net/todo/php86, planned, not released.", "fr": "php.net/supported-versions et php.net/eol, relevés le 17 septembre 2026. Dates de PHP 8.6 d'après wiki.php.net/todo/php86, prévues, pas publiées."},
+  "from": "2021-11", "to": "2031-01",
+  "today": "2026-09",
+  "today_label": {"en": "September 2026", "fr": "septembre 2026"},
+  "legend_active": {"en": "active support (bug and security fixes)", "fr": "support actif (bugs et sécurité)"},
+  "legend_security": {"en": "security fixes only", "fr": "correctifs de sécurité seulement"},
+  "highlight": ["8.5"],
+  "rows": [
+    {"key": "8.1", "label": "PHP 8.1", "start": "2021-11", "active": "2023-11", "end": "2025-12"},
+    {"key": "8.2", "label": "PHP 8.2", "start": "2022-12", "active": "2024-12", "end": "2026-12"},
+    {"key": "8.3", "label": "PHP 8.3", "start": "2023-11", "active": "2025-12", "end": "2027-12"},
+    {"key": "8.4", "label": "PHP 8.4", "start": "2024-11", "active": "2026-12", "end": "2028-12"},
+    {"key": "8.5", "label": "PHP 8.5", "start": "2025-11", "active": "2027-12", "end": "2029-12"},
+    {"key": "8.6", "label": {"en": "8.6 (planned)", "fr": "8.6 (prévue)"}, "start": "2026-11", "active": "2028-12", "end": "2030-12"}
+  ],
+  "_source_url": "https://www.php.net/supported-versions.php ; https://www.php.net/eol.php ; https://wiki.php.net/todo/php86",
+  "_checked": "2026-09-17"
+}

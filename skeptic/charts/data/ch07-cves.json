@@ -1,0 +1,18 @@
+{
+  "type": "hbar",
+  "title": {"en": "Vulnerabilities published for the PHP interpreter, per year", "fr": "Vulnérabilités publiées pour l'interpréteur PHP, par an"},
+  "desc": {"en": "Horizontal bars, CVE records with product php:php by publication year: 2022 8, 2023 7, 2024 18, 2025 13, 2026 to 17 September 14", "fr": "Barres horizontales, fiches CVE du produit php:php par année de publication : 2022 8, 2023 7, 2024 18, 2025 13, 2026 au 17 septembre 14"},
+  "source": {"en": "NVD, records for cpe:2.3:a:php:php by publication year, queried 17 September 2026. The php-src advisory list on GitHub gives 5, 18, 14 and 15 for 2023 to 2026.", "fr": "NVD, fiches pour cpe:2.3:a:php:php par année de publication, interrogé le 17 septembre 2026. La liste d'avis php-src sur GitHub donne 5, 18, 14 et 15 pour 2023 à 2026."},
+  "note": {"en": "PHP assigns no CVE to most low-severity issues; the 2024 rise coincides with a funded external audit. Counts cannot be compared across languages.", "fr": "PHP n'attribue pas de CVE à la plupart des problèmes de faible gravité ; la hausse de 2024 coïncide avec un audit externe financé. Les comptes ne se comparent pas entre langages."},
+  "unit": "",
+  "highlight": [],
+  "rows": [
+    {"label": "2022", "value": 8},
+    {"label": "2023", "value": 7},
+    {"label": "2024", "value": 18},
+    {"label": "2025", "value": 13},
+    {"label": {"en": "2026 (to 17 Sept.)", "fr": "2026 (au 17 sept.)"}, "value": 14}
+  ],
+  "_source_url": "https://services.nvd.nist.gov/rest/json/cves/2.0?cpeName=cpe:2.3:a:php:php:*:*:*:*:*:*:*:* ; https://github.com/php/php-src/security/advisories",
+  "_checked": "2026-09-17"
+}

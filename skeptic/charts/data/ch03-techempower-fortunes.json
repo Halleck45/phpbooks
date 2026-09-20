@@ -1,0 +1,160 @@
+{
+  "type": "hbar",
+  "title": {
+    "en": "TechEmpower Round 23, Fortunes test, thousands of requests per second",
+    "fr": "TechEmpower Round 23, test Fortunes, milliers de requêtes par seconde"
+  },
+  "desc": {
+    "en": "Horizontal bars, selected entries: may-minihttp (Rust) 1327, vertx-postgres (Java) 1041, workerman (PHP, Postgres) 743, asp.net core (C#) 446, ubiquity on workerman (PHP, full ORM) 428, fiber (Go) 411, spring (Java) 244, php on PHP-FPM and nginx 146, php on FrankenPHP 129, gin (Go) 111, fastapi (Python) 109, express (Node.js) 78, rails (Ruby) 43, django (Python) 32, symfony on PHP-FPM 26, laravel on PHP-FPM 16",
+    "fr": "Barres horizontales, sélection d'entrées : may-minihttp (Rust) 1327, vertx-postgres (Java) 1041, workerman (PHP, Postgres) 743, asp.net core (C#) 446, ubiquity sur workerman (PHP, ORM complet) 428, fiber (Go) 411, spring (Java) 244, php sur PHP-FPM et nginx 146, php sur FrankenPHP 129, gin (Go) 111, fastapi (Python) 109, express (Node.js) 78, rails (Ruby) 43, django (Python) 32, symfony sur PHP-FPM 26, laravel sur PHP-FPM 16"
+  },
+  "source": {
+    "en": "TechEmpower Framework Benchmarks, Round 23 (24 February 2025), Fortunes test, Citrine environment: Xeon Gold 6330 (28 cores, 56 threads), 40 GbE. Selection of 16 entries out of 510.",
+    "fr": "TechEmpower Framework Benchmarks, Round 23 (24 février 2025), test Fortunes, environnement Citrine : Xeon Gold 6330 (28 cœurs, 56 threads), 40 GbE. Sélection de 16 entrées sur 510."
+  },
+  "note": {
+    "en": "Fortunes: one database query, HTML rendering with escaping. Blue: PHP entries. Each bar names the framework and its runtime; the language alone decides nothing here.",
+    "fr": "Fortunes : une requête en base, rendu HTML avec échappement. En bleu : entrées PHP. Chaque barre nomme le framework et son runtime ; le langage seul ne décide rien ici."
+  },
+  "unit": "",
+  "highlight": [
+    "workerman",
+    "ubiquity",
+    "php-fpm",
+    "franken",
+    "symfony",
+    "laravel"
+  ],
+  "rows": [
+    {
+      "key": "may",
+      "label": {
+        "en": "may-minihttp (Rust)",
+        "fr": "may-minihttp (Rust)"
+      },
+      "value": 1327
+    },
+    {
+      "key": "vertx",
+      "label": {
+        "en": "vertx-postgres (Java)",
+        "fr": "vertx-postgres (Java)"
+      },
+      "value": 1041
+    },
+    {
+      "key": "workerman",
+      "label": {
+        "en": "workerman (PHP)",
+        "fr": "workerman (PHP)"
+      },
+      "value": 743
+    },
+    {
+      "key": "aspnet",
+      "label": {
+        "en": "asp.net core (C#)",
+        "fr": "asp.net core (C#)"
+      },
+      "value": 446
+    },
+    {
+      "key": "ubiquity",
+      "label": {
+        "en": "ubiquity, workerman (PHP)",
+        "fr": "ubiquity, workerman (PHP)"
+      },
+      "value": 428
+    },
+    {
+      "key": "fiber",
+      "label": {
+        "en": "fiber (Go)",
+        "fr": "fiber (Go)"
+      },
+      "value": 411
+    },
+    {
+      "key": "spring",
+      "label": {
+        "en": "spring (Java)",
+        "fr": "spring (Java)"
+      },
+      "value": 244
+    },
+    {
+      "key": "php-fpm",
+      "label": {
+        "en": "php, PHP-FPM + nginx",
+        "fr": "php, PHP-FPM + nginx"
+      },
+      "value": 146
+    },
+    {
+      "key": "franken",
+      "label": {
+        "en": "php, FrankenPHP",
+        "fr": "php, FrankenPHP"
+      },
+      "value": 129
+    },
+    {
+      "key": "gin",
+      "label": {
+        "en": "gin (Go)",
+        "fr": "gin (Go)"
+      },
+      "value": 111
+    },
+    {
+      "key": "fastapi",
+      "label": {
+        "en": "fastapi (Python)",
+        "fr": "fastapi (Python)"
+      },
+      "value": 109
+    },
+    {
+      "key": "express",
+      "label": {
+        "en": "express (Node.js)",
+        "fr": "express (Node.js)"
+      },
+      "value": 78
+    },
+    {
+      "key": "rails",
+      "label": {
+        "en": "rails (Ruby)",
+        "fr": "rails (Ruby)"
+      },
+      "value": 43
+    },
+    {
+      "key": "django",
+      "label": {
+        "en": "django (Python)",
+        "fr": "django (Python)"
+      },
+      "value": 32
+    },
+    {
+      "key": "symfony",
+      "label": {
+        "en": "symfony, PHP-FPM",
+        "fr": "symfony, PHP-FPM"
+      },
+      "value": 26
+    },
+    {
+      "key": "laravel",
+      "label": {
+        "en": "laravel, PHP-FPM",
+        "fr": "laravel, PHP-FPM"
+      },
+      "value": 16
+    }
+  ],
+  "_source_url": "https://www.techempower.com/benchmarks/#hw=ph&test=fortune&section=data-r23 ; raw table in charts/raw/techempower-r23-fortune.csv",
+  "_checked": "2026-09-17"
+}

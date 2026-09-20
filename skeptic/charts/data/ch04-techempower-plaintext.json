@@ -1,0 +1,28 @@
+{
+  "type": "hbar",
+  "title": {"en": "TechEmpower Round 23, plaintext test, thousands of requests per second", "fr": "TechEmpower Round 23, test plaintext, milliers de requêtes par seconde"},
+  "desc": {"en": "Horizontal bars, selected entries: may-minihttp (Rust) 27,906, asp.net core (C#) 11,509, swoole (PHP) 3,519, micronaut (Java) 2,884, gin (Go) 1,640, nodejs 1,460, spring (Java) 833, fiber (Go) 646, php on PHP-FPM 450, fastapi (Python) 338, php on FrankenPHP 312, express (Node.js) 280, django (Python) 180, rails (Ruby) 139, laravel on PHP-FPM 27", "fr": "Barres horizontales, sélection d'entrées : may-minihttp (Rust) 27 906, asp.net core (C#) 11 509, swoole (PHP) 3 519, micronaut (Java) 2 884, gin (Go) 1 640, nodejs 1 460, spring (Java) 833, fiber (Go) 646, php sur PHP-FPM 450, fastapi (Python) 338, php sur FrankenPHP 312, express (Node.js) 280, django (Python) 180, rails (Ruby) 139, laravel sur PHP-FPM 27"},
+  "source": {"en": "TechEmpower Framework Benchmarks, Round 23 (24 February 2025), plaintext test with HTTP pipelining, up to 16,384 concurrent connections. Selection of 15 entries out of 514.", "fr": "TechEmpower Framework Benchmarks, Round 23 (24 février 2025), test plaintext avec pipelining HTTP, jusqu'à 16 384 connexions simultanées. Sélection de 15 entrées sur 514."},
+  "note": {"en": "Plaintext measures the HTTP layer and connection handling, with no application work. Blue: PHP entries.", "fr": "Plaintext mesure la couche HTTP et la gestion des connexions, sans travail applicatif. En bleu : entrées PHP."},
+  "unit": "",
+  "highlight": ["swoole", "php-fpm", "franken", "laravel"],
+  "rows": [
+    {"key": "may", "label": "may-minihttp (Rust)", "value": 27906},
+    {"key": "aspnet", "label": "asp.net core (C#)", "value": 11509},
+    {"key": "swoole", "label": "swoole (PHP)", "value": 3519},
+    {"key": "micronaut", "label": "micronaut (Java)", "value": 2884},
+    {"key": "gin", "label": "gin (Go)", "value": 1640},
+    {"key": "node", "label": "nodejs", "value": 1460},
+    {"key": "spring", "label": "spring (Java)", "value": 833},
+    {"key": "fiber", "label": "fiber (Go)", "value": 646},
+    {"key": "php-fpm", "label": {"en": "php, PHP-FPM + nginx", "fr": "php, PHP-FPM + nginx"}, "value": 450},
+    {"key": "fastapi", "label": "fastapi (Python)", "value": 338},
+    {"key": "franken", "label": {"en": "php, FrankenPHP", "fr": "php, FrankenPHP"}, "value": 312},
+    {"key": "express", "label": "express (Node.js)", "value": 280},
+    {"key": "django", "label": "django (Python)", "value": 180},
+    {"key": "rails", "label": "rails (Ruby)", "value": 139},
+    {"key": "laravel", "label": {"en": "laravel, PHP-FPM", "fr": "laravel, PHP-FPM"}, "value": 27}
+  ],
+  "_source_url": "charts/raw/techempower-r23-plaintext.csv",
+  "_checked": "2026-09-17"
+}

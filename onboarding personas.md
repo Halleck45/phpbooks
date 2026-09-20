@@ -20,6 +20,8 @@ This person doesn't want to learn PHP, she might even want to avoid naming the u
 ## The Skeptical Evaluator 
 **Impress me with scale, not hype**
 
+Book: `skeptic/` (PHP in 2026, the Facts).
+
 A persona that views PHP as "not glamorous". She are compares it to flashy and trendy languages. She needs to be convinced that PHP is worth her time to learn. She cares about commercial use-cases, high-performance, low latency, and reputable brands.
 
 ## The Engineering Leader / Decision Maker

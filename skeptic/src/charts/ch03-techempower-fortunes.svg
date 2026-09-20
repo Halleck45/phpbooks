@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 582" width="640" role="img" aria-labelledby="t d" style="max-width: 100%; height: auto; font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; font-size: 13px;">
+<title id="t">TechEmpower Round 23, Fortunes test, thousands of requests per second</title>
+<desc id="d">Horizontal bars, selected entries: may-minihttp (Rust) 1327, vertx-postgres (Java) 1041, workerman (PHP, Postgres) 743, asp.net core (C#) 446, ubiquity on workerman (PHP, full ORM) 428, fiber (Go) 411, spring (Java) 244, php on PHP-FPM and nginx 146, php on FrankenPHP 129, gin (Go) 111, fastapi (Python) 109, express (Node.js) 78, rails (Ruby) 43, django (Python) 32, symfony on PHP-FPM 26, laravel on PHP-FPM 16</desc>
+<text x="0.0" y="18.0" fill="currentColor" fill-opacity="1" text-anchor="start" style="font-size: 15px; font-weight: bold;">TechEmpower Round 23, Fortunes test, thousands of requests per second</text>
+<text x="174.0" y="59.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">may-minihttp (Rust)</text>
+<rect x="184.0" y="44.0" width="386.0" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="578.0" y="59.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">1,327</text>
+<text x="174.0" y="87.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">vertx-postgres (Java)</text>
+<rect x="184.0" y="72.0" width="302.8" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="494.8" y="87.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">1,041</text>
+<text x="174.0" y="115.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">workerman (PHP)</text>
+<rect x="184.0" y="100.0" width="216.1" height="20.0" rx="3" fill="#2a78d6" fill-opacity="1"/>
+<text x="408.1" y="115.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">743</text>
+<text x="174.0" y="143.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">asp.net core (C#)</text>
+<rect x="184.0" y="128.0" width="129.7" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="321.7" y="143.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">446</text>
+<text x="174.0" y="171.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">ubiquity, workerman (PHP)</text>
+<rect x="184.0" y="156.0" width="124.5" height="20.0" rx="3" fill="#2a78d6" fill-opacity="1"/>
+<text x="316.5" y="171.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">428</text>
+<text x="174.0" y="199.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">fiber (Go)</text>
+<rect x="184.0" y="184.0" width="119.6" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="311.6" y="199.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">411</text>
+<text x="174.0" y="227.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">spring (Java)</text>
+<rect x="184.0" y="212.0" width="71.0" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="263.0" y="227.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">244</text>
+<text x="174.0" y="255.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">php, PHP-FPM + nginx</text>
+<rect x="184.0" y="240.0" width="42.5" height="20.0" rx="3" fill="#2a78d6" fill-opacity="1"/>
+<text x="234.5" y="255.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">146</text>
+<text x="174.0" y="283.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">php, FrankenPHP</text>
+<rect x="184.0" y="268.0" width="37.5" height="20.0" rx="3" fill="#2a78d6" fill-opacity="1"/>
+<text x="229.5" y="283.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">129</text>
+<text x="174.0" y="311.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">gin (Go)</text>
+<rect x="184.0" y="296.0" width="32.3" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="224.3" y="311.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">111</text>
+<text x="174.0" y="339.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">fastapi (Python)</text>
+<rect x="184.0" y="324.0" width="31.7" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="223.7" y="339.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">109</text>
+<text x="174.0" y="367.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">express (Node.js)</text>
+<rect x="184.0" y="352.0" width="22.7" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="214.7" y="367.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">78</text>
+<text x="174.0" y="395.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">rails (Ruby)</text>
+<rect x="184.0" y="380.0" width="12.5" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="204.5" y="395.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">43</text>
+<text x="174.0" y="423.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">django (Python)</text>
+<rect x="184.0" y="408.0" width="9.3" height="20.0" rx="3" fill="#a5a49f" fill-opacity="1"/>
+<text x="201.3" y="423.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">32</text>
+<text x="174.0" y="451.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">symfony, PHP-FPM</text>
+<rect x="184.0" y="436.0" width="7.6" height="20.0" rx="3" fill="#2a78d6" fill-opacity="1"/>
+<text x="199.6" y="451.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">26</text>
+<text x="174.0" y="479.0" fill="currentColor" fill-opacity="1" text-anchor="end" style="font-size: 13px; font-weight: normal;">laravel, PHP-FPM</text>
+<rect x="184.0" y="464.0" width="4.7" height="20.0" rx="3" fill="#2a78d6" fill-opacity="1"/>
+<text x="196.7" y="479.0" fill="currentColor" fill-opacity="0.85" text-anchor="start" style="font-size: 12px; font-weight: normal;">16</text>
+<line x1="184.0" y1="40.0" x2="184.0" y2="488.0" stroke="currentColor" stroke-width="1" stroke-opacity="0.4"/>
+<text x="0.0" y="526.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">TechEmpower Framework Benchmarks, Round 23 (24 February 2025), Fortunes test, Citrine environment:</text>
+<text x="0.0" y="541.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">Xeon Gold 6330 (28 cores, 56 threads), 40 GbE. Selection of 16 entries out of 510.</text>
+<text x="0.0" y="556.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">Fortunes: one database query, HTML rendering with escaping. Blue: PHP entries. Each bar names the</text>
+<text x="0.0" y="571.0" fill="currentColor" fill-opacity="0.65" text-anchor="start" style="font-size: 11px; font-weight: normal;">framework and its runtime; the language alone decides nothing here.</text>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "type": "hbar",
+  "title": {"en": "Median yearly salary reported by developers using each language, US dollars", "fr": "Salaire annuel médian déclaré par les développeurs de chaque langage, dollars"},
+  "desc": {"en": "Horizontal bars: Erlang 100,636, Ruby 90,221, Go 76,433, Rust 76,292, Python 67,723, C# 66,066, TypeScript 65,907, JavaScript 63,694, Java 61,714, PHP 49,586", "fr": "Barres horizontales : Erlang 100 636, Ruby 90 221, Go 76 433, Rust 76 292, Python 67 723, C# 66 066, TypeScript 65 907, JavaScript 63 694, Java 61 714, PHP 49 586"},
+  "source": {"en": "Stack Overflow Developer Survey 2024, \"Top paying technologies\", programming languages, median in US dollars. The 2025 edition did not publish this table.", "fr": "Stack Overflow Developer Survey 2024, « Top paying technologies », langages, médiane en dollars. L'édition 2025 n'a pas publié ce tableau."},
+  "note": {"en": "Self-reported, worldwide, not adjusted for country. PHP was the second-lowest of fifty languages listed.", "fr": "Auto-déclaré, mondial, non corrigé du pays. PHP était l'avant-dernier des cinquante langages listés."},
+  "unit": "",
+  "highlight": ["PHP"],
+  "rows": [
+    {"label": "Erlang", "value": 100636},
+    {"label": "Ruby", "value": 90221},
+    {"label": "Go", "value": 76433},
+    {"label": "Rust", "value": 76292},
+    {"label": "Python", "value": 67723},
+    {"label": "C#", "value": 66066},
+    {"label": "TypeScript", "value": 65907},
+    {"label": "JavaScript", "value": 63694},
+    {"label": "Java", "value": 61714},
+    {"label": "PHP", "value": 49586}
+  ],
+  "_source_url": "https://survey.stackoverflow.co/2024/technology#top-paying-technologies",
+  "_checked": "2026-09-17"
+}
