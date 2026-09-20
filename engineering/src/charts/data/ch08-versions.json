@@ -1,0 +1,11 @@
+{
+  "type": "stacked",
+  "title": "PHP major version in use across PHP-running websites",
+  "source": "W3Techs, w3techs.com/technologies/details/pl-php, data checked 2026-09-17",
+  "series": [
+    {"label": "PHP 8.x", "value": 64.1, "value_label": "64.1%", "highlight": true},
+    {"label": "PHP 7.x", "value": 28.1, "value_label": "28.1%"},
+    {"label": "PHP 5.x", "value": 7.8, "value_label": "7.8%"},
+    {"label": "PHP 4.x", "value": 0.1, "value_label": "0.1%"}
+  ]
+}

@@ -1,0 +1,32 @@
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.chart {
+    margin: 1.5em 0;
+}
+
+.chart svg {
+    width: 100%;
+    height: auto;
+    max-width: 640px;
+    display: block;
+}
+
+.chart svg text {
+    fill: currentColor;
+}
+
+.chart-source {
+    font-size: 0.8em;
+    color: currentColor;
+    opacity: 0.65;
+    margin-top: 0.25em;
+}
+
+blockquote {
+    border-left: 3px solid currentColor;
+    opacity: 0.9;
+    padding: 0.2em 1em;
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 238" role="img" aria-label="PHP developers reporting each practice, self-reported">
+<title>PHP developers reporting each practice, self-reported</title>
+<text x="0" y="20" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="600">PHP developers reporting each practice, self-reported</text>
+<text x="0" y="50" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">Use PHPUnit</text>
+<rect x="150" y="38" width="420.0" height="16" fill="#3b82f6" />
+<text x="578.0" y="50" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">50%</text>
+<text x="0" y="84" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">No static analysis</text>
+<rect x="150" y="72" width="352.8" height="16" fill="#3b82f6" />
+<text x="510.8" y="84" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">42%</text>
+<text x="0" y="118" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">Use PHPStan</text>
+<rect x="150" y="106" width="302.4" height="16" fill="#3b82f6" />
+<text x="460.4" y="118" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">36%</text>
+<text x="0" y="152" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">No automated tests</text>
+<rect x="150" y="140" width="268.8" height="16" fill="#3b82f6" />
+<text x="426.8" y="152" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">32%</text>
+<text x="0" y="186" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">Use Pest</text>
+<rect x="150" y="174" width="142.8" height="16" fill="#3b82f6" />
+<text x="300.8" y="186" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">17%</text>
+<text x="0" y="226" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" fill-opacity="0.65">JetBrains The State of PHP 2025, blog.jetbrains.com, 1,720 PHP respondents, fielded April-June 2025, may skew toward JetBrains product users</text>
+</svg>
