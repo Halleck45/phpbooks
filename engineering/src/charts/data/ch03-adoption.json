@@ -1,0 +1,15 @@
+{
+  "type": "hbar",
+  "title": "Professional developers using each language, 2025",
+  "source": "Stack Overflow Developer Survey 2025, 24,759 professional respondents, data year 2025",
+  "series": [
+    {"label": "JavaScript", "value": 68.8, "value_label": "68.8%"},
+    {"label": "Python", "value": 54.8, "value_label": "54.8%"},
+    {"label": "TypeScript", "value": 48.8, "value_label": "48.8%"},
+    {"label": "C#", "value": 29.9, "value_label": "29.9%"},
+    {"label": "Java", "value": 29.6, "value_label": "29.6%"},
+    {"label": "PHP", "value": 19.1, "value_label": "19.1%", "highlight": true},
+    {"label": "Go", "value": 17.4, "value_label": "17.4%"},
+    {"label": "Ruby", "value": 6.9, "value_label": "6.9%"}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "grouped",
+  "title": "WordPress requests per second, JIT RFC's own benchmark",
+  "source": "PHP JIT RFC, wiki.php.net/rfc/jit, WordPress request benchmark, data checked 2026-09-17",
+  "series": [
+    {
+      "label": "WordPress request",
+      "values": [
+        {"label": "Without JIT", "value": 315, "value_label": "315 req/s"},
+        {"label": "With JIT", "value": 326, "value_label": "326 req/s", "highlight": true}
+      ]
+    }
+  ]
+}

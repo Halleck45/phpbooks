@@ -1,0 +1,11 @@
+{
+  "type": "hbar",
+  "title": "Wikimedia data centers running MediaWiki, by region",
+  "source": "Wikimedia wikitech.wikimedia.org/wiki/Wikimedia_infrastructure, retrieved 2026-09-17",
+  "series": [
+    {"label": "United States", "value": 3, "value_label": "3", "highlight": true},
+    {"label": "Europe", "value": 2, "value_label": "2", "highlight": true},
+    {"label": "Asia", "value": 1, "value_label": "1", "highlight": true},
+    {"label": "South America", "value": 1, "value_label": "1", "highlight": true}
+  ]
+}

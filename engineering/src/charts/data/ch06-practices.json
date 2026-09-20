@@ -1,0 +1,12 @@
+{
+  "type": "hbar",
+  "title": "PHP developers reporting each practice, self-reported",
+  "source": "JetBrains The State of PHP 2025, blog.jetbrains.com, 1,720 PHP respondents, fielded April-June 2025, may skew toward JetBrains product users",
+  "series": [
+    {"label": "Use PHPUnit", "value": 50, "value_label": "50%", "highlight": true},
+    {"label": "No static analysis", "value": 42, "value_label": "42%", "highlight": true},
+    {"label": "Use PHPStan", "value": 36, "value_label": "36%", "highlight": true},
+    {"label": "No automated tests", "value": 32, "value_label": "32%", "highlight": true},
+    {"label": "Use Pest", "value": 17, "value_label": "17%", "highlight": true}
+  ]
+}

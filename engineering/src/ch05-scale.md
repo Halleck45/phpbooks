@@ -1,0 +1,37 @@
+# Scale
+
+**PHP scales the way its runtime model predicts: horizontally, by adding more identical, interchangeable workers behind a load balancer, because a shared-nothing process has no internal state that needs to be reconciled with any other process.** That is the entire mechanism. It is not exotic, and it is not PHP-specific in principle, but PHP's default execution model, described in [The Runtime](ch02-runtime.md), makes it close to the only option, which turns out to be a feature more often than a constraint.
+
+## Why shared-nothing scales in one direction easily
+
+PHP-FPM's process model is worker-based: a pool of processes, each one handling a single request at a time, none of them holding memory in common. Because no worker knows anything a sibling worker does not also have equal access to reconstruct, a load balancer can send any request to any worker, on any machine, with no coordination step. Doubling capacity is adding a second identical machine running a second identical worker pool, not redesigning how the first one shares state, because there was never any state to share in the first place. This is the specific property that makes stateless HTTP services, the majority of what PHP is used to build, straightforward to scale without the class of bugs that comes from two processes disagreeing about what they both think is true.
+
+[Who Runs PHP](ch03-who-runs-php.md) already covers the clearest primary-sourced demonstration of this at real scale: Wikimedia's MediaWiki, roughly 70 percent PHP by the project's own account, running across seven data centers on three continents, each one independently capable of serving a request because nothing about PHP's execution model requires them to coordinate with each other beyond what the caching and routing layers explicitly decide to share.
+
+<div class="chart">
+
+{{#include charts/ch05-datacenters.svg}}
+
+</div>
+
+The scale lesson in that distribution is not the total count of data centers; it is that none of them needs to know what the others are doing to correctly answer a request. Add an eighth data center in a new region, and the change is a routing decision and a deployment, not an architectural rewrite, because every worker in every location is already running the identical, self-contained unit of shared-nothing PHP. A stateful architecture would have to solve replication and consistency to make the same move; this one does not, because it never had shared state to replicate in the first place.
+
+## What has to move outside the process for this to work
+
+Shared-nothing scaling has a precondition that is easy to state and easy to violate by accident: nothing that needs to persist between requests can live inside the PHP process. A user's session, a piece of data cached to avoid a repeated expensive query, an uploaded file waiting to be processed: all of it has to live somewhere external to the worker that first touched it, a database, a dedicated cache layer, or shared storage, because the next request for that same user has no guarantee of landing on the same worker, or the same machine. This is not a limitation unique to PHP; it is the standard shape of any stateless web tier. It is worth naming plainly here because a team new to PHP's specific defaults sometimes discovers it the hard way, by storing something in a plain variable or an in-process cache and being surprised when it vanishes on the very next request.
+
+<img src="images/ch05-scale.png" alt="Several identical small server boxes in a row, each one stateless and interchangeable, all pointing to a shared database and cache layer drawn beneath them as the only place state actually lives." width="560">
+
+## Scaling within one worker, not just across many
+
+Horizontal scaling by adding workers is not the only lever. [The Runtime](ch02-runtime.md) already introduced four ways PHP code can hold open many things at once inside a single process: AMPHP, ReactPHP, Swoole or OpenSwoole, and Fibers as a language feature. For a workload dominated by waiting, many open connections to slow backends, a chat relay, a webhook fan-out, these tools let one process serve far more concurrent work than one request per worker would allow, because the process is not blocked while it waits; it is free to make progress on something else and come back. This does not replace horizontal scaling, and it does not give PHP OS-level parallelism, the limit named plainly in [The Runtime](ch02-runtime.md). It does mean the choice in front of you is not only "how many workers," but also "how much concurrency can one worker itself absorb before you need another one," and the answer depends on which of these tools, if any, sits underneath your application.
+
+## Containers change the packaging, not the model
+
+Most new PHP deployments today run inside containers rather than directly on a machine, and it is worth being precise about what that changes and what it does not. A container gives each worker pool its own isolated filesystem and dependency set, which makes deployment repeatable; it does not change the shared-nothing execution model underneath, because PHP-FPM inside a container still boots, runs, and tears down one request at a time exactly as it does outside one. Scaling a containerized PHP service is the same horizontal operation described above, run by an orchestrator instead of by hand: more identical pods behind the same kind of load balancer, each one as interchangeable as the last. This book does not have a clean, primary-sourced, vendor-neutral figure for how PHP's container image size or cold-start time compares to another language's, so it will not print one; the architectural claim that matters, no proprietary orchestration layer is required to run PHP this way, is verifiable directly from PHP-FPM's own documentation rather than from a benchmark.
+
+> **The limit.** Moving state out of the PHP process does not make the cost of that state disappear; it moves the scaling problem to the database and cache layer, which now has to handle the aggregate load of every worker on every machine. A PHP application that scales its web tier cleanly can still be bottlenecked entirely by a database that was not scaled alongside it, and this book will not claim PHP's own scaling story extends to a piece of infrastructure PHP does not control. Long-running worker-mode servers, covered in [The Runtime](ch02-runtime.md), also reintroduce a scaling concern shared-nothing PHP-FPM does not have: a worker that stays booted for hours accumulates memory the way any long-lived process can, which is exactly why FrankenPHP's own documentation recommends periodic restarts rather than claiming the concern away.
+
+**What to verify yourself.** If you run PHP-FPM today, check its pool configuration for `pm.max_children`, the setting that caps how many worker processes one pool will run at once, and compare it against the memory available on the machine; a pool sized without that arithmetic is a common, self-inflicted scaling ceiling that has nothing to do with the language. If you are evaluating a worker-mode server instead, ask specifically how it restarts workers and on what schedule, and treat the answer as a capacity-planning input, not an afterthought.
+
+Scaling a web tier and staffing the team that maintains it are different problems, and the second one is where the evaluation usually gets harder to reduce to a number. [Who Maintains It](ch06-who-maintains-it.md) is where this book turns to talent, testing practice, and the people question.

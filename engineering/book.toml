@@ -1,0 +1,21 @@
+[book]
+title = "PHP: A Guide for the Decision Maker"
+description = "A ninety-minute, evidence-led guide for engineering leaders deciding whether PHP belongs in their architecture."
+authors = ["The PHP Foundation"]
+language = "en"
+src = "src"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = ""
+edit-url-template = ""
+mathjax-support = false
+no-section-label = false
+additional-css = ["theme/custom.css"]
+
+[output.html.fold]
+enable = false
+
+[output.html.playground]
+runnable = false
