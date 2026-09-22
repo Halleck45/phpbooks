@@ -2,3 +2,6 @@
 title = "The PHP Book - 0.4.1"
 authors = ["Jean-Francois Lepine", "Damien Seguy"]
 language = "en"
+
+[output.html]
+additional-js = ["theme/phpnet-links.js"]

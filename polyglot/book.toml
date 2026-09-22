@@ -7,3 +7,4 @@ description = "Modern PHP for developers who already program in another language
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "ayu"
+additional-js = ["theme/phpnet-links.js"]
