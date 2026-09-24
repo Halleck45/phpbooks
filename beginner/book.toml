@@ -4,4 +4,5 @@ authors = ["Jean-Francois Lepine", "Damien Seguy"]
 language = "en"
 
 [output.html]
+additional-css = ["theme/book.css"]
 additional-js = ["theme/phpnet-links.js", "theme/site-bar.js"]
