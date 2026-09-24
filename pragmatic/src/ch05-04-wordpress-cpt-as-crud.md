@@ -1,6 +1,6 @@
 # WordPress: Custom Post Types and ACF as a CRUD Engine
 
-WordPress's admin screens weren't originally designed as a general-purpose CRUD generator, but Custom Post Types plus Advanced Custom Fields (ACF) end up functioning as one, and it's a legitimate, fast way to give a client a management screen for something that isn't a blog post at all: team members, case studies, product listings.
+Team members, case studies, product listings: a client on WordPress often needs to manage something that is not a blog post at all. The WordPress admin was not designed as a general CRUD generator, but Custom Post Types plus Advanced Custom Fields (ACF) end up working as one. **A management screen for a new kind of content is a registration call, not a new admin.**
 
 ```php
 add_action('init', function () {
@@ -14,7 +14,7 @@ add_action('init', function () {
 });
 ```
 
-That alone adds a full list screen, with search, bulk actions, and pagination, to the WordPress admin sidebar. ACF then adds structured custom fields to it through a visual field builder, no code required for common field types:
+That alone adds a list screen to the admin sidebar, with search, bulk actions, and pagination. ACF then adds structured fields through a visual field builder, or from code:
 
 ```php
 acf_add_local_field_group([
@@ -28,14 +28,14 @@ acf_add_local_field_group([
 ]);
 ```
 
-The result is a full create/edit/list/delete interface for "team members," built entirely from configuration, with `show_in_rest` also exposing it through [the WordPress REST API](ch06-03-wordpress-rest-api.md) for free.
+The result is a full create, edit, list and delete interface for team members, built from configuration. The `show_in_rest` flag also exposes it through [the WordPress REST API](ch06-03-wordpress-rest-api.md) at no extra cost.
 
 ## When to reach for this
 
-Any WordPress site that needs to manage a second kind of structured content beyond posts and pages, and where the client is already comfortable in the WordPress admin.
+A WordPress site that needs a second kind of structured content beyond posts and pages, for a client already at home in the WordPress admin.
 
 ## When it's the wrong fit
 
-Complex relational data with many-to-many relationships and heavy business logic. WordPress's post-based data model bends a long way, but it's still fundamentally a content model, not a general relational database admin tool.
+Relational data with many-to-many relationships and heavy business logic. The post-based model bends a long way, but it stays a content model, not a relational database admin.
 
-> **Under the hood:** Custom Post Types don't create new database tables. Every post type, `post`, `page`, or your own `team_member`, is stored as a row in the same `wp_posts` table, distinguished by a `post_type` column. That's why registering a new content type is a single function call instead of a migration.
+> **Under the hood:** Custom Post Types do not create new database tables. Every post type, `post`, `page`, or your own `team_member`, is a row in the same `wp_posts` table, told apart by a `post_type` column. That is why registering a new content type is one function call instead of a migration.

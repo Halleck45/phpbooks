@@ -1,19 +1,19 @@
 # Blackfire ($): Finding the Actual Bottleneck
 
-Every performance fix in this chapter (worker mode, caching, scaling infrastructure) assumes you already know what's slow. Guessing wrong wastes far more time than the fix itself: adding a cache in front of a query that was never the bottleneck fixes nothing. Blackfire profiles a real request and shows exactly where the time and memory went, function by function.
+Every fix in this chapter assumes you already know what is slow. Guess wrong and you lose more time than the fix would have cost: a cache in front of a query that was never the bottleneck fixes nothing. **Blackfire profiles a real request and shows where the time and memory went, function by function.**
 
 ```bash
 composer require blackfire/php-sdk --dev
 blackfire run php artisan test
 ```
 
-Or, for a live request, wrapping it directly:
+Or, for a live request, wrap it directly:
 
 ```bash
 blackfire curl https://example.com/checkout
 ```
 
-The resulting profile shows a call graph: which function called which, how long each took, and how many times each ran. It immediately surfaces the usual real-world culprits: an N+1 database query loop, an uncached external API call repeated needlessly, a template rendering step that turns out to dominate the request despite looking trivial in the code.
+The profile is a call graph: which function called which, how long each took, how many times it ran. The usual culprits surface at once. An N+1 query loop. An external API called on every iteration when once would do. A template step that dominates the request despite looking trivial in the code.
 
 ```php
 // what profiling often reveals: 200 queries where one would do
@@ -27,14 +27,14 @@ $orders = Order::with('customer')->get();
 
 ## Pricing
 
-Blackfire has a free tier for individual use, with paid plans for team collaboration and continuous profiling in CI, which is what earns it the `$` for anything beyond solo, occasional use.
+Blackfire has a free tier for individual use. Team collaboration and continuous profiling in CI are paid, hence the `$` for anything beyond solo, occasional use.
 
 ## When to reach for this
 
-The moment a specific page or endpoint is reported slow and the cause isn't obvious from reading the code. Profile first, then fix; fixing first and profiling to confirm it worked is backwards and usually wastes a cycle.
+The moment a page or an endpoint is reported slow and the cause is not obvious from reading the code. Profile first, then fix. The other order wastes a cycle.
 
 ## When it's the wrong fit
 
-Optimizing a page nobody has complained about and no metric has flagged. Profiling tools are for measured problems, not anxiety about hypothetical ones.
+A page nobody has complained about and no metric has flagged. Profiling tools are for measured problems, not for anxiety about hypothetical ones.
 
-> **Under the hood:** Blackfire works via a PHP extension that hooks into the Zend Engine's function call mechanism, timing every function call transparently, which is why profiling adds measurable overhead and is normally run against a specific request on demand rather than left on for all production traffic.
+> **Under the hood:** Blackfire is a PHP extension that hooks into the Zend Engine's function call mechanism and times every call transparently. That is why profiling adds measurable overhead, and why it runs against one request on demand rather than on all production traffic.

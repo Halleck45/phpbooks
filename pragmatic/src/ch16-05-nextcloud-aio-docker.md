@@ -1,6 +1,6 @@
 # Nextcloud: All-in-One Docker Deployment
 
-Standing up [Nextcloud](ch08-01-nextcloud-ready-made-drive.md) correctly by hand means configuring a web server, PHP-FPM, a database, Redis, a reverse proxy with valid TLS, and a background cron job, each a separate opportunity to misconfigure something security-sensitive. The All-in-One (AIO) Docker image is Nextcloud's own officially maintained answer: all of that, pre-wired, running as a coordinated set of containers.
+Standing up [Nextcloud](ch08-01-nextcloud-ready-made-drive.md) by hand means configuring a web server, PHP-FPM, a database, Redis, a reverse proxy with valid TLS and a background cron job. Each is a separate chance to misconfigure something security-sensitive. **The All-in-One (AIO) Docker image is Nextcloud's own answer: all of that, pre-wired, as a coordinated set of containers.**
 
 ```bash
 docker run \
@@ -12,9 +12,9 @@ docker run \
   nextcloud/all-in-one:latest
 ```
 
-Visiting the container's web interface afterward walks through TLS certificate setup, choosing which optional apps to enable (including Talk's high-performance backend, covered in [Real-Time Features](ch07-03-nextcloud-talk.md)), and backup configuration, all managed through one dashboard rather than a dozen separate config files.
+The container's web interface then walks you through TLS certificates, the optional apps to enable (including Talk's high-performance backend, covered in [Real-Time Features](ch07-03-nextcloud-talk.md)) and backup configuration. One dashboard, instead of a dozen config files.
 
-Updates to Nextcloud itself and to each enabled app are handled through the same interface:
+Updates to Nextcloud and to each enabled app go through the same interface:
 
 ```bash
 # update the mastercontainer image, then trigger an update from its UI
@@ -26,10 +26,10 @@ docker rm nextcloud-aio-mastercontainer
 
 ## When to reach for this
 
-Self-hosting Nextcloud for real, ongoing use, whether for a small team or a full organization. The AIO image encodes a lot of hard-won operational knowledge about securing and maintaining a Nextcloud instance correctly, which is easy to get subtly wrong by hand.
+Self-hosting Nextcloud for ongoing use, for a small team or a whole organization. The AIO image encodes hard-won operational knowledge about securing and maintaining an instance, the kind that is easy to get subtly wrong by hand.
 
 ## When it's the wrong fit
 
-A quick local evaluation where the plain Docker image (see [Nextcloud: A Ready-Made Drive](ch08-01-nextcloud-ready-made-drive.md)) is faster to throw away, or an environment where Docker itself isn't an option.
+A quick local evaluation, where the plain Docker image (see [Nextcloud: A Ready-Made Drive](ch08-01-nextcloud-ready-made-drive.md)) is faster to throw away. Or an environment where Docker itself is not an option.
 
-> **Under the hood:** The mastercontainer pattern, one container that manages the lifecycle of several others via the Docker socket, is a form of orchestration lighter than Kubernetes but heavier than a single `docker run`, chosen specifically so updates to interdependent services (the app, the database, the proxy) happen in the right order automatically.
+> **Under the hood:** The mastercontainer pattern, one container managing the lifecycle of several others through the Docker socket, is orchestration lighter than Kubernetes and heavier than a single `docker run`. It exists so that updates to interdependent services (the app, the database, the proxy) happen in the right order on their own.
