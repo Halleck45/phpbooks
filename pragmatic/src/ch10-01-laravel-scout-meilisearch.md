@@ -1,6 +1,6 @@
 # Laravel: Scout With Meilisearch or Algolia ($)
 
-Scout adds full-text search to Eloquent models by keeping a search index in sync automatically, every time a model is saved, updated, or deleted, without writing that synchronization logic yourself.
+Scout adds full-text search to Eloquent models. **Every time a model is saved, updated or deleted, Scout updates the search index for you**, so the synchronisation code you would otherwise write does not exist.
 
 ```bash
 composer require laravel/scout meilisearch/meilisearch-php
@@ -21,15 +21,15 @@ class Product extends Model
 $results = Product::search('wireles mouse')->get();
 ```
 
-That typo in "wireles" still returns the mouse; typo tolerance and relevance ranking are exactly what the underlying search engine handles and a SQL `LIKE` query never could.
+The typo in "wireles" still returns the mouse. Typo tolerance and relevance ranking are the search engine's job, and a SQL `LIKE` never did either.
 
-**Meilisearch** is open source and self-hosted, a single binary with sensible defaults out of the box:
+**Meilisearch** is open source and self-hosted: a single binary with sensible defaults.
 
 ```bash
 docker run -p 7700:7700 getmeili/meilisearch
 ```
 
-**Algolia** is a managed, paid alternative, same Scout driver, no infrastructure to run:
+**Algolia** is the managed, paid alternative. Same Scout driver, no infrastructure to run.
 
 ```bash
 composer require algolia/scout-extended
@@ -37,12 +37,14 @@ composer require algolia/scout-extended
 
 ```php
 // config/scout.php
-'driver' => env('SCOUT_DRIVER', 'algolia'),
+return [
+    'driver' => env('SCOUT_DRIVER', 'algolia'),
+];
 ```
 
 ## Pricing
 
-Meilisearch is free to self-host. Algolia bills by search volume and records indexed, with a free tier for small projects, which is what earns it the `$`: the same Scout code works against either, so the choice is genuinely just "run it yourself or pay someone else to."
+Meilisearch is free to self-host. Algolia bills by search volume and records indexed, with a free tier for small projects. The same Scout code works against either, so the choice comes down to running it yourself or paying someone else to.
 
 ## When to reach for this
 
@@ -50,6 +52,6 @@ Any Laravel app with a search box over more than a trivial amount of data: a pro
 
 ## When it's the wrong fit
 
-Search needs simple enough that an indexed database column and a basic `LIKE` query genuinely suffice, where adding a search engine is unnecessary infrastructure for the problem at hand.
+A search need simple enough that an indexed column and a basic `LIKE` query do the job. Adding a search engine there is infrastructure without a problem.
 
-> **Under the hood:** Scout's driver system is a plain PHP interface; Meilisearch and Algolia drivers both implement the same handful of methods (`update`, `delete`, `search`). Swapping between them is a config change specifically because Scout was designed against that interface rather than either engine's specific API.
+> **Under the hood:** Scout's driver system is a plain PHP interface; Meilisearch and Algolia drivers both implement the same handful of methods (`update`, `delete`, `search`). Swapping between them is a config change because Scout was designed against that interface rather than either engine's API.

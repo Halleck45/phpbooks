@@ -1,6 +1,6 @@
 # WordPress: PHPUnit, PHPCS/WPCS, and WPScan
 
-Testing a WordPress plugin or theme means testing against WordPress itself, not a lightweight mock of it, which is exactly what the official test suite scaffold sets up.
+**Testing a WordPress plugin or theme means testing against WordPress itself**, not a lightweight mock of it. The official scaffold sets up precisely that.
 
 ```bash
 wp scaffold plugin-tests my-plugin
@@ -23,14 +23,14 @@ class DiscountCalculationTest extends WP_UnitTestCase
 }
 ```
 
-**PHP_CodeSniffer with the WordPress Coding Standards (WPCS)** ruleset catches both style violations and a meaningful number of common security mistakes (unescaped output, unsanitized input) specific to how WordPress plugins tend to go wrong.
+**PHP_CodeSniffer with the WordPress Coding Standards (WPCS)** ruleset catches style violations, and with them a good share of the security mistakes WordPress plugins are known for: unescaped output, unsanitized input.
 
 ```bash
 composer require --dev squizlabs/php_codesniffer wp-coding-standards/wpcs
 vendor/bin/phpcs --standard=WordPress my-plugin.php
 ```
 
-**WPScan** checks a running site's installed plugins and themes against a database of known WordPress-specific vulnerabilities, catching the moment something you depend on gets a disclosed CVE.
+**WPScan** checks a running site's plugins and themes against a database of known WordPress vulnerabilities. When something you depend on gets a disclosed CVE, you hear about it from the scan rather than from your logs.
 
 ```bash
 wpscan --url https://example.com --api-token YOUR_TOKEN
@@ -38,10 +38,10 @@ wpscan --url https://example.com --api-token YOUR_TOKEN
 
 ## When to reach for this
 
-Any custom plugin or theme with real logic in it, not just template markup. Security-sensitive code (anything handling user input or payments) especially benefits from WPCS's built-in checks for unescaped output.
+Any custom plugin or theme with logic in it, not only template markup. Code that handles user input or payments benefits most from WPCS and its checks for unescaped output.
 
 ## When it's the wrong fit
 
-A purely visual child theme with no custom PHP logic has little to test; the effort is better spent where actual code, not just markup, exists.
+A purely visual child theme with no PHP logic has little to test. Spend the effort where there is code, not markup.
 
-> **Under the hood:** WP_UnitTestCase runs each test inside a database transaction that's rolled back afterward, so tests can freely create posts, users, and options without leaving the test database dirty for the next test, the same isolation strategy most PHP testing frameworks use.
+> **Under the hood:** WP_UnitTestCase runs each test inside a database transaction and rolls it back afterward. Tests can create posts, users and options freely without leaving the database dirty for the next one, the same isolation strategy most PHP testing frameworks use.
