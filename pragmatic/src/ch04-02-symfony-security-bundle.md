@@ -59,6 +59,6 @@ Any Symfony application, essentially without exception. The Security Bundle is t
 
 ## When it's the wrong fit
 
-An API-only Symfony app authenticating via tokens instead of sessions still uses the Security Bundle, just configured with a different "guard" (an API token authenticator instead of `form_login`), so this is rarely a "wrong fit" so much as a different configuration of the same component.
+An API-only Symfony app authenticating via tokens instead of sessions still uses the Security Bundle, just configured with a different "guard" (an API token authenticator instead of `form_login`), so this is less a "wrong fit" than a different configuration of the same component.
 
 > **Under the hood:** The `#[IsGranted]` attribute is a PHP 8 attribute, metadata attached directly to the method, read by Symfony at runtime via reflection. It's the same underlying mechanism (attributes plus reflection) that lets a single class definition drive routing, validation, and serialization elsewhere in the framework without repetitive configuration files.

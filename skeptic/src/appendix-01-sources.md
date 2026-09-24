@@ -1,6 +1,6 @@
 # A - Sources
 
-Every figure used in the book, chapter by chapter, with its publisher, the date the data refers to, and the URL. "Checked" is the date the page was last read for this edition. Where a source is a vendor, a self-report or a synthetic benchmark, the entry says so, as the chapter did. Where a chapter cites a document the book could not read directly, the entry says that too.
+Every figure used in the book, chapter by chapter, with its publisher, the date the data refers to, and the URL. "Checked" is the date the page was last read for this edition. Where a source is a vendor, a self-report or a synthetic benchmark, the entry says so, as the chapter did. Where a chapter cites a document I could not read directly, the entry says that too.
 
 Charts are generated from the data files in `charts/data/`, each of which repeats its source, and the raw TechEmpower tables used by chapters 3 and 4 are stored as CSV in `charts/raw/`.
 
@@ -140,7 +140,7 @@ Charts are generated from the data files in `charts/data/`, each of which repeat
 
 ## Not used, and why
 
-Figures that circulate about PHP and that the book left out because no primary source could be found, or because the primary source contradicts them:
+Figures that circulate about PHP and that I left out because no primary source could be found, or because the primary source contradicts them:
 
 - "Spotify serves 600,000 requests per second with Symfony": a global traffic figure repeated by agency blogs; the only primary source is a 2015 talk about the spotify.com website.
 - "Etsy moved from HHVM back to PHP 7 in 2019 or 2020": Etsy was on PHP 7 in 2016; HHVM was only ever used on its API cluster.
@@ -148,5 +148,5 @@ Figures that circulate about PHP and that the book left out because no primary s
 - "Adobe Commerce processed 6.2 billion dollars on Black Friday 2024": found only on third-party aggregators; Adobe's own releases give figures for all United States e-commerce measured by Adobe Analytics.
 - "Mercedes-Benz sponsors The PHP Foundation": not on the foundation's sponsor list.
 - "PHP 8 is three times faster than PHP 7": the figure is for synthetic benchmarks and comes from the JIT RFC; the same page says typical applications are on par with PHP 7.4.
-- Vimeo's "one million lines of PHP" (December 2020): the article is no longer online; Psalm's origin at Vimeo is the only claim the book keeps.
+- Vimeo's "one million lines of PHP" (December 2020): the article is no longer online; Psalm's origin at Vimeo is the only claim I keep.
 - Any figure on the number of PHP developers worldwide: the last primary figure found is 7.3 million in the third quarter of 2021 (SlashData), and nothing more recent could be traced to a primary page.

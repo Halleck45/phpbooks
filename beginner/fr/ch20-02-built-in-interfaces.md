@@ -76,13 +76,13 @@ echo $config['debug'] ? "on\n" : "off\n"; // on
 echo isset($config['missing']) ? "yes\n" : "no\n"; // no
 ```
 
-Chaque méthode répond d'une forme de la syntaxe. `offsetSet` s'exécute pour `$config['debug'] = true`, `offsetGet` pour la lecture de `$config['debug']`, `offsetExists` pour `isset($config[...])`, et `offsetUnset` pour `unset($config[...])`. En dessous, `Config` reste un objet ordinaire avec un tableau privé ordinaire. `ArrayAccess` permet seulement au monde extérieur de s'adresser à lui avec la syntaxe des tableaux, et ça se lit bien pour un objet de configuration ou une enveloppe typée autour d'une collection.
+Chaque méthode répond à une forme de la syntaxe. `offsetSet` s'exécute pour `$config['debug'] = true`, `offsetGet` pour la lecture de `$config['debug']`, `offsetExists` pour `isset($config[...])`, et `offsetUnset` pour `unset($config[...])`. En dessous, `Config` reste un objet ordinaire avec un tableau privé ordinaire. `ArrayAccess` permet seulement au monde extérieur de s'adresser à lui avec la syntaxe des tableaux, et ça se lit bien pour un objet de configuration ou une enveloppe typée autour d'une collection.
 
 Essayez : faites lever une exception à `offsetSet` quand `$offset` n'est pas une chaîne de caractères. Le code appelant ne change pas, et l'objet refuse désormais ce qu'un simple tableau aurait accepté sans broncher.
 
 ## `IteratorAggregate`
 
-La troisième fait fonctionner votre objet dans un `foreach`. **`IteratorAggregate` demande une seule méthode, `getIterator()`, qui rend quelque chose de déjà itérable**, en général un `Generator` du [chapitre 15](ch15-02-generators.md). Vous n'écrivez pas la logique d'itération ; vous la désignez.
+La troisième fait fonctionner votre objet dans un `foreach`. **`IteratorAggregate` demande une seule méthode, `getIterator()`, qui renvoie quelque chose de déjà itérable**, en général un `Generator` du [chapitre 15](ch15-02-generators.md). Vous n'écrivez pas la logique d'itération ; vous la désignez.
 
 ```php
 <?php

@@ -30,7 +30,7 @@ Cette simplicité se paie en efficacité par machine. Dans le benchmark de [Déb
 
 ## Le calendrier
 
-L'historique des mises à niveau de Wikimedia est public : la production est passée de PHP 7.4 à 8.1 en mars 2025, à 8.3 en novembre 2025, et prévoyait 8.5 pour fin 2026. **Une version mineure sort chaque année fin novembre ou début décembre et reste supportée quatre ans, si bien que vous devez prévoir une mise à niveau par an pour rester en support actif, ou une tous les deux à trois ans pour rester en support de sécurité.** Le travail d'une mise à niveau est borné : le langage déprécie dans une version mineure et supprime à la majeure suivante, les analyseurs signalent les dépréciations, et Rector applique les réécritures mécaniques. Sur une base de code bien testée, une montée de version se compte en jours ; sur une base non testée, en semaines.
+L'historique des mises à niveau de Wikimedia est public : la production est passée de PHP 7.4 à 8.1 en mars 2025, à 8.3 en novembre 2025, et prévoyait 8.5 pour fin 2026. **Une version mineure sort chaque année fin novembre ou début décembre et reste maintenue quatre ans, si bien que vous devez prévoir une mise à niveau par an pour rester en support actif, ou une tous les deux à trois ans pour rester en support de sécurité.** Le travail d'une mise à niveau est borné : le langage déprécie dans une version mineure et supprime à la majeure suivante, les analyseurs signalent les dépréciations, et Rector applique les réécritures mécaniques. Sur une base de code bien testée, une montée de version se compte en jours ; sur une base non testée, en semaines.
 
 Le parc installé montre ce qui arrive quand ce budget n'est pas payé.
 
@@ -38,7 +38,7 @@ Le parc installé montre ce qui arrive quand ce budget n'est pas payé.
 
 Parmi les paquets installés via Composer, 94 % des installations d'août 2026 tournaient sur PHP 8 et 0,2 % sur PHP 5. Les sites WordPress qui se déclarent à wordpress.org en étaient à 77 % de PHP 8, 21 % de PHP 7 et 2 % de PHP 5. Le web tel que W3Techs le détecte tournait à 64 % sur PHP 8, 28 % sur PHP 7 et 8 % sur PHP 5, et ces deux dernières sont des versions qui n'ont reçu aucun correctif de sécurité depuis novembre 2022 et décembre 2018 respectivement. Ce sont trois populations : les développeurs qui construisent, les sites qui se mettent à jour eux-mêmes, et le web tel qu'il est. L'écart entre la première et la troisième, c'est la dette technique de l'écosystème, et si vous héritez d'une base de code PHP, demandez à quelle population elle appartient avant d'annoncer un prix.
 
-> La limite : le recrutement PHP est bon marché selon les médianes et son hébergement a le moins de pièces mobiles, et chacun de ces faits traîne son ombre, une question de rétention et un parc installé dont plus d'un tiers tourne sur des versions non supportées. Budgétez la mise à niveau annuelle et recrutez le spécialiste plutôt que l'utilisateur occasionnel, et vous obtenez le bon côté de chaque fait ; sautez l'un ou l'autre, et vous obtenez l'autre côté.
+> La limite : le recrutement PHP est bon marché selon les médianes et son hébergement a le moins de pièces mobiles, et chacun de ces faits traîne son ombre, une question de rétention et un parc installé dont plus d'un tiers tourne sur des versions non maintenues. Budgétez la mise à niveau annuelle et recrutez le spécialiste plutôt que l'utilisateur occasionnel, et vous obtenez le bon côté de chaque fait ; sautez l'un ou l'autre, et vous obtenez l'autre côté.
 
 ## Ce que vous pouvez vérifier vous-même
 

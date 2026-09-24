@@ -9,7 +9,7 @@ symfony console sylius:install
 symfony server:start
 ```
 
-Because it's built on Symfony, extending it means writing ordinary Symfony code, events, services, and Doctrine entities, rather than learning a commerce-specific plugin API:
+Because it's built on Symfony, extending it means writing ordinary Symfony code (events, services, Doctrine entities) rather than learning a commerce-specific plugin API:
 
 ```php
 class OrderPlacedListener

@@ -1,8 +1,8 @@
 # Ajouter une fonctionnalité en développement piloté par les tests
 
-`search()` et `GrepOptions` vivent désormais dans des fichiers qui ne lisent pas `$argv`, ne font pas `echo` et ne font pas `exit`. C'était le but de la section précédente, et ça paie maintenant : pour la première fois dans ce projet, un test PHPUnit peut les appeler directement, comme le [chapitre 12](ch12-00-testing.md) l'a montré. Profitons-en pour ajouter une vraie fonctionnalité, la recherche insensible à la casse, et pour l'ajouter test en premier.
+`search()` et `GrepOptions` vivent désormais dans des fichiers qui ne lisent pas `$argv`, ne font pas `echo` et ne font pas `exit`. C'était le but de la section précédente, et ça paie maintenant : pour la première fois dans ce projet, un test PHPUnit peut les appeler directement, comme le [chapitre 12](ch12-00-testing.md) l'a montré. Profitons-en pour ajouter une vraie fonctionnalité, la recherche insensible à la casse, en commençant par le test.
 
-Installez PHPUnit comme vous l'aviez fait là-bas :
+Installez PHPUnit comme vous l'aviez fait à l'époque :
 
 ```console
 $ composer require --dev phpunit/phpunit

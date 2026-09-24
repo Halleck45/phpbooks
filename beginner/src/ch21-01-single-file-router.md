@@ -4,7 +4,7 @@ A browser asks for `/about`. Somewhere on the server, a piece of code has to ans
 
 ## PHP's built-in development server
 
-A request has to be received by a web server, and PHP has one hiding inside the `php` command itself. No Apache, no nginx, nothing to install. It is not made for production, but for development, and for learning, it is exactly right:
+A request has to be received by a web server, and PHP has one hiding inside the `php` command itself. No Apache, no nginx, nothing to install. It is not made for production. For development, and for learning, it is exactly right:
 
 ```console
 $ php -S localhost:8000 router.php

@@ -20,7 +20,7 @@ $pusher->trigger('orders-channel', 'order.shipped', [
 ]);
 ```
 
-Laravel's broadcasting system, notably, was built with Pusher as its original target and still supports it as a drop-in swap for Reverb, same event classes, same `broadcast()` call, different config value:
+Laravel's broadcasting system, notably, was built with Pusher as its original target and still supports it as a drop-in swap for Reverb (same event classes, same `broadcast()` call, different config value):
 
 ```php
 // .env

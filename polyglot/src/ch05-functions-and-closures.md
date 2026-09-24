@@ -41,7 +41,7 @@ $options = ['greeting' => 'Hey', 'name' => 'Ada'];
 
 A parameter declared `&$x` receives a reference: the function writes into the caller's variable. The standard library uses it for `sort()`, `preg_match()`'s `$matches` and a few others. In your own code, prefer returning the value. A function that changes its arguments is one your reader has to open to understand.
 
-Parameter types take everything the type system offers: `?string $label = null` for an optional value, `int|string $id` for a union, `Countable&Traversable $items` for an intersection. Write the `?` explicitly; a plain `string $x = null` still works but has been deprecated since PHP 8.4. For a function that accepts a function, two declarations exist: `callable` accepts closures and also the string and array forms below, `Closure` accepts only real closure objects. New code tends to declare `Closure` and let callers convert with `(...)`, because a `Closure` can be type-checked and a string cannot.
+Parameter types take everything the type system offers: `?string $label = null` for an optional value, `int|string $id` for a union, `Countable&Traversable $items` for an intersection. Write the `?` explicitly; a plain `string $x = null` still works but has been deprecated since PHP 8.4. For a function that accepts a function, two declarations exist: `callable` accepts closures and also the string and array forms below; `Closure` accepts only real closure objects. New code tends to declare `Closure` and let callers convert with `(...)`, because a `Closure` can be type-checked and a string cannot.
 
 Two return types describe functions that do not return normally. `void` means nothing comes back. `never` (PHP 8.1) means the function always throws or exits, so static analysers know that code after a `fail()` call is unreachable.
 
@@ -115,7 +115,7 @@ $withTax = fn(float $price): float => $price * (1 + $rate);
 
 No `use`, no `return`, no braces, and the same snapshot semantics. Most callbacks you write will be arrow functions. Reach for `function () use ()` when you need statements, or a by-reference capture.
 
-Inside a class, a closure keeps `$this` automatically, which is what you expect. Mark it `static fn` or `static function` when it does not need the instance; that avoids holding the object alive from inside a long-lived callback. `Closure::bind()` and `$closure->call($object)` rebind `$this` to another object, and are how frameworks reach private state from outside. You will rarely write them yourself.
+Inside a class, a closure keeps `$this` automatically, which is what you expect. Mark it `static fn` or `static function` when it does not need the instance; that avoids keeping the object alive from inside a long-lived callback. `Closure::bind()` and `$closure->call($object)` rebind `$this` to another object, and are how frameworks reach private state from outside. You will rarely write them yourself.
 
 ## Generators
 
@@ -161,7 +161,7 @@ echo $slug; // hello-world
 
 Each stage is any callable taking one argument, which is exactly what the first-class callable syntax and arrow functions produce. Before 8.5 the same code is three nested calls or three temporary variables; both still work, and both are still common.
 
-PHP 8.5 also brings `#[\NoDiscard]`, an attribute for functions whose return value must not be dropped. Call such a function as a bare statement and PHP emits a warning; cast the call to `(void)` to say you meant it. Libraries use it on methods returning a new immutable object, the classic `$date->modify()` bug where the result is thrown away.
+PHP 8.5 also brings `#[\NoDiscard]`, an attribute for functions whose return value must not be dropped. Call such a function as a bare statement and PHP emits a warning; cast the call to `(void)` to say you meant it. Libraries use it on methods returning a new immutable object, to catch the classic `$date->modify()` bug where the result is thrown away.
 
 ## Legacy shapes you will recognise
 

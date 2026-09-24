@@ -1,6 +1,6 @@
 # Adding Functionality with Test-Driven Development
 
-`search()` and `GrepOptions` now live in files that do not read `$argv`, do not `echo`, and do not `exit`. That was the point of the last section, and it pays off now: for the first time in this project, a PHPUnit test can call them directly, the way [Chapter 12](ch12-00-testing.md) taught. Let's use that to add a real feature, case-insensitive search, and add it test first.
+`search()` and `GrepOptions` now live in files that do not read `$argv`, do not `echo`, and do not `exit`. That was the point of the last section, and it pays off now: for the first time in this project, a PHPUnit test can call them directly, the way [Chapter 12](ch12-00-testing.md) taught. Let's use that to add a real feature, case-insensitive search, test first.
 
 Set up PHPUnit the same way you did there:
 

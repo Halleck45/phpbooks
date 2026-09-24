@@ -1,6 +1,6 @@
 # Gouvernance et pérennité
 
-Avant de miser une base de code sur quoi que ce soit, vous voulez savoir qui décide de ce qui y entre, qui est payé pour l'entretenir, et combien de temps une version reste supportée. **PHP évolue par un processus de RFC public avec un vote aux deux tiers, livre une version mineure chaque année et supporte chacune pendant quatre ans, et dispose depuis 2021 d'une fondation qui contractualise treize ingénieurs et a signé 42 % des commits de l'interpréteur en 2025.** L'argent derrière cette fondation est inférieur à un million de dollars par an, et ce chiffre fait autant partie de la réponse que le reste.
+Avant de miser une base de code sur quoi que ce soit, vous voulez savoir qui décide de ce qui y entre, qui est payé pour l'entretenir, et combien de temps une version reste maintenue. **PHP évolue par un processus de RFC public avec un vote aux deux tiers, livre une version mineure chaque année et maintient chacune pendant quatre ans, et dispose depuis 2021 d'une fondation qui contractualise treize ingénieurs et a signé 42 % des commits de l'interpréteur en 2025.** L'argent derrière cette fondation est inférieur à un million de dollars par an, et ce chiffre fait autant partie de la réponse que le reste.
 
 ## Comment un changement entre
 
@@ -18,7 +18,7 @@ Le rythme se lit dans un index secondaire : 31 RFC pour PHP 8.4, 19 pour PHP 8.
 
 {{#include charts/ch07-support-timeline.svg}}
 
-En septembre 2026, quatre branches sont supportées : PHP 8.2 en support de sécurité jusqu'au 31 décembre 2026, 8.3 jusqu'à la fin 2027, 8.4 en support actif jusqu'à la fin 2026, et 8.5 en support actif jusqu'à la fin 2027. PHP 8.6 est prévu en disponibilité générale le 19 novembre 2026, avec son gel des fonctionnalités en août, des release candidates à partir du 24 septembre et trois release managers nommés. Aucune date n'existe pour un PHP 9.0, et je n'en donne aucune. [Les versions de PHP, 2015 à 2026](appendix-02-versions.md) liste chaque version avec ses dates.
+En septembre 2026, quatre branches sont maintenues : PHP 8.2 en support de sécurité jusqu'au 31 décembre 2026, 8.3 jusqu'à la fin 2027, 8.4 en support actif jusqu'à la fin 2026, et 8.5 en support actif jusqu'à la fin 2027. PHP 8.6 est prévu en disponibilité générale le 19 novembre 2026, avec son gel des fonctionnalités en août, des release candidates à partir du 24 septembre et trois release managers nommés. Aucune date n'existe pour un PHP 9.0, et je n'en donne aucune. [Les versions de PHP, 2015 à 2026](appendix-02-versions.md) liste chaque version avec ses dates.
 
 Derrière le calendrier, le dépôt montre l'activité. Dans les douze mois jusqu'au 17 septembre 2026, la branche principale de php-src a reçu 5 316 commits de 171 auteurs distincts, et le dépôt compte 1 644 contributeurs sur un historique GitHub qui commence en 2011.
 

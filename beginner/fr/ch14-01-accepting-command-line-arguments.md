@@ -45,7 +45,7 @@ Lancez-le correctement, et ça marche. Lancez-le maintenant avec un argument de 
 $ php phpgrep.php apple
 ```
 
-PHP affiche un avertissement pour le `$argv[2]` manquant, le remplace par `null`, et continue en boitant avec une entrée bidon au lieu de s'arrêter pour dire ce qui cloche. Tolérable tant que vous êtes le seul utilisateur. Pas pour un outil que quelqu'un d'autre lancera un jour. Gardons la porte :
+PHP affiche un avertissement pour le `$argv[2]` manquant, le remplace par `null`, et continue en boitant avec une entrée bidon au lieu de s'arrêter pour dire ce qui cloche. Tolérable tant que vous êtes le seul utilisateur. Pas pour un outil que quelqu'un d'autre lancera un jour. Ajoutons une garde à l'entrée :
 
 ```php
 <?php
@@ -62,7 +62,7 @@ $filename = $argv[2];
 echo "Searching for \"{$query}\" in \"{$filename}\"\n";
 ```
 
-**`exit(1)` arrête le script sur-le-champ et remet le nombre `1` au shell comme code de sortie.** Par convention Unix, `0` veut dire « ça a marché » et tout le reste veut dire « quelque chose a mal tourné ». Chaque commande que vous avez enchaînée avec `&&`, chaque `$?` que vous avez vérifié dans un shell repose sur cette convention. phpgrep la respecte dès sa toute première version.
+**`exit(1)` arrête le script sur-le-champ et renvoie le nombre `1` au shell comme code de sortie.** Par convention Unix, `0` veut dire « ça a marché » et tout le reste veut dire « quelque chose a mal tourné ». Chaque commande que vous avez enchaînée avec `&&`, chaque `$?` que vous avez vérifié dans un shell repose sur cette convention. phpgrep la respecte dès sa toute première version.
 
 ## Donner un toit aux arguments : `GrepOptions`
 

@@ -14,7 +14,7 @@ Ecosystems are roughly ordered from "fastest to a working demo" to "best fit for
 
 ## The `$` marker
 
-Most of this book is free, open-source software. A few names carry a **`$`** in their title because they're paid products or software-as-a-service, not open source. They're here because they're often the genuinely fastest or most reliable path to shipping a specific feature, not because anyone paid to be in this book. Every `$` option sits next to at least one open-source alternative in the same chapter, so you can weigh a subscription against your own time honestly.
+Most of this book is free, open-source software. A few names carry a **`$`** in their title because they're paid products or software-as-a-service, not open source. They're here because they're often genuinely the fastest or most reliable path to shipping a specific feature, not because anyone paid to be in this book. Every `$` option sits next to at least one open-source alternative in the same chapter, so you can weigh a subscription against your own time honestly.
 
 ## "Under the hood" boxes
 

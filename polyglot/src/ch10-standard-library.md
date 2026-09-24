@@ -2,7 +2,7 @@
 
 **PHP ships with a large standard library, and most of it is functions, not methods.** You do not call `$s.upper()`. You call `strtoupper($s)`. There is no string class, no number class, no receiver: values go in as arguments, results come out as return values. Once you accept that, the library is wide, fast, and documented function by function on php.net, where each page has the signature, the changelog by version, and examples worth reading.
 
-The names are inconsistent. `strlen` sits next to `str_replace`, `array_key_exists` takes the key first and `in_array` takes the needle first, `strpos` returns `false` on failure while `array_search` does too but `preg_match` returns 0. This is the residue of thirty years of growth and it is not going away. **Your editor's autocomplete and the php.net page are the fix**, not memorisation. After a week you stop noticing.
+The names are inconsistent. `strlen` sits next to `str_replace`, `array_key_exists` takes the key first and `in_array` takes the needle first, `strpos` returns `false` on failure, and so does `array_search`, but `preg_match` returns 0. This is the residue of thirty years of growth, and it is not going away. **Your editor's autocomplete and the php.net page are the fix**, not memorisation. After a week you stop noticing.
 
 ## Strings are bytes
 
@@ -251,6 +251,6 @@ echo $uri->getHost(), ' ', $uri->getPort(), ' ', $uri->getPath(), PHP_EOL;
 // example.org 8443 /docs/intro
 ```
 
-`Uri\WhatWg\Url` in the same extension applies the browser rules instead of the RFC ones, for when you need to agree with what a `<a href>` will do.
+`Uri\WhatWg\Url` in the same extension applies the browser rules instead of the RFC ones, for when you need to agree with what an `<a href>` will do.
 
 That is the standard library you will touch in a normal week. The next question is what PHP gives you when the input is not a string in a variable but an HTTP request. [A Web Request, Without a Framework](ch11-web-request.md) answers it with no library at all.

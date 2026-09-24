@@ -40,4 +40,4 @@ A script or small service accepting outside input (a CSV import, a webhook recei
 
 Laravel's built-in `$request->validate()` and Symfony's Validator component are both more tightly integrated with their framework's forms and error display, and are the better default once you're already building inside one of them.
 
-> **Under the hood:** Validation libraries like this one lean on PHP's type system more than they used to. Underneath the fluent `v::intVal()` calls, modern versions of libraries like this increasingly use PHP's own union types and enums to describe what "valid" means, rather than reinventing type-checking from scratch.
+> **Under the hood:** Validation libraries like this one lean on PHP's type system more than they used to. Underneath the fluent `v::intVal()` calls, modern versions increasingly use PHP's own union types and enums to describe what "valid" means, rather than reinventing type-checking from scratch.

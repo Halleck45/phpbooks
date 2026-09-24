@@ -2,13 +2,13 @@
 
 Right now, somewhere, someone is opening a web page. Maybe a shop, maybe a blog, maybe an online encyclopedia. Behind a good share of those pages, a small program just woke up, did its job in a few milliseconds, sent back the answer, and disappeared. That program was very likely written in PHP.
 
-That rhythm, **wake up, work, disappear**, is the heart of how PHP works on the web. It is worth understanding before anything else, because it explains a lot of the language's character.
+That rhythm, **wake up, work, disappear**, is the heart of how PHP works on the web. Understand it before anything else: it explains a lot of the language's character.
 
 Picture a waiter with no memory at all. Each time a customer walks in, the waiter takes the order, prepares it, brings it, and immediately forgets the whole thing. The next customer gets exactly the same fresh start. Nothing from the previous order lingers: no crumbs, no leftover plates, no half-finished conversation.
 
 <img src="images/ch00-request-cycle.png" alt="The life of a PHP request: a visitor asks for a page, PHP wakes up, does the work, sends the answer, and forgets everything" width="560">
 
-That is a PHP page. **Every visit starts the program from scratch, runs it top to bottom, and throws everything away.** It sounds wasteful. In practice it is one of the most robust ways ever found to serve millions of people a day: a bug affects one visit instead of poisoning the whole server, and when you need more capacity, you simply add more waiters.
+That is a PHP page. **Every visit starts the program from scratch, runs it top to bottom, and throws everything away.** It sounds wasteful. In practice it is one of the most reliable ways ever found to serve millions of people a day: a bug affects one visit instead of poisoning the whole server, and when you need more capacity, you simply add more waiters.
 
 > A PHP program is born for one visitor, answers, and forgets. The next visitor gets a clean slate.
 
@@ -29,7 +29,7 @@ Learning a language is a lot like learning to ride a bike. You do not start with
 1. **A first program.** Install PHP and make it print a sentence.
 2. **A small game.** A number-guessing game in thirty lines, built before you know what most of the words mean.
 3. **The fundamentals.** Each piece of that game (variables, types, decisions, loops, functions), explained properly now that you have seen it work.
-4. **A real tool.** A command line program that reads files and handles errors the way software people actually use does.
+4. **A real tool.** A command line program that reads files and handles errors the way real, working software does.
 5. **A web application.** A small site built from first principles, with no framework hiding what happens.
 
 Each project is bigger than the last, and each one only uses what you have already seen.

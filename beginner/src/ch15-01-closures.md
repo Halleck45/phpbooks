@@ -78,7 +78,7 @@ It comes with two limits. The body is a single expression: whatever follows `=>`
 
 ## Where this actually gets used
 
-You will write far more arrow functions than closures, because most of the behavior you pass around is short. `array_map()`, `array_filter()` and `usort()` are its natural homes:
+You will write far more arrow functions than closures, because most of the behavior you pass around is short. `array_map()`, `array_filter()` and `usort()` are their natural homes:
 
 ```php
 <?php

@@ -30,7 +30,7 @@ The layer that turns database rows into PHP objects and back (Eloquent in Larave
 The part of a framework responsible for constructing objects and handing them to whatever needs them, so a class can simply declare "I need a logger" in its constructor without knowing how that logger gets built or configured.
 
 **PSR**
-A PHP Standards Recommendation: an agreed-upon interface (PSR-3 for logging, PSR-7 for HTTP messages) that lets independently-built packages, from different vendors, work together without one needing to know the other's internals.
+A PHP Standards Recommendation: an agreed-upon interface (PSR-3 for logging, PSR-7 for HTTP messages) that lets independently built packages, from different vendors, work together without one needing to know the other's internals.
 
 **Resource**
 In an API context, a single type of thing your API exposes (a `Product`, an `Order`), along with the operations available on it. Also used more narrowly in Laravel for the class that shapes a model into JSON.

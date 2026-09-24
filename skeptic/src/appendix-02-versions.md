@@ -1,6 +1,6 @@
 # B - PHP Versions, 2015 to 2026
 
-Each version has a section below, with its release date, its support window and its headline changes. The dates come from php.net. Active support means bug fixes and security fixes, and security support means security fixes only. Since the release cycle update voted in 2024, both windows end on the 31 December of their final year.
+Each version has a section below, with its release date, its support window and its headline changes. The dates come from php.net. Active support means bug fixes and security fixes, and security support means security fixes only. Since the release cycle update voted in 2024, both windows end on 31 December of their final year.
 
 | Version | Released | Active support until | Security support until |
 |---|---|---|---|
@@ -17,7 +17,7 @@ Each version has a section below, with its release date, its support window and 
 | PHP 8.4 | 21 Nov 2024 | 31 Dec 2026 | 31 Dec 2028 |
 | PHP 8.5 | 20 Nov 2025 | 31 Dec 2027 | 31 Dec 2029 |
 
-The pattern to retain from the table is eleven consecutive yearly releases, each between the 20 November and the 8 December. The schedule of the next one is published on wiki.php.net months in advance, with its feature freeze and release candidate dates.
+The pattern to retain from the table is eleven consecutive yearly releases, each between 20 November and 8 December. The schedule of the next one is published on wiki.php.net months in advance, with its feature freeze and release candidate dates.
 
 ## PHP 7.0, December 2015
 

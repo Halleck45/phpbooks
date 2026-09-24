@@ -37,7 +37,7 @@ echo $templates->render('profile', ['name' => 'Ada']);
 <?php $this->stop() ?>
 ```
 
-`$this->e()` escapes output automatically, the same protection Twig or Blade give you, just spelled out explicitly instead of hidden behind different syntax.
+`$this->e()` escapes output automatically, the same protection Twig or Blade gives you, just spelled out explicitly instead of hidden behind different syntax.
 
 ## When to reach for this
 

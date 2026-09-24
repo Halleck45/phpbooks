@@ -16,7 +16,7 @@ Le jeu de devinette n'a aucun commentaire, et à trente lignes il n'en a pas bes
  */
 ```
 
-En pratique `//` domine pour les notes de tous les jours, et `/* ... */` sert pour la variété plus longue et plus structurée, le plus souvent sous la forme d'un *docblock* posé juste au-dessus d'une fonction ou d'une classe :
+En pratique `//` domine pour les notes de tous les jours, et `/* ... */` sert aux commentaires plus longs et plus structurés, le plus souvent sous la forme d'un *docblock* posé juste au-dessus d'une fonction ou d'une classe :
 
 ```php
 <?php
@@ -54,4 +54,4 @@ $retries++;
 
 <img src="images/ch03-comment-why.png" alt="Deux post-it sur la même ligne de code : l'un répète ce que fait la ligne et est barré, l'autre explique pourquoi la ligne existe et est conservé" width="360">
 
-**Commentez le pourquoi, pas le quoi.** Un commentaire qui explique un contournement, une contrainte peu évidente ou une décision qui paraîtrait fausse hors contexte vaut son pesant d'or. Un commentaire qui traduit le code en français, ligne par ligne, est une chose de plus qui périmera la prochaine fois que quelqu'un modifiera la ligne sans toucher à la note au-dessus.
+**Commentez le pourquoi, pas le quoi.** Un commentaire qui explique un contournement, une contrainte peu évidente ou une décision qui paraîtrait fausse hors contexte vaut son pesant d'or. Un commentaire qui traduit le code en français, ligne par ligne, est une chose de plus qui se périmera la prochaine fois que quelqu'un modifiera la ligne sans toucher à la note au-dessus.

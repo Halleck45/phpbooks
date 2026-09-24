@@ -26,4 +26,4 @@ That last group of type names (`int`, `string`, `null`, `true`, `false`, and the
 
 `use` shows up in two groups above because it does two unrelated jobs: importing names from a namespace ([Chapter 7](ch07-04-use-keyword.md)) and capturing variables into a closure ([Chapter 15](ch15-01-closures.md)). Same word, same reservation, different context.
 
-None of these can be repurposed, no matter how well the name would otherwise fit your code. Try to name a variable `$class`: that one's fine, actually, keywords only block *bare* identifiers, not variable names after the `$`. Try to name a function `list()` or a class `Match`, and PHP will stop you at parse time, not at runtime. Better there than in production.
+None of these can be repurposed, no matter how well the name would otherwise fit your code. Try to name a variable `$class`: that one's fine, actually. Keywords only block *bare* identifiers, not variable names after the `$`. Try to name a function `list()` or a class `Match`, and PHP will stop you at parse time, not at runtime. Better there than in production.

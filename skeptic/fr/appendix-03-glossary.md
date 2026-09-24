@@ -10,11 +10,11 @@ Les termes que j'emploie et que vous pouvez ne pas connaître si vous venez d'un
 
 **FrankenPHP.** Un serveur d'application pour PHP, écrit en Go au-dessus du serveur web Caddy. Il exécute PHP soit dans le mode classique d'un processus par requête, soit dans un mode worker qui garde l'application démarrée entre les requêtes. Voir [Le runtime](ch02-runtime.md).
 
-**Hack et HHVM.** Hack est un langage qui a divergé de PHP chez Facebook en 2014, et HHVM est sa machine virtuelle. HHVM a abandonné le support de PHP lui-même en 2019. Les organisations qui font tourner Hack ne font pas tourner PHP, et je ne les compte pas comme utilisatrices de PHP.
+**Hack et HHVM.** Hack est un langage qui a divergé de PHP chez Facebook en 2014, et HHVM est sa machine virtuelle. HHVM a abandonné la prise en charge de PHP lui-même en 2019. Les organisations qui font tourner Hack ne font pas tourner PHP, et je ne les compte pas comme utilisatrices de PHP.
 
 **JIT.** Le compilateur à la volée livré à l'intérieur d'OPcache depuis PHP 8.0, qui compile les chemins de code chauds en code machine. Il profite bien plus au code limité par le CPU qu'aux requêtes web ordinaires, et je le rappelle partout où un chiffre JIT apparaît.
 
-**NTS et ZTS.** Les builds non-thread-safe et Zend-thread-safe de l'interpréteur. Le build standard est NTS, parce que le modèle par processus n'a jamais eu besoin de threads. Les builds ZTS existent pour l'embarquement et pour l'extension `parallel`.
+**NTS et ZTS.** Les builds non-thread-safe et Zend-thread-safe de l'interpréteur. Le build standard est NTS, parce que le modèle par processus n'a jamais eu besoin de threads. Les builds ZTS existent pour l'usage embarqué et pour l'extension `parallel`.
 
 **OPcache.** L'extension qui garde la forme compilée de chaque fichier PHP en mémoire partagée, si bien qu'un fichier est analysé et compilé une fois plutôt qu'à chaque requête. Elle est standard en production depuis PHP 5.5.
 

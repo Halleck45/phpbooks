@@ -20,7 +20,7 @@ class Product
 }
 ```
 
-API Platform's admin package reads the API's own OpenAPI schema and renders a working React-based admin interface, list, create, edit, delete, against it directly:
+API Platform's admin package reads the API's own OpenAPI schema and renders a working React-based admin interface (list, create, edit, delete) against it directly:
 
 ```bash
 composer create-project api-platform/admin my-admin
@@ -41,6 +41,6 @@ Any project already built around an API Platform backend. The admin panel is nea
 
 ## When it's the wrong fit
 
-A project with no existing API layer. Standing up an API purely to unlock this admin generator, when [Filament](ch05-01-laravel-filament.md) or [EasyAdmin](ch05-02-symfony-easyadmin.md) would generate the same panel directly from the database, is unnecessary indirection.
+A project with no existing API layer. Standing up an API purely to get this admin generator, when [Filament](ch05-01-laravel-filament.md) or [EasyAdmin](ch05-02-symfony-easyadmin.md) would generate the same panel directly from the database, is unnecessary indirection.
 
 > **Under the hood:** This works because API Platform generates a machine-readable OpenAPI (and Hydra/JSON-LD) description of your API automatically, from PHP attributes on your classes. The admin panel is a generic client that can render a UI from *any* API described that way, not something written specifically for your project.

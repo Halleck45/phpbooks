@@ -75,7 +75,7 @@ foreach ($prices as $fruit => $price) {
 
 ## Imbriquer : des tableaux de tableaux associatifs
 
-La forme que vous rencontrerez sans cesse dans du vrai code est la liste de fiches : un tableau indexé dont chaque élément est lui-même un tableau associatif, qui tient lieu d'une ligne de données :
+La forme que vous rencontrerez sans cesse dans du vrai code est la liste de fiches : un tableau indexé dont chaque élément est lui-même un tableau associatif, qui tient lieu de ligne de données :
 
 ```php
 <?php

@@ -57,7 +57,7 @@ Since PHP 8.2 enum cases are allowed in constant expressions, so they can be def
 
 ## match
 
-`match` (PHP 8.0) looks like `switch` and behaves like an expression in Rust or a `when` in Kotlin. Four rules define it.
+`match` (PHP 8.0) looks like `switch` and behaves like an expression in Rust or a `when` in Kotlin. The rules that follow are what set it apart.
 
 **It returns a value.** `$label = match ($status) { ... };` and `return match (...)` are the normal uses. There is no `break`, because there is no fallthrough: exactly one arm runs.
 
@@ -178,7 +178,7 @@ echo $p->escalate()->name, PHP_EOL;     // High
 echo Priority::DEFAULT->value, PHP_EOL; // 2
 ```
 
-The integer goes in the database. The enum goes everywhere else. There is no `PRIORITY_HIGH = 3` constant to keep in sync with a lookup table of colors somewhere, because the case and its behaviour live in one file.
+The integer goes in the database. The enum goes everywhere else. There is no `PRIORITY_HIGH = 3` constant to keep in sync with a lookup table of colours somewhere, because the case and its behaviour live in one file.
 
 Compared to the older pattern, class constants plus string flags plus a `switch`, an enum gives you a real type to put in a signature (`function assign(Priority $p)`), which the engine checks, and a closed set the analyser can reason about.
 

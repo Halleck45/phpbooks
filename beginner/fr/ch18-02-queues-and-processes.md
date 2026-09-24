@@ -1,6 +1,6 @@
 # Le travail en arrière-plan : files d'attente et processus
 
-Une requête arrive, PHP la traite, et le processus disparaît une fois la réponse envoyée. Très bien pour « retrouve cet utilisateur et affiche son profil ». Beaucoup moins pour « redimensionne cette photo, fabrique trois miniatures et envoie un e-mail de confirmation ». Personne ne veut fixer une roue qui tourne pendant huit secondes parce que votre code traite des images avant de pouvoir dire « Upload successful ».
+Une requête arrive, PHP la traite, et le processus disparaît une fois la réponse envoyée. Très bien pour « retrouve cet utilisateur et affiche son profil ». Beaucoup moins pour « redimensionne cette photo, fabrique trois miniatures et envoie un e-mail de confirmation ». Personne ne veut regarder une roue tourner pendant huit secondes parce que votre code traite des images avant de pouvoir dire « Upload successful ».
 
 L'utilisateur n'a pas besoin d'attendre ce travail. Il a seulement besoin de savoir qu'il a été pris en compte. **La réponse standard en PHP tient en une ligne : ne le faites pas maintenant. Faites-le plus tard, dans un autre processus.**
 

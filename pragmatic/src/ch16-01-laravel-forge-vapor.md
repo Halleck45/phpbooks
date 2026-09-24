@@ -38,4 +38,4 @@ Forge for a traditional app that benefits from a persistent server (background w
 
 A team that already has infrastructure expertise and existing AWS/cloud tooling might prefer [managing deployment directly](ch16-02-cloud-hosting-aws-gcp-azure.md) rather than paying for Forge's convenience layer on top of it.
 
-> **Under the hood:** Vapor's serverless model works because Laravel's request lifecycle was always stateless by design, nothing assumes the same process handles the next request, which is exactly the assumption Lambda's "cold start per invocation" model requires to work at all.
+> **Under the hood:** Vapor's serverless model works because Laravel's request lifecycle was always stateless by design: nothing assumes the same process handles the next request, which is exactly the assumption Lambda's "cold start per invocation" model requires to work at all.

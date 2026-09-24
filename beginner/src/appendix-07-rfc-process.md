@@ -2,7 +2,7 @@
 
 At some point, reading through enums, `match`, attributes, and readonly properties, a question comes up: who decided PHP should work this way? The answer is public, documented, and more interesting than "a company decided."
 
-PHP's language evolution happens through RFCs (Request for Comments), proposed and discussed on the `internals@lists.php.net` mailing list. Anyone can write one. The process, roughly:
+PHP's language evolution happens through RFCs (Requests for Comments), proposed and discussed on the `internals@lists.php.net` mailing list. Anyone can write one. The process, roughly:
 
 1. Someone drafts an RFC describing a proposed change (new syntax, a new function, a change to existing behavior) with motivation and, usually, a working implementation to point at.
 2. It's posted to the mailing list and discussed publicly, often for weeks, sometimes for months. Discussion is not a formality; RFCs get substantially reworked, or abandoned, based on it.

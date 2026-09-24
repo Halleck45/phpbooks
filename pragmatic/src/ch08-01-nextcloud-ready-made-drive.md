@@ -28,4 +28,4 @@ Any request that's genuinely "we need our own file storage and sharing system," 
 
 A feature that's really just "let users upload a profile picture" or "attach a PDF to this order." That's ordinary file upload handling (see [Laravel: Filesystem Abstraction and S3-Compatible Storage](ch08-02-laravel-filesystem-s3.md)), not a reason to stand up an entire platform.
 
-> **Under the hood:** Nextcloud's file synchronization relies on chunked uploads and ETags to detect what changed since the last sync, letting a client only transfer the parts of a large file that actually changed rather than re-uploading the whole thing, a meaningful engineering problem solved once, in PHP, so no app built on top of it has to solve it again.
+> **Under the hood:** Nextcloud's file synchronization relies on chunked uploads and ETags to detect what changed since the last sync, letting a client transfer only the parts of a large file that actually changed rather than re-uploading the whole thing, a meaningful engineering problem solved once, in PHP, so no app built on top of it has to solve it again.

@@ -34,13 +34,13 @@ Pick the one feature of your product that best represents it: an authenticated e
 
 ## Day four: the slice under load
 
-Load the slice from day three the way you loaded the hello-world, at the concurrency you expect in production and at ten times that. Profile one slow request with Xdebug's profiler or with `hrtime()` around the suspect calls and see where the time goes; on most slices it is in the database, and the language is a small slice at each end. Record the throughput and the 99th percentile at both concurrencies, and the share of a request spent outside PHP.
+Load the slice from day three the way you loaded the hello-world, at the concurrency you expect in production and at ten times that. Profile one slow request with Xdebug's profiler or with `hrtime()` around the suspect calls and see where the time goes; on most slices it is in the database, and the language is a thin layer at each end. Record the throughput and the 99th percentile at both concurrencies, and the share of a request spent outside PHP.
 
 Then do the one thing benchmarks never do. Kill a worker mid-request, fill the memory limit, throw an uncaught exception in a queue job, and record what the user saw, what the logs said, and what recovered by itself.
 
 ## Day five: the ecosystem and the governance
 
-Search Packagist for the three libraries your product cannot live without, and record the date of each one's last release and its open issue count. Open wiki.php.net/rfc and read the RFC currently under vote, then the internals thread behind it. Open php.net's supported versions page and write down the date your chosen version stops receiving security fixes. Open the foundation's Open Collective page and read the last month of transactions, then the php-src security advisories and the three most recent, with their time from report to fix. The whole of it fits in an afternoon, and it is the raw material that [Governance and Longevity](ch07-governance.md) summarised for you.
+Search Packagist for the three libraries your product cannot live without, and record the date of each one's last release and its open issue count. Open wiki.php.net/rfc and read the RFC currently under vote, then the internals thread behind it. Open php.net's supported versions page and write down the date your chosen version stops receiving security fixes. Open the foundation's Open Collective page and read the last month of transactions, then the three most recent php-src security advisories, with their time from report to fix. The whole of it fits in an afternoon, and it is the raw material that [Governance and Longevity](ch07-governance.md) summarised for you.
 
 ## The decision
 

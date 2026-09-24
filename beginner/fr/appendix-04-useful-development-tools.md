@@ -4,7 +4,7 @@ Ce livre a déjà traité deux de ces outils en bonne et due forme. Les autres s
 
 ## Composer
 
-Traité à partir du [chapitre 7](ch07-01-hello-composer.md), puis en profondeur au [chapitre 16](ch16-00-more-about-composer.md). Gestion des dépendances et autoloading. Vous n'écrirez pas de PHP professionnellement sans lui, et arrivé à ce point du livre, vous ne l'avez déjà plus fait.
+Traité à partir du [chapitre 7](ch07-01-hello-composer.md), puis en profondeur au [chapitre 16](ch16-00-more-about-composer.md). Gestion des dépendances et autoloading. Vous n'écrirez pas de PHP professionnellement sans lui et, arrivé à ce point du livre, vous ne l'avez d'ailleurs jamais fait.
 
 ## PHPUnit
 
@@ -39,7 +39,7 @@ Un débogueur pas à pas et un profileur pour PHP. Au lieu de semer des `var_dum
 
 PHP n'impose aucun éditeur, mais deux valent la peine d'être connus :
 
-**PhpStorm** : un IDE dédié à PHP, avec une compréhension profonde et intégrée du langage : refactoring, navigation, et une analyse statique en ligne qui rivalise avec PHPStan sans quitter l'éditeur. Commercial, gratuit pour les étudiants et les mainteneurs de projets open source.
+**PhpStorm** : un IDE conçu pour PHP, avec une compréhension profonde et intégrée du langage : refactoring, navigation, et une analyse statique en ligne qui rivalise avec PHPStan sans quitter l'éditeur. Commercial, gratuit pour les étudiants et les mainteneurs de projets open source.
 
 **VS Code**, avec les extensions PHP (Intelephense ou le pack d'extensions PHP officiel) : gratuit, généraliste, et parfaitement capable une fois configuré. C'est vers lui que se tournent la plupart des développeurs PHP qui n'utilisent pas PhpStorm.
 

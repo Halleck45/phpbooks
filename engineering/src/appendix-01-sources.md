@@ -1,6 +1,6 @@
 # Appendix A: Sources
 
-Every figure and sourced claim in this book is listed below, grouped by the chapter it appears in, with the publisher, the URL, and the date the underlying data refers to or was checked. Where a figure comes from a page that recomputes continuously (W3Techs, Packagist) the date is a retrieval date, not a publication date, and the chapter text says so at the point the figure is used.
+Every figure and sourced claim in this book is listed below, grouped by the chapter it appears in, with the publisher, the URL, and the date the underlying data refers to or was checked. Where a figure comes from a page that recomputes continuously (W3Techs, Packagist), the date is a retrieval date, not a publication date, and the chapter text says so at the point the figure is used.
 
 A small number of entries below are marked **pending direct verification**. Each one was confirmed through a search-engine snippet or a secondary account rather than a direct fetch of the primary page at the time of writing, and each one is written into its chapter in a form narrow enough not to depend on a precise figure that has not yet been directly confirmed. They are listed here rather than silently dropped so that whoever finishes this book's production knows exactly what remains to be checked before publication.
 

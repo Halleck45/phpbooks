@@ -2,7 +2,7 @@
 
 Take the row of boxes from the previous section and replace the numbered tags with words. That is an associative array, and that is the whole difference.
 
-**An associative array is an array where you chose the keys yourself**, usually strings, instead of letting PHP hand out 0, 1, 2. Same structure, PHP's ordered map, different labels:
+**An associative array is an array where you choose the keys yourself**, usually strings, instead of letting PHP hand out 0, 1, 2. Same structure, PHP's ordered map, different labels:
 
 ```php
 <?php
@@ -25,7 +25,7 @@ Keys can be strings or integers, and PHP happily mixes both in one array. They m
 
 ## `isset()` versus `array_key_exists()`, and the gotcha between them
 
-Both functions answer a version of "is this key there," and they are not interchangeable. The difference has caused real bugs, so it is worth understanding once rather than half-remembering.
+Both functions answer a version of "is this key there," and they are not interchangeable. The difference has caused real bugs, so understand it once rather than half-remembering it.
 
 ```php
 <?php
@@ -102,4 +102,4 @@ echo implode(', ', $titles) . "\n";
 
 Picture a box of index cards. Each card has the same three lines (title, author, year), and the box keeps them in order. **Indexed array outside, associative array inside**: this is exactly what comes back from a database query, from a JSON response decoded with `json_decode($json, true)`, or from a CSV file read row by row.
 
-It looks almost too simple to name, and it is worth naming anyway. By the time you reach [Chapter 14](ch14-00-a-cli-project.md) and beyond, this pattern is how you will hold most real-world data before it becomes anything more structured, like the objects of [Chapter 5](ch05-00-classes.md).
+It looks almost too simple to name. Name it anyway. By the time you reach [Chapter 14](ch14-00-a-cli-project.md) and beyond, this pattern is how you will hold most real-world data before it becomes anything more structured, like the objects of [Chapter 5](ch05-00-classes.md).

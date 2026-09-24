@@ -163,7 +163,7 @@ echo json_encode($paid);                // {"0":{...},"2":{...}}  an object!
 echo json_encode(array_values($paid));  // [{...},{...}]          a list
 ```
 
-**`array_filter()` keeps the original keys.** After filtering a list, the keys have holes, `array_is_list()` says false, and `json_encode()` produces an object. `array_values()` renumbers. Note also the argument order: the array comes first for `array_filter()` and `array_reduce()`, the callback first for `array_map()`. That inconsistency is thirty years old, and your editor's autocomplete is the cure.
+**`array_filter()` keeps the original keys.** After filtering a list, the keys have holes, `array_is_list()` says false, and `json_encode()` produces an object. `array_values()` renumbers. Watch the argument order too: the array comes first for `array_filter()` and `array_reduce()`, the callback first for `array_map()`. That inconsistency is thirty years old, and your editor's autocomplete is the cure.
 
 PHP 8.4 added the searches you kept writing by hand: `array_find()` returns the first matching element, `array_find_key()` its key, `array_any()` and `array_all()` return booleans. PHP 8.5 added `array_first()` and `array_last()`, which return the first and last values regardless of keys, next to the older `array_key_first()` and `array_key_last()`.
 
@@ -205,7 +205,7 @@ echo total([1, 2, 3]); // 6
 
 ## When an array is not enough
 
-An array cannot say what it contains. `array $orders` tells the reader nothing, and the language has no `array<Order>`. Two answers coexist. The lightweight one is a docblock, `@param list<Order> $orders`, which PHPStan and Psalm enforce as if it were a real type and your editor uses for completion. The heavier one is a small class: a `final class Orders` holding a private array, exposing exactly the operations you need, and implementing the interfaces that let it behave like an array where useful: `Countable` for `count()`, `ArrayAccess` for `$orders[0]`, `IteratorAggregate` for `foreach`.
+An array cannot say what it contains. `array $orders` tells the reader nothing, and the language has no `array<Order>`. Two answers coexist. The lightweight one is a docblock, `@param list<Order> $orders`, which PHPStan and Psalm enforce as if it were a real type and your editor uses for completion. The heavier one is a small class, a `final class Orders` holding a private array, exposing exactly the operations you need, and implementing the interfaces that let it behave like an array where useful: `Countable` for `count()`, `ArrayAccess` for `$orders[0]`, `IteratorAggregate` for `foreach`.
 
 <img src="images/ch04-array-vs-collection.png" alt="On the left a bare open crate labelled array with anything thrown in; on the right a labelled box with a typed slot on top that only accepts Order-shaped pieces, and a small counter and handle on its side" width="560">
 

@@ -108,4 +108,4 @@ try {
 
 Extending `\Exception` brings the whole standard machinery for free: `getMessage()`, `getCode()`, `getPrevious()`, and a stack trace through `getTraceAsString()`. The call to `parent::__construct()` is what wires your message into that machinery; skip it and `getMessage()` comes back empty. Beyond that, the class is yours. `InvalidAgeException` keeps the offending `$age` in a readonly property, so the `catch` block gets structured data to work with, not just a string to parse.
 
-This small pattern, a specific exception carrying the context that caused it, comes back in [Chapter 14](ch14-00-a-cli-project.md). It is worth being comfortable with it now, because the harder question is not how to throw. It is when.
+This small pattern, a specific exception carrying the context that caused it, comes back in [Chapter 14](ch14-00-a-cli-project.md). Get comfortable with it now, because the harder question is not how to throw. It is when.

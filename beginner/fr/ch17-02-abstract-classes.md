@@ -1,6 +1,6 @@
 # Classes abstraites et interfaces, deuxième passage
 
-Rien ne vous empêche d'écrire `new PaymentMethod()` et de lui débiter quarante-deux dollars. La classe de base de la section précédente a un `charge()` qui fonctionne, alors PHP obéit, et l'argent est « débité » sur un moyen de paiement rattaché à aucune carte, aucun compte, rien du tout. `PaymentMethod` n'a jamais été conçue que comme une fondation pour ses sous-classes, mais un commentaire qui le dit n'est pas une règle. **`abstract` transforme cette intention en quelque chose que PHP fait respecter.**
+Rien ne vous empêche d'écrire `new PaymentMethod()` et de lui débiter quarante-deux dollars. La classe de base de la section précédente a un `charge()` qui fonctionne, alors PHP obéit, et l'argent est « débité » sur un moyen de paiement qui n'est rattaché à aucune carte, aucun compte, rien du tout. `PaymentMethod` n'a jamais été conçue que comme une fondation pour ses sous-classes, mais un commentaire qui le dit n'est pas une règle. **`abstract` transforme cette intention en quelque chose que PHP fait respecter.**
 
 ## Rendre le contrat explicite
 

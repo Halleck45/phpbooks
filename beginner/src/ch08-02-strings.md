@@ -80,7 +80,7 @@ echo $formatted . "\n"; // Alice scored 92% on the test.
 
 ## Interpolation, one more time
 
-You know the basics from [Chapter 2](ch02-00-guessing-game-tutorial.md). The full form is worth having on hand: **`{$expr}` inside double quotes accepts more than a bare variable**, array access, property access, method calls, anything that resolves to a value:
+You know the basics from [Chapter 2](ch02-00-guessing-game-tutorial.md). The full form is worth having on hand. **`{$expr}` inside double quotes accepts more than a bare variable**: array access, property access, method calls, anything that resolves to a value:
 
 ```php
 <?php

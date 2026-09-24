@@ -1,6 +1,6 @@
 # TYPO3: Structured Content at Enterprise Scale
 
-Some content sites aren't a blog with a few pages, they're a few thousand pages, across a dozen departments, in six languages, with an editorial workflow that needs approvals before anything goes live. TYPO3 is a CMS built for exactly that scale, with a content tree, granular permissions, and multilingual support (see [Shipping Multi-Language, Multi-Site](ch13-00-shipping-multi-language-multi-site.md)) designed in from the start rather than bolted on.
+Some content sites aren't a blog with a few pages: they're a few thousand pages, across a dozen departments, in six languages, with an editorial workflow that needs approvals before anything goes live. TYPO3 is a CMS built for exactly that scale, with a content tree, granular permissions, and multilingual support (see [Shipping Multi-Language, Multi-Site](ch13-00-shipping-multi-language-multi-site.md)) designed in from the start rather than bolted on.
 
 ```bash
 composer create-project typo3/cms-base-distribution my-site

@@ -4,7 +4,7 @@ En ce moment même, quelque part, quelqu'un ouvre une page web. Une boutique en 
 
 Ce rythme, **se réveiller, travailler, disparaître**, c'est le cœur de PHP sur le web. Autant le comprendre tout de suite : il explique une bonne partie du caractère du langage.
 
-Imaginez un serveur de restaurant sans aucune mémoire. Un client arrive, il prend la commande, la prépare, l'apporte, et oublie tout aussitôt. Le client suivant est accueilli exactement comme s'il était le premier de la journée. Rien ne traîne de la commande précédente : ni miettes, ni assiette sale, ni conversation en suspens.
+Imaginez un serveur de restaurant sans aucune mémoire. Un client arrive, le serveur prend la commande, la prépare, l'apporte, et oublie tout aussitôt. Le client suivant est accueilli exactement comme s'il était le premier de la journée. Rien ne traîne de la commande précédente : ni miettes, ni assiette sale, ni conversation en suspens.
 
 <img src="images/ch00-request-cycle.png" alt="La vie d'une requête PHP : un visiteur demande une page, PHP se réveille, fait le travail, envoie la réponse et oublie tout" width="560">
 

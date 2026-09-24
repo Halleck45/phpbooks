@@ -16,6 +16,6 @@ Look specifically for what this book calls out as decision-relevant in every cha
 
 ## Evening: decide against the actual brief, not the tool's marketing
 
-Every tool's homepage claims to be fast, modern, and developer-friendly. None of that matters as much as whether it matches what [Chapter 1](ch01-01-framework-cms-or-headless.md) asked first: framework, CMS, or headless, and does this specific option fit the feature you were actually asked to build.
+Every tool's homepage claims to be fast, modern, and developer-friendly. None of that matters as much as whether it matches what [Chapter 1](ch01-01-framework-cms-or-headless.md) asked first: framework, CMS, or headless? And does this specific option fit the feature you were actually asked to build?
 
-> **Under the hood:** This same practice, quickstart then a small real feature then the edges, works for evaluating tools outside PHP entirely. What's specific to this book is only the list of edges worth checking: PHP's ecosystem has enough mature, well-trodden answers for testing, deployment, and community support that a new tool lacking any of them is worth treating as a real yellow flag, not a minor gap.
+> **Under the hood:** This same practice (quickstart, then a small real feature, then the edges) works for evaluating tools outside PHP entirely. What's specific to this book is only the list of edges worth checking: PHP's ecosystem has enough mature, well-trodden answers for testing, deployment, and community support that a new tool lacking any of them is worth treating as a real yellow flag, not a minor gap.

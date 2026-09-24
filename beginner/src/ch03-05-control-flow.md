@@ -18,7 +18,7 @@ if ($temperature > 30) {
 }
 ```
 
-Same shape as the comparison in the game: PHP runs the first block whose condition is true and skips the rest, or falls back to `else`. Note that it is `elseif`, one word. `else if`, two words, works too, but only `elseif` is a single token to PHP, so it is the convention worth adopting.
+Same shape as the comparison in the game: PHP runs the first block whose condition is true and skips the rest, or falls back to `else`. It is `elseif`, one word. `else if`, two words, works too, but only `elseif` is a single token to PHP, so it is the convention worth adopting.
 
 **The condition does not have to be a boolean, but write it as if it did.** PHP converts whatever you hand it: `0`, `""`, `null` and `[]` all count as false, everything else as true. Leaning on that is exactly the kind of type juggling [Data Types](ch03-02-data-types.md) warned you about. Prefer an explicit comparison whenever the value is not already obviously a boolean.
 
@@ -106,7 +106,7 @@ foreach ($prices as $name => $price) {
 }
 ```
 
-The second form, `as $name => $price`, pulls out the key and the value in one go. It appears so often in real PHP code that it is worth committing to memory right now.
+The second form, `as $name => $price`, pulls out the key and the value in one go. It appears so often in real PHP code that you may as well commit it to memory right now.
 
 ## `break` and `continue`, one more time
 

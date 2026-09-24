@@ -4,7 +4,7 @@ Un navigateur demande `/about`. Quelque part sur le serveur, un bout de code doi
 
 ## Le serveur de développement intégré à PHP
 
-Il faut un serveur web pour recevoir la requête, et PHP en cache un dans la commande `php` elle-même. Ni Apache, ni nginx, rien à installer. Il n'est pas fait pour la production, mais pour développer, et pour apprendre, c'est exactement ce qu'il faut :
+Il faut un serveur web pour recevoir la requête, et PHP en cache un dans la commande `php` elle-même. Ni Apache, ni nginx, rien à installer. Il n'est pas fait pour la production, mais pour développer et apprendre, c'est exactement ce qu'il faut :
 
 ```console
 $ php -S localhost:8000 router.php

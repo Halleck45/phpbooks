@@ -2,7 +2,7 @@
 
 TYPO3's caching framework is worth studying even outside a TYPO3 project, because it solves caching as a genuinely layered problem rather than a single on/off switch: page output, individual content elements, database query results, and configuration each get their own cache, each with its own invalidation rules.
 
-```yaml
+```php
 # config/system/settings.php
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['pages'] = [
     'backend' => \TYPO3\CMS\Core\Cache\Backend\Typo3DatabaseBackend::class,
@@ -19,7 +19,7 @@ $cacheManager->getCache('pages')->flushByTag('pageId_' . $pageId);
 
 That tag-based invalidation, flushing only what actually changed, is what makes aggressive caching safe on a large site: a typo fix on one page doesn't force every other page to be regenerated.
 
-For high-traffic sites, TYPO3 layers a reverse proxy cache (typically Varnish) in front of all of this, serving fully-rendered pages without PHP running at all for the common case of an anonymous visitor requesting unchanged content.
+For high-traffic sites, TYPO3 layers a reverse proxy cache (typically Varnish) in front of all of this, serving fully rendered pages without PHP running at all for the common case of an anonymous visitor requesting unchanged content.
 
 ## When to reach for this
 

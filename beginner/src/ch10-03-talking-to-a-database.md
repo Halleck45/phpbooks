@@ -39,7 +39,7 @@ Before writing the insert, look at the version to avoid:
 $pdo->exec("INSERT INTO entries (name, message, created_at) VALUES ('$name', '$message', '" . date('c') . "')");
 ```
 
-Read the query the way the database will. If `$message` contains a single quote followed by SQL of the attacker's choosing, that quote closes the string early and the rest becomes part of what actually runs. **That is SQL injection**, the same family of bug as the XSS from the previous section, aimed at your database instead of a visitor's browser. Building a query by gluing untrusted text into a string is never safe, however carefully the string looks assembled.
+Read the query the way the database will. If `$message` contains a single quote followed by SQL of the attacker's choosing, that quote closes the string early and the rest becomes part of what actually runs. **That is SQL injection**, the same family of bug as the XSS from the previous section, aimed at your database instead of a visitor's browser. Building a query by gluing untrusted text into a string is never safe, however carefully assembled the string looks.
 
 ## Prepared statements
 

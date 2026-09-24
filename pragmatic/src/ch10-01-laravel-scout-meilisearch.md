@@ -21,7 +21,7 @@ class Product extends Model
 $results = Product::search('wireles mouse')->get();
 ```
 
-That typo in "wireles" still returns the mouse; typo tolerance and relevance ranking are exactly what the underlying search engine handles that a SQL `LIKE` query never could.
+That typo in "wireles" still returns the mouse; typo tolerance and relevance ranking are exactly what the underlying search engine handles and a SQL `LIKE` query never could.
 
 **Meilisearch** is open source and self-hosted, a single binary with sensible defaults out of the box:
 

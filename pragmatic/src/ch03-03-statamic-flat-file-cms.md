@@ -33,7 +33,7 @@ Statamic is free for personal, non-commercial projects. Any commercial site need
 
 ## When to reach for this
 
-A Laravel-comfortable team building a content-heavy site that wants Git-based content history and doesn't want to run a separate database just for pages and posts.
+A Laravel-comfortable team building a content-heavy site, one that wants Git-based content history and doesn't want to run a separate database just for pages and posts.
 
 ## When it's the wrong fit
 

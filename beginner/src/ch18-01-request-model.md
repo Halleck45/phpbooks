@@ -22,7 +22,7 @@ The practical upside is large. You never reason about race conditions inside a r
 
 PHP *can* share state and run things concurrently. By default it does not, and traditional PHP applications were designed around that constraint rather than against it. Three exceptions are worth knowing.
 
-Work that has to happen but should not hold up the response, sending an email, resizing an uploaded image, is pushed to a separate process rather than run inline. The [next section](ch18-02-queues-and-processes.md) is about exactly that.
+Work that has to happen but should not hold up the response (sending an email, resizing an uploaded image) is pushed to a separate process rather than run inline. The [next section](ch18-02-queues-and-processes.md) is about exactly that.
 
 Long-running PHP processes do exist. Command-line daemons, queue workers, and newer tools such as Swoole servers keep one process alive across many units of work, and *there* the shared-nothing guarantee no longer applies automatically. It becomes your job again.
 

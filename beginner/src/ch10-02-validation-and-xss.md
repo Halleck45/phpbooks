@@ -80,6 +80,6 @@ Look at `value="<?= htmlspecialchars($name) ?>"` inside the `<input>` tag. **Esc
 
 ## A related risk worth naming
 
-XSS is a visitor's browser running an attacker's script inside your page. Its cousin is **CSRF**, cross-site request forgery: another site tricks a visitor's browser into submitting a form to *your* site on their behalf, using whatever session they are already logged into. The usual defence, a hidden token generated per form and checked on submission, is more than this small guestbook needs. Keep the name in mind for the day you build something where a forged submission would actually cost something.
+XSS is a visitor's browser running an attacker's script inside your page. Its cousin is **CSRF**, cross-site request forgery: another site tricks a visitor's browser into submitting a form to *your* site on their behalf, using whatever session they are already logged into. The usual defense, a hidden token generated per form and checked on submission, is more than this small guestbook needs. Keep the name in mind for the day you build something where a forged submission would actually cost something.
 
 The guestbook now behaves for a single request: it validates what comes in and escapes what goes out. What it still cannot do is remember. Reload the page and every message is gone, because nothing was ever stored. That is next.

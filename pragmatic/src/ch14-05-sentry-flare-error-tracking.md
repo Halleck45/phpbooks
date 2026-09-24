@@ -1,6 +1,6 @@
 # Catching It in Production: Sentry and Flare ($)
 
-Tests catch what you thought to test for. Static analysis catches what the type system can prove. Neither catches the thing a real user does at 11 p.m. that nobody anticipated. That's what error tracking is for: confidence doesn't stop at the deploy button, it extends into knowing, immediately, when something breaks for a real person, with a full stack trace instead of a support email that just says "it's broken."
+Tests catch what you thought to test for. Static analysis catches what the type system can prove. Neither catches the thing a real user does at 11 p.m. that nobody anticipated. That's what error tracking is for: confidence doesn't stop at the deploy button; it extends into knowing, immediately, when something breaks for a real person, with a full stack trace instead of a support email that just says "it's broken."
 
 **Sentry** works across every framework covered in this book, with SDKs for Laravel, Symfony, and plain PHP alike.
 
@@ -28,7 +28,7 @@ composer require facade/ignition
 
 ## Pricing
 
-Sentry has a genuinely usable free tier for small projects, scaling to a paid plan as event volume grows. Flare is a paid product with a free trial, no meaningful free tier for ongoing use, which is why both carry the `$` here even though Sentry's is more conditional.
+Sentry has a genuinely usable free tier for small projects, scaling to a paid plan as event volume grows. Flare is a paid product with a free trial and no meaningful free tier for ongoing use, which is why both carry the `$` here even though Sentry's is more conditional.
 
 ## When to reach for this
 

@@ -4,6 +4,6 @@ Since [Chapter 7](ch07-01-hello-composer.md), Composer has been doing one job fo
 
 The first two additions live in the `composer.json` you already have. A `"scripts"` section turns the commands you type all day into short Composer subcommands, and a second flavor of autoloading, `"files"`, takes care of the function files PSR-4 has no way to find.
 
-Then the view widens. Packagist is the public registry behind every `composer require`, and it is worth knowing how a package gets there. Spoiler: nobody uploads anything. Right after come path repositories, the mechanism for developing two local packages side by side before either is published, and the shape most PHP monorepos are built on.
+Then the view widens. Packagist is the public registry behind every `composer require`, and how a package gets there is not obvious. Spoiler: nobody uploads anything. Right after come path repositories, the mechanism for developing two local packages side by side before either is published, and the shape most PHP monorepos are built on.
 
-Two last stops sit slightly outside any single project: installing command line tools once, globally, instead of one copy per project, and a short, honest look at the hooks Composer fires around its own lifecycle, with the door it leaves open for plugins.
+Two last stops sit slightly outside any single project: installing command-line tools once, globally, instead of one copy per project, and a short, honest look at the hooks Composer fires around its own lifecycle, with the door it leaves open for plugins.

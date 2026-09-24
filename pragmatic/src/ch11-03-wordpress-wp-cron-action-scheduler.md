@@ -40,6 +40,6 @@ WP-Cron with a real system crontab for anything time-sensitive: scheduled report
 
 ## When it's the wrong fit
 
-High-frequency or high-reliability background processing, where [Laravel's queue system](ch11-01-laravel-queues-horizon.md) or [Symfony Messenger](ch11-02-symfony-messenger.md), both built around a real queue backend from the start, are a more solid foundation than WordPress's page-load-triggered model.
+High-frequency or high-reliability background processing, where [Laravel's queue system](ch11-01-laravel-queues-horizon.md) or [Symfony Messenger](ch11-02-symfony-messenger.md), both built around a real queue backend from the start, offer a more solid foundation than WordPress's page-load-triggered model.
 
 > **Under the hood:** WP-Cron's "check on every page load" design is a direct consequence of typical shared WordPress hosting historically not allowing users to configure real system cron jobs. It's a reasonable workaround for that constraint, not a design flaw exactly, but one worth overriding the moment your hosting does allow real cron.

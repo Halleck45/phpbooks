@@ -38,7 +38,7 @@ $item = [
 echo lineTotal($item); // Warning: Undefined array key "price"
 ```
 
-**L'avertissement se déclenche au fond de `lineTotal()`, loin de l'endroit où l'erreur a été commise.** Rien dans `$item` ne disait quelles clés il devait contenir, et rien n'a vérifié que `price` était un nombre avant l'instant de la multiplication. Laissez la boutique grandir (remises, taux de TVA, niveaux de stock) et chaque fonction qui touche un tableau produit doit s'accorder, de son côté, sur les mêmes clés magiques. Chacune est à une faute de frappe d'échouer à l'exécution, nulle part près du vrai bug.
+**L'avertissement se déclenche au fond de `lineTotal()`, loin de l'endroit où l'erreur a été commise.** Rien dans `$item` ne disait quelles clés il devait contenir, et rien n'a vérifié que `price` était un nombre avant l'instant de la multiplication. Laissez la boutique grandir (remises, taux de TVA, niveaux de stock) et chaque fonction qui touche un tableau produit doit s'accorder, de son côté, sur les mêmes clés magiques. Chacune est à une faute de frappe d'échouer à l'exécution, loin du vrai bug.
 
 ## Le même problème, avec une classe
 

@@ -115,7 +115,7 @@ $withTax = fn(float $price): float => $price * (1 + $rate);
 
 Il n'y a plus ni `use`, ni `return`, ni accolades, mais la sémantique d'instantané reste la même. La plupart des callbacks que vous écrirez seront des fonctions fléchées, et vous reviendrez à `function () use ()` quand il vous faudra plusieurs instructions ou une capture par référence.
 
-Dans une classe, une closure conserve `$this` automatiquement, comme vous vous y attendez. Marquez-la `static fn` ou `static function` quand elle n'a pas besoin de l'instance, ce qui évite de maintenir l'objet en vie depuis un callback à longue durée. `Closure::bind()` et `$closure->call($object)` rattachent `$this` à un autre objet ; c'est ainsi que les frameworks atteignent un état privé depuis l'extérieur, et vous les écrirez rarement vous-même.
+Dans une classe, une closure conserve `$this` automatiquement, comme vous vous y attendez. Marquez-la `static fn` ou `static function` quand elle n'a pas besoin de l'instance, ce qui évite de maintenir l'objet en vie depuis un callback de longue durée. `Closure::bind()` et `$closure->call($object)` rattachent `$this` à un autre objet ; c'est ainsi que les frameworks atteignent un état privé depuis l'extérieur, et vous les écrirez rarement vous-même.
 
 ## Générateurs
 

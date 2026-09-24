@@ -1,6 +1,6 @@
 # B - Les versions de PHP, 2015 à 2026
 
-Chaque version a sa section ci-dessous, avec sa date de sortie, sa fenêtre de support et ses changements marquants. Les dates viennent de php.net (pages des versions supportées, des fins de vie et des changelogs, vérifiées le 17 septembre 2026). Le support actif couvre les corrections de bugs et les correctifs de sécurité, le support de sécurité les correctifs de sécurité seulement. Depuis la mise à jour du cycle de publication votée en 2024, les deux fenêtres se terminent le 31 décembre de leur dernière année.
+Chaque version a sa section ci-dessous, avec sa date de sortie, sa fenêtre de support et ses changements marquants. Les dates viennent de php.net (pages des versions maintenues, des fins de vie et des changelogs, vérifiées le 17 septembre 2026). Le support actif couvre les corrections de bugs et les correctifs de sécurité, le support de sécurité les correctifs de sécurité seulement. Depuis la mise à jour du cycle de publication votée en 2024, les deux fenêtres se terminent le 31 décembre de leur dernière année.
 
 | Version | Sortie | Support actif jusqu'au | Support de sécurité jusqu'au |
 |---|---|---|---|

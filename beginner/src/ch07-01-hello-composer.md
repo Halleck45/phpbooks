@@ -25,7 +25,7 @@ Inside an empty directory, run:
 $ composer init
 ```
 
-Composer asks a handful of questions: package name, description, author, license. Press Enter through most of them, nothing here is permanent. What matters is the file it leaves behind, `composer.json`:
+Composer asks a handful of questions: package name, description, author, license. Press Enter through most of them: nothing here is permanent. What matters is the file it leaves behind, `composer.json`:
 
 ```json
 {

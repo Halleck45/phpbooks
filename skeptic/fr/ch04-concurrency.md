@@ -8,7 +8,7 @@ Un worker qui attend 40 millisecondes une réponse de la base occupe un processu
 
 Cette simplicité se paie en mémoire, connexion par connexion. Un worker qui garde un WebSocket ouvert, qui attend la fin d'un long poll ou qui diffuse une réponse pendant une minute immobilise un processus entier tout ce temps, et un pool de quelques centaines de processus ne tiendra jamais dix mille connexions inactives. Pour cette charge-là, le modèle par défaut de PHP est le mauvais.
 
-<img src="images/ch04-toll-booths.png" alt="Un péage d'autoroute vu de dessus. À gauche, une rangée de cabines, un éléphant dans chacune, une voiture à chaque cabine ; la file derrière chaque cabine est courte et ordonnée. À droite, une seule voie avec une barrière automatique où une longue file de voitures passe sans s'arrêter, un éléphant surveillant un pupitre de contrôle. Les deux côtés font passer le même nombre de voitures" width="620">
+<img src="images/ch04-toll-booths.png" alt="Un péage d'autoroute vu de dessus. À gauche, une rangée de cabines, un éléphant dans chacune, une voiture à chaque cabine ; la file derrière chaque cabine est courte et ordonnée. À droite, une seule voie avec une barrière automatique où une longue file de voitures passe sans s'arrêter, un éléphant surveillant un pupitre de contrôle. Les deux côtés font passer le même nombre de voitures" width="620">
 
 ## Beaucoup de connexions
 
@@ -36,6 +36,6 @@ La concurrence dont vous aurez besoin le plus souvent n'a rien de spectaculaire�
 
 ## Ce que vous pouvez vérifier vous-même
 
-Prenez le scénario à connexions nombreuses que vous avez vraiment, si vous en avez un, et écrivez-le deux fois dans l'après-midi : une fois avec AMPHP ou ReactPHP, une fois avec Swoole ou OpenSwoole. Comptez ensuite combien des bibliothèques dont vous dépendriez offrent un client non bloquant. Si c'est la plupart, la voie asynchrone vous est ouverte. Si c'en est peu, la conclusion honnête est que PHP est le mauvais outil pour ce service-là, et le reste de votre système est une décision à part.
+Prenez le scénario à connexions nombreuses que vous avez vraiment, si vous en avez un, et écrivez-le deux fois dans l'après-midi : une fois avec AMPHP ou ReactPHP, une fois avec Swoole ou OpenSwoole. Comptez ensuite combien des bibliothèques dont vous dépendriez offrent un client non bloquant. Si c'est la plupart, la voie asynchrone vous est ouverte. Si elles sont rares, la conclusion honnête est que PHP est le mauvais outil pour ce service-là, et le reste de votre système est une décision à part.
 
 Reste à savoir si le langage lui-même est de ceux que vous auriez envie d'écrire, et cette question-là, vous y répondez en le lisant.

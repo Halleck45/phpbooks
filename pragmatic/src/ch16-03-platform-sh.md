@@ -1,6 +1,6 @@
 # Platform.sh ($): One Deploy Story for Several Frameworks
 
-Platform.sh's pitch is framework-agnostic infrastructure-as-code: one configuration format that works whether the project underneath is Laravel, Symfony, WordPress, TYPO3, or something else entirely, useful for an agency shipping across several of the stacks covered in this book without learning a different deployment platform for each one.
+Platform.sh's pitch is framework-agnostic infrastructure-as-code: one configuration format that works whether the project underneath is Laravel, Symfony, WordPress, TYPO3, or something else entirely, which makes it useful for an agency shipping across several of the stacks covered in this book without learning a different deployment platform for each one.
 
 ```yaml
 # .platform.app.yaml

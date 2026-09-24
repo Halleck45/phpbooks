@@ -115,7 +115,7 @@ PHP exécute ce code et plante sur la seconde ligne avec « Attempt to read prop
 Cannot access property $name on User|null.
 ```
 
-Les deux outils fonctionnent par niveaux : PHPStan va de 0 (erreurs évidentes seulement) à 10 (chaque `mixed` doit être précisé), et Psalm compte dans l'autre sens, de 8 (permissif) à 1 (strict). Un nouveau projet démarre au niveau le plus strict qu'il peut supporter et n'en redescend jamais, tandis qu'un projet ancien génère une baseline, un fichier qui liste toutes les erreurs actuelles pour que seules les nouvelles fassent échouer le build, puis la réduit au fil du temps.
+Les deux outils fonctionnent par niveaux : PHPStan va de 0 (erreurs évidentes seulement) à 10 (chaque `mixed` doit être précisé), et Psalm compte dans l'autre sens, de 8 (permissif) à 1 (strict). Un nouveau projet démarre au niveau le plus strict qu'il peut tenir et n'en redescend jamais, tandis qu'un projet ancien génère une baseline, un fichier qui liste toutes les erreurs actuelles pour que seules les nouvelles fassent échouer le build, puis la réduit au fil du temps.
 
 Un `phpstan.neon` minimal :
 
@@ -127,7 +127,7 @@ parameters:
         - tests
 ```
 
-Les deux outils lisent les docblocks pour ce que le langage ne sait pas exprimer : `@param list<int> $ids`, `@return array<string, User>`, et les génériques `@template` présentés dans [Le système de types](ch03-types.md). C'est dans ces docblocks que vivent les génériques en PHP, le moteur les ignore et l'analyseur les fait respecter.
+Les deux outils lisent les docblocks pour ce que le langage ne sait pas exprimer : `@param list<int> $ids`, `@return array<string, User>`, et les génériques `@template` présentés dans [Le système de types](ch03-types.md). C'est dans ces docblocks que vivent les génériques en PHP : le moteur les ignore et l'analyseur les fait respecter.
 
 <img src="images/ch12-analyser-xray.png" alt="Un petit éléphant tient un écran à rayons X au-dessus d'une pile de fichiers PHP ; à travers l'écran, une ligne pointillée suit une valeur d'un fichier à l'autre et se termine sur une marque rouge, là où un null atteint un appel de méthode" width="560">
 
@@ -206,7 +206,7 @@ Les scripts Composer donnent au projet un vocabulaire unique, quels que soient l
 
 `composer check` lance les trois. Composer place `vendor/bin` dans le chemin des scripts, donc les noms d'outils n'ont pas besoin de préfixe. Un nouveau membre de l'équipe lit `composer.json` et sait comment le projet est vérifié sans ouvrir de README.
 
-La CI lance les mêmes commandes, sur chaque version de PHP que le projet supporte (la contrainte `php` de `composer.json` dit lesquelles), plus `composer audit`, qui confronte `composer.lock` à la base des vulnérabilités connues et échoue à la première trouvée. `composer outdated` liste ce qui a une version plus récente ; un robot de mise à jour des dépendances peut ouvrir les pull requests pour vous.
+La CI lance les mêmes commandes, sur chaque version de PHP que le projet prend en charge (la contrainte `php` de `composer.json` dit lesquelles), plus `composer audit`, qui confronte `composer.lock` à la base des vulnérabilités connues et échoue à la première trouvée. `composer outdated` liste ce qui a une version plus récente ; un robot de mise à jour des dépendances peut ouvrir les pull requests pour vous.
 
 Pour un runtime local, `php -S localhost:8000 -t public` sert le projet comme l'a montré [Une requête web, sans framework](ch11-web-request.md), et l'image Docker officielle `php:8.5-cli` donne à tout le monde le même interpréteur. N'importe quel réglage de `php.ini` peut être surchargé pour une commande avec `php -d memory_limit=1G`. Sachez enfin que les fichiers `.env` sont une convention de bibliothèques, que plusieurs paquets chargent dans l'environnement, et non quelque chose que PHP lit de lui-même.
 
@@ -216,6 +216,6 @@ Les deux erreurs classiques tiennent au moment où l'on fait les choses.
 
 La première consiste à écrire des tests qui touchent la base de données par défaut : ils passent sur la machine de l'auteur, prennent des minutes en CI, et finissent par ne plus être lancés. Testez la fonction, passez la dépendance par le constructeur, et gardez les tests d'intégration dans leur propre dossier avec leur propre suite dans `phpunit.xml`, pour qu'ils s'exécutent quand on le décide.
 
-La seconde consiste à lancer l'analyse statique à la fin du projet. Une base de code qui atteint le niveau 8 dès le premier jour y reste sans effort, alors qu'une base de code qui rencontre PHPStan après deux ans l'accueille avec quatre mille erreurs et une baseline que personne ne réduit. Ajoutez l'analyseur au premier commit, au niveau le plus élevé qui passe, et montez-le dès que c'est possible.
+La seconde consiste à lancer l'analyse statique à la fin du projet. Une base de code qui atteint le niveau 8 dès le premier jour y reste sans y penser, alors qu'une base de code qui rencontre PHPStan après deux ans l'accueille avec quatre mille erreurs et une baseline que personne ne réduit. Ajoutez l'analyseur au premier commit, au niveau le plus élevé qui passe, et montez-le dès que c'est possible.
 
 Une fois les outils en place, il reste la question que tout développeur polyglotte pose la première semaine, celle de l'asynchrone, et [Concurrence et performance](ch13-concurrency-and-performance.md) y répond.

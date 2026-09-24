@@ -24,7 +24,7 @@ var_dump($card === Suit::Hearts); // true
 
 `enum` ouvre la définition comme `class` le ferait, et chaque ligne `case` déclare une des valeurs permises. **Une énumération est un type doté d'une liste fermée de valeurs, et ces valeurs s'appellent des cas.** `Suit::Hearts` s'écrit comme une constante de classe : on atteint un cas par le nom de l'énumération.
 
-La ligne `var_dump` montre quelque chose qu'une chaîne ne vous a jamais dit. `Suit::Hearts` est une valeur unique. Il n'en existe qu'un dans tout votre programme, quel que soit le nombre de variables qui pointent dessus, et c'est pourquoi le `===` de la ligne suivante répond `true` sans hésiter.
+La ligne `var_dump` montre quelque chose qu'une chaîne ne vous a jamais dit. `Suit::Hearts` est une valeur unique. Il n'en existe qu'une dans tout votre programme, quel que soit le nombre de variables qui pointent dessus, et c'est pourquoi le `===` de la ligne suivante répond `true` sans hésiter.
 
 <img src="images/ch06-suit-singleton.png" alt="Quatre cartes à jouer épinglées sur un tableau, une par couleur, avec trois étiquettes de variables reliées par des ficelles à la même carte de cœur" width="480">
 
@@ -44,7 +44,7 @@ echo describe(Suit::Spades); // You drew a Spades.
 
 Chaque cas porte une propriété intégrée `->name` : l'identifiant sous lequel vous l'avez déclaré, sous forme de chaîne. Pratique pour un journal, mais ce n'est qu'une étiquette. Y bâtir de la logique reviendrait à bâtir sur l'orthographe de votre propre code.
 
-Essayez : appelez `describe('Spades')` avec une simple chaîne, et lisez le `TypeError`. Ce message, c'est l'énumération qui fait son travail.
+Essayez : appelez `describe('Spades')` avec une simple chaîne, et lisez la `TypeError`. Ce message, c'est l'énumération qui fait son travail.
 
 ## Énumérations adossées
 

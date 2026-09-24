@@ -37,7 +37,7 @@ if ($user === null) {
 
 ## Throw when the caller has a precondition to meet
 
-The flip side: throw when something the caller was supposed to guarantee before calling, a precondition, did not hold, and no reasonable default exists. That is the `InvalidAgeException` of the previous section. A negative age is not a normal outcome to branch on, it is a broken promise. The function cannot guess what you meant, so it says so, loudly and specifically:
+The flip side: throw when something the caller was supposed to guarantee before calling, a precondition, did not hold, and no reasonable default exists. That is the `InvalidAgeException` of the previous section. A negative age is not a normal outcome to branch on: it is a broken promise. The function cannot guess what you meant, so it says so, loudly and specifically:
 
 ```php
 <?php

@@ -56,9 +56,9 @@ echo $draft->status->value, PHP_EOL;    // draft
 
 Lisez-le comme vous liriez une pull request. `declare(strict_types=1)` passe le fichier en typage strict : une chaîne passée là où un `int` est déclaré lève une `TypeError` au lieu d'être convertie. L'interrupteur agit fichier par fichier, et un projet l'active dans chacun. L'`enum` est une vraie énumération, un ensemble fermé d'objets singletons qui peuvent porter des méthodes et une valeur sous-jacente. La classe `readonly` (PHP 8.2) rend chaque propriété immuable après construction, et son constructeur déclare et affecte ces propriétés en un seul endroit.
 
-Le reste de la syntaxe, vous le connaissez déjà d'ailleurs : les arguments nommés à l'appel, `?` pour les types nullables, `static` comme type de retour, `fn` pour les closures d'une ligne, et un `match` qui compare strictement, ne tombe jamais dans la branche suivante et lève une exception quand aucune branche ne correspond.
+Le reste de la syntaxe, vous le connaissez déjà par d'autres langages : les arguments nommés à l'appel, `?` pour les types nullables, `static` comme type de retour, `fn` pour les closures d'une ligne, et un `match` qui compare strictement, ne tombe jamais dans la branche suivante et lève une exception quand aucune branche ne correspond.
 
-Ce que l'exemple ne montre pas compte tout autant. Chaque frontière y est typée, alors que le langage ne l'exige pas ; la lecture d'une variable non définie est un avertissement en PHP 8, et les analyseurs statiques en font une erreur. Le sigle `$` sur les variables et la flèche `->` pour l'accès aux membres sont les deux morceaux de syntaxe qui paraissent étrangers à tout le monde, et au bout d'une heure on ne les voit plus.
+Ce que l'exemple ne montre pas compte tout autant. Chaque frontière y est typée, alors que le langage ne l'exige pas ; la lecture d'une variable non définie est un avertissement en PHP 8, et les analyseurs statiques en font une erreur. Le signe `$` sur les variables et la flèche `->` pour l'accès aux membres sont les deux morceaux de syntaxe qui paraissent étrangers à tout le monde, et au bout d'une heure on ne les voit plus.
 
 ## Les ajouts récents
 

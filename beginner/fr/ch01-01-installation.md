@@ -2,7 +2,7 @@
 
 ## Ouvrir un terminal
 
-**Un terminal, c'est une conversation avec votre ordinateur.** Vous tapez une phrase, vous appuyez sur Entrée, et il vous répond à la ligne suivante. Pas de boutons, pas de menus : des mots qui vont et viennent. Tous les exemples de ce livre se passent là, donc commençons par trouver le vôtre.
+**Un terminal, c'est une conversation avec votre ordinateur.** Vous tapez une phrase, vous appuyez sur Entrée, et il vous répond à la ligne suivante. Pas de boutons, pas de menus : des mots qui vont et viennent. Tous les exemples de ce livre se passent là. Première chose à faire : trouver le vôtre.
 
 <img src="images/ch01-terminal-chat.png" alt="Un terminal dessiné comme une conversation : la personne tape une commande, l'ordinateur répond" width="520">
 

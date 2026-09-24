@@ -1,6 +1,6 @@
 # Le système de types
 
-**PHP est typé dynamiquement, et chaque type que vous écrivez est vérifié à l'exécution**, ni à la compilation comme en Java, ni effacé comme en TypeScript. Un paramètre déclaré `int` reçoit un `int`, sinon l'appel lève une `TypeError`, à chaque fois, y compris en production. Tout le modèle tient dans cette phrase, et la nuance se cache dans ce que « reçoit un `int` » veut dire, parce que cette nuance dépend d'un interrupteur.
+**PHP est typé dynamiquement, et chaque type que vous écrivez est vérifié à l'exécution**, pas à la compilation comme en Java, et pas effacé comme en TypeScript. Un paramètre déclaré `int` reçoit un `int`, sinon l'appel lève une `TypeError`, à chaque fois, y compris en production. Tout le modèle tient dans cette phrase, et la nuance se cache dans ce que « reçoit un `int` » veut dire, parce que cette nuance dépend d'un interrupteur.
 
 ## Les types que vous pouvez écrire
 
@@ -104,7 +104,7 @@ var_dump((bool) '0');        // bool(false): "0" is falsy, "0.0" is not
 var_dump(intval('0x1A', 16)); // int(26)
 ```
 
-Les transtypages ne lèvent jamais d'exception et n'émettent jamais d'avertissement, ils font de leur mieux avec ce qu'ils reçoivent. Cela en fait le bon outil pour une entrée utilisateur déjà validée, et le mauvais pour tout ce qui ne l'est pas. Pour vérifier avant de convertir, `is_int()`, `is_string()`, `is_numeric()` et leurs cousines renvoient des booléens, et `filter_var($x, FILTER_VALIDATE_INT)` renvoie l'entier ou `false`.
+Les transtypages ne lèvent jamais d'exception et n'émettent jamais d'avertissement : ils font de leur mieux avec ce qu'ils reçoivent. Cela en fait le bon outil pour une entrée utilisateur déjà validée, et le mauvais pour tout ce qui ne l'est pas. Pour vérifier avant de convertir, `is_int()`, `is_string()`, `is_numeric()` et leurs cousines renvoient des booléens, et `filter_var($x, FILTER_VALIDATE_INT)` renvoie l'entier ou `false`.
 
 Pour voir ce que vous tenez, `var_dump()` affiche le type et la valeur. `get_debug_type()` (PHP 8.0) renvoie le nom que vous écririez dans une déclaration (`int`, `string`, `App\User`), là où l'ancien `gettype()` renvoie `integer` et `object`.
 

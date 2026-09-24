@@ -1,6 +1,6 @@
 # Organiser un projet en plusieurs fichiers
 
-Vous savez déclarer un espace de noms et importer depuis un autre. Ce qui manque encore, c'est le lien entre les espaces de noms et le système de fichiers : pour l'instant, rien ne dit à PHP que `App\Models\Product` vit dans un fichier plutôt qu'un autre. Vous pourriez le mettre n'importe où. Vous ne devriez pas, et l'organisation décrite ici est ce qui rend « n'importe où » définitivement moins tentant.
+Vous savez déclarer un espace de noms et importer depuis un autre. Ce qui manque encore, c'est le lien entre les espaces de noms et le système de fichiers : pour l'instant, rien ne dit à PHP que `App\Models\Product` vit dans un fichier plutôt qu'un autre. Vous pourriez le mettre n'importe où. Vous ne devriez pas, et l'organisation décrite ici est ce qui rend « n'importe où » nettement moins tentant.
 
 ## Une classe, un fichier
 

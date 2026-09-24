@@ -8,7 +8,7 @@ Ce chapitre est une liste de paires qui met en regard ce dont vous vous souvenez
 
 ## La base de données
 
-Vous vous souvenez d'avoir assemblé du SQL à la main pour le passer à `mysql_query()`. **Les fonctions `mysql_*` ont été supprimées en PHP 7.0**, si bien que le code qui les appelle ne tourne sur aucune version supportée du langage. Le remplaçant est PDO avec des requêtes préparées, ce qui referme au passage la faille d'injection que l'ancien style ouvrait :
+Vous vous souvenez d'avoir assemblé du SQL à la main pour le passer à `mysql_query()`. **Les fonctions `mysql_*` ont été supprimées en PHP 7.0**, si bien que le code qui les appelle ne tourne sur aucune version encore maintenue du langage. Le remplaçant est PDO avec des requêtes préparées, ce qui referme au passage la faille d'injection que l'ancien style ouvrait :
 
 ```php
 <?php
@@ -179,7 +179,7 @@ echo $due->modify('+30 days')->format('Y-m-d'); // 2026-03-31
 
 ## Faire passer une base de code PHP 5 sur PHP 8
 
-Elle ne tournera pas telle quelle, les appels `mysql_*` à eux seuls le garantissent. La bonne nouvelle est que la partie mécanique est automatisée : **Rector réécrit l'ancienne syntaxe en syntaxe nouvelle**, version par version, à partir d'une configuration qui nomme votre cible. Pointez-le sur le code, relisez le diff, lancez les tests que vous avez, espérons-le, et recommencez. PHPStan ou Psalm trouvent ensuite ce que Rector n'a pas pu faire. [Tests, analyse statique et outillage](ch12-tooling.md) présente les deux.
+Elle ne tournera pas telle quelle, les appels `mysql_*` à eux seuls le garantissent. La partie mécanique, au moins, est automatisée : **Rector réécrit l'ancienne syntaxe en syntaxe nouvelle**, version par version, à partir d'une configuration qui nomme votre cible. Pointez-le sur le code, relisez le diff, lancez les tests que vous avez, espérons-le, et recommencez. PHPStan ou Psalm trouvent ensuite ce que Rector n'a pas pu faire. [Tests, analyse statique et outillage](ch12-tooling.md) présente les deux.
 
 Prévoyez ce travail dans votre planning, car un site qui tourne encore sous PHP 5 aujourd'hui utilise une version qui ne reçoit plus de correctifs de sécurité depuis 2018, et il représente un risque avant même d'être une base de code.
 

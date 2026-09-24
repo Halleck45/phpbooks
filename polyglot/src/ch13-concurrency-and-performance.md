@@ -33,7 +33,7 @@ You will read code like this inside a library. You will not write it in an appli
 
 ## When you do need async
 
-Some workloads do not fit one-request-one-process: a websocket server holding ten thousand idle connections, long polling, a crawler making a hundred outbound HTTP calls at once. **For those, PHP has async runtimes, and they are libraries, not language features.** Alphabetically: AMPHP, ReactPHP, and Swoole or its fork OpenSwoole, which is an extension. The first two are pure PHP built on fibers and stream selection; Swoole brings its own event loop in C.
+Some workloads do not fit one-request-one-process: a websocket server holding ten thousand idle connections, long polling, a crawler making a hundred outbound HTTP calls at once. **For those, PHP has async runtimes, and they are libraries, not language features.** Alphabetically: AMPHP, ReactPHP, and Swoole or its fork OpenSwoole, the last two being extensions. The first two are pure PHP built on fibers and stream selection; Swoole brings its own event loop in C.
 
 The worker runtimes from [How PHP Runs](ch01-how-php-runs.md), FrankenPHP and RoadRunner, are a different answer to a different question: they keep your application booted between requests, still one request at a time per worker. They cut startup cost. They do not make your code concurrent.
 

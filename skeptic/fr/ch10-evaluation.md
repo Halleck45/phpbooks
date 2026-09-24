@@ -40,7 +40,7 @@ Faites ensuite la seule chose que les benchmarks ne font jamais. Tuez un worker 
 
 ## Jour cinq : l'écosystème et la gouvernance
 
-Cherchez sur Packagist les trois bibliothèques dont votre produit ne peut se passer, et notez pour chacune la date de sa dernière version et son nombre de tickets ouverts. Ouvrez wiki.php.net/rfc et lisez la RFC en cours de vote, puis le fil internals qui la porte. Ouvrez la page des versions supportées de php.net et notez la date à laquelle la version que vous avez choisie cesse de recevoir des correctifs de sécurité. Ouvrez la page Open Collective de la fondation et lisez le dernier mois de transactions, puis les avis de sécurité de php-src et les trois plus récents, avec leur délai entre signalement et correctif. Tout cela tient dans un après-midi, et c'est la matière première que [Gouvernance et pérennité](ch07-governance.md) a résumée pour vous.
+Cherchez sur Packagist les trois bibliothèques dont votre produit ne peut se passer, et notez pour chacune la date de sa dernière version et son nombre de tickets ouverts. Ouvrez wiki.php.net/rfc et lisez la RFC en cours de vote, puis le fil internals qui la porte. Ouvrez la page des versions maintenues de php.net et notez la date à laquelle la version que vous avez choisie cesse de recevoir des correctifs de sécurité. Ouvrez la page Open Collective de la fondation et lisez le dernier mois de transactions, puis les trois avis de sécurité les plus récents de php-src, avec leur délai entre signalement et correctif. Tout cela tient dans un après-midi, et c'est la matière première que [Gouvernance et pérennité](ch07-governance.md) a résumée pour vous.
 
 ## La décision
 
@@ -52,7 +52,7 @@ La semaine a produit des chiffres, et une décision demande des pondérations qu
 | Le débit du runtime suffit-il à mon trafic, sur mon matériel ? | [Débit et latence](ch03-throughput-and-latency.md) | Jour deux, jour quatre |
 | Ma charge de travail tient-elle dans le modèle par requête, ou maintient-elle des connexions, ou consomme-t-elle du CPU ? | [Le runtime](ch02-runtime.md), [Concurrence](ch04-concurrency.md), [Là où PHP est le mauvais choix](ch09-wrong-choice.md) | Jour quatre |
 | Les bibliothèques dont j'ai besoin existent-elles, et sont-elles maintenues ? | [L'écosystème](ch06-ecosystem.md) | Jour trois, jour cinq |
-| Qui maintient le langage, et jusqu'à quand ma version est-elle supportée ? | [Gouvernance et pérennité](ch07-governance.md) | Jour cinq |
+| Qui maintient le langage, et jusqu'à quand ma version est-elle prise en charge ? | [Gouvernance et pérennité](ch07-governance.md) | Jour cinq |
 | Puis-je recruter pour lui, l'héberger, et me payer la mise à niveau annuelle ? | [Coût de possession](ch08-cost.md) | Vos sites d'offres d'emploi, votre équipe plateforme |
 | Tourne-t-il, à l'échelle, dans des organisations dont je croirais qu'elles ont vérifié ? | [Empreinte](ch01-footprint.md) | Leurs documents publics |
 

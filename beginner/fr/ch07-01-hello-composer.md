@@ -44,7 +44,7 @@ Ajoutons quelque chose de réel. [`nunomaduro/termwind`](https://github.com/nuno
 $ composer require nunomaduro/termwind
 ```
 
-Deux choses apparaissent. Un répertoire `vendor/` contient le code téléchargé. Un fichier `composer.lock` note la version *exacte* qui a été installée, jusqu'au dernier commit, pour que vos collègues et votre serveur de production installent très précisément la même chose. **`composer.json` dit ce que vous acceptez ; `composer.lock` dit ce que vous avez réellement obtenu.** Committez aussi le fichier lock. `vendor/` reste hors du gestionnaire de versions, puisque n'importe qui peut le reconstruire à partir du lock avec `composer install`.
+Deux choses apparaissent. Un répertoire `vendor/` contient le code téléchargé. Un fichier `composer.lock` note la version *exacte* qui a été installée, jusqu'au dernier commit, pour que vos collègues et votre serveur de production installent très précisément la même chose. **`composer.json` dit ce que vous acceptez ; `composer.lock` dit ce que vous avez réellement obtenu.** Versionnez aussi le fichier lock. `vendor/` reste hors du gestionnaire de versions, puisque n'importe qui peut le reconstruire à partir du lock avec `composer install`.
 
 <img src="images/ch07-composer-shopping.png" alt="Composer comme une séance de courses : composer.json est la liste écrite à la main, vendor/ le sac de paquets rapporté à la maison, et composer.lock le ticket de caisse imprimé avec les versions exactes" width="600">
 

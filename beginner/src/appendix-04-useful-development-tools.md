@@ -33,13 +33,13 @@ Pick one, wire it into your editor or a pre-commit hook, and stop having style d
 
 ## Xdebug
 
-A step debugger and profiler for PHP. Instead of scattering `var_dump()` calls through your code and rerunning it, Xdebug lets you pause execution at a breakpoint, inspect every variable in scope, and step through line by line, from your editor, in real time. It also profiles: showing you exactly where a slow request spent its time. Covered properly, installation and all, in [Chapter 13](ch13-02-xdebug.md).
+A step debugger and profiler for PHP. Instead of scattering `var_dump()` calls through your code and rerunning it, Xdebug lets you pause execution at a breakpoint, inspect every variable in scope, and step through line by line, from your editor, in real time. It also profiles, showing you exactly where a slow request spent its time. Covered properly, installation and all, in [Chapter 13](ch13-02-xdebug.md).
 
 ## Editors and IDEs
 
 PHP doesn't require any particular editor, but two are worth knowing about:
 
-**PhpStorm**: a dedicated PHP IDE with deep, built-in understanding of the language: refactoring, navigation, and inline static analysis that rivals PHPStan without leaving the editor. Commercial, free for students and open source maintainers.
+**PhpStorm**: a dedicated PHP IDE with deep, built-in understanding of the language (refactoring, navigation, and inline static analysis that rivals PHPStan without leaving the editor). Commercial, free for students and open source maintainers.
 
 **VS Code**, with the PHP extensions (Intelephense or the official PHP extension pack): free, general-purpose, and perfectly capable once configured. What most PHP developers who don't use PhpStorm reach for.
 

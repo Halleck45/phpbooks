@@ -25,14 +25,14 @@ Content structure is defined through Craft's own admin UI (fields, sections, ent
 
 ## Licensing
 
-Craft's core CMS is source-available (you can read and modify the code), but running it commercially requires a paid license per project, which is what earns it the `$`. There's a free tier for a single-user, non-commercial site to evaluate it.
+Craft's core CMS is source-available (you can read and modify the code), but running it commercially requires a paid license per project, which is what earns it the `$`. There's a free tier for evaluating it on a single-user, non-commercial site.
 
 ## When to reach for this
 
-Agencies building custom, editorial-heavy sites for clients who have specific, non-generic content needs and a budget for licensing, and who value a content model that fits the client exactly rather than one that's stretched to fit.
+Agencies building custom, editorial-heavy sites for clients who have specific, non-generic content needs and a budget for licensing, and who value a content model that fits them exactly rather than one that's stretched to fit.
 
 ## When it's the wrong fit
 
 A tight budget, a generic blog-shaped brief, or a client who wants access to WordPress's enormous plugin marketplace. Craft's plugin ecosystem is real but far smaller.
 
-> **Under the hood:** Craft's flexible field system is built on top of a fairly conventional relational database schema, using PHP's dynamic property access and its own query builder to make wildly different content structures feel like first-class, typed data in Twig templates rather than loosely-typed arrays.
+> **Under the hood:** Craft's flexible field system is built on top of a fairly conventional relational database schema, using PHP's dynamic property access and its own query builder to make wildly different content structures feel like first-class, typed data in Twig templates rather than loosely typed arrays.

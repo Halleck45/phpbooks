@@ -104,7 +104,7 @@ $ php phpgrep.php apple missing.txt
 Error: file "missing.txt" not found.
 ```
 
-Mieux, parce qu'au moins c'est honnête. Mais regardez ce que cette vérification achète, et ce qu'elle n'achète pas. `file_exists()` ne répond qu'à « y a-t-il quelque chose à ce chemin ». Elle ne dit rien sur le fait que *vous* puissiez le lire : un fichier qui existe mais dont les permissions sont verrouillées passe ce contrôle, puis échoue dans `file()` exactement comme avant, avertissement compris. Et chaque endroit de ce programme qui ouvrira un jour un fichier aurait besoin de la même vérification collée devant, chaque copie étant une occasion d'en oublier une.
+Mieux, parce qu'au moins c'est honnête. Mais regardez ce que cette vérification vous apporte, et ce qu'elle ne vous apporte pas. `file_exists()` ne répond qu'à « y a-t-il quelque chose à ce chemin ». Elle ne dit rien sur le fait que *vous* puissiez le lire : un fichier qui existe mais dont les permissions sont verrouillées passe ce contrôle, puis échoue dans `file()` exactement comme avant, avertissement compris. Et chaque endroit de ce programme qui ouvrira un jour un fichier aurait besoin de la même vérification collée devant, chaque copie étant une occasion d'en oublier une.
 
 <img src="images/ch14-locked-door.png" alt="Deux portes côte à côte : la première manque, il ne reste qu'un cadre vide ; la seconde existe mais porte un cadenas. file_exists() ne voit que le premier problème, is_readable() voit les deux" width="520">
 

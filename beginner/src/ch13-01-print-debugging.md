@@ -83,7 +83,7 @@ $snapshot = print_r($user, true);
 error_log("user state: {$snapshot}");
 ```
 
-A third function, `var_export()`, sits between the two. It shows about what `print_r()` shows, but formats it as valid PHP source: `var_export($user)` prints something you could paste straight back into a script as an array literal. Handy for capturing a real value as a test fixture.
+A third function, `var_export()`, sits between the two. It shows roughly what `print_r()` shows, but formats it as valid PHP source: `var_export($user)` prints something you could paste straight back into a script as an array literal. Handy for capturing a real value as a test fixture.
 
 ## The limits of printing things
 

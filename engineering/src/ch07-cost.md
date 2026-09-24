@@ -4,11 +4,11 @@
 
 ## The license, precisely
 
-PHP is distributed under the PHP License, an OSI-approved, permissive license that does not require you to open-source anything you build with it. Today's supported floor for this book, PHP 8.4, ships under License version 3.01. A newer license, version 4, based on the Modified BSD (BSD-3-Clause) text, applies starting with PHP 8.6, which had not shipped as of this writing; treat that as an upcoming change to track, not as something already governing the version you are most likely deploying today. Neither license requires a fee, a registration, or a usage report to anyone.
+PHP is distributed under the PHP License, an OSI-approved, permissive license that does not require you to open-source anything you build with it. Today's supported floor for this book, PHP 8.4, ships under version 3.01 of that license. A newer license, version 4, based on the Modified BSD (BSD-3-Clause) text, applies starting with PHP 8.6, which had not shipped as of this writing; treat that as an upcoming change to track, not as something already governing the version you are most likely deploying today. Neither license requires a fee, a registration, or a usage report to anyone.
 
 ## What "free" actually includes
 
-Packagist, the public registry Composer, PHP's dependency manager, resolves packages against, lists close to half a million published packages, with roughly 5.8 million published versions between them, and a cumulative install count approaching 200 billion since the registry's launch in April 2012.
+Packagist, the public registry that Composer (PHP's dependency manager) resolves packages against, lists close to half a million published packages, with roughly 5.8 million published versions between them, and a cumulative install count approaching 200 billion since the registry's launch in April 2012.
 
 | Metric | Approximate figure |
 |---|---|
@@ -36,7 +36,7 @@ Part of PHP's reputation, addressed once in [The Reputation](ch01-introduction.m
 
 ## What this chapter cannot price
 
-Two cost questions this book would like to answer with a number, it cannot, and it says so here rather than guessing. A clean, sourced, PHP-versus-other-language hosting-cost comparison does not exist without relying on a specific hosting vendor's own marketing figures, which this book's sourcing rules exclude; the architectural argument above is offered instead of a number precisely because the number is not available without that compromise. The salary and job-demand gap already named in [Who Maintains It](ch06-who-maintains-it.md) applies here too: this book cannot tell you, with a defensible source, whether a PHP developer costs more or less to hire than a developer in another language in your specific market, and a number invented to fill that gap would be worse than no number at all.
+There are two cost questions this book would like to answer with a number and cannot, and it says so here rather than guessing. A clean, sourced, PHP-versus-other-language hosting-cost comparison does not exist without relying on a specific hosting vendor's own marketing figures, which this book's sourcing rules exclude; the architectural argument above is offered instead of a number precisely because the number is not available without that compromise. The salary and job-demand gap already named in [Who Maintains It](ch06-who-maintains-it.md) applies here too: this book cannot tell you, with a defensible source, whether a PHP developer costs more or less to hire than a developer in another language in your specific market, and a number invented to fill that gap would be worse than no number at all.
 
 **What to verify yourself.** Check [packagist.org/statistics](https://packagist.org/statistics) directly for the current package, version, and install counts, and compare them to the figures printed here; the gap is a live demonstration of how fast the ecosystem is still growing. Then check [php.net/license](https://php.net/license) directly against whichever PHP version you are actually planning to run, since the license version that applies depends on that specific version, not on the one this book treats as current.
 

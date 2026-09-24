@@ -118,4 +118,4 @@ A handful of items below have no dictionary entry yet. They're listed anyway, pl
 - **`$this`** and **`STDIN`**: both used constantly from [Chapter 2](ch02-00-guessing-game-tutorial.md) onward, neither has its own dictionary entry yet.
 - **`random_int()`**: PHP's cryptographically secure random integer function, also not yet listed.
 
-The gaps are worth noticing as much as the links. A few things this book leans on hard, `$this`, `STDIN`, PSR-4, custom exception classes, don't have an entry in the dictionary yet. If you find yourself explaining one of them to someone else, that explanation is most of a dictionary entry already.
+The gaps are worth noticing as much as the links. A few things this book leans on hard (`$this`, `STDIN`, PSR-4, custom exception classes) don't have an entry in the dictionary yet. If you find yourself explaining one of them to someone else, that explanation is most of a dictionary entry already.

@@ -64,7 +64,7 @@ addApple($cart);
 echo count($cart->items), PHP_EOL; // 1, the caller sees the change
 ```
 
-No `&` is involved. Reference parameters (`&$x`) are a different mechanism, for variables, and you almost never need them with objects.
+No `&` is involved: reference parameters (`&$x`) are a different mechanism, for variables, and you almost never need them with objects.
 
 `clone $cart` makes a shallow copy: a new object whose properties hold the same values, so an object stored inside is shared between the two copies. Define `__clone()` if the copy needs its own inner objects.
 
@@ -177,7 +177,7 @@ $a->touch();
 
 Traits are handy for cross-cutting helpers and easy to overuse. A class that `use`s five traits is five files you have to read to know what it does. Prefer composition where you can.
 
-`static` versus `self` is a one-paragraph subject. `self` names the class where the code is written; `static` names the class of the object at runtime. In a static factory method inside a parent class, `new static()` builds the subclass that was actually called, `new self()` always builds the parent.
+`static` versus `self` is a one-paragraph subject. `self` names the class where the code is written; `static` names the class of the object at runtime. In a static factory method inside a parent class, `new static()` builds the subclass that was actually called; `new self()` always builds the parent.
 
 ## Construction
 
@@ -220,7 +220,7 @@ For immutable objects, "change" means "make a modified copy". PHP 8.5 gives that
 
 Any object can print itself by implementing `__toString()`. Declaring it makes the class implement `Stringable` (PHP 8.0) automatically, so you can type a parameter as `string|Stringable` and accept both.
 
-The other double-underscore methods are hooks the engine calls: `__get` and `__set` run when code touches a property that does not exist, `__call` when it calls a method that does not exist. Frameworks and ORMs use them to build fluent APIs and lazy models. Recognise them; do not reach for them in application code. Related: creating a property that was never declared (`$obj->foo = 1` with no `$foo` in the class) is deprecated since PHP 8.2 and is planned to become an error in the next major version. Declare your properties.
+The other double-underscore methods are hooks the engine calls: `__get` and `__set` run when code touches a property that does not exist, `__call` when it calls a method that does not exist. Frameworks and ORMs use them to build fluent APIs and lazy models. Recognise them; do not reach for them in application code. Related: creating a property that was never declared (`$obj->foo = 1` with no `$foo` in the class) has been deprecated since PHP 8.2 and is planned to become an error in the next major version. Declare your properties.
 
 **Attributes (PHP 8.0) are structured metadata on a class, method, property or parameter, read through reflection.** Java annotations and C# attributes are the direct anchor:
 

@@ -14,6 +14,6 @@ La file d'attente du [chapitre 18](ch18-02-queues-and-processes.md) grandit en l
 
 ## Étendre le moteur lui-même
 
-Les pilotes PDO et Xdebug que vous avez déjà utilisés sont des extensions PHP : du code écrit en C contre l'API du Zend Engine, installé via PECL. Zephir est un langage de plus haut niveau qui se compile en une vraie extension, pour les équipes qui veulent ce niveau de performance sans écrire du C brut à la main.
+Les pilotes PDO et Xdebug que vous avez déjà utilisés sont des extensions PHP : du code écrit en C sur l'API du Zend Engine, installé via PECL. Zephir est un langage de plus haut niveau qui se compile en une vraie extension, pour les équipes qui veulent ce niveau de performance sans écrire du C brut à la main.
 
 **Cette couche mérite d'être connue et mérite rarement d'être utilisée.** Presque tout ce dont une application a besoin se fait en PHP ordinaire, côté utilisateur. Écrire une extension, c'est une décision pour le jour où c'est PHP lui-même qui bloque, pas l'application posée dessus, et on se retrouve rarement là.

@@ -39,4 +39,4 @@ This isn't a formality. Without it, Composer will happily let your package insta
 
 ## Don't fear upgrading
 
-PHP takes backward compatibility within a major version seriously. Code written for PHP 8.0 runs, largely unmodified, on PHP 8.3. Deprecation notices generally show up one or two versions before something is actually removed, giving you real warning rather than a surprise. Upgrading is rarely the ordeal older reputations about PHP suggest: the bigger risk, in practice, is staying on an unsupported version and quietly losing security patches.
+PHP takes backward compatibility within a major version seriously. Code written for PHP 8.0 runs, largely unmodified, on PHP 8.3. Deprecation notices generally show up one or two versions before something is actually removed, giving you real warning rather than a surprise. Upgrading is rarely the ordeal PHP's older reputation suggests: the bigger risk, in practice, is staying on an unsupported version and quietly losing security patches.

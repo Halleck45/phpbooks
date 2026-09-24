@@ -52,4 +52,4 @@ The default choice for a Laravel project exposing an API alongside a web app, or
 
 A large, rapidly evolving data model where writing a Resource class by hand for every model becomes real maintenance overhead. That's the case [API Platform](ch06-01-api-platform-from-one-class.md) is built for.
 
-> **Under the hood:** Sanctum's API tokens are stored hashed, the same way passwords are, using PHP's `hash()` function rather than `password_hash()` since tokens are high-entropy random strings rather than user-chosen passwords, so a fast hash is an appropriate and sufficient defense here.
+> **Under the hood:** Sanctum's API tokens are stored hashed, like passwords, but with PHP's `hash()` function rather than `password_hash()`: tokens are high-entropy random strings rather than user-chosen passwords, so a fast hash is an appropriate and sufficient defense here.

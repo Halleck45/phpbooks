@@ -1,6 +1,6 @@
 # WordPress: Block Themes and the Site Editor
 
-WordPress still powers a large share of the content web, and modern WordPress is a genuinely different tool than the one its reputation is often stuck on. Block themes and the Site Editor let a client build and rearrange full page layouts, headers, and footers visually, using the same block editor they already use for posts, with no PHP template files required for common layout changes.
+WordPress still powers a large share of the content web, and modern WordPress is a genuinely different tool from the one its reputation is often stuck on. Block themes and the Site Editor let a client build and rearrange full page layouts, headers, and footers visually, using the same block editor they already use for posts, with no PHP template files required for common layout changes.
 
 ```bash
 wp core download --path=my-site
@@ -42,4 +42,4 @@ Marketing sites, blogs, and small business sites where the client explicitly wan
 
 A site that's mostly custom application logic wearing a thin content layer. Forcing that into WordPress's content model usually costs more time than it saves.
 
-> **Under the hood:** Block themes store their layout as structured HTML with block comments (`<!-- wp:heading -->`), not PHP template tags. WordPress's own PHP renders those blocks at request time, but the *authoring* format is deliberately close to plain markup, which is what makes the visual editor able to read it back reliably.
+> **Under the hood:** Block themes store their layout as structured HTML with block comments (`<!-- wp:heading -->`), not PHP template tags. WordPress's own PHP renders those blocks at request time, but the *authoring* format is deliberately close to plain markup, which is what lets the visual editor read it back reliably.

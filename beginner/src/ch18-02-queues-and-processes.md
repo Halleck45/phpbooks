@@ -38,4 +38,4 @@ Queues are the right tool when many small units of work arrive over time. Someti
 
 There is also the `pcntl` extension, which lets a PHP script fork itself into several copies with `pcntl_fork()`: genuinely parallel PHP, as separate OS processes, each with its own memory. Honestly, it is a little unforgiving. Forking only exists on Unix-like systems, not on Windows, and reasoning correctly about several processes at once takes real care. It shows up in command-line tools and daemons far more than in web applications.
 
-Both are worth knowing exist. **Neither is something to reach for before a job queue**, which solves the same problem, "run this later, not now", with far less to get wrong.
+Both are worth knowing about. **Neither is something to reach for before a job queue**, which solves the same problem, "run this later, not now", with far less to get wrong.
