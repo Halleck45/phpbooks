@@ -1,9 +1,0 @@
-# Functional Features: Closures and Generators
-
-Sort a list of prices. Keep only the ones above twenty. Add tax to each. Three different jobs, and in each one the part that matters is a single line of logic: how to compare two prices, what "expensive" means, what the tax rate is. **PHP lets you write that line of logic as a value and hand it to another function**, and it gives you two ways to write it. Back in [Chapter 3](ch03-03-how-functions-work.md) you met the first one in passing: the closure, a function without a name. A closure can pick up variables from the code around it, as long as you say which ones. The arrow function, the second way, is shorter and picks them up on its own.
-
-The second half of the chapter is about a different problem: the data itself. Sometimes the series you are working through is too big to build in one go, or too slow to produce, or you only need the first few items anyway. **A generator is a function that hands back its results one at a time, pausing between each**, instead of assembling the whole pile and returning it. It looks almost like an ordinary function, and it changes what a function can do.
-
-Then both ideas go to work. The `phpgrep` tool from [Chapter 14](ch14-00-a-cli-project.md) reads a whole file and collects every matching line into an array before it prints anything. Fine for a small file, a real problem for a large one. You will rewrite `search()` as a generator and watch the first match appear before the file has been read to the end.
-
-The chapter closes with a measurement rather than an opinion: the same task written as a plain loop, as a generator, and with `array_map()` and `array_filter()`, timed and weighed, so that you choose between them for a reason and not because one of them was in the last piece of code you read.
