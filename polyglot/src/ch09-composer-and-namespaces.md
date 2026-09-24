@@ -137,7 +137,7 @@ echo Invoice::class, PHP_EOL; // App\Billing\Invoice
 The PHP-FIG is the group where framework and library authors agree on interfaces, published as PSRs. **A PSR is a contract, not a library**: implementations come from many vendors, and you can swap one for another because your code only sees the interface. The ones you will meet in the first week:
 
 - **PSR-4** autoloading, above.
-- **PER Coding Style**, the successor of PSR-12: brace placement, indentation, naming. PHP-CS-Fixer or PHP_CodeSniffer enforce it.
+- **PER Coding Style**, the successor of PSR-12: brace placement, indentation, naming. PHP-CS-Fixer or PHP_CodeSniffer enforces it.
 - **PSR-3** `LoggerInterface`. Every library logs through it; you plug in the logger you like.
 - **PSR-7**, **PSR-15** and **PSR-17**: HTTP request and response objects, middleware, and their factories. The language's own `$_GET` and `header()` are covered in [A Web Request, Without a Framework](ch11-web-request.md); PSR-7 is the object model libraries share on top.
 - **PSR-11** `ContainerInterface`, so a library can ask any container for a service.

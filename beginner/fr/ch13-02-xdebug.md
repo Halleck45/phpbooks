@@ -68,7 +68,7 @@ Posez un point d'arrêt sur la ligne `if ($name === '')`. Lancez le serveur int�
 
 ## Le profilage, en bref
 
-`xdebug.mode=profile` allume une troisième capacité. Au lieu de mettre l'exécution en pause, Xdebug mesure la durée de chaque appel de fonction et écrit le résultat dans un fichier « cachegrind » (`xdebug.output_dir` dit où). Des outils comme QCachegrind, ou le profileur intégré à PhpStorm, lisent ce fichier et vous montrent exactement où une requête lente a passé son temps : quelle fonction, appelée combien de fois, pour quelle part du total. Traquer la lenteur est un autre métier que traquer une mauvaise réponse, plus proche de ce que le [chapitre 15](ch15-04-performance.md) raconte sur les boucles et les générateurs, mais c'est la même extension, et elle vaut d'être connue.
+`xdebug.mode=profile` allume une troisième capacité. Au lieu de mettre l'exécution en pause, Xdebug mesure la durée de chaque appel de fonction et écrit le résultat dans un fichier « cachegrind » (`xdebug.output_dir` dit où). Des outils comme QCachegrind, ou le profileur intégré à PhpStorm, lisent ce fichier et vous montrent exactement où une requête lente a passé son temps : quelle fonction, appelée combien de fois, pour quelle part du total. Traquer la lenteur est un autre métier que traquer une mauvaise réponse, plus proche de ce que le [chapitre 15](ch15-04-performance.md) raconte sur les boucles et les générateurs, mais c'est la même extension, et elle mérite d'être connue.
 
 ## Choisir entre les deux outils
 

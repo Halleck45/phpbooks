@@ -25,7 +25,7 @@ $args = [
 $query = new WP_Query($args); // ElasticPress intercepts this transparently
 ```
 
-The application code barely changes; `WP_Query` still works the same way, ElasticPress just answers it from Elasticsearch instead of MySQL underneath.
+The application code barely changes: `WP_Query` still works the same way, and ElasticPress just answers it from Elasticsearch instead of MySQL underneath.
 
 ## When to reach for this
 

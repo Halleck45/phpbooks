@@ -40,7 +40,7 @@ For projects that want a thinner layer with less abstraction, the official `open
 
 ## When to reach for this
 
-A specific, bounded feature: summarization, classification, a support chatbot, content suggestions, added to an app that's otherwise a normal Laravel product.
+A specific, bounded feature (summarization, classification, a support chatbot, content suggestions) added to an app that's otherwise a normal Laravel product.
 
 ## When it's the wrong fit
 

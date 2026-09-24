@@ -129,7 +129,7 @@ $price->cents = 0;  // Error: Cannot modify readonly property
 
 Promotion arrived in 8.0, `readonly` in 8.1. Property hooks (PHP 8.4) handle the case where a getter really did compute something, by attaching `get` and `set` blocks to the property itself. [Classes](ch06-classes.md) shows all of it.
 
-Two things you remember are now removed or deprecated. PHP 4 style constructors, where the method was named after the class, were removed in 8.0. Dynamic properties, assigning `$obj->whatever` without declaring it, are deprecated since 8.2 and are planned to become an error in the next major version.
+Two things you remember are now removed or deprecated. PHP 4 style constructors, where the method was named after the class, were removed in 8.0. Dynamic properties, assigning `$obj->whatever` without declaring it, have been deprecated since 8.2 and are planned to become an error in the next major version.
 
 ## Errors
 
@@ -167,7 +167,7 @@ $due = new DateTimeImmutable('2026-03-01', new DateTimeZone('UTC'));
 echo $due->modify('+30 days')->format('Y-m-d'); // 2026-03-31
 ```
 
-`utf8_encode()` and `utf8_decode()` only ever handled Latin-1 and are deprecated since 8.2; `mb_convert_encoding()` does the job for any encoding. `ereg_*` was removed in 7.0, `preg_*` stayed. The `${var}` form of string interpolation is deprecated since 8.2; write `{$var}`. [Strings, Numbers, Dates, and JSON](ch10-standard-library.md) has the rest.
+`utf8_encode()` and `utf8_decode()` only ever handled Latin-1 and have been deprecated since 8.2; `mb_convert_encoding()` does the job for any encoding. `ereg_*` was removed in 7.0, `preg_*` stayed. The `${var}` form of string interpolation has been deprecated since 8.2; write `{$var}`. [Strings, Numbers, Dates, and JSON](ch10-standard-library.md) has the rest.
 
 ## Small things that are gone
 
@@ -179,7 +179,7 @@ echo $due->modify('+30 days')->format('Y-m-d'); // 2026-03-31
 
 ## Getting a PHP 5 codebase onto PHP 8
 
-It will not run as is. The `mysql_*` calls alone guarantee that. The good news is that the mechanical part is automated: **Rector rewrites old syntax to new syntax**, version by version, from a config that names your target. Point it at the code, review the diff, run the tests you hopefully have, and repeat. PHPStan or Psalm then find what Rector could not. [Tests, Static Analysis, and Tooling](ch12-tooling.md) introduces both.
+It will not run as is. The `mysql_*` calls alone guarantee that. The mechanical part, at least, is automated: **Rector rewrites old syntax to new syntax**, version by version, from a config that names your target. Point it at the code, review the diff, run the tests you hopefully have, and repeat. PHPStan or Psalm then find what Rector could not. [Tests, Static Analysis, and Tooling](ch12-tooling.md) introduces both.
 
 Plan for the work. A site still running PHP 5 today is running a version that stopped receiving security fixes in 2018. It is a liability before it is a codebase.
 

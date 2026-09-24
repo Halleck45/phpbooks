@@ -20,7 +20,7 @@ echo strtoupper($word), PHP_EOL;  // CAFé
 echo mb_strtoupper($word), PHP_EOL; // CAFÉ
 ```
 
-**Pour tout texte qu'un humain lira, utilisez la famille `mb_`** : `mb_strlen`, `mb_substr`, `mb_strtoupper`, `mb_str_pad`, et depuis PHP 8.4 `mb_trim`, `mb_ucfirst` et `mb_lcfirst`. Elles supposent UTF-8 par défaut, et les fonctions nues restent utiles pour ce pour quoi elles ont été conçues : données binaires, protocoles ASCII, hachages, et tout ce où l'octet est vraiment l'unité.
+**Pour tout texte qu'un humain lira, utilisez la famille `mb_`** : `mb_strlen`, `mb_substr`, `mb_strtoupper`, `mb_str_pad`, et depuis PHP 8.4 `mb_trim`, `mb_ucfirst` et `mb_lcfirst`. Elles supposent UTF-8 par défaut, et les fonctions nues restent utiles pour ce pour quoi elles ont été conçues : données binaires, protocoles ASCII, hachages, et tout ce qui se compte vraiment en octets.
 
 Pour tout ce qui dépend de la langue de l'utilisateur, l'extension `intl` enveloppe ICU : `Normalizer` pour ramener formes composées et décomposées à une forme canonique, `Collator` pour trier « é » à côté de « e » selon la langue du lecteur, `NumberFormatter` pour les devises et les pluriels, `IntlDateFormatter` pour des dates écrites comme un lecteur français ou japonais les attend.
 
@@ -113,7 +113,7 @@ var_dump(abs(0.1 + 0.2 - 0.3) < PHP_FLOAT_EPSILON);      // true
 var_dump(round(2.5), round(3.5), round(-2.5));           // 3, 4, -3: half away from zero
 ```
 
-Les flottants sont des doubles IEEE 754, avec les réserves habituelles. `round` arrondit par défaut la moitié en s'éloignant de zéro et accepte une constante de mode pour l'arrondi bancaire. **L'argent, c'est soit des entiers dans la plus petite unité (les centimes), soit de la précision arbitraire** : `bcadd`, `bcmul` et consorts travaillent sur des chaînes, et PHP 8.4 les enveloppe dans `BcMath\Number`, un objet immuable qui supporte les opérateurs.
+Les flottants sont des doubles IEEE 754, avec les réserves habituelles. `round` arrondit par défaut la moitié en s'éloignant de zéro et accepte une constante de mode pour l'arrondi bancaire. **L'argent, c'est soit des entiers dans la plus petite unité (les centimes), soit de la précision arbitraire** : `bcadd`, `bcmul` et consorts travaillent sur des chaînes, et PHP 8.4 les enveloppe dans `BcMath\Number`, un objet immuable qui accepte les opérateurs.
 
 ```php
 // PHP 8.4

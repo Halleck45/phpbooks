@@ -12,7 +12,7 @@ The terms I use that you may not know if you come from another ecosystem, in alp
 
 **Hack and HHVM.** Hack is a language that forked from PHP at Facebook in 2014, and HHVM is its virtual machine. HHVM dropped support for PHP itself in 2019. Organisations that run Hack do not run PHP, and I do not count them as PHP users.
 
-**JIT.** The just-in-time compiler that ships inside OPcache since PHP 8.0, compiling hot code paths to machine code. It benefits CPU-bound code far more than typical web requests, and I say so wherever a JIT figure appears.
+**JIT.** The just-in-time compiler that has shipped inside OPcache since PHP 8.0, compiling hot code paths to machine code. It benefits CPU-bound code far more than typical web requests, and I say so wherever a JIT figure appears.
 
 **NTS and ZTS.** Non-thread-safe and Zend-thread-safe builds of the interpreter. The standard build is NTS, because the process model never needed threads. ZTS builds exist for embedding and for the `parallel` extension.
 

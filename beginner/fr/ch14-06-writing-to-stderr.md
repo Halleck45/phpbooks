@@ -12,7 +12,7 @@ $ cat results.txt
 Error: Cannot read file: missing.txt
 ```
 
-Le message d'erreur a atterri *dans* `results.txt`. Ce qui lira ce fichier ensuite (un autre script, un rapport, un collègue persuadé qu'il ne contient que des résultats) a maintenant une ligne d'erreur mêlée à ses données, sans rien qui la distingue d'un vrai résultat. C'est exactement le mélange que les deux flux existent pour empêcher.
+Le message d'erreur a atterri *dans* `results.txt`. Ce qui lira ce fichier ensuite (un autre script, un rapport, un collègue persuadé qu'il ne contient que des résultats) a maintenant une ligne d'erreur mêlée à ses données, sans rien qui la distingue d'un vrai résultat. Les deux flux existent précisément pour empêcher ce mélange.
 
 <img src="images/ch14-two-streams.png" alt="Un programme d'où sortent deux tuyaux : STDOUT coule dans un fichier results.txt, STDERR coule vers l'écran. Les deux ne se rejoignent jamais" width="600">
 
@@ -55,7 +55,7 @@ function main(array $argv): int
 exit(main($argv));
 ```
 
-Deux lignes ont changé, `echo` est devenu `fwrite(STDERR, ...)` sur les deux chemins d'erreur, et le comportement à la frontière n'a plus rien à voir :
+Deux lignes ont changé, `echo` est devenu `fwrite(STDERR, ...)` sur les deux chemins d'erreur, et le comportement vu de l'extérieur n'a plus rien à voir :
 
 ```console
 $ php phpgrep.php apple missing.txt > results.txt

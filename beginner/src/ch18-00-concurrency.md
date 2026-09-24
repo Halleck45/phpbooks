@@ -2,7 +2,7 @@
 
 You can skip this chapter, come back to it in a year, and lose nothing.
 
-That is an unusual thing to read in a programming book, so here is why it is true. Most PHP developers write years of production code, real code serving real traffic, without ever touching a thread, a fiber, or a process fork. That is not a gap in their skills. **PHP was designed so that ordinary applications never have to deal with concurrency themselves**, and for the vast majority of PHP work, from a small business site to a large online shop, that is still the right way to work.
+That is an unusual thing to read in a programming book, so here is why it is true. Most PHP developers write years of production code, real code serving real traffic, without ever touching a thread, a fiber, or a process fork. That is not a gap in their skills. **PHP was designed so that ordinary applications never have to deal with concurrency themselves**, and for the vast majority of PHP work, from a small business site to a large online shop, that is still the right approach.
 
 So this chapter is different from the others. Elsewhere, the book says "you will use this constantly, learn it well". Here it says the opposite: this is a short, optional tour. Nothing in it is needed to write everyday PHP.
 

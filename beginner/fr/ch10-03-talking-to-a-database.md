@@ -43,7 +43,7 @@ Lisez la requête comme la base de données la lira. Si `$message` contient une 
 
 ## Les requêtes préparées
 
-La réponse de PDO, c'est la **requête préparée**. La requête part d'abord vers la base, avec des marqueurs à la place des valeurs, et les valeurs voyagent séparément ensuite. **La base ne lit jamais une valeur comme un morceau de la syntaxe de la requête**, donc il n'y a aucune chaîne dont s'échapper, et l'injection est fermée pour de bon :
+La réponse de PDO, c'est la **requête préparée**. La requête part d'abord vers la base, avec des marqueurs à la place des valeurs, et les valeurs voyagent séparément ensuite. **La base ne lit jamais une valeur comme un morceau de la syntaxe de la requête**, donc il n'y a aucune chaîne d'où s'échapper, et l'injection est fermée pour de bon :
 
 <img src="images/ch10-prepared-statement.png" alt="Une requête préparée en deux temps : d'abord le squelette de la requête avec ses cases :name et :message vides est remis à la base, puis les valeurs arrivent séparément dans des enveloppes scellées et sont déposées dans les cases sans jamais être lues comme du SQL" width="600">
 
@@ -92,4 +92,4 @@ L'échappement s'applique toujours, pour la même raison qu'avant. Ces valeurs v
 
 ## Ce que vous avez construit
 
-Rechargez le livre d'or, signez-le plusieurs fois, puis arrêtez `php -S` et relancez-le. Les entrées sont toujours là. Elles n'ont jamais vécu en mémoire ; elles vivent dans `guestbook.db`, sur le disque, indépendantes de toute requête. C'est la silhouette complète d'une vraie application web, toute petite soit-elle : recevoir les données par les superglobales, les valider, les échapper à la sortie, les ranger par des requêtes préparées. Le projet final du livre construit quelque chose de plus grand sur la même fondation, avec plus de routes, des classes contrôleur et une vraie couche de vues, et rien ne change dans les idées de fond. Vous avez déjà fait la partie qui compte.
+Rechargez le livre d'or, signez-le plusieurs fois, puis arrêtez `php -S` et relancez-le. Les entrées sont toujours là. Elles n'ont jamais vécu en mémoire ; elles vivent dans `guestbook.db`, sur le disque, indépendantes de toute requête. C'est la silhouette complète d'une vraie application web, si petite soit-elle : recevoir les données par les superglobales, les valider, les échapper à la sortie, les ranger par des requêtes préparées. Le projet final du livre construit quelque chose de plus grand sur la même fondation, avec plus de routes, des classes contrôleur et une vraie couche de vues, et rien ne change dans les idées de fond. Vous avez déjà fait la partie qui compte.

@@ -172,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $csrf = $_SESSION['csrf'] ??= bin2hex(random_bytes(32));
 ```
 
-`password_hash` et `password_verify`, vus dans [Chaînes, nombres, dates et JSON](ch10-standard-library.md), suffisent pour les mots de passe, à condition de régénérer l'identifiant de session à la connexion. Pour la protection CSRF, mettez un jeton aléatoire dans la session, imprimez-le en champ caché dans chaque formulaire, et comparez-le à la soumission avec `hash_equals()` ; cela tient en quatre lignes, et chaque framework fait la même chose sous un nom plus élégant.
+`password_hash` et `password_verify`, vus dans [Chaînes, nombres, dates et JSON](ch10-standard-library.md), suffisent pour les mots de passe, à condition de régénérer l'identifiant de session à la connexion. Pour la protection CSRF, mettez un jeton aléatoire dans la session, imprimez-le en champ caché dans chaque formulaire, et comparez-le à la soumission avec `hash_equals()` ; cela tient en quatre lignes, et chaque framework fait la même chose sous un nom plus flatteur.
 
 ## La couche des standards
 

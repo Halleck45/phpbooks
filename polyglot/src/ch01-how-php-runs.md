@@ -46,7 +46,7 @@ The consequences follow one from another:
 - **A bug affects one request.** A memory leak, an infinite loop, an uncaught exception: the process handling that request dies or is recycled, and the next request gets a fresh one.
 - **Scaling is horizontal by construction.** More traffic, more FPM processes, more machines. Nothing in the application needs to be thread-safe, because nothing is shared.
 - **State lives outside PHP.** Sessions go to files, a database, or a key-value store. Caches go to OPcache and APCu (memory shared between the processes of one machine) or to an external store like Redis or Memcached. The database connection is opened at the start of a request and closed at the end; pooling, if you need it, happens in a pooler in front of the database, not in PHP.
-- **Startup cost is paid on every request.** Which is why PHP is fast at starting and why the ecosystem cares about autoloading, OPcache, and preloading.
+- **Startup cost is paid on every request.** That is why PHP is fast at starting and why the ecosystem cares about autoloading, OPcache, and preloading.
 
 > If you find yourself designing a singleton to "keep the connection open between requests", stop. There is no between.
 

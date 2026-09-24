@@ -1,6 +1,6 @@
 # Choosing Your Stack in Five Minutes
 
-Before any feature gets shipped, one decision shapes everything downstream: what kind of thing are you actually building, and what already exists that gets you most of the way there. Get this decision right and every later chapter in this book becomes a menu you pick from. Get it wrong and you'll spend the next six months fighting a tool that was never meant to build what you're building.
+Before any feature gets shipped, one decision shapes everything downstream: what kind of thing you're actually building, and what already exists that gets you most of the way there. Get this decision right and every later chapter in this book becomes a menu you pick from. Get it wrong and you'll spend the next six months fighting a tool that was never meant to build what you're building.
 
 This chapter is short on purpose. It gives you a decision guide, not a religion, and a way to have something running in under a minute so you can start feeling out whether the choice was right before you've invested a single afternoon in it.
 

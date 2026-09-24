@@ -20,7 +20,7 @@ var_dump($copy);     // array(4) { [0]=> int(1) [1]=> int(2) [2]=> int(3) [3]=> 
 
 ## But it doesn't actually copy on the spot
 
-Here is what really happens, and it is worth knowing even though it rarely changes how you write code. Duplicating an array the instant it is assigned would be wasteful: plenty of arrays get passed around and never modified at all, so the copy would be work for nothing. **PHP waits, and only copies the array the moment one side tries to change it.** The strategy is called copy-on-write.
+Here is what really happens, even though it rarely changes how you write code. Duplicating an array the instant it is assigned would be wasteful: plenty of arrays get passed around and never modified at all, so the copy would be work for nothing. **PHP waits, and only copies the array the moment one side tries to change it.** The strategy is called copy-on-write.
 
 The assignment `$copy = $original` makes both names point at the same array data, and PHP keeps a small count of how many variables share it. Reading through either name costs nothing. The first write through one of them (`$copy[] = 4` above) is the moment PHP steps in: it makes a real, separate copy and applies the change to that copy alone.
 

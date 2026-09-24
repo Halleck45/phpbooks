@@ -32,7 +32,7 @@ That's it. Running this gives you, with no further code:
 - An interactive OpenAPI/Swagger documentation page at `/api/docs`
 - A GraphQL endpoint at `/api/graphql`, if the GraphQL package is installed
 
-Restricting what operations are exposed, or filtering, is configuration on the same attribute rather than new controller code:
+Restricting which operations are exposed, or filtering, is configuration on the same attribute rather than new controller code:
 
 ```php
 #[ApiResource(

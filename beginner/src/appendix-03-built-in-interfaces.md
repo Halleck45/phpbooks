@@ -12,7 +12,7 @@ Two reference tables: the SPL interfaces that let your objects plug into PHP's b
 | `IteratorAggregate` | Your objects work in `foreach` by delegating to another iterator, usually a `Generator` |
 | `Stringable` | Your objects can be used anywhere a string is expected |
 
-`Stringable` is the odd one out: added in PHP 8, and you rarely need to implement it explicitly; any class that defines `__toString()` is automatically treated as implementing it. It exists mostly so type declarations can say "anything printable," rather than listing every class that happens to have a `__toString()` method.
+`Stringable` is the odd one out: it was added in PHP 8, and you rarely need to implement it explicitly, since any class that defines `__toString()` is automatically treated as implementing it. It exists mostly so type declarations can say "anything printable," rather than listing every class that happens to have a `__toString()` method.
 
 Full examples of all five, including what `Iterator` demands of you that `IteratorAggregate` doesn't, are in [Chapter 20](ch20-02-built-in-interfaces.md).
 

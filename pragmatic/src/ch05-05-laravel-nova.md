@@ -22,7 +22,7 @@ public function fields(NovaRequest $request): array
 
 ## Licensing
 
-Nova is a paid, per-developer or per-site license, no free tier for commercial use, which is what earns it the `$`. In exchange, you get official support channels, guaranteed compatibility with new Laravel releases on the same schedule, and a roadmap set by the same team that builds the framework.
+Nova is sold under a paid, per-developer or per-site license, with no free tier for commercial use, which is what earns it the `$`. In exchange, you get official support channels, guaranteed compatibility with new Laravel releases on the same schedule, and a roadmap set by the same team that builds the framework.
 
 ## When to reach for this
 

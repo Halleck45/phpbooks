@@ -1,6 +1,6 @@
 # Controlling Scope and Visibility with Namespaces
 
-**A namespace is a prefix.** That is the whole concept, and it is worth saying before the syntax makes it look bigger than it is. `App\Models\Product` is the name `Product`, living inside `App\Models`, the same way `/home/damien/notes.txt` is `notes.txt`, living inside `/home/damien`. The class itself does not change. What changes is how you, and PHP, point at it without ambiguity.
+**A namespace is a prefix.** That is the whole concept, said plainly before the syntax makes it look bigger than it is. `App\Models\Product` is the name `Product`, living inside `App\Models`, the same way `/home/damien/notes.txt` is `notes.txt`, living inside `/home/damien`. The class itself does not change. What changes is how you, and PHP, point at it without ambiguity.
 
 ## Declaring a namespace
 
@@ -27,7 +27,7 @@ Everything declared in this file now lives under `App\Models`: the `Product` cla
 
 ## Why bother
 
-Here is the situation namespaces were built for. Your project uses a library that ships a `Collection` class; plenty do, it is the natural name for "a bunch of things with helper methods". You want a `Collection` of your own as well, for a stamp-collecting app, say. Without namespaces, PHP would meet two classes fighting for one name and refuse to load the second. A fatal error, and not a subtle one.
+Here is the situation namespaces were built for. Your project uses a library that ships a `Collection` class; plenty do, since it is the natural name for "a bunch of things with helper methods". You want a `Collection` of your own as well, for a stamp-collecting app, say. Without namespaces, PHP would meet two classes fighting for one name and refuse to load the second. A fatal error, and not a subtle one.
 
 With namespaces, there is no fight:
 

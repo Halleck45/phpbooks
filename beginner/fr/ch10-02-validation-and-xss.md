@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 ```
 
-`trim()` retire les espaces aux deux bouts, si bien qu'un message fait uniquement d'espaces ne passe pas le test du vide. `mb_strlen()` plutôt que `strlen()` compte des caractères et non des octets, ce qui compte dès qu'un nom contient autre chose que de l'ASCII pur, la même question d'UTF-8 que le [chapitre 8](ch08-02-strings.md) a traitée pour les chaînes en général. Et les erreurs s'accumulent dans un tableau au lieu d'arrêter tout à la première, pour que le visiteur voie tous les problèmes d'un coup plutôt que de les découvrir un envoi après l'autre.
+`trim()` retire les espaces aux deux bouts, si bien qu'un message fait uniquement d'espaces ne passe pas le test du vide. `mb_strlen()` plutôt que `strlen()` compte des caractères et non des octets, ce qui importe dès qu'un nom contient autre chose que de l'ASCII pur, la même question d'UTF-8 que le [chapitre 8](ch08-02-strings.md) a traitée pour les chaînes en général. Et les erreurs s'accumulent dans un tableau au lieu d'arrêter tout à la première, pour que le visiteur voie tous les problèmes d'un coup plutôt que de les découvrir un envoi après l'autre.
 
 <img src="images/ch10-validate-escape.png" alt="Un script PHP dessiné comme une maison à deux portes : à l'entrée, la validation contrôle les données qui arrivent et refoule les mauvaises ; à la sortie, l'échappement emballe chaque valeur avant qu'elle ne parte vers le navigateur" width="600">
 

@@ -16,7 +16,7 @@ $point = [[1, 2], 3];
 echo "x={$x}, y={$y}, z={$z}\n"; // x=1, y=2, z=3
 ```
 
-Mettez les deux côtés l'un à côté de l'autre : `[[$x, $y], $z]` et `[[1, 2], 3]`. Le motif est un calque des données. Cette symétrie fait tout l'intérêt. Passé un niveau de profondeur, une chaîne comme `$point[0][0]` commence à cacher ce que vous cherchez, alors que le motif dit « donne-moi exactement cette forme » en une ligne.
+Mettez les deux côtés face à face : `[[$x, $y], $z]` et `[[1, 2], 3]`. Le motif est un calque des données. Cette symétrie fait tout l'intérêt. Passé un niveau de profondeur, une chaîne comme `$point[0][0]` commence à cacher ce que vous cherchez, alors que le motif dit « donne-moi exactement cette forme » en une ligne.
 
 ## Déstructuration par clé
 

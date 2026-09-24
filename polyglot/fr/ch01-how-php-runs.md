@@ -64,7 +64,7 @@ Le modèle sans état partagé est le comportement par défaut, pas une loi. **P
 
 <img src="images/ch01-two-runtime-modes.png" alt="À gauche : une rangée de petites pièces identiques, chacune avec un éléphant neuf, une requête qui entre et une réponse qui sort, puis la pièce vidée. À droite : une grande pièce avec un seul éléphant qui reste à son bureau pendant qu'une file de requêtes défile" width="620">
 
-Le gain est réel, puisque le coût d'amorçage disparaît et que les connexions peuvent vraiment rester ouvertes. Le coût est celui que vous connaissez déjà des autres langages : l'état fuit si vous ne le nettoyez pas, une fuite mémoire grossit, et un compteur statique compte pour de bon. Les frameworks qui supportent ces runtimes réinitialisent leur conteneur entre deux requêtes précisément pour cela. Commencez avec FPM, et passez à un runtime worker quand vous aurez mesuré une raison de le faire.
+Le gain est réel, puisque le coût d'amorçage disparaît et que les connexions peuvent vraiment rester ouvertes. Le coût est celui que vous connaissez déjà des autres langages : l'état fuit si vous ne le nettoyez pas, une fuite mémoire grossit, et un compteur statique compte pour de bon. Les frameworks qui prennent en charge ces runtimes réinitialisent leur conteneur entre deux requêtes précisément pour cela. Commencez avec FPM, et passez à un runtime worker quand vous aurez mesuré une raison de le faire.
 
 ## Ce qu'il y a dans la boîte
 

@@ -30,7 +30,7 @@ Faceted search, letting visitors filter results by content type, department, or 
 
 ## When to reach for this
 
-Enterprise TYPO3 sites where search quality and correctness (respecting multilingual content, page permissions, and faceted filtering) genuinely matters to the organization, not just a nice-to-have search box.
+Enterprise TYPO3 sites where search quality and correctness (respecting multilingual content, page permissions, and faceted filtering) genuinely matter to the organization, not just a nice-to-have search box.
 
 ## When it's the wrong fit
 

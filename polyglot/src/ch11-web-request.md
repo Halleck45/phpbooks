@@ -51,7 +51,7 @@ $body = json_decode(file_get_contents('php://input'), true, flags: JSON_THROW_ON
 
 ## Writing the response
 
-**Whatever your script outputs is the response body.** `echo`, `print`, and any text outside `<?php ?>` tags goes to the client. Status and headers are set with two functions, and they must be called before the first byte of output, because the headers travel first:
+**Whatever your script outputs is the response body.** `echo`, `print`, and any text outside `<?php ?>` tags go to the client. Status and headers are set with two functions, and they must be called before the first byte of output, because the headers travel first:
 
 ```php
 <?php

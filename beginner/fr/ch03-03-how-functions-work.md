@@ -57,7 +57,7 @@ echo greet("Damien");             // Hello, Damien!
 echo greet("Damien", "Bonjour");  // Bonjour, Damien!
 ```
 
-Les paramètres avec défaut viennent après ceux qui n'en ont pas. PHP lit les arguments de gauche à droite, il lui faut d'abord régler les obligatoires.
+Les paramètres avec défaut viennent après ceux qui n'en ont pas. PHP lit les arguments de gauche à droite : il lui faut d'abord régler les obligatoires.
 
 ## Les arguments nommés
 
@@ -92,7 +92,7 @@ function classify(int $n): string {
 }
 ```
 
-Pas de « la dernière expression est le résultat » implicite, comme dans certains langages. PHP veut toujours un `return` explicite. Oubliez-le, et la fonction renvoie `null`, en silence. C'est en général un bug plutôt qu'un choix, et c'est pourquoi déclarer `: void` sur les fonctions qui ne renvoient vraiment rien vaut l'habitude : PHP, et tout outil d'analyse statique qui lit votre code, peut alors signaler une valeur qui s'échappe par accident.
+Pas de « la dernière expression est le résultat » implicite, comme dans certains langages. PHP veut toujours un `return` explicite. Oubliez-le, et la fonction renvoie `null`, en silence. C'est en général un bug plutôt qu'un choix, et c'est pourquoi déclarer `: void` sur les fonctions qui ne renvoient vraiment rien mérite de devenir une habitude : PHP, et tout outil d'analyse statique qui lit votre code, peut alors signaler une valeur qui s'échappe par accident.
 
 ## Les fonctions sont des valeurs
 

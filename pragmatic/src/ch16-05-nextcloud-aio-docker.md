@@ -12,9 +12,9 @@ docker run \
   nextcloud/all-in-one:latest
 ```
 
-Visiting the container's web interface afterward walks through TLS certificate setup, choosing which optional apps to enable (Talk's high-performance backend, covered in [Real-Time Features](ch07-03-nextcloud-talk.md), included), and backup configuration, all managed through one dashboard rather than a dozen separate config files.
+Visiting the container's web interface afterward walks through TLS certificate setup, choosing which optional apps to enable (including Talk's high-performance backend, covered in [Real-Time Features](ch07-03-nextcloud-talk.md)), and backup configuration, all managed through one dashboard rather than a dozen separate config files.
 
-Updates, including of Nextcloud itself and each enabled app, are handled through the same interface:
+Updates to Nextcloud itself and to each enabled app are handled through the same interface:
 
 ```bash
 # update the mastercontainer image, then trigger an update from its UI
@@ -26,7 +26,7 @@ docker rm nextcloud-aio-mastercontainer
 
 ## When to reach for this
 
-Self-hosting Nextcloud for real, ongoing use, whether for a small team or a full organization. The AIO image encodes a lot of hard-won operational knowledge about correctly securing and maintaining a Nextcloud instance that's easy to get subtly wrong by hand.
+Self-hosting Nextcloud for real, ongoing use, whether for a small team or a full organization. The AIO image encodes a lot of hard-won operational knowledge about securing and maintaining a Nextcloud instance correctly, which is easy to get subtly wrong by hand.
 
 ## When it's the wrong fit
 

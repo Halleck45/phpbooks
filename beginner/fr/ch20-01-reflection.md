@@ -4,7 +4,7 @@ Votre code sait en général ce qu'il est : vous l'avez écrit. Mais il arrive q
 
 ## Les constantes magiques
 
-Commençons par le logger.
+Le logger d'abord.
 
 ```php
 <?php

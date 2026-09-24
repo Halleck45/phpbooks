@@ -64,7 +64,7 @@ Cette annexe définit, en une ou deux phrases chacun, les mots qui reviennent da
 
 **Enum** (énumération). Un type avec un ensemble fixe de cas nommés, éventuellement adossés à un entier ou une chaîne, avec méthodes et interfaces. Depuis 8.1.
 
-**Fiber.** Une coroutine à pile qui peut se suspendre et reprendre depuis n'importe quel point de sa pile d'appels. La primitive sur laquelle bâtissent les bibliothèques asynchrones ; pas quelque chose que le code applicatif pilote directement.
+**Fiber.** Une coroutine à pile qui peut se suspendre et reprendre depuis n'importe quel point de sa pile d'appels. La primitive sur laquelle s'appuient les bibliothèques asynchrones ; pas quelque chose que le code applicatif pilote directement.
 
 **Generator** (générateur). Une fonction qui produit des valeurs une à une avec `yield` et conserve son état entre les appels. De l'itération paresseuse sans construire de tableau.
 

@@ -1,6 +1,6 @@
 # `match` Pattern Syntax
 
-Chapter 6 gave `match` its proper introduction, next to enums, where it shines the most. Three details did not fit there, and you will want all three the first time you write a `match` with more than two or three arms.
+Chapter 6 gave `match` its proper introduction, next to enums, where it shines most. Three details did not fit there, and you will want all three the first time you write a `match` with more than two or three arms.
 
 ## Multiple conditions per arm
 

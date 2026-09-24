@@ -30,7 +30,7 @@ Cette annexe consacre une section à chaque version, avec les nouveautés princi
 - Types intersection purs : `Countable&Traversable`.
 - Type de retour `never`.
 - Constantes de classe `final`.
-- Décomposition de tableaux avec clés textuelles : `[...$defaults, ...$options]`.
+- Dépliage de tableaux avec clés textuelles : `[...$defaults, ...$options]`.
 - `array_is_list()`.
 - Notation octale explicite : `0o16`.
 
@@ -93,4 +93,4 @@ Chaque version reçoit deux ans de support actif (corrections de bugs) suivis de
 
 ## Trouver la version de votre projet
 
-`php -v` affiche l'interpréteur que vous exécutez en local. `composer.json` déclare ce que le projet supporte sous `require.php` (`"php": "^8.3"`), et `config.platform.php` fige la version contre laquelle Composer résout, celle à croire quand les deux diffèrent. La production peut encore tourner sur autre chose, et seul un `phpinfo()` ou un `php -v` sur le serveur permet de trancher.
+`php -v` affiche l'interpréteur que vous exécutez en local. `composer.json` déclare ce que le projet prend en charge sous `require.php` (`"php": "^8.3"`), et `config.platform.php` fige la version contre laquelle Composer résout, celle à croire quand les deux diffèrent. La production peut encore tourner sur autre chose, et seul un `phpinfo()` ou un `php -v` sur le serveur permet de trancher.

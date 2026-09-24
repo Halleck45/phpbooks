@@ -10,6 +10,6 @@ Si une seule structure suffit à tant de choses, la raison tient en une phrase, 
 
 > Une liste et un dictionnaire, c'est le même tableau PHP avec d'autres clés.
 
-Le chapitre fait aussi halte sur les chaînes de caractères, et ce n'est pas un changement de sujet. Chaînes et tableaux vivent côte à côte dans le PHP de tous les jours : on découpe l'une en l'autre et on recolle des tableaux de chaînes à longueur de journée. Et dès qu'une chaîne contient autre chose que de l'anglais sans accent (un prénom accentué, un symbole monétaire, un emoji), vous rencontrez UTF-8, que PHP gère bien, à condition de le lui demander correctement.
+Le chapitre fait aussi halte sur les chaînes de caractères, et ce n'est pas un changement de sujet. Chaînes et tableaux vivent côte à côte dans le PHP de tous les jours : on découpe une chaîne en tableau et on recolle des tableaux de chaînes à longueur de journée. Et dès qu'une chaîne contient autre chose que de l'anglais sans accent (un prénom accentué, un symbole monétaire, un emoji), vous rencontrez UTF-8, que PHP gère bien, à condition de le lui demander correctement.
 
 Les [tableaux indexés](ch08-01-indexed-arrays.md) ouvrent le bal, puisque vous avez déjà l'intuition des listes. Puis les [chaînes de caractères](ch08-02-strings.md), avec un regard honnête sur les octets et les caractères, la distinction qui piège presque tout le monde une fois. Puis les [tableaux associatifs](ch08-03-associative-arrays.md), où des clés choisies par vous transforment la même structure en une petite fiche souple.

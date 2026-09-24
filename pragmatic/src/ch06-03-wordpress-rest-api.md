@@ -43,4 +43,4 @@ A headless setup where WordPress is purely the content backend for a separate fr
 
 A data model that doesn't resemble posts, pages, or a custom post type at all. At that point you're fighting WordPress's content-shaped API rather than benefiting from it, and a dedicated API tool ([API Platform](ch06-01-api-platform-from-one-class.md), Laravel) fits better.
 
-> **Under the hood:** The REST API's routing and response shaping is built on WordPress's long-standing hooks and filters system, the same `add_action`/`add_filter` pattern that powers themes and plugins. There's no separate API framework underneath; it's the same extension mechanism WordPress has used since 2004, pointed at JSON responses instead of HTML.
+> **Under the hood:** The REST API's routing and response shaping are built on WordPress's long-standing hooks and filters system, the same `add_action`/`add_filter` pattern that powers themes and plugins. There's no separate API framework underneath; it's the same extension mechanism WordPress has used since 2004, pointed at JSON responses instead of HTML.

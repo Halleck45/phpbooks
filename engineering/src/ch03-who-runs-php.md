@@ -16,7 +16,7 @@ The two numbers are not in tension. They are counting different populations. The
 
 <img src="images/ch03-who-runs.png" alt="A world map with two overlapping layers: a dense shading across most countries representing server footprint, and a smaller, brighter cluster of dots representing the professional developers who write the code." width="560">
 
-For a hiring decision specifically, the developer-headcount number is usually the more actionable one, because it is closer to answering "how many people who already know this language could I plausibly hire," while the server-footprint number is closer to answering "how much of the surrounding infrastructure, from hosting control panels to CMS plugins to other companies' internal tools, will assume PHP is in play." Both questions are legitimate parts of a due-diligence review, and conflating them into a single "PHP is popular" sentence loses the distinction an evaluator actually needs.
+For a hiring decision specifically, the developer-headcount number is usually the more useful one, because it is closer to answering "how many people who already know this language could I plausibly hire," while the server-footprint number is closer to answering "how much of the surrounding infrastructure, from hosting control panels to CMS plugins to other companies' internal tools, will assume PHP is in play." Both questions are legitimate parts of a due-diligence review, and conflating them into a single "PHP is popular" sentence loses the distinction an evaluator actually needs.
 
 ## A primary-sourced case at scale
 

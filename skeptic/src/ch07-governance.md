@@ -1,6 +1,6 @@
 # Governance and Longevity
 
-Before you bet a codebase on anything, you want to know who decides what goes into it, who is paid to maintain it, and how long a version stays supported. **PHP changes through a public RFC process with a two-thirds vote, ships one minor version every year and supports each for four, and since 2021 has a foundation that contracts thirteen engineers and authored 42 percent of the interpreter's commits in 2025.** The money behind that foundation is under one million dollars a year, and that figure is as much part of the answer as the rest.
+Before you bet a codebase on anything, you want to know who decides what goes into it, who is paid to maintain it, and how long a version stays supported. **PHP changes through a public RFC process with a two-thirds vote, ships one minor version every year and supports each for four, and since 2021 has a foundation that contracts thirteen engineers, who authored 42 percent of the interpreter's commits in 2025.** The money behind that foundation is under one million dollars a year, and that figure is as much part of the answer as the rest.
 
 ## How a change gets in
 
@@ -8,13 +8,13 @@ Every change to the language goes through a Request for Comments on wiki.php.net
 
 Nullable intersection types were rejected 12 to 26 in 2021. Auto-capturing multi-statement closures won a majority of 27 to 16 in 2022 and were declined all the same, for missing the two-thirds bar. Asymmetric visibility was declined 14 to 12 in January 2023, revised, accepted 24 to 7 in August 2024 and shipped in PHP 8.4, and nested classes were declined 2 to 20 in May 2025. That list of refusals is the evidence that the process is real.
 
-The pace comes from a secondary index: 31 RFCs for PHP 8.4, 19 for PHP 8.5, and 29 already listed for PHP 8.6 in September 2026. If you come from a language steered by a single vendor or a benevolent dictator, weigh what this means: nothing enters PHP because someone important wants it, and features that a majority wanted have been refused. The process is slow, and it is public.
+The pace, according to a secondary index, is 31 RFCs for PHP 8.4, 19 for PHP 8.5, and 29 already listed for PHP 8.6 in September 2026. If you come from a language steered by a single vendor or a benevolent dictator, weigh what this means: nothing enters PHP because someone important wants it, and features that a majority wanted have been refused. The process is slow, and it is public.
 
 <img src="images/ch07-vote.png" alt="A round table seen from above, with a dozen elephants seated around it. A document lies in the centre. Most elephants raise one hand; a few keep both on the table. On the wall, a horizontal gauge with a marker two thirds of the way along, and the level of the gauge just past the marker" width="560">
 
 ## The release calendar
 
-**Since December 2015 PHP has shipped one minor version every year, eleven in a row, each between the 20 November and the 8 December**. Each branch then gets two years of active support, with bug and security fixes in monthly point releases, followed by two years of security fixes only. Since an RFC voted in April 2024, both windows end on 31 December of their final year, so you can plan upgrades by calendar year.
+**Since December 2015 PHP has shipped one minor version every year, eleven in a row, each between 20 November and 8 December**. Each branch then gets two years of active support, with bug and security fixes in monthly point releases, followed by two years of security fixes only. Since an RFC voted in April 2024, both windows end on 31 December of their final year, so you can plan upgrades by calendar year.
 
 {{#include charts/ch07-support-timeline.svg}}
 

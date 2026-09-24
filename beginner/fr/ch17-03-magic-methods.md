@@ -4,7 +4,7 @@ Glissez un objet dans une chaîne de caractères, et PHP a une décision à pren
 
 ## `__construct` et `__destruct`, en bref
 
-`__construct()` tourne sous chaque `new` que vous avez écrit depuis le chapitre 5. PHP l'appelle à la création de l'objet, et c'est là que la promotion de constructeur fait son travail. `__destruct()` est son reflet : PHP l'appelle quand l'objet est sur le point de disparaître, en général quand la dernière variable qui le désigne sort de sa portée. Vous l'écrirez rarement. Le ramasse-miettes de PHP, vu au [chapitre 4](ch04-03-scope-and-gc.md), libère la mémoire tout seul, donc `__destruct()` sert aux cas où autre chose doit être relâché sans attendre, un descripteur de fichier ou une connexion réseau, plutôt que d'attendre la fin du processus.
+`__construct()` tourne sous chaque `new` que vous avez écrit depuis le chapitre 5. PHP l'appelle à la création de l'objet, et c'est là que la promotion de constructeur fait son travail. `__destruct()` est son reflet : PHP l'appelle quand l'objet est sur le point de disparaître, en général quand la dernière variable qui le désigne sort de sa portée. Vous l'écrirez rarement. Le ramasse-miettes de PHP, vu au [chapitre 4](ch04-03-scope-and-gc.md), libère la mémoire tout seul, donc `__destruct()` sert aux cas où autre chose doit être relâché sans délai, un descripteur de fichier ou une connexion réseau, plutôt qu'à la fin du processus.
 
 ## `__toString()` : laisser un objet se comporter comme une chaîne
 

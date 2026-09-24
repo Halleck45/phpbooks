@@ -28,7 +28,7 @@ Now read the answer. There are three possibilities:
 
 - **It starts with `PHP 8`.** PHP is installed and recent enough. Skip ahead to [Hello, World!](ch01-02-hello-world.md).
 - **It starts with `PHP 7` or lower.** You have an old version. Install a new one below.
-- **It says something like `command not found`.** The computer simply does not know the word `php` yet. That is not a mistake on your part, it just means nothing is installed. Read on.
+- **It says something like `command not found`.** The computer simply does not know the word `php` yet. That is not a mistake on your part: it just means nothing is installed. Read on.
 
 ## Installing PHP
 

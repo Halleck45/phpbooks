@@ -1,6 +1,6 @@
 # Dépôts de type path et monorepos
 
-Publier suppose que votre paquet soit assez fini pour être confié à des inconnus. Beaucoup de vrai travail se fait avant ce point, dans la période où deux paquets liés grandissent ensemble et où un changement dans l'un doit apparaître dans l'autre immédiatement. **Composer a un type de dépôt conçu pour cette période : le dépôt path.**
+Publier suppose que votre paquet soit assez fini pour être confié à des inconnus. Une bonne partie du vrai travail se fait avant, dans la période où deux paquets liés grandissent ensemble et où un changement dans l'un doit apparaître dans l'autre immédiatement. **Composer a un type de dépôt conçu pour cette période : le dépôt path.**
 
 ## Le problème qu'il résout
 

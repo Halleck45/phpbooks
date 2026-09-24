@@ -70,7 +70,7 @@ GET /users -> index()
 POST /users -> store()
 ```
 
-`getAttributes(Route::class)` trouve chaque attribut `Route` posé sur une méthode. `newInstance()` le construit, en exécutant le constructeur avec les arguments que vous avez écrits dans `#[Route(...)]`, et rend un vrai objet `Route` avec ses propriétés `method` et `path`. C'est ainsi que se construisent les systèmes de routage simples : parcourir les méthodes d'un contrôleur, relever leurs attributs `Route`, remplir une table de routage avec ce qu'on trouve. Aucun fichier de configuration à part à maintenir en cohérence.
+`getAttributes(Route::class)` trouve chaque attribut `Route` posé sur une méthode. `newInstance()` le construit, en exécutant le constructeur avec les arguments que vous avez écrits dans `#[Route(...)]`, et renvoie un vrai objet `Route` avec ses propriétés `method` et `path`. C'est ainsi que se construisent les systèmes de routage simples : parcourir les méthodes d'un contrôleur, relever leurs attributs `Route`, remplir une table de routage avec ce qu'on trouve. Aucun fichier de configuration à part à maintenir en cohérence.
 
 > Un attribut est un objet ordinaire, garé à côté de votre code, que la Reflection peut venir ramasser.
 

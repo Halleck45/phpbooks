@@ -1,6 +1,6 @@
 # Réutiliser du code avec les traits
 
-Une interface ne promet rien sur l'implémentation : c'est une forme pure. **Un trait est un morceau de vrais corps de méthode que PHP colle dans une classe pour vous, comme si vous les y aviez tapés vous-même.** Pas de contrat, pas de polymorphisme, pas de « ces classes sont interchangeables ». Du copier-coller, rendu officiel et rendu sûr par le langage.
+Une interface ne promet rien sur l'implémentation : c'est une forme pure. **Un trait, ce sont de vrais corps de méthode que PHP colle dans une classe pour vous, comme si vous les y aviez tapés vous-même.** Pas de contrat, pas de polymorphisme, pas de « ces classes sont interchangeables ». Du copier-coller, rendu officiel et rendu sûr par le langage.
 
 Prenez deux classes qui n'ont rien en commun, un `PaymentProcessor` et un `ReportGenerator`, qui veulent toutes deux écrire quelque part des messages horodatés. Elles ne partagent aucune classe parente, et elles ne devraient pas : ce ne sont pas des choses de même nature. Mais elles veulent les mêmes quelques lignes de journalisation.
 

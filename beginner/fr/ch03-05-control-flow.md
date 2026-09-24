@@ -18,7 +18,7 @@ if ($temperature > 30) {
 }
 ```
 
-Même forme que la comparaison du jeu : PHP exécute le premier bloc dont la condition est vraie et ignore les autres, ou se rabat sur `else`. Notez que c'est `elseif`, en un mot. `else if`, en deux mots, fonctionne aussi, mais seul `elseif` est un jeton unique pour PHP, c'est donc la convention à adopter.
+Même forme que la comparaison du jeu : PHP exécute le premier bloc dont la condition est vraie et ignore les autres, ou se rabat sur `else`. C'est `elseif`, en un mot. `else if`, en deux mots, fonctionne aussi, mais seul `elseif` est un jeton unique pour PHP, c'est donc la convention à adopter.
 
 **La condition n'a pas à être un booléen, mais écrivez-la comme si c'était le cas.** PHP convertit ce que vous lui donnez : `0`, `""`, `null` et `[]` comptent pour faux, tout le reste pour vrai. S'appuyer là-dessus, c'est exactement le genre de jonglage de types contre lequel [les types de données](ch03-02-data-types.md) vous ont mis en garde. Préférez une comparaison explicite dès que la valeur n'est pas déjà, à l'évidence, un booléen.
 

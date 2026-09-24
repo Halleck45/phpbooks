@@ -93,6 +93,6 @@ $expensive = array_filter($prices, fn(float $p): bool => $p > 20.00);
 usort($prices, fn(float $a, float $b): int => $a <=> $b);
 ```
 
-`array_map()` applique la fonction à chaque élément et renvoie un nouveau tableau avec les résultats. `array_filter()` garde les éléments pour lesquels la fonction renvoie `true`, ou tout ce que PHP considère comme vrai. `usort()` trie le tableau sur place en appelant la fonction pour comparer deux éléments à la fois ; `<=>`, l'opérateur vaisseau spatial, est la façon standard d'écrire cette comparaison, puisqu'il renvoie un nombre négatif, zéro ou un nombre positif selon le côté le plus grand.
+`array_map()` applique la fonction à chaque élément et renvoie un nouveau tableau avec les résultats. `array_filter()` garde les éléments pour lesquels la fonction renvoie `true`, ou tout ce que PHP considère comme vrai. `usort()` trie le tableau sur place en appelant la fonction pour comparer deux éléments à la fois ; `<=>`, l'opérateur vaisseau spatial, est la façon standard d'écrire cette comparaison, puisqu'il renvoie un nombre négatif, zéro ou un nombre positif selon lequel des deux est le plus grand.
 
 Aucune des trois n'a eu besoin de plus qu'une fonction fléchée d'une ligne, et c'est précisément le cas pour lequel elles ont été conçues. **Réservez la closure complète aux moments où vous devez capturer par référence, ou quand la logique demande plus d'une expression.** Le reste du temps, la fonction fléchée est le meilleur choix par défaut.

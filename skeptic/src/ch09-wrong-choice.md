@@ -16,7 +16,7 @@ Latency budgets under a millisecond fall on the same side. The floor of a PHP-FP
 
 ## Outside the server
 
-PHP is a language for servers. It has a command-line interpreter and a great deal of tooling is written with it, but for desktop applications, mobile applications, browsers, embedded devices or the distribution of a standalone binary to end users, it has no story that any team should build on. If your users do not run a PHP interpreter, write the tool you give them in something else.
+PHP is a language for servers. It has a command-line interpreter, and a great deal of tooling is written with it, but for desktop applications, mobile applications, browsers, embedded devices or the distribution of a standalone binary to end users, it has no story that any team should build on. If your users do not run a PHP interpreter, write the tool you give them in something else.
 
 <img src="images/ch09-toolbox.png" alt="A workshop wall with tools hung in outlines. An elephant stands in front of it, putting a wrench back in its outline and reaching for a different tool. On the bench below, a half-finished object that clearly needs the second tool" width="560">
 

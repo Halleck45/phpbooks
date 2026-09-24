@@ -35,7 +35,7 @@ Lancez-le sans `config.json` à côté du fichier. `readConfig()` atteint le `th
 
 <img src="images/ch09-exception-climbs.png" alt="Une exception qui monte à travers les trois étages d'un immeuble, depuis la fonction qui l'a lancée, en passant par une fonction qui ne la voit jamais, jusqu'à un bloc catch au dernier étage qui l'arrête" width="500">
 
-Pensez à une fuite au rez-de-chaussée d'un immeuble. Personne là ne peut la réparer, alors l'alarme monte, étage par étage, et chaque étage traversé lâche ce qu'il faisait, jusqu'à ce que quelqu'un l'attrape au filet. Si personne ne le fait, l'alarme atteint le toit, et PHP arrête le programme en affichant le message et le chemin que l'exception a parcouru.
+Pensez à une fuite au rez-de-chaussée d'un immeuble. Personne sur place ne peut la réparer, alors l'alarme monte, étage par étage, et chaque étage traversé lâche ce qu'il faisait, jusqu'à ce que quelqu'un l'attrape au filet. Si personne ne le fait, l'alarme atteint le toit, et PHP arrête le programme en affichant le message et le chemin que l'exception a parcouru.
 
 `finally` s'exécute quoi qu'il soit arrivé : exception attrapée, exception non attrapée, ou pas d'exception du tout. C'est donc l'endroit pour le nettoyage qui doit avoir lieu dans tous les cas, comme fermer un fichier ou libérer un verrou.
 
@@ -106,6 +106,6 @@ try {
 }
 ```
 
-Étendre `\Exception` apporte toute la mécanique standard sans effort : `getMessage()`, `getCode()`, `getPrevious()`, et une trace d'appels via `getTraceAsString()`. L'appel à `parent::__construct()` est ce qui branche votre message sur cette mécanique ; sautez-le et `getMessage()` revient vide. Au-delà, la classe est à vous. `InvalidAgeException` garde l'`$age` fautif dans une propriété en lecture seule, si bien que le bloc `catch` reçoit une donnée structurée, pas seulement une chaîne à décortiquer.
+Étendre `\Exception` apporte d'un coup toute la mécanique standard : `getMessage()`, `getCode()`, `getPrevious()`, et une trace d'appels via `getTraceAsString()`. L'appel à `parent::__construct()` est ce qui branche votre message sur cette mécanique ; sautez-le et `getMessage()` revient vide. Au-delà, la classe est à vous. `InvalidAgeException` garde l'`$age` fautif dans une propriété en lecture seule, si bien que le bloc `catch` reçoit une donnée structurée, pas seulement une chaîne à décortiquer.
 
 Ce petit motif, une exception précise qui transporte le contexte qui l'a provoquée, revient au [chapitre 14](ch14-00-a-cli-project.md). Autant vous y sentir à l'aise dès maintenant, car la question difficile n'est pas comment lancer. C'est quand.

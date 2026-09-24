@@ -40,11 +40,11 @@ framework:
 php bin/console messenger:consume async
 ```
 
-Because messages and their handlers are decoupled through the bus, the same `SendWelcomeEmail` message could later be routed to a completely different transport, a message queue shared with another service, for instance, by changing configuration rather than application code.
+Because messages and their handlers are decoupled through the bus, the same `SendWelcomeEmail` message could later be routed to a completely different transport (a message queue shared with another service, for instance) by changing configuration rather than application code.
 
 ## When to reach for this
 
-Any Symfony application needing background processing, and especially useful when the project might eventually need actual service-to-service messaging, since the same component handles both without a second tool.
+Any Symfony application needing background processing, especially when the project might eventually need actual service-to-service messaging, since the same component handles both without a second tool.
 
 ## When it's the wrong fit
 

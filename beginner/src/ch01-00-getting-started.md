@@ -17,4 +17,4 @@ Notice what is not on the list. No web server, no framework, no build tool. PHP 
 > No web server, no framework, no build tool. Just a terminal, and a language that answers right away.
 
 > [!NOTE]
-> This book assumes **PHP 8.1 or newer**. PHP has been around for thirty years, and the internet is full of tutorials that show code which either no longer works or, worse, still works but that nobody would write today. We stick to modern PHP throughout. It is a genuinely nicer language than its old reputation suggests, and there is no reason to learn it as it was in 2010.
+> This book assumes **PHP 8.1 or newer**. PHP has been around for thirty years, and the internet is full of tutorials that show code that either no longer works or, worse, still works but nobody would write today. We stick to modern PHP throughout. It is a genuinely nicer language than its old reputation suggests, and there is no reason to learn it as it was in 2010.

@@ -4,7 +4,7 @@ Un design pattern (un patron de conception, si vous préférez) est un nom donn�
 
 ## L'idée
 
-Prenez un comportement qui peut varier : *comment* un paiement est débité, *comment* une liste est triée, *comment* un prix est remisé. Sortez-le derrière une interface. Confiez-le à une classe qui utilise ce comportement sans savoir quelle version elle a reçue. Cette dernière étape, c'est le polymorphisme vu [plus tôt dans ce chapitre](ch17-01-inheritance-and-polymorphism.md). **Strategy ajoute une pièce, le contexte : une classe dont tout le travail est de tenir une stratégie, de lui déléguer, et de la laisser remplacer, même une fois le contexte créé.**
+Prenez un comportement qui peut varier : *comment* un paiement est débité, *comment* une liste est triée, *comment* un prix est remisé. Cachez-le derrière une interface. Confiez-le à une classe qui utilise ce comportement sans savoir quelle version elle a reçue. Cette dernière étape, c'est le polymorphisme vu [plus tôt dans ce chapitre](ch17-01-inheritance-and-polymorphism.md). **Strategy ajoute une pièce, le contexte : une classe dont tout le travail est de tenir une stratégie, de lui déléguer, et de la laisser remplacer, même une fois le contexte créé.**
 
 <img src="images/ch17-strategy-socket.png" alt="Un appareil Checkout avec une seule prise à la forme d'un PaymentMethod, et deux fiches de cette forme, CreditCard et PayPal, qu'on branche et débranche à tour de rôle" width="560">
 

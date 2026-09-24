@@ -17,7 +17,7 @@ tests/
 
 ## Tests unitaires et tests d'intégration
 
-**Un test unitaire exerce une classe ou une fonction seule, sans rien d'extérieur** : pas de base de données, pas de système de fichiers, pas de réseau. `RectangleTest` en est un. Il construit un `Rectangle` et vérifie ses méthodes, rien de plus. Les tests unitaires sont rapides. Des milliers d'entre eux tournent en quelques secondes, et c'est précisément ce qui vous permet de lancer la suite entière sans arrêt sans qu'elle vous ralentisse.
+**Un test unitaire exerce une classe ou une fonction seule, sans rien d'extérieur** : pas de base de données, pas de système de fichiers, pas de réseau. `RectangleTest` en est un. Il construit un `Rectangle` et vérifie ses méthodes, rien de plus. Les tests unitaires sont rapides. Des milliers d'entre eux tournent en quelques secondes, et c'est précisément ce qui vous permet de lancer la suite entière à tout bout de champ sans qu'elle vous ralentisse.
 
 **Un test d'intégration vérifie que plusieurs pièces fonctionnent ensemble** : votre code qui parle à une vraie base de données, à un vrai fichier sur le disque, à un autre service par un vrai appel HTTP. Il attrape une famille de bugs qu'un test unitaire ne peut structurellement pas voir, quand deux pièces sont chacune correcte de leur côté et se trompent l'une sur l'autre. Le prix, c'est la vitesse, souvent de plusieurs ordres de grandeur, et une tendance à échouer pour des raisons sans rapport avec votre code : un disque lent, un réseau qui hoquette.
 
@@ -48,4 +48,4 @@ Rien d'exotique ici. C'est toujours un `TestCase`, toujours plein d'assertions. 
 
 ## Un partage pratique
 
-La plupart des projets gardent les deux sortes dans le même dossier `tests/` et les séparent par répertoire (`tests/Unit/` et `tests/Integration/`) ou par groupe (l'attribut `#[Group('integration')]` de la section précédente). La suite unitaire, rapide, tourne alors sans arrêt pendant que vous travaillez, et la suite d'intégration, plus lente, attend un commit ou l'intégration continue. Aucune ne remplace l'autre. Les tests unitaires vous disent qu'une pièce marche seule ; les tests d'intégration vous disent que les pièces marchent encore une fois qu'elles se parlent, et c'est la seule façon dont votre programme tourne jamais.
+La plupart des projets gardent les deux sortes dans le même dossier `tests/` et les séparent par répertoire (`tests/Unit/` et `tests/Integration/`) ou par groupe (l'attribut `#[Group('integration')]` de la section précédente). La suite unitaire, rapide, tourne alors sans arrêt pendant que vous travaillez, et la suite d'intégration, plus lente, attend un commit ou l'intégration continue. Aucune ne remplace l'autre. Les tests unitaires vous disent qu'une pièce marche seule ; les tests d'intégration vous disent que les pièces marchent encore une fois qu'elles se parlent, et c'est la seule façon dont votre programme tourne pour de vrai.

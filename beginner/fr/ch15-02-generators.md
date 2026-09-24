@@ -1,6 +1,6 @@
 # Traiter une série d'éléments avec les générateurs
 
-Toutes les fonctions que vous avez écrites jusqu'ici pour rendre une série de valeurs l'ont fait de la même manière : construire un tableau, le remplir, le `return`. Ça marche jusqu'au jour où la série est si grosse que tout construire avant que quiconque regarde le premier élément cesse d'être raisonnable. **Un générateur est une fonction qui produit ses valeurs une par une, à la demande, au lieu de toutes d'un coup.**
+Toutes les fonctions que vous avez écrites jusqu'ici pour rendre une série de valeurs l'ont fait de la même manière : construire un tableau, le remplir, le `return`. Ça marche jusqu'au jour où la série devient si grosse qu'il n'est plus raisonnable de tout construire avant que quiconque ait vu le premier élément. **Un générateur est une fonction qui produit ses valeurs une par une, à la demande, au lieu de toutes d'un coup.**
 
 ## La méthode du tableau, et sa limite
 
@@ -24,7 +24,7 @@ foreach (squaresUpTo(5) as $square) {
 }
 ```
 
-Pour cinq carrés, personne ne s'inquiète que `squaresUpTo()` construise le tableau entier avant que le `foreach` voie une seule valeur. Pour cinq millions, ce sont cinq millions d'entiers en mémoire avant le moindre affichage. Et si vous ne vouliez regarder que les trois premiers, vous avez payé les cinq millions quand même.
+Pour cinq carrés, personne ne s'inquiète que `squaresUpTo()` construise le tableau entier avant que le `foreach` voie une seule valeur. Pour cinq millions, ce sont cinq millions d'entiers en mémoire avant le moindre affichage. Et si vous ne voulez regarder que les trois premiers, vous payez les cinq millions quand même.
 
 ## La même fonction, réécrite avec `yield`
 
@@ -46,7 +46,7 @@ foreach (squaresUpTo(5) as $square) {
 }
 ```
 
-Le code appelant n'a pas bougé d'un caractère : `foreach` ne sait pas, et ne cherche pas à savoir, s'il parcourt un tableau ou un générateur. Ce qui a changé, c'est *le moment* où le travail se fait. **Une fonction qui contient `yield` n'exécute pas son corps quand vous l'appelez.** `squaresUpTo(5)` renvoie immédiatement un objet `Generator`, sans rien de calculé dedans. La boucle avance ensuite d'un tour à la fois, quand `foreach` demande la valeur suivante, et à tout moment il n'existe qu'un seul carré.
+Le code appelant n'a pas bougé d'un caractère : `foreach` ne sait pas, et ne cherche pas à savoir, s'il parcourt un tableau ou un générateur. Ce qui a changé, c'est *le moment* où le travail se fait. **Une fonction qui contient `yield` n'exécute pas son corps quand vous l'appelez.** `squaresUpTo(5)` renvoie immédiatement un objet `Generator`, sans rien de calculé dedans. La boucle avance ensuite d'un tour à la fois, quand `foreach` demande la valeur suivante, et il n'existe jamais qu'un seul carré à la fois.
 
 <img src="images/ch15-array-vs-generator.png" alt="Un boulanger qui tend un plateau entier de pains d'un coup, comparé au même boulanger qui tend un pain à la fois pendant que le client demande le suivant" width="600">
 
@@ -54,7 +54,7 @@ Imaginez une boulangerie. La fonction à tableau cuit tous les pains, les empile
 
 ## Regarder la paresse à l'œuvre
 
-« S'exécute paresseusement », on l'accepte facilement de la tête, et on y croit bien mieux quand on le voit :
+« S'exécute paresseusement », on hoche la tête en le lisant, et on y croit bien mieux quand on le voit :
 
 ```php
 <?php

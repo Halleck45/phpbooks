@@ -1,6 +1,6 @@
 # Syntaxe des callables de première classe et closures avancées
 
-`array_map('strlen', ...)`. Cette chaîne de caractères est la façon de passer une fonction en argument depuis les débuts de PHP, et elle a toujours eu quelque chose de bancal : pour votre éditeur, c'est une chaîne qui se trouve contenir un nom de fonction. **PHP 8.1 a donné aux fonctions et aux méthodes un vrai moyen de circuler comme des valeurs.** Cette section le montre, avec deux astuces de `Closure` pour du code plus délibéré. Les closures et les fonctions fléchées elles-mêmes sont au [chapitre 15](ch15-01-closures.md).
+`array_map('strlen', ...)`. Cette chaîne de caractères est la façon de passer une fonction en argument depuis les débuts de PHP, et elle a toujours eu quelque chose de bancal : pour votre éditeur, c'est une chaîne qui se trouve contenir un nom de fonction. **PHP 8.1 a donné aux fonctions et aux méthodes un vrai moyen de circuler comme des valeurs.** Cette section le montre, avec deux astuces de `Closure` pour du code plus explicite. Les closures et les fonctions fléchées elles-mêmes sont au [chapitre 15](ch15-01-closures.md).
 
 ## L'ancienne façon de passer une fonction
 
@@ -31,7 +31,7 @@ echo $greetCallable('Sam'), "\n"; // Hello, Sam!
 
 ## La syntaxe des callables de première classe
 
-**Écrivez le nom de la fonction ou de la méthode suivi de `(...)`, trois points littéraux, et PHP vous rend une `Closure` qui pointe dessus.**
+**Écrivez le nom de la fonction ou de la méthode suivi de `(...)`, trois points littéraux, et PHP vous renvoie une `Closure` qui pointe dessus.**
 
 ```php
 <?php

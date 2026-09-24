@@ -2,7 +2,7 @@
 
 Everything so far in this chapter has been framework-specific. This page covers what works identically no matter which stack from this book you're shipping with, and how to wire it together so a broken or vulnerable build never quietly reaches production.
 
-**Static analysis as lightweight SAST**: PHPStan and Psalm, already covered per-framework earlier in this chapter, double as a first line of static application security testing (SAST), catching things like SQL built from unsanitized input or a variable used before it's guaranteed to be set.
+**Static analysis as lightweight SAST**: PHPStan and Psalm, already covered per framework earlier in this chapter, double as a first line of static application security testing (SAST), catching things like SQL built from unsanitized input or a variable used before it's guaranteed to be set.
 
 **GitHub CodeQL** performs deeper semantic security analysis, specifically tracing how untrusted input flows through the code toward a dangerous sink (a raw SQL query, an `eval()`, an unescaped output), rather than just checking types.
 

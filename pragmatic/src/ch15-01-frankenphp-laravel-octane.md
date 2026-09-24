@@ -10,7 +10,7 @@ php artisan octane:install --server=frankenphp
 php artisan octane:start
 ```
 
-FrankenPHP is a modern PHP application server, written in Go, that runs PHP in worker mode natively (as well as classic mode), with built-in HTTPS and no separate web server needed:
+FrankenPHP is a PHP application server, written in Go, that runs PHP in worker mode natively (as well as classic mode), with built-in HTTPS and no separate web server needed:
 
 ```bash
 frankenphp php-server --worker /path/to/public/index.php

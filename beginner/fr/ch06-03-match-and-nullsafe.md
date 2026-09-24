@@ -1,6 +1,6 @@
 # Un flux de contrôle concis avec `match` et `?->`
 
-Certaines valeurs ne sont pas l'un de trois ou quatre cas. Elles sont l'un de deux : quelque chose, ou rien du tout. C'est le dernier ensemble fermé de ce chapitre, et il mérite une syntaxe à lui.
+Certaines valeurs n'ont pas trois ou quatre cas possibles. Elles en ont deux : quelque chose, ou rien du tout. C'est le dernier ensemble fermé de ce chapitre, et il mérite une syntaxe à lui.
 
 ## L'opérateur nullsafe
 

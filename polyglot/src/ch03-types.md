@@ -1,6 +1,6 @@
 # Types
 
-**PHP is dynamically typed, and every type you write down is checked at runtime.** Not at compile time like Java, not erased like TypeScript. A parameter declared `int` receives an `int` or the call throws a `TypeError`, every time, in production. That is the whole model. The nuance is in what "receives an `int`" means, and that nuance is a switch.
+**PHP is dynamically typed, and every type you write down is checked at runtime.** Not at compile time like Java, not erased like TypeScript. A parameter declared `int` receives an `int` or the call throws a `TypeError`, every time, in production. That is the whole model; the nuance is in what "receives an `int`" means, and that nuance is a switch.
 
 ## The types you can write
 
@@ -76,7 +76,7 @@ echo double(21), PHP_EOL;    // 42
 echo double('21'), PHP_EOL;  // TypeError: must be of type int, string given
 ```
 
-Delete the `declare` line and the second call prints 42. Three facts about this switch, and each surprises someone:
+Delete the `declare` line and the second call prints 42. The way the switch works surprises almost everyone on at least one point:
 
 **It is per file.** There is no global setting, no `php.ini` flag, no project-wide option. Each file states its own mode, and a file without the line is in coercive mode.
 

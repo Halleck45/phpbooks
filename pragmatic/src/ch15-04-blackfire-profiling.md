@@ -1,6 +1,6 @@
 # Blackfire ($): Finding the Actual Bottleneck
 
-Every performance fix in this chapter, worker mode, caching, scaling infrastructure, assumes you already know what's slow. Guessing wrong wastes far more time than the fix itself: adding a cache in front of a query that was never the bottleneck fixes nothing. Blackfire profiles a real request and shows exactly where the time and memory went, function by function.
+Every performance fix in this chapter (worker mode, caching, scaling infrastructure) assumes you already know what's slow. Guessing wrong wastes far more time than the fix itself: adding a cache in front of a query that was never the bottleneck fixes nothing. Blackfire profiles a real request and shows exactly where the time and memory went, function by function.
 
 ```bash
 composer require blackfire/php-sdk --dev
@@ -13,7 +13,7 @@ Or, for a live request, wrapping it directly:
 blackfire curl https://example.com/checkout
 ```
 
-The resulting profile shows a call graph: which function called which, how long each took, and how many times each ran, immediately surfacing the usual real-world culprits: an N+1 database query loop, an uncached external API call repeated needlessly, a template rendering step that turns out to dominate the request despite looking trivial in the code.
+The resulting profile shows a call graph: which function called which, how long each took, and how many times each ran. It immediately surfaces the usual real-world culprits: an N+1 database query loop, an uncached external API call repeated needlessly, a template rendering step that turns out to dominate the request despite looking trivial in the code.
 
 ```php
 // what profiling often reveals: 200 queries where one would do

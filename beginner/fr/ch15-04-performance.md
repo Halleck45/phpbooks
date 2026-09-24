@@ -53,7 +53,7 @@ Rien de tout cela ne signifie « écrivez toujours des boucles ». Les trois out
 
 **Une boucle `for` ou `foreach` est l'option la plus rapide, et souvent la plus claire.** Il n'y a rien à apprendre, juste une variable qui change à chaque tour. Prenez-la quand la vitesse compte, quand la logique dépasse la transformation d'une ligne, ou chaque fois que vous hésitez. Elle est rarement le mauvais choix par défaut.
 
-**Un générateur échange un peu de vitesse contre une mémoire qui ne grossit pas avec l'entrée.** Un fichier énorme, une API que vous parcourez page par page, une suite sans fin : c'est son territoire. Vous l'avez vu payer dans `phpgrep`, qui affiche sa première ligne avant d'avoir fini le fichier. Si toute la série tenait confortablement en mémoire de toute façon, la pause-reprise ne vous achète rien.
+**Un générateur échange un peu de vitesse contre une mémoire qui ne grossit pas avec l'entrée.** Un fichier énorme, une API que vous parcourez page par page, une suite sans fin : c'est son territoire. Vous l'avez vu payer dans `phpgrep`, qui affiche sa première ligne avant d'avoir fini le fichier. Si toute la série tenait confortablement en mémoire de toute façon, le surcoût de la pause-reprise ne vous apporte rien.
 
 **`array_map()` et `array_filter()` sont souvent l'option la plus lisible pour des données petites ou moyennes déjà en mémoire.** Un `array_map(fn($x) => ..., $items)` d'une ligne se lit mieux que la boucle de cinq lignes qu'il remplace, et c'est un vrai gain. Ce qu'ils ne sont pas, c'est une économie de mémoire : chacun construit un tableau tout neuf en plus de celui que vous lui donnez. Pour cent éléments, sans importance. Pour des millions, ce sont les 66 Mo que vous venez de voir.
 

@@ -61,7 +61,7 @@ class PayPal extends PaymentMethod
 }
 ```
 
-`PayPal` n'appelle jamais `parent::charge()`. Rien n'oblige une redéfinition à réutiliser la version du parent ; elle doit seulement exister. **Une sous-classe peut garder le comportement du parent, le compléter, ou le remplacer entièrement**, et ces trois usages de l'héritage sont tout aussi ordinaires. `CreditCard` et `PayPal` partagent la promesse que tout `PaymentMethod` sait faire `charge()`, et une seule des deux partage du code.
+`PayPal` n'appelle jamais `parent::charge()`. Rien n'oblige une redéfinition à réutiliser la version du parent ; elle doit seulement exister. **Une sous-classe peut garder le comportement du parent, le compléter, ou le remplacer entièrement**, et ces trois usages de l'héritage sont aussi ordinaires les uns que les autres. `CreditCard` et `PayPal` partagent la promesse que tout `PaymentMethod` sait faire `charge()`, et une seule des deux partage du code.
 
 ## Le polymorphisme : la vraie récompense
 

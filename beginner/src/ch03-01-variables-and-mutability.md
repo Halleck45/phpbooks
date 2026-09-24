@@ -37,7 +37,7 @@ Both lines work. Only the first is what you will see in modern PHP code and in t
 
 ## Constants
 
-`$secretNumber` never changed during a game, but nothing stopped it: one stray assignment inside the loop, and the game would break without a word. For a value that must not change while the program runs (a configuration setting, a mathematical constant, the base URL of an API), PHP has better than a variable you promise not to touch:
+`$secretNumber` never changed during a game, but nothing stopped it: one stray assignment inside the loop, and the game would break without a word. For a value that must not change while the program runs (a configuration setting, a mathematical constant, the base URL of an API), PHP has something better than a variable you promise not to touch:
 
 ```php
 <?php

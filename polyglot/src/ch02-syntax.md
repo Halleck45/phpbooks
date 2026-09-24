@@ -93,7 +93,7 @@ Inside a method, the current instance is `$this`. Classes and objects get their 
 
 ## Equality
 
-**Use `===`. Treat `==` as a legacy operator.** The double equals converts both sides to a common type before comparing, which produced the famous absurdities of old PHP. Since PHP 8 a number compared to a non-numeric string is compared as strings, so `0 == 'foo'` is `false` and `'1' == '01'` is still `true`. Saner, still a guessing game. Triple equals compares value and type, with no guessing.
+**Use `===`. Treat `==` as a legacy operator.** The double equals converts both sides to a common type before comparing, which produced the famous absurdities of old PHP. Since PHP 8 a number compared to a non-numeric string is compared as strings, so `0 == 'foo'` is `false` and `'1' == '01'` is still `true`. Saner, but still a guessing game. Triple equals compares value and type, with no guessing.
 
 The same rule applies to `!==` versus `!=`, and to `in_array()` and `array_search()`, which take a third `true` argument to compare strictly.
 
@@ -189,7 +189,7 @@ $parts = [100, 250];
 echo total(...$parts), PHP_EOL; // 350: ... unpacks on both sides
 ```
 
-`...` unpacks an array into arguments and, in a parameter list, collects the rest into an array. Named arguments (`total(cents: 5)`) exist since 8.0. `null` is a value, lowercase by convention, with `true` and `false`. Namespaces and `use` do exactly what you expect from Java packages or ES imports; [Namespaces, Composer, and Autoloading](ch09-composer-and-namespaces.md) covers how files get found.
+`...` unpacks an array into arguments and, in a parameter list, collects the rest into an array. Named arguments (`total(cents: 5)`) have existed since 8.0. `null` is a value, lowercase by convention, with `true` and `false`. Namespaces and `use` do exactly what you expect from Java packages or ES imports; [Namespaces, Composer, and Autoloading](ch09-composer-and-namespaces.md) covers how files get found.
 
 ## Side by side
 

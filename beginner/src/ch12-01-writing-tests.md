@@ -137,7 +137,7 @@ final class RectangleTest extends TestCase
 
 <img src="images/ch12-equals-vs-same.png" alt="Two gates side by side: the assertEquals gate lets both the number 1 and the text 1 through, the assertSame gate lets the number through and stops the text" width="600">
 
-Default to `assertSame()`. It catches a whole family of bugs, a function returning a string where you expected an integer, that `assertEquals()` lets through without a word. Reach for `assertEquals()` only when the loose comparison is really what you mean to test.
+Default to `assertSame()`. It catches a whole family of bugs (a function returning a string where you expected an integer) that `assertEquals()` lets through without a word. Reach for `assertEquals()` only when the loose comparison is really what you mean to test.
 
 A failing assertion tells you exactly what went wrong:
 

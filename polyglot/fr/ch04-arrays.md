@@ -163,7 +163,7 @@ echo json_encode($paid);                // {"0":{...},"2":{...}}  an object!
 echo json_encode(array_values($paid));  // [{...},{...}]          a list
 ```
 
-**`array_filter()` conserve les clés d'origine.** Après le filtrage d'une liste, les clés ont des trous, `array_is_list()` répond false et `json_encode()` produit un objet ; `array_values()` renumérote et remet tout en ordre. Notez aussi l'ordre des arguments, qui place le tableau en premier pour `array_filter()` et `array_reduce()` mais la fonction de rappel en premier pour `array_map()`. Cette incohérence a trente ans, et la complétion de votre éditeur reste le meilleur remède.
+**`array_filter()` conserve les clés d'origine.** Après le filtrage d'une liste, les clés ont des trous, `array_is_list()` répond `false` et `json_encode()` produit un objet ; `array_values()` renumérote et remet tout en ordre. Notez aussi l'ordre des arguments, qui place le tableau en premier pour `array_filter()` et `array_reduce()` mais la fonction de rappel en premier pour `array_map()`. Cette incohérence a trente ans, et la complétion de votre éditeur reste le meilleur remède.
 
 PHP 8.4 a ajouté les recherches que vous réécriviez à la main : `array_find()` renvoie le premier élément qui correspond, `array_find_key()` sa clé, `array_any()` et `array_all()` renvoient des booléens. PHP 8.5 a ajouté `array_first()` et `array_last()`, qui renvoient la première et la dernière valeur quelles que soient les clés, à côté des plus anciennes `array_key_first()` et `array_key_last()`.
 
@@ -205,7 +205,7 @@ echo total([1, 2, 3]); // 6
 
 ## Quand un tableau ne suffit pas
 
-Un tableau ne peut pas dire ce qu'il contient : `array $orders` n'apprend rien au lecteur, et le langage n'a pas d'`array<Order>`. La réponse légère est un docblock, `@param list<Order> $orders`, que PHPStan et Psalm imposent comme un vrai type et que votre éditeur utilise pour la complétion. La réponse plus lourde est une petite classe, une `final class Orders` qui détient un tableau privé, expose exactement les opérations dont vous avez besoin, et implémente les interfaces qui lui permettent de se comporter comme un tableau là où c'est utile, `Countable` pour `count()`, `ArrayAccess` pour `$orders[0]` et `IteratorAggregate` pour `foreach`.
+Un tableau ne peut pas dire ce qu'il contient : `array $orders` n'apprend rien au lecteur, et le langage n'a pas d'`array<Order>`. La réponse légère est un docblock, `@param list<Order> $orders`, que PHPStan et Psalm imposent comme un vrai type et que votre éditeur utilise pour la complétion. La réponse plus lourde est une petite classe, une `final class Orders` qui détient un tableau privé, expose exactement les opérations dont vous avez besoin, et implémente les interfaces qui lui permettent de se comporter comme un tableau là où c'est utile : `Countable` pour `count()`, `ArrayAccess` pour `$orders[0]` et `IteratorAggregate` pour `foreach`.
 
 <img src="images/ch04-array-vs-collection.png" alt="À gauche, une caisse ouverte étiquetée array où l'on a jeté n'importe quoi ; à droite, une boîte étiquetée avec une fente typée sur le dessus qui n'accepte que des pièces en forme d'Order, avec un petit compteur et une poignée sur le côté" width="560">
 

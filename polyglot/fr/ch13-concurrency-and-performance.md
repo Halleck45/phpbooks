@@ -33,7 +33,7 @@ Vous lirez du code comme celui-ci dans une bibliothèque, mais vous ne l'écrire
 
 ## Quand vous avez vraiment besoin d'asynchrone
 
-Certaines charges ne rentrent pas dans le modèle une requête, un processus : un serveur websocket qui tient dix mille connexions inactives, du long polling, un crawler qui fait cent appels HTTP sortants à la fois. **Pour celles-là, PHP a des runtimes asynchrones, et ce sont des bibliothèques, pas des fonctionnalités du langage.** Par ordre alphabétique : AMPHP, ReactPHP, et Swoole ou son fork OpenSwoole, qui est une extension. Les deux premiers sont du PHP pur bâti sur les fibers et la sélection de flux ; Swoole apporte sa propre boucle d'événements en C.
+Certaines charges ne rentrent pas dans le modèle « une requête, un processus » : un serveur websocket qui tient dix mille connexions inactives, du long polling, un crawler qui fait cent appels HTTP sortants à la fois. **Pour celles-là, PHP a des runtimes asynchrones, et ce sont des bibliothèques, pas des fonctionnalités du langage.** Par ordre alphabétique : AMPHP, ReactPHP, et Swoole ou son fork OpenSwoole, qui est une extension. Les deux premiers sont du PHP pur bâti sur les fibers et la sélection de flux ; Swoole apporte sa propre boucle d'événements en C.
 
 Les runtimes worker de [Comment PHP s'exécute](ch01-how-php-runs.md), FrankenPHP et RoadRunner, sont une autre réponse à une autre question : ils gardent votre application amorcée entre les requêtes, toujours une requête à la fois par worker. Ils suppriment le coût de démarrage, mais ils ne rendent pas votre code concurrent.
 
@@ -43,7 +43,7 @@ Avant de vous tourner vers l'un d'eux, demandez-vous si le problème est vraimen
 
 Une requête dispose de trente secondes et doit envoyer une réponse, donc tout ce qui prend plus longtemps, ou tout ce que l'utilisateur n'attend pas, doit sortir de la requête.
 
-**L'idiome consiste à associer une file d'attente et un worker.** La requête dépose un travail (une ligne dans une table, un message dans un broker) et rend la main. Un script CLI, lancé par un superviseur de processus, boucle indéfiniment en tirant les travaux et en les exécutant. Il n'a ni limite de temps ni limite de mémoire à moins que vous ne les fixiez, donc fixez-les : `memory_limit` dans l'ini, et un compteur qui sort proprement après quelques milliers de travaux pour que le superviseur relance un processus neuf. Fuir de la mémoire dans une boucle sans fin est le seul endroit où le nettoyage par requête de PHP ne vous sauve pas.
+**L'idiome consiste à associer une file d'attente et un worker.** La requête dépose un travail (une ligne dans une table, un message dans un broker) et rend la main. Un script CLI, lancé par un superviseur de processus, boucle indéfiniment en tirant les travaux et en les exécutant. Il n'a ni limite de temps ni limite de mémoire à moins que vous ne les fixiez, donc fixez-les : `memory_limit` dans l'ini, et un compteur qui sort proprement après quelques milliers de travaux pour que le superviseur relance un processus neuf. Une fuite mémoire dans une boucle sans fin est le seul cas où le nettoyage par requête de PHP ne vous sauve pas.
 
 Cron couvre le cas planifié. La CLI a le reste de la boîte à outils : `proc_open()` lance un sous-processus avec des tubes, `pcntl_fork()` duplique le processus courant (CLI seulement, jamais sous FPM), et `curl_multi_exec()` effectue des requêtes HTTP en parallèle sans la moindre bibliothèque :
 
