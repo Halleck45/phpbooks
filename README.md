@@ -22,4 +22,4 @@ Built-in PHP functions link to the php.net manual through `<book>/theme/phpnet-l
 
 ## Publish
 
-A push to `landing-page` builds everything and deploys `_site/` to GitHub Pages. A tag `vX.Y.Z` also creates a release with the PDF editions attached.
+A push to `main` builds everything and deploys `_site/` to GitHub Pages. A tag `vX.Y.Z` also creates a release with the PDF editions attached.
