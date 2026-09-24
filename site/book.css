@@ -1,0 +1,444 @@
+/* Reading layout shared by every book. Each book links this file from theme/
+ * (symlink) through additional-css, after mdBook's own stylesheets.
+ *
+ * It repaints mdBook's themes with the landing page's palette (paper and ink,
+ * one blue accent), sets the text in a book face at a comfortable measure, and
+ * quiets the chrome around it. The light themes (light, rust) share the paper
+ * palette; the dark ones (coal, navy, ayu) share the ink palette.
+ *
+ * mdBook sets the root font size to 10px: 1rem = 10px here.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap");
+
+:root {
+    --read-serif: "Source Serif 4", "Iowan Old Style", "Charter", Georgia, serif;
+    --read-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+    --read-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono-font: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --code-font-size: 0.84em;
+    --content-max-width: 680px;
+    --sidebar-target-width: 290px;
+    --page-padding: 20px;
+}
+
+/* Palette */
+
+html.light, html.rust, html:not(.js) {
+    --paper: #fbf9f5;
+    --surface: #f3efe7;
+    --ink: #1d1c1a;
+    --text: #2a2926;
+    --muted: #6a665e;
+    --line: #e7e2d8;
+    --accent: #2f6fd0;
+    --accent-soft: #e9f1fd;
+
+    --bg: var(--paper);
+    --fg: var(--text);
+    --sidebar-bg: var(--paper);
+    --sidebar-fg: #4a4740;
+    --sidebar-non-existant: #a8a399;
+    --sidebar-active: var(--ink);
+    --sidebar-spacer: var(--line);
+    --sidebar-header-border-color: var(--line);
+    --scrollbar: #cfc9bd;
+    --icons: #8a857b;
+    --icons-hover: var(--ink);
+    --links: var(--accent);
+    --inline-code-color: var(--ink);
+    --theme-popup-bg: #ffffff;
+    --theme-popup-border: var(--line);
+    --theme-hover: var(--surface);
+    --quote-bg: transparent;
+    --quote-border: var(--line);
+    --table-border-color: var(--line);
+    --table-header-bg: transparent;
+    --table-alternate-bg: transparent;
+    --searchbar-border-color: var(--line);
+    --searchbar-bg: #ffffff;
+    --searchbar-fg: var(--ink);
+    --searchbar-shadow-color: var(--accent-soft);
+    --searchresults-header-fg: var(--muted);
+    --searchresults-border-color: var(--line);
+    --searchresults-li-bg: var(--accent-soft);
+    --search-mark-bg: #fbe7a1;
+    --footnote-highlight: var(--accent);
+    --overlay-bg: rgba(29, 28, 26, 0.25);
+    --blockquote-note-color: #2f6fd0;
+    --blockquote-tip-color: #3b7a4a;
+    --blockquote-important-color: #6b4fbb;
+    --blockquote-warning-color: #a3670c;
+    --blockquote-caution-color: #b0413e;
+    --copy-button-filter: invert(55%);
+    --copy-button-filter-hover: invert(10%);
+    --color-scheme: light;
+}
+
+html.coal, html.navy, html.ayu {
+    --paper: #121417;
+    --surface: #1a1d22;
+    --ink: #ecebe7;
+    --text: #d9d7d1;
+    --muted: #9d9a92;
+    --line: #2a2e35;
+    --accent: #8ab6ff;
+    --accent-soft: #1a2535;
+
+    --bg: var(--paper);
+    --fg: var(--text);
+    --sidebar-bg: var(--paper);
+    --sidebar-fg: #aeaba3;
+    --sidebar-non-existant: #5f5d58;
+    --sidebar-active: var(--ink);
+    --sidebar-spacer: var(--line);
+    --sidebar-header-border-color: var(--line);
+    --scrollbar: #3a3f47;
+    --icons: #7d7a73;
+    --icons-hover: var(--ink);
+    --links: var(--accent);
+    --inline-code-color: var(--ink);
+    --theme-popup-bg: var(--surface);
+    --theme-popup-border: var(--line);
+    --theme-hover: #23272d;
+    --quote-bg: transparent;
+    --quote-border: var(--line);
+    --table-border-color: var(--line);
+    --table-header-bg: transparent;
+    --table-alternate-bg: transparent;
+    --searchbar-border-color: var(--line);
+    --searchbar-bg: var(--surface);
+    --searchbar-fg: var(--ink);
+    --searchbar-shadow-color: var(--accent-soft);
+    --searchresults-header-fg: var(--muted);
+    --searchresults-border-color: var(--line);
+    --searchresults-li-bg: var(--accent-soft);
+    --search-mark-bg: #5a4a1c;
+    --footnote-highlight: var(--accent);
+    --overlay-bg: rgba(0, 0, 0, 0.45);
+    --blockquote-note-color: #8ab6ff;
+    --blockquote-tip-color: #86c796;
+    --blockquote-important-color: #b9a4f0;
+    --blockquote-warning-color: #e0b15c;
+    --blockquote-caution-color: #ec8a84;
+    --copy-button-filter: invert(50%);
+    --copy-button-filter-hover: invert(92%);
+    --color-scheme: dark;
+}
+
+/* The five mdBook themes collapse to two looks: keep one entry of each. */
+#mdbook-theme-rust, #mdbook-theme-coal, #mdbook-theme-ayu { display: none; }
+
+html {
+    font-family: var(--read-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--accent-soft); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+/* Text */
+
+.content main {
+    font-family: var(--read-serif);
+    font-size: 1.9rem;
+    line-height: 1.6;
+    color: var(--fg);
+    font-optical-sizing: auto;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+    padding-block-end: 2em;
+}
+.content p, .content ol, .content ul { line-height: inherit; }
+.content p { margin: 0 0 1.1em; text-wrap: pretty; hyphens: auto; }
+.content li { margin-block: 0.3em; }
+.content li > p { margin-block: 0.4em; }
+.content ul, .content ol { padding-inline-start: 1.4em; margin: 0 0 1.1em; }
+.content ul li::marker { color: var(--muted); }
+.content ol li::marker { color: var(--muted); font-family: var(--read-sans); font-size: 0.85em; font-variant-numeric: lining-nums; }
+.content strong, .content b { font-weight: 600; color: var(--ink); }
+.content hr { border: 0; border-top: 1px solid var(--line); margin: 3em auto; width: 40%; }
+
+.content main h1, .content main h2, .content main h3,
+.content main h4, .content main h5, .content main h6 {
+    color: var(--ink);
+    text-wrap: balance;
+    font-variant-numeric: lining-nums;
+}
+.content main h1 {
+    font: 500 4.2rem/1.1 var(--read-display);
+    letter-spacing: -0.02em;
+    margin: 1.4em 0 0.9em;
+}
+.content main h2 {
+    font: 500 2.9rem/1.2 var(--read-display);
+    letter-spacing: -0.012em;
+    margin: 2.2em 0 0.6em;
+}
+.content main h3 {
+    font: 600 2.05rem/1.3 var(--read-sans);
+    letter-spacing: -0.01em;
+    margin: 2em 0 0.5em;
+}
+.content main h4, .content main h5, .content main h6 {
+    font: 600 1.75rem/1.35 var(--read-sans);
+    margin: 1.8em 0 0.4em;
+}
+.content main h1 + h2, .content main h2 + h3, .content main h3 + h4 { margin-block-start: 0.8em; }
+/* mdBook marks the heading in the address bar with a "»" hung in the margin. */
+.content main :is(h1, h2, h3, h4, h5, h6):target::before { color: var(--accent); font-weight: 400; }
+
+.content a:link, .content a:visited { color: var(--links); text-decoration: none; }
+.content main a:not(.header):hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+}
+
+/* Code */
+
+.content main code { font-family: var(--mono-font) !important; font-variant-ligatures: none; }
+.content main :not(pre) > code,
+.content main :not(pre) > .hljs {
+    font-size: 0.82em;
+    padding: 0.1em 0.25em;
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--inline-code-color);
+    white-space: nowrap;
+}
+.content main a > code, .content main a > .hljs { color: var(--links) !important; }
+.content main :is(h1, h2, h3, h4) code { font-size: 0.86em; background: none; padding: 0; }
+
+.content main pre {
+    margin: 1.4em 0 1.6em;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+.content main pre > code,
+.content main pre > code.hljs {
+    display: block;
+    padding: 1.1em 1.25em;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    background: transparent;
+    border-radius: 8px;
+    tab-size: 4;
+}
+pre > .buttons { top: 6px; right: 6px; }
+pre > .buttons button {
+    font-size: 16px;
+    border-radius: 6px;
+    border-color: var(--line);
+    background: var(--paper);
+}
+
+/* Syntax colors, kept few and soft: the text is the code, not the rainbow. */
+.hljs { color: var(--ink); background: var(--surface); }
+.hljs-comment, .hljs-quote { color: #8a857b; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-meta .hljs-keyword { color: #8b3a8f; }
+.hljs-string, .hljs-symbol, .hljs-bullet, .hljs-regexp { color: #2f7040; }
+.hljs-number, .hljs-literal, .hljs-built_in, .hljs-builtin-name, .hljs-type { color: #a35200; }
+.hljs-title, .hljs-section, .hljs-title.function_, .hljs-title.class_ { color: #1f5fbf; }
+.hljs-variable, .hljs-template-variable, .hljs-params, .hljs-attr, .hljs-attribute { color: #3d4f75; }
+.hljs-meta, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-link { color: #6a665e; }
+.hljs-addition { color: #2f7040; background: #e8f3ea; }
+.hljs-deletion { color: #a33a36; background: #f8e7e5; }
+
+html.coal .hljs-comment, html.navy .hljs-comment, html.ayu .hljs-comment,
+html.coal .hljs-quote, html.navy .hljs-quote, html.ayu .hljs-quote { color: #7d7a73; }
+html.coal .hljs-keyword, html.navy .hljs-keyword, html.ayu .hljs-keyword,
+html.coal .hljs-selector-tag, html.navy .hljs-selector-tag, html.ayu .hljs-selector-tag { color: #d0a4e0; }
+html.coal .hljs-string, html.navy .hljs-string, html.ayu .hljs-string,
+html.coal .hljs-symbol, html.navy .hljs-symbol, html.ayu .hljs-symbol,
+html.coal .hljs-bullet, html.navy .hljs-bullet, html.ayu .hljs-bullet,
+html.coal .hljs-regexp, html.navy .hljs-regexp, html.ayu .hljs-regexp { color: #a3d2a0; }
+html.coal .hljs-number, html.navy .hljs-number, html.ayu .hljs-number,
+html.coal .hljs-literal, html.navy .hljs-literal, html.ayu .hljs-literal,
+html.coal .hljs-built_in, html.navy .hljs-built_in, html.ayu .hljs-built_in,
+html.coal .hljs-builtin-name, html.navy .hljs-builtin-name, html.ayu .hljs-builtin-name,
+html.coal .hljs-type, html.navy .hljs-type, html.ayu .hljs-type { color: #e8b67f; }
+html.coal .hljs-title, html.navy .hljs-title, html.ayu .hljs-title,
+html.coal .hljs-section, html.navy .hljs-section, html.ayu .hljs-section { color: #8ab6ff; }
+html.coal .hljs-variable, html.navy .hljs-variable, html.ayu .hljs-variable,
+html.coal .hljs-template-variable, html.navy .hljs-template-variable, html.ayu .hljs-template-variable,
+html.coal .hljs-params, html.navy .hljs-params, html.ayu .hljs-params,
+html.coal .hljs-attr, html.navy .hljs-attr, html.ayu .hljs-attr,
+html.coal .hljs-attribute, html.navy .hljs-attribute, html.ayu .hljs-attribute { color: #b8c4da; }
+html.coal .hljs-meta, html.navy .hljs-meta, html.ayu .hljs-meta,
+html.coal .hljs-tag, html.navy .hljs-tag, html.ayu .hljs-tag,
+html.coal .hljs-name, html.navy .hljs-name, html.ayu .hljs-name { color: #9d9a92; }
+html.coal .hljs-addition, html.navy .hljs-addition, html.ayu .hljs-addition { color: #a3d2a0; background: #1c2a20; }
+html.coal .hljs-deletion, html.navy .hljs-deletion, html.ayu .hljs-deletion { color: #ec8a84; background: #2e1c1c; }
+
+/* Quotes and callouts */
+
+.content main blockquote {
+    margin: 1.6em 0;
+    padding: 0.1em 0 0.1em 1.3em;
+    border: 0;
+    border-inline-start: 2px solid var(--line);
+    background: none;
+    color: var(--muted);
+}
+.content main blockquote p:last-child { margin-bottom: 0; }
+
+.content main .blockquote-tag {
+    color: var(--fg);
+    padding: 0.9em 1.2em;
+    border-inline-start-width: 3px;
+    border-radius: 0 8px 8px 0;
+    background: var(--surface);
+}
+.content main .blockquote-tag-title {
+    font: 600 1.35rem/1.2 var(--read-sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0 0 0.6em;
+}
+.content main .blockquote-tag-title svg { width: 0.95em; height: 0.95em; }
+
+/* Tables */
+
+.content main .table-wrapper { margin: 1.6em 0 1.8em; }
+.content main table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    font: 400 1.5rem/1.5 var(--read-sans);
+    font-variant-numeric: tabular-nums lining-nums;
+}
+.content main table th,
+.content main table td {
+    padding: 0.6em 0.9em;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+}
+.content main table th:first-child, .content main table td:first-child { padding-inline-start: 0; }
+.content main table th:last-child, .content main table td:last-child { padding-inline-end: 0; }
+.content main table thead { background: none; }
+.content main table thead tr { border: 0; }
+.content main table thead th {
+    font-weight: 600;
+    color: var(--ink);
+    border-bottom: 1px solid var(--muted);
+}
+.content main table tbody tr:nth-child(2n) { background: none; }
+.content main table code { white-space: normal; }
+
+/* Drawings: black ink on white. Multiply melts the white into the paper; in
+   the dark the drawing is inverted, hue-rotated back to blue, and screened
+   (same treatment as the landing page). */
+.content main img {
+    display: block;
+    margin: 1.2em auto;
+    max-width: 100%;
+    height: auto;
+    filter: brightness(1.03) contrast(1.08);
+    mix-blend-mode: multiply;
+}
+html.coal .content main img, html.navy .content main img, html.ayu .content main img {
+    filter: brightness(1.03) contrast(1.08) invert(1) hue-rotate(180deg);
+    mix-blend-mode: screen;
+}
+
+/* Footnotes */
+
+.content main .footnote-definition {
+    font: 400 1.45rem/1.55 var(--read-sans);
+    color: var(--muted);
+}
+.content main .footnote-definition:first-of-type,
+.content main hr + .footnote-definition,
+.content main ol.footnote-definition { border-top: 1px solid var(--line); padding-top: 1em; margin-top: 3em; }
+
+/* Chrome: menu bar, sidebar, chapter arrows */
+
+#mdbook-menu-bar { font-family: var(--read-sans); }
+.menu-title {
+    font: 500 1.5rem/var(--menu-bar-height) var(--read-sans);
+    color: var(--muted);
+    letter-spacing: 0;
+}
+#mdbook-menu-bar .icon-button, #mdbook-menu-bar .fa-svg { transition: color 0.15s; }
+#mdbook-menu-bar .fa-svg svg { width: 0.95em; height: 0.95em; }
+
+.sidebar {
+    font: 400 1.45rem/1.45 var(--read-sans);
+    border-inline-end: 1px solid var(--line);
+}
+.sidebar .sidebar-scrollbox { padding: 18px 16px 40px 20px; }
+.chapter li.chapter-item { margin-block-start: 0.45em; line-height: 1.45; }
+.chapter li a { color: var(--sidebar-fg); transition: color 0.12s; }
+.chapter li a:hover { color: var(--ink); text-decoration: none; }
+.chapter li a.active { color: var(--ink); font-weight: 600; }
+.chapter li a strong { font-weight: 500; color: var(--sidebar-non-existant); margin-inline-end: 0.2em; font-variant-numeric: tabular-nums; }
+.chapter li a.active strong { color: var(--muted); }
+.chapter li.part-title { font: 600 1.15rem/1.3 var(--read-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 1.6em 0 0.4em; }
+.chapter .spacer { height: 1px; margin: 12px 0; }
+.on-this-page { margin-left: 4px; padding-left: 14px; border-inline-start: 1px solid var(--line); }
+.on-this-page a { font-size: 0.95em; }
+.chapter a.current-header { color: var(--accent); }
+.sidebar-resize-handle .sidebar-resize-indicator { opacity: 0; }
+.sidebar-resize-handle:hover .sidebar-resize-indicator { opacity: 1; }
+
+.nav-chapters {
+    font-size: 1.8em;
+    min-width: 72px;
+    color: var(--line);
+    transition: color 0.15s;
+}
+.nav-chapters:hover { background: none; color: var(--muted); }
+.mobile-nav-chapters {
+    font-size: 1.6em;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    width: 64px;
+}
+.nav-wrapper { margin-block-start: 3em; }
+
+.theme-popup { font: 400 1.4rem/1.4 var(--read-sans); border-radius: 8px; box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.25); }
+.theme-popup .theme { padding: 4px 22px; }
+#mdbook-searchbar { border-radius: 8px; font: 400 1.6rem var(--read-sans); padding: 10px 14px; }
+ul#mdbook-searchresults { font-family: var(--read-sans); }
+
+@media only screen and (max-width: 620px) {
+    :root { --page-padding: 16px; }
+    .content main { font-size: 1.8rem; line-height: 1.6; }
+    .content main h1 { font-size: 3.3rem; margin-top: 1em; }
+    .content main h2 { font-size: 2.5rem; }
+    .content main h3 { font-size: 1.9rem; }
+    .content main pre { margin-inline: calc(0px - var(--page-padding)); border-radius: 0; border-inline: 0; }
+    .content main pre > code { font-size: 1.4rem; padding: 1em var(--page-padding); }
+}
+
+/* Paper: print.html is what the PDF editions are printed from. */
+@media print {
+    html, html.light, html.rust, html.coal, html.navy, html.ayu {
+        --paper: #ffffff;
+        --surface: #f5f3ee;
+        --ink: #111111;
+        --text: #1d1c1a;
+        --muted: #5e5a52;
+        --line: #dcd6ca;
+        --accent: #1f5fbf;
+        --bg: #ffffff;
+        --fg: var(--text);
+        --links: var(--accent);
+    }
+    .content main { font-size: 11pt; line-height: 1.55; }
+    .content main h1 { font-size: 24pt; }
+    .content main h2 { font-size: 16pt; }
+    .content main h3 { font-size: 12.5pt; }
+    .content main pre { border: 0; }
+    .content main pre > code { font-size: 8.5pt; }
+    .content main table { font-size: 9pt; }
+    .content main img, html.coal .content main img, html.navy .content main img, html.ayu .content main img {
+        filter: none; mix-blend-mode: normal; break-inside: avoid;
+    }
+    .content main pre, .content main blockquote, .content main table { break-inside: avoid; }
+}

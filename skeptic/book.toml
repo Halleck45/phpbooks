@@ -7,4 +7,5 @@ description = "What the data says about PHP in 2026, factually: footprint, perfo
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "ayu"
+additional-css = ["theme/book.css"]
 additional-js = ["theme/phpnet-links.js", "theme/site-bar.js"]

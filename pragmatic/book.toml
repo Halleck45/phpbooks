@@ -5,4 +5,5 @@ language = "en"
 description = "A feature-first builder's guide to Laravel, Symfony, WordPress, TYPO3, API Platform, Nextcloud, and the rest of the modern PHP ecosystem"
 
 [output.html]
+additional-css = ["theme/book.css"]
 additional-js = ["theme/phpnet-links.js", "theme/site-bar.js"]
