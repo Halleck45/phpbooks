@@ -1,0 +1,88 @@
+name: Books
+
+on:
+  push:
+    branches: ['**']
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+env:
+  MDBOOK_VERSION: 0.5.4
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install mdBook
+        run: |
+          curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+            | sudo tar -xz -C /usr/local/bin
+          mdbook --version
+
+      - name: Build the books and the landing page
+        run: make dist
+
+      - name: Print the PDF editions
+        run: make pdf
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pdf
+          path: _site/*/*.pdf
+          if-no-files-found: error
+
+  deploy:
+    if: github.ref == 'refs/heads/landing-page'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: pdf
+          path: pdf
+
+      - name: Name the files after their book
+        run: |
+          mkdir out
+          for f in pdf/*/*.pdf; do
+            book=$(basename "$(dirname "$f")")
+            case "$(basename "$f")" in
+              book.pdf) cp "$f" "out/$book-$GITHUB_REF_NAME.pdf" ;;
+              book-fr.pdf) cp "$f" "out/$book-fr-$GITHUB_REF_NAME.pdf" ;;
+            esac
+          done
+          ls -l out
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --title "$GITHUB_REF_NAME" --generate-notes out/*.pdf

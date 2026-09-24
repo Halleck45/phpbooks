@@ -1,7 +1,7 @@
 # The landing page: one static file, no build step.
 #
-#   make serve          serve the repository and print the page URL (book links
-#                       are relative, so the books must be built: make -C .. build)
+#   make serve          serve ../_site (the page with the built books) and print
+#                       its URL; assemble it first with make -C .. dist
 #   make illustrations  generate the missing drawings of illustrations.md into
 #                       images/ (needs OPENAI_API_KEY)
 #   make illustrations ARGS="--force hero"   regenerate one drawing
@@ -17,8 +17,8 @@ PNG = $(wildcard images/*.png)
 .PHONY: serve illustrations webp
 
 serve:
-	@echo "http://localhost:$(PORT)/site/"
-	python3 -m http.server $(PORT) --directory ..
+	@echo "http://localhost:$(PORT)/"
+	python3 -m http.server $(PORT) --directory ../_site
 
 illustrations:
 	ILLUSTRATIONS_SPEC="$(CURDIR)/illustrations.md" ILLUSTRATIONS_OUT="$(CURDIR)/images" ../scripts/generate-illustrations.sh $(ARGS)

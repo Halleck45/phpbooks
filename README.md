@@ -1,14 +1,25 @@
-# README
+# PHP books
 
-This repository holds one book per onboarding persona (see `onboarding personas.md`), one folder per book:
+One folder per book, each an mdBook: `beginner/` (The PHP Book), `polyglot/` (And Now, PHP), `pragmatic/` (Ship It With PHP), `skeptic/` (PHP in 2026, the Facts), `engineering/` (PHP: A Guide for the Decision Maker). `site/` is the landing page that hands each reader their book.
 
-- **The PHP Book** (`beginner/`), for *The Absolute Beginner*: a full course for developers new to PHP. See `beginner/README.md`.
-- **And Now, PHP** (`polyglot/`), for *The Experienced Polyglot Developer*: a two-to-three-hour read for experienced developers coming from another language, or returning to PHP after years away. See `polyglot/README.md`.
-- **ShiPHP It** (`pragmatic/`), for *The Pragmatic Builder*: a feature-first guide to shipping with the PHP ecosystem.
-- **PHP in 2026, the Facts** (`skeptic/`), for *The Skeptical Evaluator*: an evidence-based evaluation of PHP, every figure sourced and dated, with the cases where PHP is the wrong choice. See `skeptic/README.md`.
+## Build
 
-Each folder has its own `Makefile` (`make en`, `make fr`, `make build`, `make pdf`, `make illustrations`, `make lint`); the root `Makefile` dispatches (`make beginner-en`, `make polyglot-fr`, `make skeptic-charts`, `make build`). The scripts in `scripts/` are shared.
+You need [mdBook](https://rust-lang.github.io/mdBook/) 0.5 and, for the PDF editions, Chrome.
 
-`site/` holds a draft landing page that presents the books and helps a visitor pick one (see `site/README.md`).
+```
+make beginner-en      # serve one book, live reload (also polyglot-fr, skeptic-en, ...)
+make build            # build every book, both languages
+make dist             # assemble the landing page and the books into _site/
+make pdf              # print the PDF editions into _site/ as well
+make site             # serve _site/ on http://localhost:8000/
+```
 
-In every book, calls to PHP built-in functions link to the php.net manual, in code blocks and in inline code. The script is `scripts/phpnet-links.src.js`; `make phpnet-links` refreshes the function list from the php.net index and writes one copy per book into `<book>/theme/phpnet-links.js` (mdBook only ships `additional-js` files that live inside the book folder). Commit the copies: Read the Docs builds with `mdbook build` alone.
+## Work
+
+The English source of a book lives in `<book>/src/`, the French edition in `<book>/fr/`, same file names. Each book has its editorial guide (`WRITING.md` or `SPEC.md`): read it before editing a chapter. `make lint` runs `php -l` on every PHP block; some chapters use PHP 8.4 syntax, so use a recent binary.
+
+Built-in PHP functions link to the php.net manual through `<book>/theme/phpnet-links.js`. `make phpnet-links` refreshes those copies from the php.net index; commit them.
+
+## Publish
+
+A push to `landing-page` builds everything and deploys `_site/` to GitHub Pages. A tag `vX.Y.Z` also creates a release with the PDF editions attached.
