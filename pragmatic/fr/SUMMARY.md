@@ -1,0 +1,106 @@
+# 🐘 Livrez avec PHP
+
+[🐘 Livrez avec PHP](title-page.md)
+[Avant-propos : on peut conduire sans aimer le moteur](foreword.md)
+[Comment lire ce livre](ch00-00-how-this-book-works.md)
+
+- [Choisir sa stack en cinq minutes](ch01-00-choosing-your-stack.md)
+  - [Framework, CMS ou headless : que construisez-vous, au juste ?](ch01-01-framework-cms-or-headless.md)
+  - [Un premier projet en moins d'une minute](ch01-02-scaffolding-a-first-project.md)
+
+- [Livrer sans framework : les composants autonomes](ch02-00-standalone-components.md)
+  - [Outils en ligne de commande : Symfony/Console](ch02-01-symfony-console-standalone.md)
+  - [Parler à d'autres API : Guzzle](ch02-02-guzzle-http-client.md)
+  - [Des templates sans framework : League/Plates](ch02-03-league-plates-standalone.md)
+  - [Des logs qui marchent tout de suite : Monolog](ch02-04-monolog-standalone.md)
+  - [Valider les entrées : Respect/Validation](ch02-05-respect-validation.md)
+  - [Stocker des fichiers sans adopter un framework : League/Flysystem](ch02-06-league-flysystem-standalone.md)
+
+- [Livrer un site de contenu](ch03-00-shipping-a-content-site.md)
+  - [WordPress : thèmes de blocs et éditeur de site](ch03-01-wordpress-block-themes.md)
+  - [TYPO3 : du contenu structuré à l'échelle d'une institution](ch03-02-typo3-structured-content.md)
+  - [Statamic ($ en usage commercial) : un CMS à fichiers plats bâti sur Laravel](ch03-03-statamic-flat-file-cms.md)
+  - [Craft CMS ($) : un CMS sous licence, pensé pour les rédactions](ch03-04-craft-cms.md)
+
+- [Livrer des comptes utilisateurs](ch04-00-shipping-user-accounts.md)
+  - [Laravel : Breeze, Fortify et Jetstream](ch04-01-laravel-breeze-fortify.md)
+  - [Symfony : le Security Bundle](ch04-02-symfony-security-bundle.md)
+  - [WordPress : rôles, capacités et mots de passe d'application](ch04-03-wordpress-roles-capabilities.md)
+
+- [Livrer un back-office](ch05-00-shipping-an-admin-back-office.md)
+  - [Laravel : Filament en un après-midi](ch05-01-laravel-filament.md)
+  - [Symfony : EasyAdmin et Sonata](ch05-02-symfony-easyadmin.md)
+  - [API Platform : une administration générée depuis votre API](ch05-03-api-platform-auto-admin.md)
+  - [WordPress : types de contenu personnalisés et ACF comme moteur CRUD](ch05-04-wordpress-cpt-as-crud.md)
+  - [Laravel Nova ($) : l'alternative officielle à Filament](ch05-05-laravel-nova.md)
+
+- [Livrer une API que d'autres équipes peuvent utiliser](ch06-00-shipping-an-api.md)
+  - [API Platform : une API complète à partir d'une classe PHP](ch06-01-api-platform-from-one-class.md)
+  - [Laravel : Sanctum, Resources et versions d'API](ch06-02-laravel-sanctum-resources.md)
+  - [WordPress : l'API REST intégrée](ch06-03-wordpress-rest-api.md)
+
+- [Livrer du temps réel](ch07-00-shipping-real-time-features.md)
+  - [Laravel : Reverb et Livewire, sans écrire de JavaScript](ch07-01-laravel-reverb-livewire.md)
+  - [Symfony : UX Turbo et Mercure](ch07-02-symfony-ux-turbo-mercure.md)
+  - [Nextcloud Talk : le temps réel au sein d'une plateforme](ch07-03-nextcloud-talk.md)
+  - [Pusher ($) : des WebSockets gérés, sans serveur à faire tourner](ch07-04-pusher-managed-websockets.md)
+
+- [Livrer du stockage de fichiers et de la collaboration](ch08-00-shipping-file-storage.md)
+  - [Nextcloud : un drive prêt à l'emploi, pas un projet à bricoler](ch08-01-nextcloud-ready-made-drive.md)
+  - [Laravel : abstraction de système de fichiers et stockage compatible S3](ch08-02-laravel-filesystem-s3.md)
+  - [WordPress : la médiathèque quand elle grossit](ch08-03-wordpress-media-library.md)
+
+- [Livrer une boutique](ch09-00-shipping-a-storefront.md)
+  - [WooCommerce : le e-commerce par-dessus WordPress](ch09-01-woocommerce.md)
+  - [Sylius : un framework e-commerce bâti sur Symfony](ch09-02-sylius.md)
+  - [Laravel : Cashier et Stripe ($) pour un paiement sur mesure](ch09-03-laravel-cashier-stripe.md)
+
+- [Livrer une recherche qui répond du tac au tac](ch10-00-shipping-search.md)
+  - [Laravel : Scout avec Meilisearch ou Algolia ($)](ch10-01-laravel-scout-meilisearch.md)
+  - [TYPO3 : intégration Solr et Elasticsearch](ch10-02-typo3-solr-elasticsearch.md)
+  - [WordPress : extensions de recherche, et quand passer à Elasticsearch](ch10-03-wordpress-search-plugins.md)
+
+- [Livrer du travail en arrière-plan](ch11-00-shipping-background-work.md)
+  - [Laravel : files d'attente et Horizon](ch11-01-laravel-queues-horizon.md)
+  - [Symfony : le composant Messenger](ch11-02-symfony-messenger.md)
+  - [WordPress : WP-Cron et l'Action Scheduler](ch11-03-wordpress-wp-cron-action-scheduler.md)
+
+- [Livrer une fonctionnalité IA dans le sprint](ch12-00-shipping-an-ai-feature.md)
+  - [Laravel : Prism et les clients PHP OpenAI et Anthropic](ch12-01-laravel-prism-llm-clients.md)
+  - [Symfony : l'AI Bundle](ch12-02-symfony-ai-bundle.md)
+  - [WordPress : extensions IA, et quand appeler une API à la place](ch12-03-wordpress-ai-plugins.md)
+
+- [Livrer du multilingue et du multisite](ch13-00-shipping-multi-language-multi-site.md)
+  - [TYPO3 : des arbres de contenu multilingues bien faits](ch13-01-typo3-multilingual-trees.md)
+  - [WordPress : Multisite et WPML](ch13-02-wordpress-multisite-wpml.md)
+  - [Symfony : le composant Translation](ch13-03-symfony-translation-component.md)
+
+- [Livrer de la confiance](ch14-00-shipping-confidence.md)
+  - [Laravel : Pest, Larastan et `composer audit`](ch14-01-laravel-pest-larastan.md)
+  - [Symfony : PHPUnit, PHPStan/Psalm et Rector](ch14-02-symfony-phpunit-phpstan-rector.md)
+  - [WordPress : PHPUnit, PHPCS/WPCS et WPScan](ch14-03-wordpress-phpunit-phpcs-wpscan.md)
+  - [Tous écosystèmes : SAST, analyse des dépendances et barrières en CI](ch14-04-cross-ecosystem-sast-ci-gates.md)
+  - [Attraper l'erreur en production : Sentry et Flare ($)](ch14-05-sentry-flare-error-tracking.md)
+
+- [Livrer vite, à grande échelle](ch15-00-shipping-fast-at-scale.md)
+  - [FrankenPHP et Laravel Octane : les performances du mode worker](ch15-01-frankenphp-laravel-octane.md)
+  - [TYPO3 : le framework de cache intégré](ch15-02-typo3-caching-framework.md)
+  - [Nextcloud : faire grandir une plateforme auto-hébergée](ch15-03-nextcloud-scaling.md)
+  - [Blackfire ($) : trouver le vrai goulot d'étranglement](ch15-04-blackfire-profiling.md)
+
+- [Livrer en production](ch16-00-shipping-to-production.md)
+  - [Laravel : Forge et Vapor ($)](ch16-01-laravel-forge-vapor.md)
+  - [Cloud : AWS, GCP et Azure sans se compliquer la vie](ch16-02-cloud-hosting-aws-gcp-azure.md)
+  - [Platform.sh ($) : un seul déploiement pour plusieurs frameworks](ch16-03-platform-sh.md)
+  - [WordPress : l'hébergement infogéré bien fait (Kinsta, WP Engine $)](ch16-04-wordpress-managed-hosting.md)
+  - [Nextcloud : déploiement Docker All-in-One](ch16-05-nextcloud-aio-docker.md)
+
+- [Et ensuite](ch17-00-where-to-go-from-there.md)
+  - [Évaluer une nouvelle stack en une journée](ch17-01-evaluating-a-new-stack-in-a-day.md)
+  - [Les communautés qui valent le détour](ch17-02-communities-worth-joining.md)
+  - [Si vous devenez curieux de ce qu'il y a dessous](ch17-03-if-you-get-curious.md)
+
+- [Annexes](appendix-00.md)
+  - [A - L'antisèche des stacks](appendix-01-stack-cheat-sheet.md)
+  - [B - Glossaire de l'écosystème](appendix-02-glossary.md)
+  - [C - Index des encadrés « Sous le capot »](appendix-03-under-the-hood-index.md)

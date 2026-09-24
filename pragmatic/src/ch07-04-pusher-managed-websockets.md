@@ -1,6 +1,6 @@
 # Pusher ($): Managed WebSockets Without Running Your Own Server
 
-Pusher does one thing: it runs the WebSocket infrastructure for you, so a feature that would otherwise need [Reverb](ch07-01-laravel-reverb-livewire.md) or [Mercure](ch07-02-symfony-ux-turbo-mercure.md) running as a service you operate becomes an API call and an npm package instead.
+Pusher does one thing: it runs the WebSocket infrastructure for you. **A feature that would need [Reverb](ch07-01-laravel-reverb-livewire.md) or [Mercure](ch07-02-symfony-ux-turbo-mercure.md) running as a service you operate becomes an API call and an npm package.**
 
 ```bash
 composer require pusher/pusher-php-server
@@ -20,23 +20,23 @@ $pusher->trigger('orders-channel', 'order.shipped', [
 ]);
 ```
 
-Laravel's broadcasting system, notably, was built with Pusher as its original target and still supports it as a drop-in swap for Reverb (same event classes, same `broadcast()` call, different config value):
+Laravel's broadcasting system was built with Pusher as its original target, and it still swaps in for Reverb with the same event classes and the same `broadcast()` call. Only a config value changes:
 
-```php
-// .env
-BROADCAST_DRIVER=pusher
+```ini
+# .env
+BROADCAST_CONNECTION=pusher
 ```
 
 ## Pricing
 
-Pusher bills by concurrent connections and messages per day, with a free tier generous enough for development and small production apps, scaling to a real monthly cost once traffic grows, which is what earns it the `$`.
+Pusher bills by concurrent connections and messages per day. The free tier covers development and small production apps; past that, the monthly cost grows with traffic.
 
 ## When to reach for this
 
-A team that doesn't want to operate WebSocket infrastructure at all, or a project where traffic is unpredictable enough that a managed, auto-scaling connection layer is worth paying for over self-hosting Reverb or a Mercure hub.
+A team that does not want to operate WebSocket infrastructure at all, or a project with traffic unpredictable enough that a managed, auto-scaling connection layer beats self-hosting Reverb or a Mercure hub.
 
 ## When it's the wrong fit
 
-A project with predictable, modest real-time traffic where Reverb or Mercure, both free and self-hosted, cost nothing beyond the server you're likely already running.
+Predictable, modest real-time traffic. Reverb and Mercure are free and self-hosted, and cost nothing beyond the server you are probably already running.
 
-> **Under the hood:** Because Laravel's broadcasting abstraction was designed against Pusher's API shape from the start, swapping between Pusher and Reverb is a configuration change, not a code change. The lesson generalizes: a good abstraction layer is what makes "self-host it" versus "pay someone else to run it" a decision you can defer, or reverse, without a rewrite.
+> **Under the hood:** Because Laravel's broadcasting abstraction was designed against Pusher's API shape, swapping Pusher for Reverb is a configuration change, not a code change. The lesson generalizes: a good abstraction is what makes "self-host it" versus "pay someone to run it" a decision you can defer, or reverse, without a rewrite.

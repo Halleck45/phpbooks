@@ -1,8 +1,8 @@
 # Laravel: Sanctum, Resources, and API Versioning
 
-Laravel's default approach is more manual than [API Platform's](ch06-01-api-platform-from-one-class.md), and that's often the point: routes, controllers, and response shapes stay explicit and easy to reason about, at the cost of writing a bit more per endpoint.
+Laravel's default approach is more manual than [API Platform's](ch06-01-api-platform-from-one-class.md), and that is often the point. **Routes, controllers, and response shapes stay explicit, at the cost of a little more code per endpoint.**
 
-**Sanctum** handles authentication for both SPA/mobile clients (session-based) and third-party API consumers (token-based), from one package.
+**Sanctum** handles authentication for SPA and mobile clients (session-based) and for third-party consumers (token-based), from one package.
 
 ```bash
 composer require laravel/sanctum
@@ -18,7 +18,7 @@ $token = $user->createToken('mobile-app')->plainTextToken;
 Route::middleware('auth:sanctum')->get('/api/user', fn (Request $r) => $r->user());
 ```
 
-**API Resources** shape a model into a consistent JSON response, decoupling your database columns from your API's public contract:
+**API Resources** shape a model into a consistent JSON response. Your database columns and your public contract stop being the same thing:
 
 ```php
 class ProductResource extends JsonResource
@@ -37,7 +37,7 @@ class ProductResource extends JsonResource
 return ProductResource::collection(Product::paginate());
 ```
 
-**Versioning** is typically just route prefixing, kept deliberately simple:
+**Versioning** is usually a route prefix, and deliberately nothing more:
 
 ```php
 Route::prefix('v1')->group(base_path('routes/api_v1.php'));
@@ -46,10 +46,10 @@ Route::prefix('v2')->group(base_path('routes/api_v2.php'));
 
 ## When to reach for this
 
-The default choice for a Laravel project exposing an API alongside a web app, or a small-to-medium standalone API where explicit control over each response shape matters more than automatic generation.
+The default for a Laravel project that exposes an API next to a web app, or a small to medium standalone API where control over each response shape matters more than generation.
 
 ## When it's the wrong fit
 
-A large, rapidly evolving data model where writing a Resource class by hand for every model becomes real maintenance overhead. That's the case [API Platform](ch06-01-api-platform-from-one-class.md) is built for.
+A large, fast-moving data model where a hand-written Resource class per model turns into maintenance. That is the case [API Platform](ch06-01-api-platform-from-one-class.md) is built for.
 
-> **Under the hood:** Sanctum's API tokens are stored hashed, like passwords, but with PHP's `hash()` function rather than `password_hash()`: tokens are high-entropy random strings rather than user-chosen passwords, so a fast hash is an appropriate and sufficient defense here.
+> **Under the hood:** Sanctum stores API tokens hashed, like passwords, but with PHP's `hash()` function rather than `password_hash()`. Tokens are high-entropy random strings, not user-chosen passwords, so a fast hash is enough of a defense here.
