@@ -25,8 +25,8 @@
         '  background-color: var(--bg); border-bottom: 1px solid var(--table-border-color);',
         '  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 1.5rem; }',
         '.site-bar a { color: var(--fg); text-decoration: none; }',
-        '.site-bar .site-bar-name { display: flex; align-items: center; gap: 12px; font: 500 1.9rem/1 "Fraunces", "Iowan Old Style", Georgia, serif; letter-spacing: -0.01em; }',
-        '.site-bar .site-bar-logo { height: 32px; width: auto; flex: none; }',
+        '.site-bar .site-bar-name { display: flex; align-items: center; }',
+        '.site-bar .site-bar-logo { height: 34px; width: auto; flex: none; }',
         '.site-bar nav { margin-left: auto; display: flex; gap: 28px; }',
         '.site-bar nav a { color: var(--icons); }',
         '.site-bar nav a:hover, .site-bar .site-bar-name:hover { color: var(--links); }',
@@ -48,7 +48,7 @@
         var bar = document.createElement('header');
         bar.className = 'site-bar';
         bar.innerHTML =
-            '<a class="site-bar-name" href="' + home + '">' + logo + 'PHP, to read</a>' +
+            '<a class="site-bar-name" href="' + home + '" aria-label="PHP, to read">' + logo + '</a>' +
             '<nav aria-label="Site">' +
             '<a href="' + home + '#readers">' + labels.books + '</a>' +
             '<a href="' + home + '#reference">' + labels.manual + '</a>' +
