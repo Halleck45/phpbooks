@@ -19,8 +19,25 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pages: read
+    outputs:
+      pages: ${{ steps.pages.outputs.enabled }}
     steps:
       - uses: actions/checkout@v4
+
+      # Pages does not exist on a private repository of a free account. Deploy
+      # only when it does, so the build stays green until the site is enabled.
+      - name: Check whether GitHub Pages is enabled
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh api "repos/$GITHUB_REPOSITORY/pages" > /dev/null 2>&1; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::GitHub Pages is not enabled on this repository: the site is built but not deployed."
+          fi
 
       - name: Install mdBook
         run: |
@@ -45,7 +62,7 @@ jobs:
           if-no-files-found: error
 
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && needs.build.outputs.pages == 'true'
     needs: build
     runs-on: ubuntu-latest
     permissions:
