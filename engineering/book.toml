@@ -12,7 +12,7 @@ git-repository-url = ""
 edit-url-template = ""
 mathjax-support = false
 no-section-label = false
-additional-css = ["theme/custom.css"]
+additional-css = ["theme/book.css", "theme/custom.css"]
 additional-js = ["theme/phpnet-links.js", "theme/site-bar.js"]
 
 [output.html.fold]
