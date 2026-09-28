@@ -1,8 +1,8 @@
 # Symfony: EasyAdmin and Sonata
 
-Symfony has two well-established answers here, sized for different jobs.
+Symfony has two established answers, sized for different jobs. **EasyAdmin gets you an admin screen this week; Sonata is for the admin panel that is itself a product.**
 
-**EasyAdmin** generates a clean CRUD interface from a Doctrine entity with minimal configuration, aimed squarely at "I need an admin screen this week."
+**EasyAdmin** generates a clean CRUD interface from a Doctrine entity with minimal configuration.
 
 ```bash
 composer require easycorp/easyadmin-bundle
@@ -31,14 +31,14 @@ class ProductCrudController extends AbstractCrudController
 }
 ```
 
-**Sonata Admin** is the heavier, older, and more extensible option: more configuration up front, but built to handle complex permission rules, nested admin relationships, and highly customized workflows that EasyAdmin isn't designed to stretch to.
+**Sonata Admin** is heavier, older, and more extensible. It asks for more configuration up front, and in exchange it handles complex permission rules, nested admin relationships, and workflows that EasyAdmin was never designed to stretch to.
 
 ## When to reach for each
 
-EasyAdmin for most internal tools: fast to set up, easy to read, sufficient for the majority of CRUD-shaped admin needs. Sonata when the admin panel itself is a serious piece of the product, with complex permissions or deeply nested relationships that need more structure than EasyAdmin's simpler model provides.
+EasyAdmin for most internal tools: quick to set up, easy to read, enough for CRUD-shaped needs. Sonata when the admin panel carries complex permissions or deeply nested relationships, and needs more structure than EasyAdmin's simpler model gives you.
 
 ## When it's the wrong fit
 
-A public customer-facing dashboard, same caveat as [Filament](ch05-01-laravel-filament.md): both tools are built for internal, trusted-user administration, not consumer product surfaces.
+A public, customer-facing dashboard, the same caveat as [Filament](ch05-01-laravel-filament.md). Both tools are built for trusted internal users.
 
-> **Under the hood:** Both bundles read Doctrine's entity metadata (the same annotations or attributes that define your database schema) to infer field types automatically. A `price` column typed as `decimal` in your entity becomes a numeric field in the admin with no extra declaration, because the framework already knows the type.
+> **Under the hood:** Both bundles read Doctrine's entity metadata (the same attributes that define your database schema) to infer field types. A `price` column typed as `decimal` in your entity becomes a numeric field in the admin with no extra declaration, because the framework already knows the type.

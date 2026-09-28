@@ -1,6 +1,6 @@
 # Craft CMS ($): A Licensed CMS Built for Editorial Control
 
-Craft CMS starts from a different assumption than WordPress: there's no default content model at all. Every project defines its own custom fields, entry types, and structure from scratch, using Craft's editor as the visual layer. That makes the first hour slower than WordPress, and the following year faster for clients whose content genuinely doesn't fit a generic "post" model.
+Craft starts from a different assumption than WordPress: there is no default content model at all. **Every project defines its own fields, entry types, and structure from scratch**, with Craft's editor as the visual layer. The first hour is slower than with WordPress. The following year is faster, for clients whose content does not fit a generic "post."
 
 ```bash
 composer create-project craftcms/craft my-site
@@ -9,7 +9,7 @@ php craft setup
 php craft serve
 ```
 
-Content structure is defined through Craft's own admin UI (fields, sections, entry types), then queried in templates with Twig:
+You define the content structure in Craft's admin UI (fields, sections, entry types), then query it in Twig templates:
 
 ```twig
 {% for entry in craft.entries()
@@ -25,14 +25,14 @@ Content structure is defined through Craft's own admin UI (fields, sections, ent
 
 ## Licensing
 
-Craft's core CMS is source-available (you can read and modify the code), but running it commercially requires a paid license per project, which is what earns it the `$`. There's a free tier for evaluating it on a single-user, non-commercial site.
+Craft's core is source-available: you can read and modify the code. Running it commercially requires a paid license per project. A free tier exists for evaluating it on a single-user, non-commercial site.
 
 ## When to reach for this
 
-Agencies building custom, editorial-heavy sites for clients who have specific, non-generic content needs and a budget for licensing, and who value a content model that fits them exactly rather than one that's stretched to fit.
+Agencies building custom, editorial-heavy sites for clients with specific content needs and a budget for licensing, who would rather have a content model that fits them than one stretched to fit.
 
 ## When it's the wrong fit
 
-A tight budget, a generic blog-shaped brief, or a client who wants access to WordPress's enormous plugin marketplace. Craft's plugin ecosystem is real but far smaller.
+A tight budget, a generic blog-shaped brief, or a client who wants WordPress's plugin marketplace. Craft's plugin ecosystem is real but far smaller.
 
-> **Under the hood:** Craft's flexible field system is built on top of a fairly conventional relational database schema, using PHP's dynamic property access and its own query builder to make wildly different content structures feel like first-class, typed data in Twig templates rather than loosely typed arrays.
+> **Under the hood:** Craft's flexible field system sits on a fairly conventional relational schema. PHP's dynamic property access and Craft's own query builder make wildly different content structures feel like first-class, typed data in Twig templates rather than loosely typed arrays.

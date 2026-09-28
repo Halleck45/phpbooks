@@ -1,6 +1,6 @@
 # Symfony: UX Turbo and Mercure
 
-Symfony's real-time story is built on Mercure, an open protocol (not a Symfony-specific invention) for pushing updates to browsers over standard HTTP, using Server-Sent Events rather than a custom WebSocket implementation. That means any client, not just a Symfony frontend, can subscribe to it.
+Symfony's real-time story is built on Mercure, an open protocol rather than a Symfony invention. **Updates reach the browser over plain HTTP, as Server-Sent Events, so any client can subscribe, not only a Symfony front end.**
 
 ```bash
 composer require symfony/mercure-bundle
@@ -27,7 +27,7 @@ class OrderController
 }
 ```
 
-**Turbo**, via the `symfony/ux-turbo` package, subscribes the frontend to that same update and swaps the relevant HTML fragment automatically, with a data attribute instead of hand-written JavaScript:
+**Turbo**, through the `symfony/ux-turbo` package, subscribes the page to that update and swaps the matching HTML fragment. One data attribute replaces the hand-written JavaScript:
 
 ```twig
 <turbo-stream-source src="{{ mercure('orders/' ~ order.id) }}"></turbo-stream-source>
@@ -37,14 +37,14 @@ class OrderController
 </div>
 ```
 
-When the server broadcasts a matching Turbo Stream update, Turbo replaces that `<div>` in place, no page reload, no custom client-side code.
+When the server broadcasts a matching Turbo Stream update, Turbo replaces that `<div>` in place. No reload, no custom client code.
 
 ## When to reach for this
 
-Symfony projects that want real-time updates without introducing a separate JavaScript framework, especially where using an open, HTTP-based protocol (rather than a proprietary WebSocket server) matters for infrastructure or compliance reasons.
+A Symfony project that wants live updates without a separate JavaScript framework, and in particular one where an open, HTTP-based protocol matters for infrastructure or compliance reasons.
 
 ## When it's the wrong fit
 
-Very high-frequency, bidirectional real-time needs (live multiplayer interaction, a trading dashboard with sub-second updates), where Server-Sent Events' one-way-by-design model is a worse fit than a true WebSocket connection.
+High-frequency, two-way traffic: live multiplayer interaction, a trading dashboard with sub-second updates. Server-Sent Events are one-way by design, and a WebSocket connection fits that job better.
 
-> **Under the hood:** Server-Sent Events are a plain HTTP feature: a long-lived response that keeps sending chunks over time. Mercure builds a full publish/subscribe hub on top of that single primitive, which is part of why it works through ordinary HTTP infrastructure (proxies, load balancers) that a raw WebSocket connection sometimes needs special configuration to pass through.
+> **Under the hood:** Server-Sent Events are a plain HTTP feature: a long-lived response that keeps sending chunks over time. Mercure builds a full publish/subscribe hub on that one primitive, which is why it passes through ordinary HTTP infrastructure (proxies, load balancers) that a raw WebSocket sometimes needs special configuration for.

@@ -1,6 +1,6 @@
 # Laravel: Filament in an Afternoon
 
-Filament reads an Eloquent model and generates a full admin resource around it: list view with search and filters, a create form, an edit form, and delete actions, from a single PHP class you mostly just configure rather than write from scratch.
+Point Filament at an Eloquent model and it builds the admin resource around it: a list with search and filters, a create form, an edit form, delete actions. **You configure a single PHP class; you do not write the screens.**
 
 ```bash
 composer require filament/filament
@@ -8,41 +8,44 @@ php artisan filament:install --panels
 php artisan make:filament-resource Product --generate
 ```
 
-That last command inspects the `products` table and pre-fills a resource class. What's left is usually a short list of field definitions:
+The last command inspects the `products` table and pre-fills a resource class. What is left is usually a short list of fields:
 
 ```php
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Columns\IconColumn;
 
-public static function form(Form $form): Form
+class ProductResource extends Resource
 {
-    return $form->schema([
-        TextInput::make('name')->required(),
-        TextInput::make('price')->numeric()->prefix('$'),
-        Select::make('category_id')->relationship('category', 'name'),
-    ]);
-}
+    public static function form(Form $form): Form
+    {
+        return $form->schema([
+            TextInput::make('name')->required(),
+            TextInput::make('price')->numeric()->prefix('$'),
+            Select::make('category_id')->relationship('category', 'name'),
+        ]);
+    }
 
-public static function table(Table $table): Table
-{
-    return $table->columns([
-        TextColumn::make('name')->searchable(),
-        TextColumn::make('price')->money('usd'),
-        BooleanColumn::make('is_active'),
-    ]);
+    public static function table(Table $table): Table
+    {
+        return $table->columns([
+            TextColumn::make('name')->searchable(),
+            TextColumn::make('price')->money('usd'),
+            IconColumn::make('is_active')->boolean(),
+        ]);
+    }
 }
 ```
 
-That's a searchable, sortable, paginated admin screen with validated create and edit forms, no hand-written HTML or controller logic.
+That is a searchable, sortable, paginated screen with validated create and edit forms. No HTML, no controller.
 
 ## When to reach for this
 
-Any Laravel project that needs an internal admin screen and doesn't need to customize its behavior beyond what a schema-driven form and table can express, which covers the large majority of real "back office" requests.
+Any Laravel project that needs an internal admin screen and can live with what a schema-driven form and table express. That covers most back-office requests.
 
 ## When it's the wrong fit
 
-A public-facing customer dashboard with heavily custom UX, where "generated admin panel" would fight the design rather than speed it up. Filament is built for internal tools, not customer-facing product surfaces.
+A customer-facing dashboard with a custom design. A generated panel fights that kind of design instead of speeding it up. Filament is built for internal tools, not product surfaces.
 
-> **Under the hood:** Filament's form and table builders are fluent, chainable PHP objects (`TextInput::make(...)->required()->numeric()`), a pattern made pleasant to write by PHP's named arguments and first-class enum support, which let a single method call configure behavior that used to need several array keys or config options to express.
+> **Under the hood:** Filament's form and table builders are fluent, chainable PHP objects (`TextInput::make(...)->required()->numeric()`). Named arguments and first-class enums make that style pleasant to write: one method call configures behavior that used to need several array keys or config options.

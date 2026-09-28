@@ -1,6 +1,6 @@
 # Laravel: Queues and Horizon
 
-Any slow or non-essential piece of work in a Laravel request can become a Job, pushed onto a queue and processed by a separate worker process, so the user's request finishes immediately instead of waiting on it.
+**Any slow or non-essential piece of a Laravel request can become a Job, pushed onto a queue and run by a separate worker process.** The user's request finishes at once instead of waiting on it.
 
 ```bash
 php artisan make:job SendWelcomeEmail
@@ -27,9 +27,9 @@ SendWelcomeEmail::dispatch($user);
 php artisan queue:work
 ```
 
-That last command is a worker process, typically kept running by a process manager like Supervisor, pulling jobs off the queue (Redis, in most production setups) and executing them.
+That last command is the worker. A process manager such as Supervisor keeps it running; it pulls jobs off the queue (Redis, in most production setups) and executes them.
 
-**Horizon** adds a dashboard on top of Redis queues: throughput, failed jobs, retry controls, and per-queue metrics, without needing a separate monitoring tool.
+**Horizon** adds a dashboard on top of Redis queues: throughput, failed jobs, retry controls and per-queue metrics, with no separate monitoring tool.
 
 ```bash
 composer require laravel/horizon
@@ -37,14 +37,14 @@ php artisan horizon:install
 php artisan horizon
 ```
 
-Failed jobs retry automatically with backoff, and permanently failed ones land in a `failed_jobs` table for inspection rather than vanishing silently.
+Failed jobs retry with backoff. The ones that fail for good land in a `failed_jobs` table for inspection instead of vanishing.
 
 ## When to reach for this
 
-Anything that shouldn't block a web request: sending email, processing an uploaded file, calling a slow third-party API, generating a report. If a user would notice the delay, it belongs on a queue.
+Anything that should not block a web request: sending email, processing an upload, calling a slow third-party API, generating a report. If a user would notice the delay, it belongs on a queue.
 
 ## When it's the wrong fit
 
-Work that genuinely needs to complete before the response, like validating a form before saving it. Queuing that just adds latency and complexity where synchronous code was already correct.
+Work that must complete before the response, such as validating a form before saving it. Queuing that adds latency and complexity where synchronous code was already correct.
 
 > **Under the hood:** Jobs are serialized (usually with PHP's native `serialize()`) before being stored in the queue, which is why job classes should only hold simple, serializable properties like a model ID rather than large objects or open resources; the worker process deserializes and reconstructs the job from scratch when it runs.
