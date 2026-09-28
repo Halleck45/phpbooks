@@ -1,12 +1,11 @@
 <!doctype html>
 <!--
-  Landing page for the PHP books. The reader is the subject: the page asks
-  where they stand and hands them the book that starts there, or sends them
-  to the php.net reference. No official branding, see README.md.
+  Landing page for the PHP books. One screen: the question, five illustrated
+  cards, one per reader, and the php.net lookup in the header. Deliberately
+  unbranded, see README.md.
 
-  One static file, no build step. Book links are relative to the repository
-  layout (run `make build` at the root first); swap them for public URLs
-  when deploying.
+  One static file, no build step, no JavaScript beyond the image fallback.
+  Book links follow the published layout (run `make dist` at the root).
 -->
 <html lang="en">
 <head>
@@ -14,14 +13,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Where are you with PHP?</title>
-<meta name="description" content="Tell us where you stand with PHP, and start with the book written for that spot. Free to read online.">
+<meta name="description" content="Five books about PHP, one per starting point. Pick the sentence that sounds like you. Free to read online.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%96%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>
 // A drawing is tried as WebP (make webp), then as the generated PNG, then in the
-// art the books already ship. Its frame disappears if none of them exists.
+// art the books already ship. Its frame is emptied if none of them exists.
 function artFallback(img) {
     var rest = (img.getAttribute('data-fallback') || '').split('|').filter(Boolean);
     if (rest.length) {
@@ -29,377 +28,231 @@ function artFallback(img) {
         img.setAttribute('data-fallback', rest.join('|'));
         return;
     }
-    var frame = img.closest('.art');
-    if (frame) { frame.parentElement.classList.add('no-art'); frame.remove(); }
+    img.remove();
 }
 </script>
 <style>
 :root {
-    --paper: #fbf9f5;
+    --paper: #f7f4ee;
     --surface: #ffffff;
     --ink: #1d1c1a;
     --muted: #6a665e;
-    --line: #e7e2d8;
+    --line: #e4dfd5;
     --accent: #2f6fd0;
     --accent-ink: #ffffff;
     --accent-soft: #e9f1fd;
+    --shadow: 0 18px 36px -22px rgba(29, 28, 26, 0.5);
     --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
     --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
     --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-    --wrap: 1080px;
+    --wrap: 1360px;
+    --gutter: 40px;
     color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
     :root {
         --paper: #121417;
-        --surface: #191c21;
+        --surface: #1a1d22;
         --ink: #ecebe7;
         --muted: #9d9a92;
-        --line: #2a2e35;
+        --line: #2b2f36;
         --accent: #8ab6ff;
         --accent-ink: #0e1726;
         --accent-soft: #1a2535;
-        }
+        --shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.8);
+    }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; }
 body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font: 400 17px/1.6 var(--sans);
-    -webkit-font-smoothing: antialiased;
+    margin: 0; min-height: 100vh; display: flex; flex-direction: column;
+    background: var(--paper); color: var(--ink);
+    font: 400 17px/1.55 var(--sans); -webkit-font-smoothing: antialiased;
 }
-
 a { color: inherit; }
-.wrap { width: min(var(--wrap), 100% - 40px); margin-inline: auto; }
+.wrap { width: min(var(--wrap), 100% - 2 * var(--gutter)); margin-inline: auto; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
-/* Header */
-.top { display: flex; align-items: center; gap: 20px; padding: 22px 0; }
-.name { display: flex; align-items: center; color: var(--ink); }
+/* Header: the name, and the way to the manual for those who only came for that. */
+.top { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; padding: 22px 0 10px; }
+.name { display: flex; align-items: center; color: var(--ink); margin-right: auto; }
 .name svg { height: 34px; width: auto; }
-.top nav { margin-left: auto; display: flex; align-items: center; gap: 22px; font-size: 0.93rem; }
-.top nav a { text-decoration: none; color: var(--muted); }
-.top nav a:hover { color: var(--ink); }
+.lookup {
+    display: flex; align-items: center; gap: 6px; padding: 5px 5px 5px 14px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.lookup:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.lookup svg { width: 17px; height: 17px; color: var(--muted); flex: none; }
+.lookup input { width: 15em; min-width: 0; font: 400 0.95rem var(--mono); color: var(--ink); background: none; border: 0; outline: 0; padding: 6px 4px; }
+.lookup input::placeholder { color: var(--muted); opacity: 0.8; }
+.lookup button {
+    font: 600 0.85rem/1 var(--sans); color: var(--accent-ink); background: var(--accent); border: 0; cursor: pointer;
+    padding: 10px 14px; border-radius: 999px; white-space: nowrap;
+}
+.lookup button:hover { filter: brightness(1.08); }
+.github { display: flex; color: var(--muted); }
+.github svg { width: 26px; height: 26px; }
+.github:hover { color: var(--ink); }
 
-/* Hero */
-.hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; padding: 56px 0 72px; }
-.hero.no-art { grid-template-columns: 1fr; max-width: 800px; }
+/* Hero: the question, and the drawing of the fork in the road. */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 24px 48px; padding: 22px 0 30px; }
 h1 {
-    font: 500 clamp(2.4rem, 5.2vw, 4rem)/1.06 var(--serif);
-    letter-spacing: -0.025em; margin: 0 0 24px; text-wrap: balance;
+    font: 500 clamp(2.4rem, 5vw, 4.4rem)/1.02 var(--serif);
+    letter-spacing: -0.03em; margin: 0; text-wrap: balance;
 }
-.lede { font-size: 1.15rem; max-width: 33em; margin: 0 0 30px; }
-.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; }
-.btn {
-    display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer;
-    font: 600 0.97rem/1 var(--sans); padding: 15px 22px; border-radius: 12px; border: 1px solid transparent;
-    background: var(--ink); color: var(--paper); transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px -12px var(--ink); }
-.btn.small { padding: 12px 17px; font-size: 0.92rem; border-radius: 10px; }
-.quiet { font-weight: 500; font-size: 0.97rem; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
-.quiet:hover { color: var(--ink); border-color: var(--ink); }
+.hero .art { margin: 0; height: clamp(150px, 22vh, 230px); aspect-ratio: 3 / 2; }
 
-/* Drawings: black ink on white. Multiply melts the white into the paper; in
-   the dark the drawing is inverted, hue-rotated back to blue, and screened. */
-.art { margin: 0; }
+/* Drawings: black ink on white. The cards are white, so they take the drawing
+   as is; the hero sits on the paper and multiplies the white away. In the
+   dark every drawing is inverted, hue-rotated back to blue, and screened. */
 .art img {
     display: block; width: 100%; height: 100%; object-fit: contain;
-    /* Generated backgrounds are almost white: push them to pure white first. */
-    filter: brightness(1.03) contrast(1.08); mix-blend-mode: multiply;
+    filter: brightness(1.03) contrast(1.08);
 }
+.hero .art img { mix-blend-mode: multiply; }
 @media (prefers-color-scheme: dark) {
-    .art img { filter: brightness(1.03) contrast(1.08) invert(1) hue-rotate(180deg); mix-blend-mode: screen; }
+    .art img, .hero .art img { filter: brightness(1.03) contrast(1.08) invert(1) hue-rotate(180deg); mix-blend-mode: screen; }
 }
-.hero .art { aspect-ratio: 3 / 2; }
 
-/* The two questions, inside the hero */
-.ask { margin-top: 6px; scroll-margin-top: 24px; }
-.step[hidden] { display: none; }
-.step > p { font: 500 1.2rem/1.35 var(--serif); margin: 0 0 16px; }
-.chips { display: flex; flex-wrap: wrap; gap: 10px; }
-.chip {
-    font: 500 0.97rem/1.25 var(--sans); color: var(--ink); text-align: left; cursor: pointer; text-decoration: none;
-    background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 13px 18px;
-    transition: border-color 0.15s ease, background 0.15s ease;
+/* The shelf: five cards, one per reader. The whole card opens the book. */
+.shelf { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; list-style: none; margin: 0; padding: 0 0 44px; }
+.card {
+    position: relative; display: flex; flex-direction: column;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 22px;
+    scroll-margin-top: 20px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.chip:hover { border-color: var(--accent); background: var(--accent-soft); }
-.step > p .again { margin-left: 10px; font-family: var(--sans); }
-.result .says { font-style: italic; font-weight: 400; font-size: clamp(1.5rem, 2.6vw, 1.95rem); line-height: 1.22; margin-bottom: 16px; }
-.hero.answered .lede { display: none; }
-.result .title { font-family: var(--sans); font-size: 1.05rem; margin-bottom: 22px; }
-.result .actions { gap: 12px 20px; }
-.step:not([hidden]) { animation: arrive 0.35s ease both; }
-@keyframes arrive { from { opacity: 0; transform: translateY(6px); } }
-.hero .art img { transition: opacity 0.25s ease; }
-.hero .art.swapping img { opacity: 0; }
-.again { font: 500 0.9rem var(--sans); color: var(--muted); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-.aside { margin: 26px 0 0; font-size: 0.95rem; color: var(--muted); }
-
-/* Readers */
-.readers { padding: 40px 0 30px; }
-.readers > h2 { font: 500 clamp(1.6rem, 2.8vw, 2.1rem)/1.2 var(--serif); letter-spacing: -0.02em; margin: 0 0 10px; }
-.book {
-    display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 0 56px; align-items: center;
-    padding: 44px 28px; margin: 0 -28px; border-radius: 18px; position: relative;
-    scroll-margin-top: 16px; transition: background 0.3s ease;
+.card:hover, .card:focus-within { border-color: var(--accent); box-shadow: var(--shadow); }
+.card .art { margin: 0; aspect-ratio: 3 / 2; padding: 22px 14px 10px; }
+.card .text { display: flex; flex-direction: column; flex: 1; padding: 8px 24px 24px; }
+.says {
+    font: 400 italic clamp(1.15rem, 1.35vw, 1.45rem)/1.25 var(--serif);
+    letter-spacing: -0.01em; text-indent: -0.42em; margin: 0 0 14px; text-wrap: balance; flex: 1;
 }
-.book.no-art { grid-template-columns: minmax(0, 1fr); }
-.book + .book::before { content: ""; position: absolute; top: 0; left: 28px; right: 28px; height: 1px; background: var(--line); }
-.says { text-indent: -0.42em; font: 400 italic clamp(1.5rem, 2.6vw, 1.95rem)/1.22 var(--serif); letter-spacing: -0.015em; margin: 0 0 18px; text-wrap: balance; }
-.about { margin: 0 0 16px; max-width: 36em; }
-.title { font: 400 1rem/1.5 var(--sans); color: var(--muted); margin: 0 0 22px; }
-.title strong { font-weight: 600; color: var(--ink); }
-.book .art { aspect-ratio: 4 / 3; }
-.book.picked { background: var(--accent-soft); }
-.book.picked::before, .book.picked + .book::before { display: none; }
+.card h2 { font: 600 1rem/1.35 var(--sans); margin: 0 0 3px; }
+.card h2 a { text-decoration: none; }
+.card h2 a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.length { font-size: 0.88rem; color: var(--muted); margin: 0 0 16px; }
+.more { position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0; font-size: 0.85rem; }
+.go { color: var(--accent); font-weight: 600; text-decoration: none; margin-right: auto; }
+.card:hover .go { text-decoration: underline; text-underline-offset: 3px; }
+.more a:not(.go) { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+.more a:not(.go):hover { color: var(--ink); border-color: var(--ink); }
 
-/* Reference */
-.reference { margin: 60px 0 0; padding: 56px 0 70px; border-top: 1px solid var(--line); scroll-margin-top: 10px; }
-.reference .inner { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 60px; align-items: center; }
-.reference h2 { font: 500 clamp(1.7rem, 3vw, 2.3rem)/1.15 var(--serif); letter-spacing: -0.02em; margin: 0 0 12px; }
-.reference p { color: var(--muted); margin: 0; max-width: 30em; }
-.lookup { display: flex; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 7px; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
-.lookup:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
-.lookup input { flex: 1; min-width: 0; font: 400 1rem var(--mono); color: var(--ink); background: none; border: 0; outline: 0; padding: 8px 12px; }
-.lookup input::placeholder { color: var(--muted); opacity: 0.75; }
-.lookup .btn { background: var(--accent); color: var(--accent-ink); white-space: nowrap; }
-.shortcuts { display: flex; flex-wrap: wrap; gap: 8px 22px; list-style: none; padding: 0; margin: 16px 4px 0; font-size: 0.92rem; }
-.shortcuts a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
-.shortcuts a:hover { color: var(--ink); border-color: var(--ink); }
+footer { margin-top: auto; border-top: 1px solid var(--line); padding: 22px 0 30px; color: var(--muted); font-size: 0.86rem; }
+footer p { margin: 0; }
+footer a { text-decoration: none; border-bottom: 1px solid var(--line); }
+footer a:hover { color: var(--ink); border-color: var(--ink); }
 
-footer { border-top: 1px solid var(--line); padding: 30px 0 46px; color: var(--muted); font-size: 0.88rem; }
-footer p { margin: 0; max-width: 46em; }
-
-@media (max-width: 860px) {
+@media (max-width: 1180px) {
+    .shelf { grid-template-columns: 1fr; gap: 14px; }
+    .card { flex-direction: row; align-items: stretch; }
+    .card .art { width: 30%; max-width: 300px; flex: none; aspect-ratio: auto; padding: 14px; }
+    .card .text { padding: 22px 24px 22px 12px; }
+    .says { flex: 0; }
+}
+@media (max-width: 720px) {
+    :root { --gutter: 16px; }
     body { font-size: 16px; }
-    .hero { grid-template-columns: 1fr; padding: 28px 0 48px; gap: 24px; }
-    .hero .art { order: -1; max-width: 420px; }
-    .book, .book.no-art { grid-template-columns: 1fr; padding: 38px 20px; margin: 0 -20px; }
-    .book + .book::before { left: 20px; right: 20px; }
-    .book .art { order: -1; max-width: 300px; margin-bottom: 18px; }
-    .reference .inner { grid-template-columns: 1fr; }
-    .lookup { flex-direction: column; }
+    .top { padding-top: 16px; }
+    .lookup { flex: 1 1 100%; min-width: 0; order: 1; }
+    .lookup input { width: 0; flex: 1; }
+    .lookup button { padding-inline: 12px; }
+    .hero { grid-template-columns: 1fr; gap: 8px; padding: 12px 0 20px; }
+    .hero .art { display: none; }
+    .card .art { width: 38%; padding: 10px; }
+    .card .text { padding: 16px 16px 16px 4px; }
+    .says { font-size: 1.05rem; margin-bottom: 10px; }
+    .go { margin-right: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
     * { transition: none !important; animation: none !important; }
 }
-@media print { .ask, .lookup { display: none; } }
+@media print { .lookup { display: none; } }
 </style>
 </head>
 <body>
 
 <header class="wrap top">
     <a class="name" href="#top" aria-label="PHP, to read"><svg viewBox="4 11 590 334" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M425.4 337.8C415.4 322.2 387.9 307.2 353 298.5C339.6 295.1 317.9 291 313.4 291C312.2 291 310.8 290.6 310.5 290C310.2 289.5 310.7 285.2 311.6 280.5L313.3 272 L317.4 272.6C329.1 274.2 346.4 277.3 353.5 279.1C381.8 286.2 407.2 297 422 308.2C424.8 310.3 427.5 312 428 312C428.7 312 429 275.3 428.8 203.2L428.5 94.5 L425.1 87.5C417.3 71.6 393.5 54.3 366.2 44.6C350.8 39.1 315.2 31.1 312.8 32.6C312.4 32.9 312 47.9 312 66.1L312 99 L303 99L294 99 L294 55.5L294 12 L298 12C304.8 12 332 15.9 343.5 18.5C365.2 23.4 388.1 32.2 403.9 41.6C411.8 46.3 430 60.3 430 61.8C430.1 62.2 431.8 64.5 433.9 66.9L437.8 71.3 L446.6 62.2C466.9 41.7 499.8 26.4 541.9 18C553.9 15.7 582.3 12 588.7 12L593 12 L593 150.3L593 288.6 L579.8 289.9C540.8 293.7 506.9 302.2 481.5 314.5C465.7 322.1 456 329.5 450.6 337.9L446.6 344 L438 344L429.4 344 L425.4 337.8ZM456.9 306.6C481.3 290.4 525.8 276.7 567.2 272.5L574 271.8 L574 151.9L574 32.1 L570.2 32.6C534.7 37.5 508.5 45 485.8 56.7C468.2 65.8 456.1 76.8 450.2 89L447.5 94.5 L447.2 203.8C447 292.1 447.2 313 448.2 312.3C448.9 311.9 452.8 309.3 456.9 306.6ZM5 288.7C5 288.6 12.6 250.2 22 203.5C31.3 156.8 39 118.4 39 118.2C39 118 54.9 118 74.2 118.2C107.6 118.5 109.9 118.7 116.2 120.8C129.4 125.2 138 133.7 142.2 146.4C144.1 152.3 144.5 155.4 144.4 164.5C143.9 194.7 128.3 222.4 105.4 233.2C95.5 237.8 87.8 239 65.8 239C46.1 239 46 239 45.5 241.2C45.2 242.5 43.2 252.7 41 264C38.8 275.3 36.7 285.5 36.5 286.8C36 289 35.7 289 20.5 289C12 289 5 288.9 5 288.7ZM261 286.8C261.1 285.5 268.6 247.2 277.8 201.5L294.5 118.5 L326 118.2C345.7 118 360 118.4 364.2 119C382.5 122.1 395.4 134.2 399.1 151.8C402 166.1 398.1 188.2 389.7 204.5C384.5 214.6 372.4 227.1 363.3 231.8C352.2 237.6 344.3 239 321.8 239C306.6 239 301.8 239.3 301.4 240.3C301.2 241 298.8 252.1 296.2 265L291.5 288.5 L276.2 288.8L261 289.1 L261 286.8ZM145.2 237.8C145.5 237.1 153.1 199.5 162.1 154.2L178.5 72 L193.7 72C202.1 72 209 72.1 209 72.2C209 72.4 207 82.6 204.5 94.9C202 107.3 200 117.5 200 117.7C200 117.9 207.3 118 216.2 118C242 118 252.8 120.7 261.1 128.9C271.1 138.7 270.9 147.6 260.2 200L252.4 238.5 L237.2 238.8C228.8 238.9 222 238.8 222 238.5C222 238.2 225.4 220.9 229.6 200.2C237.9 158.6 238.4 153.2 234 148.5C230.4 144.6 225.9 143.9 209.6 144.2L194.7 144.5 L185.4 191C180.3 216.6 176 237.8 176 238.2C176 238.7 169 239 160.4 239C148.3 239 144.9 238.7 145.2 237.8ZM85.5 211.7C92.4 209.8 95.9 207.8 100.1 203.3C107.4 195.7 112.1 181.7 112.3 166.5C112.5 154.8 110.6 150.6 103.4 147C98.9 144.7 97.3 144.5 81.8 144.2L65.1 143.8 L64.5 146.2C63.8 149.2 51 213.3 51 213.9C51 214.8 80.8 213 85.5 211.7ZM341.9 211.5C355.4 207.4 362.4 198.1 366.4 178.7C370.6 158.6 366.5 147.8 353.9 145.1C347.9 143.8 320 143.6 320 144.9C320 145.4 317.1 160.1 313.5 177.5C309.9 195 307 210.4 307 211.8L307 214.3 L321.8 213.7C330.7 213.3 338.6 212.4 341.9 211.5Z"/></svg></a>
-    <nav aria-label="Main">
-        <a href="#readers">The books</a>
-        <a href="#reference">The manual</a>
-    </nav>
+    <form class="lookup" action="https://www.php.net/manual-lookup.php" method="get" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <label class="sr-only" for="pattern">Look up a function in the php.net manual</label>
+        <input id="pattern" name="pattern" type="search" required autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="array_map, DateTime">
+        <input type="hidden" name="scope" value="quickref">
+        <button type="submit">Open on php.net</button>
+    </form>
+    <a class="github" href="https://github.com/Halleck45/phpbooks" aria-label="The books on GitHub" title="The books on GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
 </header>
 
-<main id="top">
-    <section class="wrap hero">
+<main id="top" class="wrap">
+    <section class="hero">
         <div>
             <h1>Where are you with PHP?</h1>
-            <p class="lede">Maybe you have never written a line of code. Maybe you have written plenty, in another language, and a PHP project landed on your desk on Monday. Tell us, and you get the book that starts where you are.</p>
-            <div class="ask" id="ask" aria-live="polite">
-                <div class="step" data-step="1">
-                    <p>Have you written code before?</p>
-                    <div class="chips">
-                        <a class="chip" href="#beginner" data-pick="beginner">Never, or barely</a>
-                        <a class="chip" href="#polyglot" data-next="2">Yes, in PHP or anything else</a>
-                    </div>
-                </div>
-                <div class="step" data-step="2" hidden>
-                    <p>And what do you need today? <button type="button" class="again" data-again>Back</button></p>
-                    <div class="chips">
-                        <a class="chip" href="#polyglot" data-pick="polyglot">To work on PHP code</a>
-                        <a class="chip" href="#pragmatic" data-pick="pragmatic">To ship a feature</a>
-                        <a class="chip" href="#skeptic" data-pick="skeptic">To be convinced</a>
-                        <a class="chip" href="#engineering" data-pick="engineering">To decide for a team</a>
-                    </div>
-                </div>
-                <div class="step result" data-step="done" hidden>
-                    <p class="says" data-result-says></p>
-                    <p class="title">Then your book is <strong data-result-title></strong>. <span data-result-length></span></p>
-                    <div class="actions">
-                        <a class="btn" href="#readers" data-result-read>Start reading</a>
-                        <a class="quiet" href="#readers" data-result-more>What is inside</a>
-                        <button type="button" class="again" data-again>Ask me again</button>
-                    </div>
-                </div>
-            </div>
-            <p class="aside">Only here to look up a function? <a href="#reference">The manual is this way</a>.</p>
         </div>
         <figure class="art"><img src="images/hero.webp" data-fallback="images/hero.png|../beginner/src/images/ch00-roadmap.png" alt="A person with a blue backpack stands where one path splits into five trails, each leading to a different place on the horizon. A small elephant beside them points the way." onerror="artFallback(this)"></figure>
     </section>
 
-    <section class="wrap readers" id="readers">
-        <h2>Or find the sentence that sounds like you</h2>
-
-        <article class="book" id="beginner">
-            <div>
+    <ul class="shelf">
+        <li class="card" id="beginner">
+            <figure class="art"><img src="images/beginner.webp" data-fallback="images/beginner.png|../beginner/src/images/ch01-toolkit.png" alt="A young person at a desk throws both arms up in joy in front of a laptop showing one line of code, while a small elephant gives a thumbs-up." decoding="async" onerror="artFallback(this)"></figure>
+            <div class="text">
                 <p class="says">“Show me the code that gets me the job.”</p>
-                <p class="about">You have never programmed, or barely. You write your first line in chapter one, and you run it. By the last chapter you have built a small web application, in the PHP that teams write today rather than the PHP of old tutorials.</p>
-                <p class="title"><strong data-title>The PHP Book</strong>. <span data-length>A full course, at your own pace.</span></p>
-                <div class="actions">
-                    <a class="btn small" href="beginner/">Read it online</a>
-                    <a class="quiet" href="beginner/book.pdf">PDF</a>
-                    <a class="quiet" href="beginner/fr/" hreflang="fr">French edition</a>
-                </div>
+                <h2><a href="beginner/">The PHP Book</a></h2>
+                <p class="length">A full course, at your own pace.</p>
+                <p class="more"><a class="go" href="beginner/">Read online</a> <a href="beginner/book.pdf">PDF</a> <a href="beginner/fr/" hreflang="fr" lang="fr">En français</a></p>
             </div>
-            <figure class="art"><img src="images/beginner.webp" data-fallback="images/beginner.png|../beginner/src/images/ch01-toolkit.png" alt="A young person at a desk throws both arms up in joy in front of a laptop showing one line of code, while a small elephant gives a thumbs-up." loading="lazy" decoding="async" onerror="artFallback(this)"></figure>
-        </article>
+        </li>
 
-        <article class="book" id="polyglot">
-            <div>
+        <li class="card" id="polyglot">
+            <figure class="art"><img src="images/polyglot.webp" data-fallback="images/polyglot.png|../polyglot/src/images/ch00-cover.png" alt="At a border booth, an elephant in a cap stamps the passport of a traveller whose backpack is covered in stickers. The barrier is already lifting." decoding="async" onerror="artFallback(this)"></figure>
+            <div class="text">
                 <p class="says">“Skip the basics. Just tell me how PHP does it.”</p>
-                <p class="about">You know what a loop is. What you don't know yet is why a PHP array is also a dictionary, or where your variables go once the request is answered. <strong>Each chapter takes one question like these and answers it.</strong></p>
-                <p class="title"><strong data-title>And Now, PHP</strong>. <span data-length>Two to three hours.</span></p>
-                <div class="actions">
-                    <a class="btn small" href="polyglot/">Read it online</a>
-                    <a class="quiet" href="polyglot/book.pdf">PDF</a>
-                    <a class="quiet" href="polyglot/fr/" hreflang="fr">French edition</a>
-                </div>
+                <h2><a href="polyglot/">And Now, PHP</a></h2>
+                <p class="length">Two to three hours.</p>
+                <p class="more"><a class="go" href="polyglot/">Read online</a> <a href="polyglot/book.pdf">PDF</a> <a href="polyglot/fr/" hreflang="fr" lang="fr">En français</a></p>
             </div>
-            <figure class="art"><img src="images/polyglot.webp" data-fallback="images/polyglot.png|../polyglot/src/images/ch00-cover.png" alt="At a border booth, an elephant in a cap stamps the passport of a traveller whose backpack is covered in stickers. The barrier is already lifting." loading="lazy" decoding="async" onerror="artFallback(this)"></figure>
-        </article>
+        </li>
 
-        <article class="book" id="pragmatic">
-            <div>
+        <li class="card" id="pragmatic">
+            <figure class="art"><img src="images/pragmatic.webp" data-fallback="images/pragmatic.png|../skeptic/src/images/ch06-conveyor.png" alt="A person and an elephant place the last block, the only blue one, on a small house made of big building bricks. A trailer waits with its ramp down." decoding="async" onerror="artFallback(this)"></figure>
+            <div class="text">
                 <p class="says">“I'm not here for the language. I'm here to ship the feature.”</p>
-                <p class="about">Someone wants user accounts by Friday. Open the chapter on user accounts, choose Laravel, Symfony or WordPress, and type the first command. Every chapter starts from a feature like that one.</p>
-                <p class="title"><strong data-title>Ship It With PHP</strong>. <span data-length>Read the chapter you need.</span></p>
-                <div class="actions">
-                    <a class="btn small" href="pragmatic/">Read it online</a>
-                </div>
+                <h2><a href="pragmatic/">Ship It With PHP</a></h2>
+                <p class="length">Read the chapter you need.</p>
+                <p class="more"><a class="go" href="pragmatic/">Read online</a></p>
             </div>
-            <figure class="art"><img src="images/pragmatic.webp" data-fallback="images/pragmatic.png|../skeptic/src/images/ch06-conveyor.png" alt="A person and an elephant place the last block, the only blue one, on a small house made of big building bricks. A trailer waits with its ramp down." loading="lazy" decoding="async" onerror="artFallback(this)"></figure>
-        </article>
+        </li>
 
-        <article class="book" id="skeptic">
-            <div>
+        <li class="card" id="skeptic">
+            <figure class="art"><img src="images/skeptic.webp" data-fallback="images/skeptic.png|../skeptic/src/images/ch00-cover.png" alt="A person with crossed arms and a raised eyebrow looks at the bar chart an elephant slides across the table. A magnifying glass lies between them." decoding="async" onerror="artFallback(this)"></figure>
+            <div class="text">
                 <p class="says">“Impress me with scale, not hype.”</p>
-                <p class="about">You have heard the jokes. You have also seen PHP in job postings, and behind sites that never seem to go down. Here are the figures, each with its source and its date, and a chapter on where PHP is the wrong choice. <strong>The opinion you leave with is yours.</strong></p>
-                <p class="title"><strong data-title>PHP in 2026, the Facts</strong>. <span data-length>Ninety minutes to two hours.</span></p>
-                <div class="actions">
-                    <a class="btn small" href="skeptic/">Read it online</a>
-                    <a class="quiet" href="skeptic/book.pdf">PDF</a>
-                    <a class="quiet" href="skeptic/fr/" hreflang="fr">French edition</a>
-                </div>
+                <h2><a href="skeptic/">PHP in 2026, the Facts</a></h2>
+                <p class="length">Ninety minutes to two hours.</p>
+                <p class="more"><a class="go" href="skeptic/">Read online</a> <a href="skeptic/book.pdf">PDF</a> <a href="skeptic/fr/" hreflang="fr" lang="fr">En français</a></p>
             </div>
-            <figure class="art"><img src="images/skeptic.webp" data-fallback="images/skeptic.png|../skeptic/src/images/ch00-cover.png" alt="A person with crossed arms and a raised eyebrow looks at the bar chart an elephant slides across the table. A magnifying glass lies between them." loading="lazy" decoding="async" onerror="artFallback(this)"></figure>
-        </article>
+        </li>
 
-        <article class="book" id="engineering">
-            <div>
+        <li class="card" id="engineering">
+            <figure class="art"><img src="images/engineering.webp" data-fallback="images/engineering.png|../skeptic/src/images/ch01-backstage.png" alt="A person in a blazer studies a system diagram on a whiteboard while an elephant on a step stool fits the missing box into the middle." decoding="async" onerror="artFallback(this)"></figure>
+            <div class="text">
                 <p class="says">“Show me how PHP completes my architecture.”</p>
-                <p class="about">Your stack already speaks several languages, and you are the one who decides whether it learns another. You will see what PHP costs to run and who maintains it. One chapter tells you when to pick something else.</p>
-                <p class="title"><strong data-title>PHP: A Guide for the Decision Maker</strong>. <span data-length>Ninety minutes.</span></p>
-                <div class="actions">
-                    <a class="btn small" href="engineering/">Read it online</a>
-                </div>
+                <h2><a href="engineering/">PHP: A Guide for the Decision Maker</a></h2>
+                <p class="length">Ninety minutes.</p>
+                <p class="more"><a class="go" href="engineering/">Read online</a></p>
             </div>
-            <figure class="art"><img src="images/engineering.webp" data-fallback="images/engineering.png|../skeptic/src/images/ch01-backstage.png" alt="A person in a blazer studies a system diagram on a whiteboard while an elephant on a step stool fits the missing box into the middle." loading="lazy" decoding="async" onerror="artFallback(this)"></figure>
-        </article>
-    </section>
-
-    <section class="reference" id="reference">
-        <div class="wrap inner">
-            <div>
-                <h2>Looking for a function?</h2>
-                <p>Then you want the manual, and the manual lives on php.net. Type a name and you land on its page.</p>
-            </div>
-            <div>
-                <form class="lookup" action="https://www.php.net/manual-lookup.php" method="get" role="search">
-                    <label class="sr-only" for="pattern">Search the php.net manual</label>
-                    <input id="pattern" name="pattern" type="search" required autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="array_map, DateTime, match">
-                    <input type="hidden" name="scope" value="quickref">
-                    <button class="btn small" type="submit">Open on php.net</button>
-                </form>
-                <ul class="shortcuts">
-                    <li><a href="https://www.php.net/manual/en/">Browse the manual</a></li>
-                    <li><a href="https://www.php.net/manual/en/install.php">Install PHP</a></li>
-                    <li><a href="https://www.php.net/downloads">Downloads</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </li>
+    </ul>
 </main>
 
 <footer>
     <div class="wrap">
-        <p>The books are written under the umbrella of the <a href="https://thephp.foundation/">PHP Foundation</a>. This page is a draft for discussion, not an official PHP page.</p>
+        <p>The books are written under the umbrella of the <a href="https://thephp.foundation/">PHP Foundation</a>. This page is a draft for discussion, not an official PHP page. The manual lives on <a href="https://www.php.net/manual/en/">php.net</a>, the books and this page on <a href="https://github.com/Halleck45/phpbooks">GitHub</a>.</p>
     </div>
 </footer>
-
-<script>
-(function () {
-    'use strict';
-    function each(selector, fn) { Array.prototype.forEach.call(document.querySelectorAll(selector), fn); }
-    function step(name) { each('.step', function (s) { s.hidden = s.getAttribute('data-step') !== name; }); }
-    function clear() { each('.book.picked', function (b) { b.classList.remove('picked'); }); }
-
-    var heroArt = document.querySelector('.hero .art');
-    var heroImg = heroArt && heroArt.querySelector('img');
-    var heroHome = heroImg && { src: heroImg.getAttribute('src'), fallback: heroImg.getAttribute('data-fallback'), alt: heroImg.alt };
-
-    function swapArt(src, fallback, alt) {
-        if (!heroImg || !document.contains(heroImg)) { return; }
-        heroArt.classList.add('swapping');
-        setTimeout(function () {
-            heroImg.setAttribute('data-fallback', fallback || '');
-            heroImg.alt = alt;
-            heroImg.onload = function () { heroArt.classList.remove('swapping'); };
-            heroImg.src = src;
-        }, 200);
-    }
-
-    function text(book, selector) { return book.querySelector(selector).textContent; }
-
-    // One or two answers give the reader their book on the spot: their own
-    // sentence, the title, the way in. The matching entry is lit up further down.
-    function pick(id, quiet) {
-        var book = document.getElementById(id);
-        if (!book || !book.classList.contains('book')) { return; }
-        clear();
-        book.classList.add('picked');
-        document.querySelector('[data-result-says]').textContent = text(book, '.says');
-        document.querySelector('[data-result-title]').textContent = text(book, '[data-title]');
-        document.querySelector('[data-result-length]').textContent = text(book, '[data-length]');
-        document.querySelector('[data-result-read]').href = book.querySelector('.btn').href;
-        document.querySelector('[data-result-more]').href = '#' + id;
-        var art = book.querySelector('.art img');
-        if (art) { swapArt(art.currentSrc || art.src, '', art.alt); }
-        step('done');
-        document.querySelector('.hero').classList.add('answered');
-        if (!quiet) {
-            try { history.replaceState(null, '', '#for-' + id); } catch (e) {}
-            document.querySelector('[data-result-read]').focus({ preventScroll: true });
-        }
-    }
-
-    function reset() {
-        clear();
-        step('1');
-        document.querySelector('.hero').classList.remove('answered');
-        if (heroHome) { swapArt(heroHome.src, heroHome.fallback, heroHome.alt); }
-        try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
-    }
-
-    each('[data-pick]', function (a) { a.addEventListener('click', function (e) { e.preventDefault(); pick(a.getAttribute('data-pick')); }); });
-    each('[data-next]', function (a) { a.addEventListener('click', function (e) { e.preventDefault(); step(a.getAttribute('data-next')); }); });
-    each('[data-again]', function (b) { b.addEventListener('click', reset); });
-
-    // A shared link such as index.html#for-skeptic opens on that reader's answer.
-    // The fragment matches no element, so the page stays on the hero.
-    if (location.hash.indexOf('#for-') === 0) { pick(location.hash.slice(5), true); }
-})();
-</script>
 </body>
 </html>
