@@ -1,6 +1,6 @@
 # Landing page
 
-`index.html` asks the visitor where they stand with PHP and hands them the book that starts there, one per persona of `../onboarding personas.md`. Those who only wanted the reference are sent to php.net. It is a draft meant to start a discussion about what a PHP home page could be: no logo, no official colours, `noindex`.
+`index.html` asks the visitor where they stand with PHP and hands them the book that starts there, one per persona of `../onboarding personas.md`. Those who only wanted the reference are sent to php.net. It is a draft meant to start a discussion about what a PHP home page could be: its own logo rather than the official one, no official colours, `noindex`.
 
 - The reader is the subject of the page, not the books: the top of the page is a question and two steps of answers, and each book is introduced by what its reader would say. The texts follow the house style of the books (second person, concrete situation first, no sales adjectives).
 - One static file, in English. French editions are linked where they exist.
