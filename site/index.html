@@ -117,30 +117,55 @@ h1 {
     .art img, .hero .art img { filter: brightness(1.03) contrast(1.08) invert(1) hue-rotate(180deg); mix-blend-mode: screen; }
 }
 
-/* The shelf: five cards, one per reader. The whole card opens the book. */
-.shelf { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; list-style: none; margin: 0; padding: 0 0 44px; }
+/* The shelf: five cards, one per reader. The whole card opens the book:
+   the reading time, the drawing, the reader's sentence, the title. */
+.shelf { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; list-style: none; margin: 0; padding: 0 0 48px; }
 .card {
-    position: relative; display: flex; flex-direction: column;
+    position: relative; display: flex; flex-direction: column; padding: 18px 24px 26px;
     background: var(--surface); border: 1px solid var(--line); border-radius: 22px;
     scroll-margin-top: 20px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .card:hover, .card:focus-within { border-color: var(--accent); box-shadow: var(--shadow); }
-.card .art { margin: 0; aspect-ratio: 3 / 2; padding: 22px 14px 10px; }
-.card .text { display: flex; flex-direction: column; flex: 1; padding: 8px 24px 24px; }
+.time {
+    align-self: flex-start; display: inline-flex; align-items: center; gap: 6px;
+    font: 500 0.8rem/1 var(--sans); color: var(--accent); background: var(--accent-soft);
+    border-radius: 999px; padding: 7px 11px 7px 9px; margin: 0; white-space: nowrap;
+}
+.time svg { width: 13px; height: 13px; }
+.card .art { margin: 0; aspect-ratio: 3 / 2; padding: 14px 0 12px; }
 .says {
     font: 400 italic clamp(1.15rem, 1.35vw, 1.45rem)/1.25 var(--serif);
-    letter-spacing: -0.01em; text-indent: -0.42em; margin: 0 0 14px; text-wrap: balance; flex: 1;
+    letter-spacing: -0.01em; text-indent: -0.42em; margin: 0 0 12px; text-wrap: balance; flex: 1;
 }
-.card h2 { font: 600 1rem/1.35 var(--sans); margin: 0 0 3px; }
+.foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.card h2 { font: 500 0.95rem/1.35 var(--sans); color: var(--muted); margin: 0; }
 .card h2 a { text-decoration: none; }
 .card h2 a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
-.length { font-size: 0.88rem; color: var(--muted); margin: 0 0 16px; }
-.more { position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0; font-size: 0.85rem; }
-.go { color: var(--accent); font-weight: 600; text-decoration: none; margin-right: auto; }
-.card:hover .go { text-decoration: underline; text-underline-offset: 3px; }
-.more a:not(.go) { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
-.more a:not(.go):hover { color: var(--ink); border-color: var(--ink); }
+.card:hover h2 { color: var(--ink); }
+
+/* Other formats: a small menu that opens above its button, for the books
+   that have a PDF and a French edition. Stays above the card's link. */
+.formats { position: relative; z-index: 2; flex: none; }
+.formats summary {
+    list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
+    font: 500 0.82rem/1 var(--sans); color: var(--muted); padding: 7px 8px 7px 10px; border-radius: 999px; border: 1px solid var(--line);
+}
+.formats summary::-webkit-details-marker { display: none; }
+.formats summary svg { width: 12px; height: 12px; transition: transform 0.15s ease; }
+.formats summary:hover, .formats[open] summary { color: var(--ink); border-color: var(--ink); }
+.formats[open] summary svg { transform: rotate(180deg); }
+.menu {
+    position: absolute; right: 0; top: calc(100% + 8px); min-width: 170px; margin: 0; padding: 6px; list-style: none;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+    animation: arrive 0.15s ease both;
+}
+@keyframes arrive { from { opacity: 0; transform: translateY(-4px); } }
+.menu a { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 9px; font: 500 0.9rem/1.2 var(--sans); text-decoration: none; white-space: nowrap; }
+.menu a:hover { background: var(--accent-soft); color: var(--accent); }
+.menu svg { width: 18px; height: 18px; flex: none; color: var(--muted); }
+.menu a:hover svg { color: inherit; }
+.menu .flag { filter: none; }
 
 footer { margin-top: auto; border-top: 1px solid var(--line); padding: 22px 0 30px; color: var(--muted); font-size: 0.86rem; }
 footer p { margin: 0; }
@@ -149,10 +174,11 @@ footer a:hover { color: var(--ink); border-color: var(--ink); }
 
 @media (max-width: 1180px) {
     .shelf { grid-template-columns: 1fr; gap: 14px; }
-    .card { flex-direction: row; align-items: stretch; }
-    .card .art { width: 30%; max-width: 300px; flex: none; aspect-ratio: auto; padding: 14px; }
-    .card .text { padding: 22px 24px 22px 12px; }
-    .says { flex: 0; }
+    .card { display: grid; grid-template-columns: minmax(0, 30%) 1fr; grid-template-rows: 1fr auto auto auto 1fr; column-gap: 20px; align-items: start; padding: 18px 24px 22px 14px; }
+    .card .art { grid-row: 1 / 6; aspect-ratio: auto; padding: 0; align-self: center; }
+    .time { grid-column: 2; grid-row: 2; justify-self: start; margin-bottom: 12px; }
+    .says { grid-column: 2; grid-row: 3; flex: 0; margin-bottom: 10px; }
+    .foot { grid-column: 2; grid-row: 4; }
 }
 @media (max-width: 720px) {
     :root { --gutter: 16px; }
@@ -163,10 +189,8 @@ footer a:hover { color: var(--ink); border-color: var(--ink); }
     .lookup button { padding-inline: 12px; }
     .hero { grid-template-columns: 1fr; gap: 8px; padding: 12px 0 20px; }
     .hero .art { display: none; }
-    .card .art { width: 38%; padding: 10px; }
-    .card .text { padding: 16px 16px 16px 4px; }
-    .says { font-size: 1.05rem; margin-bottom: 10px; }
-    .go { margin-right: 0; }
+    .card { grid-template-columns: minmax(0, 36%) 1fr; column-gap: 14px; padding: 14px 16px 16px 10px; }
+    .says { font-size: 1.05rem; }
 }
 @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
@@ -198,52 +222,50 @@ footer a:hover { color: var(--ink); border-color: var(--ink); }
 
     <ul class="shelf">
         <li class="card" id="beginner">
+            <p class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="sr-only">Reading time: </span>About 6 hours</p>
             <figure class="art"><img src="images/beginner.webp" data-fallback="images/beginner.png|../beginner/src/images/ch01-toolkit.png" alt="A young person at a desk throws both arms up in joy in front of a laptop showing one line of code, while a small elephant gives a thumbs-up." decoding="async" onerror="artFallback(this)"></figure>
-            <div class="text">
-                <p class="says">“Show me the code that gets me the job.”</p>
+            <p class="says">“I have never coded. Show me what gets me the job.”</p>
+            <div class="foot">
                 <h2><a href="beginner/">The PHP Book</a></h2>
-                <p class="length">A full course, at your own pace.</p>
-                <p class="more"><a class="go" href="beginner/">Read online</a> <a href="beginner/book.pdf">PDF</a> <a href="beginner/fr/" hreflang="fr" lang="fr">En français</a></p>
+                <details class="formats"><summary>More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><ul class="menu"><li><a href="beginner/book.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg> PDF</a></li><li><a href="beginner/fr/" hreflang="fr" lang="fr"><svg class="flag" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" fill="#fff"/><path d="M4 5h4.7v14H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="#0055a4"/><path d="M15.3 5H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.7z" fill="#ef4135"/><rect x="2.5" y="5.5" width="19" height="13" rx="1.5" fill="none" stroke="rgba(0,0,0,.18)"/></svg> En français</a></li></ul></details>
             </div>
         </li>
 
         <li class="card" id="polyglot">
+            <p class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="sr-only">Reading time: </span>2 to 3 hours</p>
             <figure class="art"><img src="images/polyglot.webp" data-fallback="images/polyglot.png|../polyglot/src/images/ch00-cover.png" alt="At a border booth, an elephant in a cap stamps the passport of a traveller whose backpack is covered in stickers. The barrier is already lifting." decoding="async" onerror="artFallback(this)"></figure>
-            <div class="text">
-                <p class="says">“Skip the basics. Just tell me how PHP does it.”</p>
+            <p class="says">“I code in another language. Just tell me how PHP does it.”</p>
+            <div class="foot">
                 <h2><a href="polyglot/">And Now, PHP</a></h2>
-                <p class="length">Two to three hours.</p>
-                <p class="more"><a class="go" href="polyglot/">Read online</a> <a href="polyglot/book.pdf">PDF</a> <a href="polyglot/fr/" hreflang="fr" lang="fr">En français</a></p>
+                <details class="formats"><summary>More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><ul class="menu"><li><a href="polyglot/book.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg> PDF</a></li><li><a href="polyglot/fr/" hreflang="fr" lang="fr"><svg class="flag" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" fill="#fff"/><path d="M4 5h4.7v14H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="#0055a4"/><path d="M15.3 5H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.7z" fill="#ef4135"/><rect x="2.5" y="5.5" width="19" height="13" rx="1.5" fill="none" stroke="rgba(0,0,0,.18)"/></svg> En français</a></li></ul></details>
             </div>
         </li>
 
         <li class="card" id="pragmatic">
+            <p class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="sr-only">Reading time: </span>About 2 hours</p>
             <figure class="art"><img src="images/pragmatic.webp" data-fallback="images/pragmatic.png|../skeptic/src/images/ch06-conveyor.png" alt="A person and an elephant place the last block, the only blue one, on a small house made of big building bricks. A trailer waits with its ramp down." decoding="async" onerror="artFallback(this)"></figure>
-            <div class="text">
-                <p class="says">“I'm not here for the language. I'm here to ship the feature.”</p>
+            <p class="says">“I have a feature to ship. Show me the framework, not the language.”</p>
+            <div class="foot">
                 <h2><a href="pragmatic/">Ship It With PHP</a></h2>
-                <p class="length">Read the chapter you need.</p>
-                <p class="more"><a class="go" href="pragmatic/">Read online</a></p>
             </div>
         </li>
 
         <li class="card" id="skeptic">
+            <p class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="sr-only">Reading time: </span>90 minutes to 2 hours</p>
             <figure class="art"><img src="images/skeptic.webp" data-fallback="images/skeptic.png|../skeptic/src/images/ch00-cover.png" alt="A person with crossed arms and a raised eyebrow looks at the bar chart an elephant slides across the table. A magnifying glass lies between them." decoding="async" onerror="artFallback(this)"></figure>
-            <div class="text">
-                <p class="says">“Impress me with scale, not hype.”</p>
+            <p class="says">“I was told PHP is dead. Prove me wrong with facts, not hype.”</p>
+            <div class="foot">
                 <h2><a href="skeptic/">PHP in 2026, the Facts</a></h2>
-                <p class="length">Ninety minutes to two hours.</p>
-                <p class="more"><a class="go" href="skeptic/">Read online</a> <a href="skeptic/book.pdf">PDF</a> <a href="skeptic/fr/" hreflang="fr" lang="fr">En français</a></p>
+                <details class="formats"><summary>More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><ul class="menu"><li><a href="skeptic/book.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg> PDF</a></li><li><a href="skeptic/fr/" hreflang="fr" lang="fr"><svg class="flag" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2" fill="#fff"/><path d="M4 5h4.7v14H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="#0055a4"/><path d="M15.3 5H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.7z" fill="#ef4135"/><rect x="2.5" y="5.5" width="19" height="13" rx="1.5" fill="none" stroke="rgba(0,0,0,.18)"/></svg> En français</a></li></ul></details>
             </div>
         </li>
 
         <li class="card" id="engineering">
+            <p class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="sr-only">Reading time: </span>About 90 minutes</p>
             <figure class="art"><img src="images/engineering.webp" data-fallback="images/engineering.png|../skeptic/src/images/ch01-backstage.png" alt="A person in a blazer studies a system diagram on a whiteboard while an elephant on a step stool fits the missing box into the middle." decoding="async" onerror="artFallback(this)"></figure>
-            <div class="text">
-                <p class="says">“Show me how PHP completes my architecture.”</p>
+            <p class="says">“I lead the engineering team. Tell me where PHP fits, and what it costs.”</p>
+            <div class="foot">
                 <h2><a href="engineering/">PHP: A Guide for the Decision Maker</a></h2>
-                <p class="length">Ninety minutes.</p>
-                <p class="more"><a class="go" href="engineering/">Read online</a></p>
             </div>
         </li>
     </ul>
@@ -254,5 +276,14 @@ footer a:hover { color: var(--ink); border-color: var(--ink); }
         <p>The books are written under the umbrella of the <a href="https://thephp.foundation/">PHP Foundation</a>. This page is a draft for discussion, not an official PHP page. The manual lives on <a href="https://www.php.net/manual/en/">php.net</a>, the books and this page on <a href="https://github.com/Halleck45/phpbooks">GitHub</a>.</p>
     </div>
 </footer>
+<script>
+(function () {
+    function closeAll(except) {
+        Array.prototype.forEach.call(document.querySelectorAll('.formats[open]'), function (d) { if (d !== except) { d.open = false; } });
+    }
+    document.addEventListener('click', function (e) { closeAll(e.target.closest('.formats')); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeAll(); } });
+})();
+</script>
 </body>
 </html>
