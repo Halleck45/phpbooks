@@ -1,6 +1,6 @@
 # Landing page
 
-`index.html` asks the visitor where they stand with PHP, under the logo, and shows the five books on one screen, one card per persona of `../onboarding personas.md`. Those who only wanted the reference have the php.net lookup in the header. It is a draft meant to start a discussion about what a PHP home page could be: its own logo rather than the official one, no official colours, `noindex`.
+`index.html` asks the visitor where they stand with PHP, under the logo, and shows the five books on one screen, one card per persona of `../onboarding personas.md`. Those who only wanted the reference have the php.net lookup in the header. It is a draft meant to start a discussion about what a PHP home page could be: its own logo rather than the official one, `noindex`. It takes the violet of the PHP logo (`#777bb4`, and `#4f5b93` for text and buttons) on cream paper with an amber touch, but none of the php.net layout.
 
 - The reader is the subject of the page, not the books: each card shows the reading time, the drawing, what its reader would say, and the title. A small menu next to the title opens the PDF and the French edition where they exist. The texts follow the house style of the books (second person, concrete situation first, no sales adjectives).
 - One static file, in English. The only JavaScript is the image fallback and closing an open menu. French editions and PDFs are linked where they exist.

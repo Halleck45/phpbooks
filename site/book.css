@@ -2,7 +2,7 @@
  * (symlink) through additional-css, after mdBook's own stylesheets.
  *
  * It repaints mdBook's themes with the landing page's palette (paper and ink,
- * one blue accent), sets the text in a book face at a comfortable measure, and
+ * one PHP violet accent), sets the text in a book face at a comfortable measure, and
  * quiets the chrome around it. The light themes (light, rust) share the paper
  * palette; the dark ones (coal, navy, ayu) share the ink palette.
  *
@@ -30,8 +30,8 @@ html.light, html.rust, html:not(.js) {
     --text: #2a2926;
     --muted: #6a665e;
     --line: #e7e2d8;
-    --accent: #2f6fd0;
-    --accent-soft: #e9f1fd;
+    --accent: #4f5b93;
+    --accent-soft: #eceef8;
 
     --bg: var(--paper);
     --fg: var(--text);
@@ -64,7 +64,7 @@ html.light, html.rust, html:not(.js) {
     --search-mark-bg: #fbe7a1;
     --footnote-highlight: var(--accent);
     --overlay-bg: rgba(29, 28, 26, 0.25);
-    --blockquote-note-color: #2f6fd0;
+    --blockquote-note-color: #4f5b93;
     --blockquote-tip-color: #3b7a4a;
     --blockquote-important-color: #6b4fbb;
     --blockquote-warning-color: #a3670c;
@@ -75,14 +75,14 @@ html.light, html.rust, html:not(.js) {
 }
 
 html.coal, html.navy, html.ayu {
-    --paper: #121417;
-    --surface: #1a1d22;
-    --ink: #ecebe7;
-    --text: #d9d7d1;
-    --muted: #9d9a92;
-    --line: #2a2e35;
-    --accent: #8ab6ff;
-    --accent-soft: #1a2535;
+    --paper: #14141c;
+    --surface: #1c1c27;
+    --ink: #eeecf3;
+    --text: #d9d7e0;
+    --muted: #a19eae;
+    --line: #2c2b3a;
+    --accent: #aab2e6;
+    --accent-soft: #262a44;
 
     --bg: var(--paper);
     --fg: var(--text);
@@ -99,7 +99,7 @@ html.coal, html.navy, html.ayu {
     --inline-code-color: var(--ink);
     --theme-popup-bg: var(--surface);
     --theme-popup-border: var(--line);
-    --theme-hover: #23272d;
+    --theme-hover: #242432;
     --quote-bg: transparent;
     --quote-border: var(--line);
     --table-border-color: var(--line);
@@ -115,7 +115,7 @@ html.coal, html.navy, html.ayu {
     --search-mark-bg: #5a4a1c;
     --footnote-highlight: var(--accent);
     --overlay-bg: rgba(0, 0, 0, 0.45);
-    --blockquote-note-color: #8ab6ff;
+    --blockquote-note-color: #aab2e6;
     --blockquote-tip-color: #86c796;
     --blockquote-important-color: #b9a4f0;
     --blockquote-warning-color: #e0b15c;
@@ -240,7 +240,7 @@ pre > .buttons button {
 .hljs-keyword, .hljs-selector-tag, .hljs-meta .hljs-keyword { color: #8b3a8f; }
 .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-regexp { color: #2f7040; }
 .hljs-number, .hljs-literal, .hljs-built_in, .hljs-builtin-name, .hljs-type { color: #a35200; }
-.hljs-title, .hljs-section, .hljs-title.function_, .hljs-title.class_ { color: #1f5fbf; }
+.hljs-title, .hljs-section, .hljs-title.function_, .hljs-title.class_ { color: #44508f; }
 .hljs-variable, .hljs-template-variable, .hljs-params, .hljs-attr, .hljs-attribute { color: #3d4f75; }
 .hljs-meta, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-link { color: #6a665e; }
 .hljs-addition { color: #2f7040; background: #e8f3ea; }
@@ -260,7 +260,7 @@ html.coal .hljs-built_in, html.navy .hljs-built_in, html.ayu .hljs-built_in,
 html.coal .hljs-builtin-name, html.navy .hljs-builtin-name, html.ayu .hljs-builtin-name,
 html.coal .hljs-type, html.navy .hljs-type, html.ayu .hljs-type { color: #e8b67f; }
 html.coal .hljs-title, html.navy .hljs-title, html.ayu .hljs-title,
-html.coal .hljs-section, html.navy .hljs-section, html.ayu .hljs-section { color: #8ab6ff; }
+html.coal .hljs-section, html.navy .hljs-section, html.ayu .hljs-section { color: #aab2e6; }
 html.coal .hljs-variable, html.navy .hljs-variable, html.ayu .hljs-variable,
 html.coal .hljs-template-variable, html.navy .hljs-template-variable, html.ayu .hljs-template-variable,
 html.coal .hljs-params, html.navy .hljs-params, html.ayu .hljs-params,
@@ -425,7 +425,7 @@ ul#mdbook-searchresults { font-family: var(--read-sans); }
         --text: #1d1c1a;
         --muted: #5e5a52;
         --line: #dcd6ca;
-        --accent: #1f5fbf;
+        --accent: #4f5b93;
         --bg: #ffffff;
         --fg: var(--text);
         --links: var(--accent);
