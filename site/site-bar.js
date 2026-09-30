@@ -27,7 +27,7 @@
         '  background-color: var(--bg); border-bottom: 1px solid var(--table-border-color);',
         '  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 1.5rem; }',
         '.site-bar a { color: var(--fg); text-decoration: none; }',
-        '.site-bar .site-bar-name { display: flex; align-items: center; }',
+        '.site-bar .site-bar-name { display: flex; align-items: center; color: var(--links); }',
         '.site-bar .site-bar-logo { height: 34px; width: auto; flex: none; }',
         '.site-bar nav { margin-left: auto; display: flex; align-items: center; gap: 28px; }',
         '.site-bar .site-bar-github { width: 26px; height: 26px; display: block; }',
