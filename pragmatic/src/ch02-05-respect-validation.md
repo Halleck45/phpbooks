@@ -1,6 +1,6 @@
 # Validating Input: Respect/Validation
 
-Every form, every API payload, every CSV upload eventually needs the same question answered: is this data actually usable? Respect/Validation gives you readable, chainable rules for answering that question, without needing a framework's request lifecycle wrapped around it.
+Every form, every API payload, every CSV upload asks the same question: is this data usable? **Respect/Validation answers it with readable, chainable rules**, and needs no framework request lifecycle wrapped around it.
 
 ```bash
 composer require respect/validation
@@ -30,14 +30,14 @@ try {
 }
 ```
 
-Rules read close to plain English and compose freely: `v::stringType()->notEmpty()->length(1, 255)` or `v::arrayType()->each(v::stringType())` cover most of what a typical form or API payload needs without writing a single custom rule.
+Rules read close to plain English and compose freely. `v::stringType()->notEmpty()->length(1, 255)` or `v::arrayType()->each(v::stringType())` cover most of what a form or an API payload needs, without a single custom rule.
 
 ## When to reach for this
 
-A script or small service accepting outside input (a CSV import, a webhook receiver, a lightweight API) where pulling in a full framework just for its validation layer would be overkill.
+A script or a small service that accepts outside input: a CSV import, a webhook receiver, a lightweight API. Pulling in a whole framework for its validation layer alone would be overkill.
 
 ## When it's the wrong fit
 
-Laravel's built-in `$request->validate()` and Symfony's Validator component are both more tightly integrated with their framework's forms and error display, and are the better default once you're already building inside one of them.
+Once you are inside Laravel or Symfony. `$request->validate()` and the Symfony Validator component are wired into their framework's forms and error display, and are the better default there.
 
-> **Under the hood:** Validation libraries like this one lean on PHP's type system more than they used to. Underneath the fluent `v::intVal()` calls, modern versions increasingly use PHP's own union types and enums to describe what "valid" means, rather than reinventing type-checking from scratch.
+> **Under the hood:** Validation libraries lean on PHP's type system more than they used to. Underneath the fluent `v::intVal()` calls, recent versions describe what "valid" means with PHP's own union types and enums rather than reinventing type checks from scratch.

@@ -1,6 +1,6 @@
 # Laravel: Reverb and Livewire Without Writing JavaScript
 
-Reverb is Laravel's own WebSocket server, self-hosted and free, built to slot directly into Laravel's existing broadcasting system with no third-party service required.
+Reverb is Laravel's own WebSocket server, self-hosted and free. **It slots into Laravel's existing broadcasting system, so a third-party service becomes optional.**
 
 ```bash
 composer require laravel/reverb
@@ -24,7 +24,7 @@ class OrderShipped implements ShouldBroadcast
 }
 ```
 
-Paired with **Livewire**, the frontend side often needs no JavaScript at all. A Livewire component can listen for a broadcast event and re-render automatically:
+Paired with **Livewire**, the front end often needs no JavaScript at all. A Livewire component listens for the broadcast and re-renders itself:
 
 ```php
 class OrderStatus extends Component
@@ -44,14 +44,14 @@ class OrderStatus extends Component
 }
 ```
 
-The Blade template just renders `$order->status`; Livewire handles re-rendering that fragment over the WebSocket connection when the event fires, no client-side state management written by hand.
+The Blade template renders `$order->status` and nothing else. When the event fires, Livewire re-renders that fragment over the WebSocket connection, with no client-side state written by hand.
 
 ## When to reach for this
 
-Laravel projects wanting real-time features (notifications, live status updates, simple chat) without adopting a separate frontend framework or paying for a third-party WebSocket service.
+A Laravel project that wants notifications, live status updates, or simple chat without adopting a separate front-end framework or paying for a WebSocket service.
 
 ## When it's the wrong fit
 
-A highly interactive, JavaScript-heavy frontend (a canvas-based editor, a complex single-page app) where Livewire's server-round-trip model adds latency a client-side framework wouldn't have. Reverb still works there as the transport; Livewire specifically is the piece worth reconsidering.
+A JavaScript-heavy front end (a canvas editor, a complex single-page app), where Livewire's round trip to the server adds latency a client-side framework would not. Reverb still works there as the transport. Livewire is the piece to reconsider.
 
-> **Under the hood:** Reverb is built on PHP Fibers, introduced in PHP 8.1, which let a single PHP process hold many open connections and switch between them cooperatively instead of blocking. That's what makes a persistent WebSocket server practical to write in PHP at all, a job PHP's traditional one-request-per-process model was never suited for.
+> **Under the hood:** Reverb is built on PHP Fibers, introduced in PHP 8.1. A single PHP process can hold many open connections and switch between them cooperatively instead of blocking. That is what makes a persistent WebSocket server practical in PHP, a job the one-request-per-process model was never suited for.

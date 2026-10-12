@@ -1,8 +1,8 @@
 # Nextcloud: Scaling a Self-Hosted Platform
 
-A self-hosted platform like [Nextcloud](ch08-01-nextcloud-ready-made-drive.md) faces a scaling question most cloud SaaS products never expose to their customers: someone on your team has to actually operate the growth curve, not just pay for a bigger plan.
+A self-hosted platform like [Nextcloud](ch08-01-nextcloud-ready-made-drive.md) asks a question most cloud products never expose to their customers: someone on your team has to operate the growth curve, not just pay for a bigger plan.
 
-The standard path, in order, as an organization grows past a single small server:
+**Each step below answers one measured bottleneck**, in the order an organization usually meets them after outgrowing a single small server:
 
 ```bash
 # 1. Move sessions and caching to Redis instead of the filesystem
@@ -16,16 +16,16 @@ php occ config:system:set objectstore class --value='\OC\Files\ObjectStore\S3'
 php occ background:cron
 ```
 
-Each step addresses a specific, identifiable bottleneck rather than being applied preemptively: Redis when concurrent users start contending on file-based session locks, object storage when local disk fills up or a single server's I/O becomes the limit, background job separation when scheduled tasks (like the file preview generation Nextcloud does automatically) start competing with live user requests for CPU.
+Redis comes in when concurrent users start contending on file-based session locks. Object storage comes in when the local disk fills up, or when one server's I/O becomes the limit. Separate workers come in when scheduled tasks, such as the file previews Nextcloud generates on its own, start competing with live users for CPU.
 
-For organizations that don't want to own this operational curve at all, the officially supported route is the All-in-One Docker image (see [Nextcloud: All-in-One Docker Deployment](ch16-05-nextcloud-aio-docker.md)) or Nextcloud's own hosted offering, trading operational ownership for a subscription.
+An organization that does not want to own this curve at all has two supported routes: the All-in-One Docker image (see [Nextcloud: All-in-One Docker Deployment](ch16-05-nextcloud-aio-docker.md)) or Nextcloud's own hosted offering, trading operational ownership for a subscription.
 
 ## When to reach for this
 
-Any self-hosted Nextcloud instance that's grown from a pilot team to an organization-wide rollout, where the default single-server setup starts showing real, measured strain rather than hypothetical concern.
+A Nextcloud instance that has grown from a pilot team to an organization-wide rollout, where the single-server setup shows measured strain.
 
 ## When it's the wrong fit
 
-A small team's instance well within the comfortable range of a single well-specced server. Adding Redis and object storage ahead of an actual bottleneck is operational complexity paid for early, for no measured benefit.
+A small team's instance, comfortably within the range of one well-specced server. Redis and object storage ahead of a bottleneck are complexity paid early for no measured benefit.
 
-> **Under the hood:** Nextcloud's storage abstraction is, again, built on Flysystem-style adapters (see [League/Flysystem](ch02-06-league-flysystem-standalone.md)): the application code that reads and writes files doesn't change when the backend switches from local disk to S3, because it was never written against "the filesystem" directly in the first place.
+> **Under the hood:** Nextcloud's storage abstraction is built on Flysystem-style adapters (see [League/Flysystem](ch02-06-league-flysystem-standalone.md)). The code that reads and writes files does not change when the backend moves from local disk to S3, because it was never written against "the filesystem" in the first place.

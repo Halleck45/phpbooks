@@ -1,6 +1,6 @@
 # Symfony: The Security Bundle
 
-Symfony's approach to authentication is configuration-first: you describe, in YAML, how users are loaded, how passwords are checked, and which routes require which role, and the framework enforces it on every request without you writing the enforcement logic by hand.
+Symfony's approach to authentication is configuration first. **You describe in YAML how users are loaded, how passwords are checked, and which routes need which role, and the framework enforces it on every request.** You never write the enforcement logic yourself.
 
 ```bash
 composer require symfony/security-bundle
@@ -43,22 +43,25 @@ php bin/console make:migration
 php bin/console doctrine:migrations:migrate
 ```
 
-Inside a controller, checking permission is a one-line call, not a manual session check:
+Inside a controller, checking a permission is one line, not a manual session check:
 
 ```php
-#[IsGranted('ROLE_ADMIN')]
-public function dashboard(): Response
+class AdminController extends AbstractController
 {
-    // only reachable by ROLE_ADMIN users; Symfony enforces it before this runs
+    #[IsGranted('ROLE_ADMIN')]
+    public function dashboard(): Response
+    {
+        // only reachable by ROLE_ADMIN users; Symfony enforces it before this runs
+    }
 }
 ```
 
 ## When to reach for this
 
-Any Symfony application, essentially without exception. The Security Bundle is the standard, well-audited path, and hand-rolling session-based authentication next to it would only reintroduce bugs it already solved.
+Any Symfony application, with no real exception. The Security Bundle is the standard, audited path. Hand-rolling session authentication next to it would only bring back bugs it already fixed.
 
 ## When it's the wrong fit
 
-An API-only Symfony app authenticating via tokens instead of sessions still uses the Security Bundle, just configured with a different "guard" (an API token authenticator instead of `form_login`), so this is less a "wrong fit" than a different configuration of the same component.
+An API-only Symfony app that authenticates with tokens instead of sessions still uses the Security Bundle, with a different authenticator (an API token authenticator instead of `form_login`). Less a wrong fit than a different configuration of the same component.
 
-> **Under the hood:** The `#[IsGranted]` attribute is a PHP 8 attribute, metadata attached directly to the method, read by Symfony at runtime via reflection. It's the same underlying mechanism (attributes plus reflection) that lets a single class definition drive routing, validation, and serialization elsewhere in the framework without repetitive configuration files.
+> **Under the hood:** `#[IsGranted]` is a PHP 8 attribute, metadata attached to the method and read by Symfony at runtime through reflection. The same mechanism, attributes plus reflection, lets a single class drive routing, validation, and serialization elsewhere in the framework without repetitive configuration files.

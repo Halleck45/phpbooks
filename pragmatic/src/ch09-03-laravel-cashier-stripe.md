@@ -1,6 +1,6 @@
 # Laravel: Cashier and Stripe ($) for Custom Checkouts
 
-Not every "we need to take payments" request is a storefront. Often it's a single subscription plan, a one-time checkout, or a usage-based billing model bolted onto an app that isn't a store at all. Cashier is Laravel's official wrapper around Stripe (and, in a separate package, Paddle), designed for exactly that.
+Not every "we need to take payments" request is a storefront. Often it is one subscription plan, a one-time checkout, or usage-based billing bolted onto an app that is not a store at all. **Cashier is Laravel's official wrapper around Stripe (and, in a separate package, Paddle), built for that case.**
 
 ```bash
 composer require laravel/cashier
@@ -27,18 +27,18 @@ if ($user->subscribed('default')) {
 return $user->checkout(['price_one_time_item']);
 ```
 
-Webhooks (payment succeeded, subscription canceled, card expired) are handled by a route Cashier registers automatically, keeping your database in sync with Stripe's state without polling.
+Webhooks (payment succeeded, subscription canceled, card expired) land on a route Cashier registers for you. Your database stays in sync with Stripe without polling.
 
 ## Pricing
 
-Stripe itself is a paid, transaction-fee-based service (a percentage plus a fixed amount per successful charge), which is what earns it the `$` here. Cashier, the Laravel integration package, is free and open source; the cost is entirely on the payment processing side.
+Stripe charges a percentage plus a fixed amount per successful charge; that is the `$` in the title. Cashier itself, the Laravel package, is free and open source.
 
 ## When to reach for this
 
-A Laravel app that needs subscriptions, one-time payments, or usage billing, but isn't a multi-product catalog store. Think SaaS pricing tiers, not a shopping cart.
+A Laravel app that needs subscriptions, one-time payments, or usage billing, without a product catalog. SaaS pricing tiers, not a shopping cart.
 
 ## When it's the wrong fit
 
-An actual product catalog with inventory, variations, and shipping. That's [WooCommerce](ch09-01-woocommerce.md) or [Sylius](ch09-02-sylius.md) territory; Cashier has no concept of a "product" beyond a Stripe price ID.
+A catalog with inventory, variations, and shipping. That is [WooCommerce](ch09-01-woocommerce.md) or [Sylius](ch09-02-sylius.md) territory. Cashier has no notion of a product beyond a Stripe price ID.
 
-> **Under the hood:** Cashier verifies incoming Stripe webhooks using a cryptographic signature check against a shared secret, confirming the request genuinely came from Stripe and wasn't spoofed, before ever trusting its payload to update a subscription's status in your database.
+> **Under the hood:** Cashier verifies each incoming Stripe webhook with a cryptographic signature check against a shared secret, so the request is known to come from Stripe and not from a spoofer before its payload is trusted to update a subscription in your database.

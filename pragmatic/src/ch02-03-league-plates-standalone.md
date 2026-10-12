@@ -1,6 +1,6 @@
 # Templating Without a Framework: League/Plates
 
-The moment a script needs to produce HTML instead of a JSON blob or a log line, mixing `echo` statements into PHP logic gets unreadable fast. Plates is a native-PHP templating engine: no new syntax to learn, just plain PHP files with layouts, sections, and automatic escaping, usable in any script.
+The moment a script has to produce HTML instead of a JSON blob or a log line, `echo` statements mixed into the logic become unreadable fast. **Plates is a templating engine written in plain PHP: no new syntax**, just PHP files with layouts, sections, and automatic escaping, usable from any script.
 
 ```bash
 composer require league/plates
@@ -37,14 +37,14 @@ echo $templates->render('profile', ['name' => 'Ada']);
 <?php $this->stop() ?>
 ```
 
-`$this->e()` escapes output automatically, the same protection Twig or Blade gives you, just spelled out explicitly instead of hidden behind different syntax.
+`$this->e()` escapes output. It is the same protection Twig or Blade gives you, spelled out instead of hidden behind a different syntax.
 
 ## When to reach for this
 
-A small internal tool, a report generator, or a script that renders a handful of HTML pages and doesn't warrant installing a full framework's templating stack.
+A small internal tool, a report generator, or a script that renders a handful of HTML pages and doesn't justify a full framework's templating stack.
 
 ## When it's the wrong fit
 
-Once a project grows components, includes, and more than a handful of pages, a framework's own templating engine (Blade in Laravel, Twig in Symfony) earns its keep with features like component reuse and asset compilation that Plates deliberately leaves out to stay small.
+Once a project grows components, includes, and more than a handful of pages. A framework's own engine (Blade in Laravel, Twig in Symfony) then earns its keep with component reuse and asset compilation, features Plates leaves out on purpose to stay small.
 
-> **Under the hood:** Because Plates templates are just PHP files, there's no separate compile step or template cache to reason about. That simplicity is the entire point of the library, and it's also exactly what a framework's own templating engine trades away in exchange for more features.
+> **Under the hood:** Plates templates are PHP files, so there is no compile step and no template cache to reason about. That simplicity is the whole point of the library, and it is what a framework's own templating engine trades away in exchange for more features.
