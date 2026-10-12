@@ -1,0 +1,48 @@
+# Là où PHP est le mauvais choix
+
+**PHP est le mauvais choix pour le vrai calcul parallèle, pour l'apprentissage automatique et la science des données numérique, et pour une organisation qui ne peut pas s'engager à mettre à jour avant la fin du support de sécurité d'une branche ; c'est un choix plus faible, mais pas impossible, pour les applications natives de bureau ou mobiles et pour les charges de calcul lourd et soutenu.** Ce chapitre existe pour que le reste puisse être cru. Il nomme chacun de ces cas franchement, preuves à l'appui, sans adoucir ceux qui compliquent une histoire simple.
+
+## Pas de vrai parallélisme, par construction
+
+[Le runtime](ch02-runtime.md) a déjà nommé cette limite : PHP n'a pas de multithreading natif dans le code utilisateur. Les Fibers, arrivées avec PHP 8.1, apportent une concurrence coopérative, où une fiber se suspend pour en laisser tourner une autre. C'est très utile pour le travail limité par les entrées-sorties, mais ce n'est pas du parallélisme, puisqu'une seule fiber exécute son code à un instant donné. Les extensions PECL `parallel` et `pthreads` offrent un vrai parallélisme par threads du système d'exploitation ; elles existent bel et bien, et méritent d'être citées plutôt que passées sous silence. Elles sont aussi tierces et peu adoptées, ce qui justifie de les traiter comme une exception plutôt que comme la réponse par défaut. Si votre charge se définit par le besoin de faire tourner deux tâches de calcul au même instant précis dans un seul processus, rien dans l'outillage par défaut de PHP ne le fait, et aucune couche de service ni bibliothèque asynchrone n'y change rien, parce que la limite se trouve dans le runtime du langage lui-même, pas dans la façon dont vous le déployez.
+
+Le même trou d'architecture apparaît dans la communication bidirectionnelle en temps réel. Une connexion WebSocket qui doit rester ouverte et pousser des données vers le client sans que le client les demande ne s'insère pas proprement dans le modèle de PHP-FPM, où une requête entre et une réponse sort. Elle devient praticable grâce aux mêmes bibliothèques asynchrones, Swoole ou OpenSwoole en particulier, déjà présentées dans [Le runtime](ch02-runtime.md), ou grâce à une couche de service conçue pour les connexions longues. C'est une réponse réelle, qui fonctionne, pas une impasse. Mais c'est une brique d'infrastructure en plus, dont un langage né pour la requête-réponse comme PHP a besoin pour une tâche que d'autres runtimes traitent nativement.
+
+## La comparaison sur le calcul pur, bien posée
+
+[Performances](ch04-performance.md) a déjà montré la moitié contre-intuitive de cette limite : sur les microbenchmarks limités par le CPU, PHP est plus rapide que Python, pas plus lent. La version défendable de « PHP est lent » est plus étroite, et toujours vraie : PHP reste derrière les langages compilés et ceux dont le JIT est mûr, Go, Rust, Java et C#, sur le débit de calcul soutenu.
+
+| Comparaison | Ce que montrent les données |
+|---|---|
+| PHP face à Python, tâches limitées par le CPU | PHP plus rapide, d'environ 1,5 à 2 fois |
+| PHP face aux langages compilés ou à JIT mûr | PHP plus lent ; je n'ai pas de multiplicateur unique et propre à donner |
+
+Une charge vraiment limitée par le CPU (simulation numérique lourde, transformation de gros volumes de données en mémoire, tout ce dont le goulot d'étranglement est l'arithmétique plutôt que l'attente d'un réseau ou d'une base de données) est une charge pour laquelle PHP n'est pas, par son architecture, l'outil le plus rapide disponible. Cela ne veut pas dire que PHP ne sait pas le faire. Cela veut dire que la comparaison honnête se fait avec Go, Rust, Java et C#, pas avec Python, et qu'un fournisseur ou une équipe qui pose cette limite face à la mauvaise référence est mal informé, ou arrange la comparaison en faveur de PHP.
+
+## Applications natives, mobiles et de bureau : un manque moins net qu'on ne le croit, mais pas comblé
+
+La réponse traditionnelle était simple : PHP n'a aucune boîte à outils officielle pour construire des applications natives de bureau ou mobiles, point. Cette réponse a un an ou deux de retard. NativePHP, un projet communautaire construit spécifiquement sur Laravel, l'un des frameworks de la liste fixe de ce livre, empaquette une application PHP en version de bureau et en version pour les magasins d'applications mobiles, et sa propre documentation revendique des déploiements en production en 2026. Le citer une fois, ici, avec cette date, est plus honnête que de prétendre que le manque reste absolu. Le citer à répétition, ou le traiter comme aussi mûr que Swift, Kotlin ou une boîte à outils multiplateforme établie, surestimerait ce qu'un seul projet communautaire, jeune et lié à un framework, a réellement prouvé à grande échelle. La formulation honnête tient en trois constats : aucune boîte à outils officielle n'existe, une solution communautaire existe, et elle n'a pas encore la maturité qu'un décideur attendrait avant d'y miser un produit phare.
+
+<img src="images/ch09-wrong-choice.png" alt="Au comptoir d'une location d'outils, un éléphant tend un marteau tandis que le commerçant secoue la tête et désigne une perceuse à colonne sur l'étagère ; sur le comptoir, le croquis d'une pile de plaques de métal à percer." width="560">
+
+## Apprentissage automatique et science des données numérique
+
+Ce manque est réel, et je préfère l'argument de la densité de l'écosystème à une statistique d'usage empruntée qui ne parlerait pas vraiment de PHP. Il n'existe pas d'équivalent PHP à NumPy, pandas, PyTorch ou TensorFlow qui leur soit comparable en maturité, en taille de communauté ou en prise en charge de l'accélération matérielle. Vous pouvez le vérifier vous-même : cherchez dans les catégories de Packagist, ou dans l'index des extensions de PHP, des outils de calcul numérique ou d'apprentissage automatique, et comparez avec la même recherche dans l'index des paquets de Python. Ce manque n'est pas une affaire d'opinion, et il n'a pas besoin d'une statistique d'enquête empruntée pour être démontré : il se voit directement dans ce que chaque écosystème a construit.
+
+## Les processus longs : une réponse partielle, décrite au plus juste
+
+[Le runtime](ch02-runtime.md) et [Montée en charge](ch05-scale.md) en parlent déjà. La documentation de FrankenPHP dit sans détour que PHP n'a pas été conçu à l'origine pour des processus de longue durée, et le mode worker atténue le risque de croissance mémoire qui en découle sans le supprimer. C'est pourquoi le redémarrage périodique des workers est la parade standard et documentée, et non un aveu d'échec. Le constat est juste et sans esprit de défense, et il vient de la franchise de l'éditeur lui-même plutôt que de la plume d'un critique.
+
+## Pas de génériques
+
+Le langage PHP n'a pas de génériques. PHPStan et Psalm, les deux outils d'analyse statique cités tout au long de ce livre, lisent la même convention de docblock `@template` pour approcher les types génériques. Vous obtenez ainsi une vérification de types réelle et utile pendant le développement, mais entièrement hors du moteur du langage : rien d'un type générique déclaré de cette façon n'est vérifié quand le code s'exécute. Une base de code qui s'appuie sur cette convention choisit un substitut réel et fonctionnel, pas la fonctionnalité du langage elle-même, et la distinction compte si vos critères d'évaluation exigent explicitement des génériques vérifiés à la compilation plutôt qu'une approximation facultative par l'analyse statique.
+
+## Une réserve sur le marché, pas sur le langage
+
+[Gouvernance et versions](ch08-governance-and-versions.md) vous a déjà donné le chiffre : environ 28 % des sites web sous PHP tournent encore sur la branche 7.x, sans support depuis novembre 2022, et près de 8 % sont encore sur PHP 5, sans support depuis 2018 ou 2019. Hériter de l'un de ces déploiements, par un rachat, un vieil outil interne ou la relation avec un fournisseur, c'est hériter d'un vrai passif de sécurité et de maintenance. Ce n'est pas une affirmation sur le langage actuel, maintenu activement selon le calendrier décrit dans [Gouvernance et versions](ch08-governance-and-versions.md) ; c'est une affirmation sur ce qu'une organisation donnée a fait, ou n'a pas fait, d'une vieille version. Si vous menez une due diligence sur une base de code existante, traitez ces deux risques comme deux évaluations entièrement séparées.
+
+> **La limite, dite une dernière fois, sans détour.** Aucun des manques de ce chapitre ne se résout en choisissant un autre framework PHP, et je ne laisserai pas entendre le contraire. Quand ils se résolvent, c'est en ajoutant à côté de PHP un second outil conçu pour la tâche, pas avec PHP seul.
+
+**À vérifier vous-même.** Lisez la documentation de PHP sur les Fibers et jugez par vous-même si la concurrence coopérative couvre vraiment votre charge, plutôt que de prendre le résumé de ce chapitre pour le dernier mot. Faites ensuite tourner la tâche numérique ou gourmande en données la plus proche de votre charge réelle, une fois en PHP, une fois dans le langage que vous utiliseriez sinon. C'est la même exigence de refaire la mesure vous-même que [Performances](ch04-performance.md) vous a déjà posée, et un vrai benchmark de votre propre tâche vaut mieux que toute comparaison générale imprimée ici.
+
+Toutes les limites de ce chapitre ont la même forme : PHP plus une brique d'infrastructure conçue pour la tâche, pas un remplacement complet. [L'évaluation](ch10-the-evaluation.md) referme le livre en transformant cette forme, et chaque chiffre sourcé qui précède, en vérifications que vous pouvez faire vous-même, sur votre propre machine, avant de décider quoi que ce soit.

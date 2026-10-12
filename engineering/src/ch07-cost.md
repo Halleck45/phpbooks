@@ -22,7 +22,7 @@ Publishing to Packagist costs nothing and requires no vetting beyond what Compos
 
 ## What you are not paying for: proprietary orchestration
 
-<img src="images/ch07-cost.png" alt="A single PHP application shown running unchanged across three different, differently shaped hosting environments: a bare-metal server, a small VPS, and a container orchestrator, with no adapter layer between them." width="560">
+<img src="images/ch07-cost.png" alt="An elephant carrying the same small suitcase walks through three doorways in turn, a brick garage, a small rented room and a yard of shipping containers, without ever opening it; a blank price tag hangs from the handle." width="560">
 
 PHP-FPM's process model, described in [The Runtime](ch02-runtime.md), requires only a POSIX-compliant operating system, a web server, and the PHP runtime itself to serve requests at scale. It does not require a proprietary serverless orchestration layer, and nothing about the architecture forces you to adopt one. That is a real, verifiable, architectural fact, not a claim about any specific hosting company, and this book states it that way on purpose: the same application can run on a bare-metal machine you own, a minimal virtual server, or a container orchestrator, without re-architecting it to fit any one of them.
 

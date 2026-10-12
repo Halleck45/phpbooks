@@ -8,11 +8,15 @@ This script has no dependencies beyond the standard library, on purpose:
 a chart here is a small, auditable SVG string, not a rendered plot.
 """
 import json
+import re
 import sys
 from pathlib import Path
 
 DATA_DIR = Path(__file__).parent / "data"
-OUT_DIR = Path(__file__).parent
+OUT_DIRS = {
+    "en": Path(__file__).parent,
+    "fr": Path(__file__).parent.parent.parent / "fr" / "charts",
+}
 
 BLUE = "#3b82f6"
 GREY = "#94a3b8"
@@ -29,6 +33,30 @@ def esc(s):
     )
 
 
+def localize(value, lang):
+    """Resolve every {"en", "fr"} text field of a chart spec to one language."""
+    if isinstance(value, dict):
+        if set(value) <= {"en", "fr"} and "en" in value:
+            return value.get(lang) or value["en"]
+        return {k: localize(v, lang) for k, v in value.items()}
+    if isinstance(value, list):
+        return [localize(v, lang) for v in value]
+    return value
+
+
+def french_number(label):
+    """68.8% -> 68,8\u00a0%, 315 req/s unchanged."""
+    label = re.sub(r"(\d)\.(\d)", r"\1,\2", label)
+    return re.sub(r"(\d)%", "\\1\u00a0%", label)
+
+
+def to_french(data):
+    for row in data["series"]:
+        for item in row.get("values", [row]):
+            item["value_label"] = french_number(item["value_label"])
+    return data
+
+
 def hbar(data):
     rows = data["series"]
     max_value = max(r["value"] for r in rows)
@@ -36,7 +64,7 @@ def hbar(data):
     top_pad = 34
     bottom_pad = 34
     height = top_pad + len(rows) * row_h + bottom_pad
-    label_w = 150
+    label_w = max(150, 7 * max(len(r["label"]) for r in rows) + 10)
     bar_area = WIDTH - label_w - 70
     out = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {height}" role="img" aria-label="{esc(data.get("title",""))}">',
@@ -120,7 +148,7 @@ def grouped(data):
     top_pad = 34
     bottom_pad = 34
     height = top_pad + len(groups) * group_h + bottom_pad
-    label_w = 110
+    label_w = max(110, 7 * max(len(g["label"]) for g in groups) + 10)
     bar_area = WIDTH - label_w - 90
     bar_h = 16
     out = [
@@ -163,15 +191,19 @@ def main():
         print("No chart data files found in", DATA_DIR)
         return 1
     for f in files:
-        data = json.loads(f.read_text())
-        renderer = RENDERERS.get(data.get("type"))
+        spec = json.loads(f.read_text())
+        renderer = RENDERERS.get(spec.get("type"))
         if not renderer:
-            print(f"Skipping {f.name}: unknown type {data.get('type')}")
+            print(f"Skipping {f.name}: unknown type {spec.get('type')}")
             continue
-        svg = renderer(data)
-        out_path = OUT_DIR / f.with_suffix(".svg").name
-        out_path.write_text(svg)
-        print(f"Wrote {out_path}")
+        for lang, out_dir in OUT_DIRS.items():
+            data = localize(spec, lang)
+            if lang == "fr":
+                data = to_french(data)
+            out_dir.mkdir(parents=True, exist_ok=True)
+            out_path = out_dir / f.with_suffix(".svg").name
+            out_path.write_text(renderer(data))
+            print(f"Wrote {out_path}")
     return 0
 
 

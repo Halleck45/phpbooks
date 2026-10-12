@@ -14,7 +14,7 @@ The ecosystem around the language changed on the same timeline. A page you might
 
 <div class="chart">
 
-<img src="images/ch01-reputation.png" alt="A weathered signpost reading PHP 4 era next to a newly paved road continuing past it, both leading toward the same contemporary skyline." width="560">
+<img src="images/ch01-reputation.png" alt="A person holds up an old curling photograph of a scruffy elephant tangled in cables, and compares it with the same elephant standing in front of them today, tidy, beside a closed toolbox and a neat stack of sheets." width="560">
 
 </div>
 

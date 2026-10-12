@@ -23,7 +23,7 @@ A workload that is genuinely CPU-bound, heavy numeric simulation, large-scale in
 
 The traditional answer here was simple: PHP has no first-party toolkit for building native desktop or mobile applications, full stop. That answer is a year or two out of date. NativePHP, a community project built specifically on top of Laravel, one of the frameworks named in this book's fixed list, packages a PHP application into desktop and mobile app-store builds, and its own documentation claims production deployments as of 2026. Naming it once, here, with that date, is more honest than pretending the gap is still absolute; naming it repeatedly, or treating it as equivalent in maturity to Swift, Kotlin, or a mature cross-platform toolkit, would overstate what a single, young, framework-specific community project has actually proven at scale. The honest framing is that no first-party toolkit exists, a community solution does, and it is unproven at the maturity level a decision maker would want before betting a flagship product on it.
 
-<img src="images/ch09-wrong-choice.png" alt="A decision tree with PHP as the trunk and several branches, some ending in a checkmark, others ending in a small warning flag, representing a workload where PHP is not the right fit on its own." width="560">
+<img src="images/ch09-wrong-choice.png" alt="At a tool-hire counter, an elephant offers a hammer while the shopkeeper shakes their head and points at a heavy drill press on the shelf; on the counter, a sketch of a stack of metal plates to be drilled." width="560">
 
 ## Machine learning and numeric data science
 
