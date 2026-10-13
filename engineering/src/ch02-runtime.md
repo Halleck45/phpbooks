@@ -6,7 +6,7 @@ Shared-nothing execution means a request boots the application, runs your code, 
 
 That something is `opcache`. PHP source code is compiled to bytecode before it runs, and by default that compilation happens again on every single request, from scratch. Opcache, bundled with PHP since version 5.5, caches the compiled bytecode in shared memory so the next request skips recompilation. Stated precisely, rather than the way it usually gets described: opcache is a `zend_extension`, and it has to be loaded in `php.ini` to do anything. Most distribution packagers turn it on by default, but PHP itself does not, and "PHP is fast because it caches bytecode" is only true of a specific, checkable configuration, not of the language as installed.
 
-<img src="images/ch02-runtime.png" alt="A single request shown as a small box that boots an application, runs, sends a response, and is torn down completely, with a second, identical box starting fresh beside it, sharing nothing with the first." width="560">
+<img src="images/ch02-runtime.png" alt="A hotel corridor with three identical rooms: a guest with an envelope settles into the first, an elephant in a housekeeping apron strips and cleans the second, and the third is made up and empty, waiting." width="560">
 
 ## What the type system actually enforces
 
@@ -17,12 +17,12 @@ The type declarations added since PHP 7 are not decoration. A file that opts in 
 
 declare(strict_types=1);
 
-function total(array $prices): float
+function total(float ...$prices): float
 {
     return array_sum($prices);
 }
 
-total(["9.99", "4.50"]); // TypeError: array_sum() argument must be array<float>, string given
+total(9.99, "4.50"); // TypeError: total(): Argument #2 must be of type float, string given
 ```
 
 Without `declare(strict_types=1)`, PHP would coerce a numeric string into a float and run anyway. With it, the mismatch is a `TypeError` at the point it occurs, not a silent corruption three functions downstream. This is the concrete, checkable version of the claim in [The Reputation](ch01-introduction.md) that the type system changed: it is opt-in per file, and it is real once you opt in.

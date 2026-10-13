@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 128" role="img" aria-label="Requêtes WordPress par seconde, benchmark de la RFC JIT elle-même">
+<title>Requêtes WordPress par seconde, benchmark de la RFC JIT elle-même</title>
+<text x="0" y="20" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="600">Requêtes WordPress par seconde, benchmark de la RFC JIT elle-même</text>
+<text x="0" y="50" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="13">Requête WordPress</text>
+<rect x="129" y="34" width="406.8" height="16" fill="#94a3b8" />
+<text x="543.8" y="47" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12">315 req/s</text>
+<rect x="129" y="56" width="421.0" height="16" fill="#3b82f6" />
+<text x="558.0" y="69" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12">326 req/s</text>
+<text x="0" y="116" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" fill-opacity="0.65">RFC JIT de PHP, wiki.php.net/rfc/jit, benchmark sur une requête WordPress, vérifié le 17/09/2026</text>
+</svg>

@@ -17,6 +17,3 @@
 - [Appendix B: Release Timeline](appendix-02-release-timeline.md)
 - [Appendix C: Vocabulary](appendix-03-vocabulary.md)
 
----
-
-- [Production Notes: Illustrations](illustrations.md)

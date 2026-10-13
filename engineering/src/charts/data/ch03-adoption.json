@@ -1,7 +1,7 @@
 {
   "type": "hbar",
-  "title": "Professional developers using each language, 2025",
-  "source": "Stack Overflow Developer Survey 2025, 24,759 professional respondents, data year 2025",
+  "title": {"en": "Professional developers using each language, 2025", "fr": "Part des développeurs professionnels qui utilisent chaque langage, 2025"},
+  "source": {"en": "Stack Overflow Developer Survey 2025, 24,759 professional respondents, data year 2025", "fr": "Stack Overflow Developer Survey 2025, 24 759 répondants professionnels, données 2025"},
   "series": [
     {"label": "JavaScript", "value": 68.8, "value_label": "68.8%"},
     {"label": "Python", "value": 54.8, "value_label": "54.8%"},

@@ -20,7 +20,7 @@ The scale lesson in that distribution is not the total count of data centers; it
 
 Shared-nothing scaling has a precondition that is easy to state and easy to violate by accident: nothing that needs to persist between requests can live inside the PHP process. A user's session, a piece of data cached to avoid a repeated expensive query, an uploaded file waiting to be processed: all of it has to live somewhere external to the worker that first touched it, a database, a dedicated cache layer, or shared storage, because the next request for that same user has no guarantee of landing on the same worker, or the same machine. This is not a limitation unique to PHP; it is the standard shape of any stateless web tier. It is named plainly here because a team new to PHP's specific defaults sometimes discovers it the hard way, by storing something in a plain variable or an in-process cache and being surprised when it vanishes on the very next request.
 
-<img src="images/ch05-scale.png" alt="Several identical small server boxes in a row, each one stateless and interchangeable, all pointing to a shared database and cache layer drawn beneath them as the only place state actually lives." width="560">
+<img src="images/ch05-scale.png" alt="A row of five identical market stalls, an elephant serving at each, with one shared warehouse behind them; a person wheels in a sixth stall, still folded, to add to the row." width="560">
 
 ## Scaling within one worker, not just across many
 

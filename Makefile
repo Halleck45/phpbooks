@@ -14,7 +14,7 @@
 # Any target of a book Makefile works as <book>-<target>.
 
 BOOKS = beginner polyglot pragmatic skeptic engineering
-PDF_BOOKS = beginner polyglot skeptic
+PDF_BOOKS = beginner polyglot pragmatic skeptic engineering
 DIST = _site
 
 .PHONY: build lint clean phpnet-links site dist pdf $(foreach b,$(BOOKS),$(b)-%)

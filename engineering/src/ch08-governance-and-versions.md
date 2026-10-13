@@ -25,7 +25,7 @@ This table is the single most useful piece of evidence in this chapter, because 
 
 Language changes are proposed and voted on in the open, at a public wiki dedicated to the process, and PHP's own rule requires a two-thirds majority for a change to the language itself to pass, a higher bar than a simple majority. That threshold exists precisely to slow down changes that would break existing code or fragment the language's own consistency, at the cost of moving slower than a benevolent-dictator model might. Neither side of that trade is free, and this book states it both ways rather than presenting the higher bar as an unambiguous good: a supermajority requirement protects stability, and it also means a change with strong majority support but not overwhelming support can still fail.
 
-<img src="images/ch08-governance.png" alt="A single ballot box at the center of a wheel of contributors, with a large majority of the wheel shaded to represent the two-thirds threshold a change needs to pass." width="560">
+<img src="images/ch08-governance.png" alt="A village hall where an elephant at a lectern stands beside a ballot box and most of the elephants in the audience raise a hand; on the wall, a yearly calendar with one month circled above four shelves of boxes, the lowest one dusty." width="560">
 
 ## Who funds the work
 

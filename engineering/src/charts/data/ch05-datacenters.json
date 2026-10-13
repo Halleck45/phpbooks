@@ -1,11 +1,11 @@
 {
   "type": "hbar",
-  "title": "Wikimedia data centers running MediaWiki, by region",
-  "source": "Wikimedia wikitech.wikimedia.org/wiki/Wikimedia_infrastructure, retrieved 2026-09-17",
+  "title": {"en": "Wikimedia data centers running MediaWiki, by region", "fr": "Datacenters de Wikimedia qui font tourner MediaWiki, par région"},
+  "source": {"en": "Wikimedia wikitech.wikimedia.org/wiki/Wikimedia_infrastructure, retrieved 2026-09-17", "fr": "Wikimedia, wikitech.wikimedia.org/wiki/Wikimedia_infrastructure, consulté le 17/09/2026"},
   "series": [
-    {"label": "United States", "value": 3, "value_label": "3", "highlight": true},
-    {"label": "Europe", "value": 2, "value_label": "2", "highlight": true},
-    {"label": "Asia", "value": 1, "value_label": "1", "highlight": true},
-    {"label": "South America", "value": 1, "value_label": "1", "highlight": true}
+    {"label": {"en": "United States", "fr": "États-Unis"}, "value": 3, "value_label": "3", "highlight": true},
+    {"label": {"en": "Europe", "fr": "Europe"}, "value": 2, "value_label": "2", "highlight": true},
+    {"label": {"en": "Asia", "fr": "Asie"}, "value": 1, "value_label": "1", "highlight": true},
+    {"label": {"en": "South America", "fr": "Amérique du Sud"}, "value": 1, "value_label": "1", "highlight": true}
   ]
 }

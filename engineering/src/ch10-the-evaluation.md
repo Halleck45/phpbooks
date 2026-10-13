@@ -2,7 +2,7 @@
 
 **Every figure in this book was checkable when it was written, and every figure in this book will have moved by the time you read it; this chapter exists to hand you the checks themselves, not another number to trust in their place.** A due-diligence reviewer does not finish an evaluation by reading someone else's conclusions. She finishes it by rerunning the parts of the evidence that matter to her own decision, and this chapter is built entirely out of the moments across the nine chapters before it where this book already asked you to do exactly that.
 
-<img src="images/ch10-evaluation.png" alt="A short, hand-checked list with a pencil resting beside it, each line representing one command or public page a reader can verify in an afternoon." width="560">
+<img src="images/ch10-evaluation.png" alt="At a kitchen table, a person types on a laptop while an elephant beside them holds a printed checklist and ticks the third box, comparing the sheet with the screen." width="560">
 
 ## What your own machine already knows
 
