@@ -9,6 +9,7 @@ on:
 
 env:
   MDBOOK_VERSION: 0.5.4
+  PANDOC_VERSION: 3.7.0.2
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -45,11 +46,23 @@ jobs:
             | sudo tar -xz -C /usr/local/bin
           mdbook --version
 
+      # The EPUB script needs pandoc 3 (--split-level), plus bs4 and Pillow.
+      - name: Install pandoc
+        run: |
+          curl -sSL -o pandoc.deb "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb"
+          sudo apt-get update
+          sudo apt-get install -y ./pandoc.deb python3-bs4 python3-pil
+          rm pandoc.deb
+          pandoc --version | head -1
+
       - name: Build the books and the landing page
         run: make dist
 
       - name: Print the PDF editions
         run: make pdf
+
+      - name: Convert the EPUB editions
+        run: make epub
 
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -57,8 +70,10 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: pdf
-          path: _site/*/*.pdf
+          name: editions
+          path: |
+            _site/*/*.pdf
+            _site/*/*.epub
           if-no-files-found: error
 
   deploy:
@@ -84,17 +99,18 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: pdf
-          path: pdf
+          name: editions
+          path: editions
 
       - name: Name the files after their book
         run: |
           mkdir out
-          for f in pdf/*/*.pdf; do
+          for f in editions/*/book.* editions/*/book-fr.*; do
             book=$(basename "$(dirname "$f")")
-            case "$(basename "$f")" in
-              book.pdf) cp "$f" "out/$book-$GITHUB_REF_NAME.pdf" ;;
-              book-fr.pdf) cp "$f" "out/$book-fr-$GITHUB_REF_NAME.pdf" ;;
+            name=$(basename "$f")
+            case "$name" in
+              book.*) cp "$f" "out/$book-$GITHUB_REF_NAME.${name#book.}" ;;
+              book-fr.*) cp "$f" "out/$book-fr-$GITHUB_REF_NAME.${name#book-fr.}" ;;
             esac
           done
           ls -l out
@@ -102,4 +118,4 @@ jobs:
       - name: Publish the release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --title "$GITHUB_REF_NAME" --generate-notes out/*.pdf
+        run: gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --title "$GITHUB_REF_NAME" --generate-notes out/*.pdf out/*.epub

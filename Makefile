@@ -10,6 +10,7 @@
 #   make site               serve the landing page with the built books (site/)
 #   make dist               assemble the landing page and every book into _site/
 #   make pdf                print the books that have a PDF edition, into _site/ too
+#   make epub               convert the same books to EPUB, into _site/ too
 #
 # Any target of a book Makefile works as <book>-<target>.
 
@@ -17,7 +18,7 @@ BOOKS = beginner polyglot pragmatic skeptic engineering
 PDF_BOOKS = beginner polyglot pragmatic skeptic engineering
 DIST = _site
 
-.PHONY: build lint clean phpnet-links site dist pdf $(foreach b,$(BOOKS),$(b)-%)
+.PHONY: build lint clean phpnet-links site dist pdf epub $(foreach b,$(BOOKS),$(b)-%)
 
 build lint clean:
 	@for b in $(BOOKS); do $(MAKE) -C $$b $@; done
@@ -43,6 +44,11 @@ dist: build
 pdf: dist
 	@for b in $(PDF_BOOKS); do \
 	  $(MAKE) -C $$b pdf pdf-fr && cp $$b/book.pdf $$b/book-fr.pdf $(DIST)/$$b/; \
+	done
+
+epub: dist
+	@for b in $(PDF_BOOKS); do \
+	  $(MAKE) -C $$b epub epub-fr && cp $$b/book.epub $$b/book-fr.epub $(DIST)/$$b/; \
 	done
 
 $(foreach b,$(BOOKS),$(b)-%):
