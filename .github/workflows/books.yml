@@ -58,10 +58,16 @@ jobs:
       - name: Build the books and the landing page
         run: make dist
 
+      # The runner image's Chrome 157 exits without writing the PDF; pin the
+      # last version known to print.
+      - name: Install Chrome
+        id: chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 155
+
       - name: Print the PDF editions
-        # The runner's Chrome exits silently without a PDF when its sandbox
-        # cannot start; the CI job is already isolated.
-        run: make pdf CHROME_FLAGS="--headless=new --disable-gpu --no-sandbox --no-pdf-header-footer --virtual-time-budget=10000"
+        run: make pdf CHROME="${{ steps.chrome.outputs.chrome-path }}"
 
       - name: Convert the EPUB editions
         run: make epub
