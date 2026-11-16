@@ -59,7 +59,9 @@ jobs:
         run: make dist
 
       - name: Print the PDF editions
-        run: make pdf
+        # The runner's Chrome exits silently without a PDF when its sandbox
+        # cannot start; the CI job is already isolated.
+        run: make pdf CHROME_FLAGS="--headless=new --disable-gpu --no-sandbox --no-pdf-header-footer --virtual-time-budget=10000"
 
       - name: Convert the EPUB editions
         run: make epub
