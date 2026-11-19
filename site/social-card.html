@@ -1,0 +1,76 @@
+<!doctype html>
+<!--
+  Source of images/social-card.png, the link preview (og:image) shared by the
+  landing page and every book. Rendered at 1200x630 by `make social-card`.
+  Not published: only the PNG is.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --paper: #f8f4ec;
+    --ink: #211f2c;
+    --muted: #6b6776;
+    --accent: #4f5b93;
+    --php: #777bb4;
+    --art-bg: #eef0f9;
+}
+* { margin: 0; box-sizing: border-box; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Inter", system-ui, sans-serif;
+    display: grid;
+    grid-template-columns: 560px 1fr;
+    align-items: center;
+}
+.text { padding: 0 24px 0 72px; }
+.site {
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    margin-bottom: 28px;
+}
+h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-size: 76px;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+}
+h1 em { color: var(--php); }
+p {
+    margin-top: 28px;
+    font-size: 27px;
+    line-height: 1.4;
+    color: var(--muted);
+}
+.art {
+    height: 630px;
+    background: var(--art-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+</style>
+</head>
+<body>
+    <div class="text">
+        <div class="site">php-books.net</div>
+        <h1>Where are you with <em>PHP</em>?</h1>
+        <p>Five free books, one for each starting point.</p>
+    </div>
+    <div class="art"><img src="images/hero.png" alt=""></div>
+</body>
+</html>

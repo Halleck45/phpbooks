@@ -8,13 +8,18 @@
 #   make illustrations ARGS=--dry-run        print the prompts, no API call
 #   make webp           convert images/*.png to the light WebP files the page
 #                       loads first (needs cwebp); run it after illustrations
+#   make social-card    render social-card.html to images/social-card.png, the
+#                       1200x630 link preview of the site and the books (needs
+#                       Chrome and network access for the fonts)
 
 PORT ?= 8000
+
+CHROME ?= $(shell command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser)
 
 WEBP_WIDTH ?= 1200
 PNG = $(wildcard images/*.png)
 
-.PHONY: serve illustrations webp
+.PHONY: serve illustrations webp social-card
 
 serve:
 	@echo "http://localhost:$(PORT)/"
@@ -27,3 +32,8 @@ webp: $(PNG:.png=.webp)
 
 images/%.webp: images/%.png
 	cwebp -quiet -q 82 -m 6 -resize $(WEBP_WIDTH) 0 $< -o $@
+
+social-card:
+	$(CHROME) --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
+	  --window-size=1200,630 --virtual-time-budget=10000 \
+	  --screenshot="$(CURDIR)/images/social-card.png" "file://$(CURDIR)/social-card.html"

@@ -1,6 +1,5 @@
 # The PHP Book (version française)
 
-[The PHP Book](title-page.md)
 [Avant-propos](foreword.md)
 [Introduction](ch00-00-introduction.md)
 
